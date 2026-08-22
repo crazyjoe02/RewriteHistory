@@ -22,7 +22,7 @@
         {% for row in cat.rows %}
         <tr>
             <td>{{ loop.index }}</td>
-            <td class="left"><a href="{{ root }}players/{{ row.PlayerID }}.html">{{ row.Player }}</a></td>
+            <td class="left" data-sort="{{ row.LastName }}"><a href="{{ root }}players/{{ row.PlayerID }}.html">{{ row.Player }}</a></td>
             <td class="left"><a href="{{ root }}teams/{{ row.Team }}/{{ season }}.html">{{ row.Team }}</a></td>
             <td>{{ row.display }}</td>
         </tr>
@@ -46,7 +46,7 @@
         {% for row in cat.rows %}
         <tr>
             <td>{{ loop.index }}</td>
-            <td class="left"><a href="{{ root }}players/{{ row.PlayerID }}.html">{{ row.Player }}</a></td>
+            <td class="left" data-sort="{{ row.LastName }}"><a href="{{ root }}players/{{ row.PlayerID }}.html">{{ row.Player }}</a></td>
             <td class="left"><a href="{{ root }}teams/{{ row.Team }}/{{ season }}.html">{{ row.Team }}</a></td>
             <td>{{ row.display }}</td>
         </tr>

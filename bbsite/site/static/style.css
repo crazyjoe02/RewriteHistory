@@ -137,6 +137,14 @@ table.stats th {
     top: 0;
 }
 table.stats th.left, table.stats td.left { text-align: left; }
+table.stats th.sortable-col {
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+}
+table.stats th.sortable-col:hover { background: #c9d9ea; }
+table.stats th.sorted-asc::after { content: " \25B2"; font-size: 9px; }
+table.stats th.sorted-desc::after { content: " \25BC"; font-size: 9px; }
 table.stats td {
     padding: 3px 6px;
     text-align: center;

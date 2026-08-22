@@ -60,6 +60,14 @@ def display_name(raw):
     return raw
 
 
+def last_name_of(raw):
+    """Extract just the last name from 'Last, First' (or 'First Last') for sorting."""
+    if "," in raw:
+        return raw.split(",", 1)[0].strip()
+    parts = raw.strip().split(" ")
+    return parts[-1] if parts else raw
+
+
 def discover_seasons():
     seasons = []
     for entry in sorted(os.listdir(DATA_DIR)):
@@ -116,9 +124,11 @@ def main():
         # assign PlayerID to batting/pitching rows
         for row in batting_rows:
             row["PlayerID"] = slugify_player_id(row["Player"])
+            row["LastName"] = last_name_of(row["Player"])
             row["Player"] = display_name(row["Player"])
         for row in pitching_rows:
             row["PlayerID"] = slugify_player_id(row["Player"])
+            row["LastName"] = last_name_of(row["Player"])
             row["Player"] = display_name(row["Player"])
 
         all_standings[season] = standings_rows
@@ -196,17 +206,19 @@ def main():
                   team=team, season=season, standing=standing, batters=batters, pitchers=pitchers)
 
     # --- Player pages ---
-    players = defaultdict(lambda: {"batting": [], "pitching": [], "name": None, "bats": None, "throws": None})
+    players = defaultdict(lambda: {"batting": [], "pitching": [], "name": None, "last_name": None, "bats": None, "throws": None})
     for season in seasons:
         for row in all_batting[season]:
             pid = row["PlayerID"]
             players[pid]["batting"].append(row)
             players[pid]["name"] = row["Player"]
+            players[pid]["last_name"] = row.get("LastName")
             players[pid]["bats"] = row.get("B")
         for row in all_pitching[season]:
             pid = row["PlayerID"]
             players[pid]["pitching"].append(row)
             players[pid]["name"] = row["Player"]
+            players[pid]["last_name"] = row.get("LastName")
             players[pid]["throws"] = row.get("T")
 
     for pid, pdata in players.items():
@@ -327,12 +339,14 @@ def main():
             row = dict(pdata["batting_career"])
             row["PlayerID"] = pid
             row["Player"] = pdata["name"]
+            row["LastName"] = pdata["last_name"]
             row["Teams"] = teams_str
             career_batting_pool.append(row)
         if pdata["pitching_career"]:
             row = dict(pdata["pitching_career"])
             row["PlayerID"] = pid
             row["Player"] = pdata["name"]
+            row["LastName"] = pdata["last_name"]
             row["Teams"] = teams_str
             career_pitching_pool.append(row)
 

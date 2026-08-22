@@ -49,16 +49,17 @@ def parse_standings(xlsx_path, season, out_csv):
         w, l = wl.replace('\xa0','').split('-')
         pct = row[2]
         gb = row[3]
+        div_record = row[4]
         one_run = row[5]
         rf = row[6]
         ra = row[7]
         home = row[8]
         away = row[9]
         owner = row[10]
-        out_rows.append([season, current_league, abbr, team_name, w, l, pct, gb, one_run, rf, ra, home, away, owner])
+        out_rows.append([season, current_league, abbr, team_name, w, l, pct, gb, div_record, one_run, rf, ra, home, away, owner])
     with open(out_csv, 'w', newline='') as f:
         writer = csv.writer(f)
-        writer.writerow(['Season','League','TeamAbbr','TeamName','W','L','PCT','GB','OneRunRecord','RF','RA','Home','Away','Owner'])
+        writer.writerow(['Season','League','TeamAbbr','TeamName','W','L','PCT','GB','DivRecord','OneRunRecord','RF','RA','Home','Away','Owner'])
         writer.writerows(out_rows)
     print(f"Wrote {len(out_rows)} rows to {out_csv}")
 

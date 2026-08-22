@@ -1,13 +1,13 @@
-Season,League,TeamAbbr,TeamName,W,L,PCT,GB,OneRunRecord,RF,RA,Home,Away,Owner
-1885,NL,BSN,Boston Beaneaters,97,65,0.599,-,28-19,1117,963,53-28,44-37,firesalt
-1885,NL,PHI,Philadelphia Quakers,90,72,0.556,7,31-30,925,809,47-34,43-38,danidon
-1885,NL,CHC,Chicago White Stockings,87,75,0.537,10,22-25,1082,880,49-32,38-43,szczubelek
-1885,NL,DTN,Detroit Wolverines,84,78,0.519,13,26-22,881,857,41-40,43-38,gbakker
-1885,NL,NYG,New York Giants,82,80,0.506,15,22-29,853,845,42-39,40-41,epup1975
-1885,NL,PIT,Pittsburgh Alleghenys,46,116,0.284,51,16-20,676,1180,24-57,22-59,ZeeBall
-1885,AA,STL,Saint Louis Browns,103,59,0.636,-,21-11,1072,748,52-29,51-30,RedMustard
-1885,AA,CIN,Cincinnati Red Stockings,101,61,0.623,2,24-17,1055,869,55-26,46-35,crazyjoe02
-1885,AA,LOU,LOUISVILLE colonels,81,81,0.5,22,20-18,863,911,40-41,41-40,BullMoose
-1885,AA,BLN,Baltimore Orioles,77,85,0.475,26,15-23,979,911,40-41,37-44,JAMESA
-1885,AA,PAT,Phladelphia Athletics,76,86,0.469,27,22-22,1050,1083,35-46,41-40,bingo_long
-1885,AA,BRO,Brooklyn Grays,48,114,0.296,55,16-27,689,1186,30-51,18-63,eman7400
+Season,League,TeamAbbr,TeamName,W,L,PCT,GB,DivRecord,OneRunRecord,RF,RA,Home,Away,Owner
+1885,NL,BSN,Boston Beaneaters,97,65,0.599,-,97-65,28-19,1117,963,53-28,44-37,firesalt
+1885,NL,PHI,Philadelphia Quakers,90,72,0.556,7,90-72,31-30,925,809,47-34,43-38,danidon
+1885,NL,CHC,Chicago White Stockings,87,75,0.537,10,87-75,22-25,1082,880,49-32,38-43,szczubelek
+1885,NL,DTN,Detroit Wolverines,84,78,0.519,13,84-78,26-22,881,857,41-40,43-38,gbakker
+1885,NL,NYG,New York Giants,82,80,0.506,15,82-80,22-29,853,845,42-39,40-41,epup1975
+1885,NL,PIT,Pittsburgh Alleghenys,46,116,0.284,51,46-116,16-20,676,1180,24-57,22-59,ZeeBall
+1885,AA,STL,Saint Louis Browns,103,59,0.636,-,103-59,21-11,1072,748,52-29,51-30,RedMustard
+1885,AA,CIN,Cincinnati Red Stockings,101,61,0.623,2,101-61,24-17,1055,869,55-26,46-35,crazyjoe02
+1885,AA,LOU,LOUISVILLE colonels,81,81,0.5,22,81-81,20-18,863,911,40-41,41-40,BullMoose
+1885,AA,BLN,Baltimore Orioles,77,85,0.475,26,77-85,15-23,979,911,40-41,37-44,JAMESA
+1885,AA,PAT,Phladelphia Athletics,76,86,0.469,27,76-86,22-22,1050,1083,35-46,41-40,bingo_long
+1885,AA,BRO,Brooklyn Grays,48,114,0.296,55,48-114,16-27,689,1186,30-51,18-63,eman7400

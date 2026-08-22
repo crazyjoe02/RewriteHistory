@@ -15,7 +15,11 @@ Manager: <a href="{{ root }}managers/{{ standing.OwnerSlug }}.html">{{ standing.
 </div>
 <div class="subtitle">
 Record: {{ standing.W }}-{{ standing.L }} ({{ '%.3f'|format(standing.PCT|float) }}) &middot;
-{{ standing.League }} &middot; GB {{ standing.GB }} &middot;
+{{ standing.League }} &middot; GB {{ standing.GB }}
+</div>
+<div class="subtitle">
+Division: {{ standing.DivRecord }} &middot;
+1-Run Games: {{ standing.OneRunRecord }} &middot;
 RF {{ standing.RF }} / RA {{ standing.RA }} &middot;
 Home {{ standing.Home }} / Away {{ standing.Away }}
 </div>
@@ -33,7 +37,7 @@ Home {{ standing.Home }} / Away {{ standing.Away }}
     <tbody>
     {% for p in batters %}
     <tr>
-        <td class="left"><a href="{{ root }}players/{{ p.PlayerID }}.html">{{ p.Player }}</a></td>
+        <td class="left" data-sort="{{ p.LastName }}"><a href="{{ root }}players/{{ p.PlayerID }}.html">{{ p.Player }}</a></td>
         <td>{{ p.B }}</td><td>{{ p.G }}</td><td>{{ p.AB }}</td><td>{{ p.R }}</td><td>{{ p.H }}</td>
         <td>{{ p['2B'] }}</td><td>{{ p['3B'] }}</td><td>{{ p.HR }}</td><td>{{ p.RBI }}</td>
         <td>{{ p.BB }}</td><td>{{ p.SO }}</td><td>{{ p.HBP }}</td><td>{{ p.SB }}</td><td>{{ p.CS }}</td>
@@ -58,7 +62,7 @@ Home {{ standing.Home }} / Away {{ standing.Away }}
     <tbody>
     {% for p in pitchers %}
     <tr>
-        <td class="left"><a href="{{ root }}players/{{ p.PlayerID }}.html">{{ p.Player }}</a></td>
+        <td class="left" data-sort="{{ p.LastName }}"><a href="{{ root }}players/{{ p.PlayerID }}.html">{{ p.Player }}</a></td>
         <td>{{ p.T }}</td><td>{{ p.W }}</td><td>{{ p.L }}</td><td>{{ '%.2f'|format(p.ERA|float) }}</td>
         <td>{{ p.G }}</td><td>{{ p.GS }}</td><td>{{ p.CG }}</td><td>{{ p.SHO }}</td><td>{{ p.SV }}</td>
         <td>{{ p.IP }}</td><td>{{ p.H }}</td><td>{{ p.R }}</td><td>{{ p.ER }}</td>
