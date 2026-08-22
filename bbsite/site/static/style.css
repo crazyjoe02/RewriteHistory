@@ -1,0 +1,198 @@
+/* ---- Base / Baseball-Reference style clone ---- */
+* { box-sizing: border-box; }
+body {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #000;
+    background: #fff;
+    margin: 0;
+    padding: 0;
+}
+a { color: #0033CC; text-decoration: none; }
+a:hover { text-decoration: underline; color: #6622CC; }
+
+/* Top site header */
+.site-header {
+    background: #002950;
+    color: #fff;
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+.site-header a.brand {
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+.site-header nav a {
+    color: #cfe0f4;
+    font-size: 12px;
+    margin-right: 14px;
+}
+.site-header nav a:hover { color: #fff; }
+
+/* Search box */
+.search-box {
+    position: relative;
+    margin-left: auto;
+    width: 260px;
+}
+.search-box input {
+    width: 100%;
+    padding: 6px 10px;
+    font-size: 12px;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    border: 1px solid #001830;
+    border-radius: 3px;
+    outline: none;
+}
+.search-box input:focus {
+    box-shadow: 0 0 0 2px #6d9dd6;
+}
+.search-results {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin-top: 4px;
+    background: #fff;
+    border: 1px solid #cdd7e0;
+    border-radius: 3px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.18);
+    max-height: 340px;
+    overflow-y: auto;
+    z-index: 100;
+}
+.search-results.open { display: block; }
+.search-result {
+    display: flex;
+    flex-direction: column;
+    padding: 6px 10px;
+    color: #000;
+    text-decoration: none;
+    border-bottom: 1px solid #eee;
+}
+.search-result:last-child { border-bottom: none; }
+.search-result:hover, .search-result.active {
+    background: #eef4fb;
+    text-decoration: none;
+}
+.search-result-name { font-size: 12.5px; font-weight: bold; color: #0033CC; }
+.search-result-meta { font-size: 10.5px; color: #777; }
+.search-empty { padding: 8px 10px; color: #888; font-size: 11.5px; }
+
+.breadcrumb {
+    background: #e8e8e8;
+    padding: 6px 16px;
+    font-size: 11px;
+    border-bottom: 1px solid #ccc;
+}
+.breadcrumb a { color: #0033CC; }
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 14px 16px 40px 16px;
+}
+
+h1.page-title {
+    font-size: 22px;
+    margin: 6px 0 2px 0;
+    border-bottom: 2px solid #002950;
+    padding-bottom: 6px;
+}
+.subtitle {
+    color: #555;
+    font-size: 12px;
+    margin-bottom: 14px;
+}
+
+h2.section-title {
+    background: #002950;
+    color: #fff;
+    font-size: 13px;
+    padding: 5px 8px;
+    margin: 22px 0 0 0;
+}
+
+/* Tables */
+table.stats {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 4px;
+    font-size: 11.5px;
+}
+table.stats th {
+    background: #dce6f1;
+    border-bottom: 2px solid #9fb6cc;
+    border-top: 1px solid #9fb6cc;
+    padding: 4px 6px;
+    text-align: center;
+    font-weight: bold;
+    white-space: nowrap;
+    position: sticky;
+    top: 0;
+}
+table.stats th.left, table.stats td.left { text-align: left; }
+table.stats td {
+    padding: 3px 6px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    white-space: nowrap;
+}
+table.stats tbody tr:nth-child(odd) { background: #f4f7fb; }
+table.stats tbody tr:hover { background: #fff2c8; }
+table.stats tfoot td {
+    font-weight: bold;
+    border-top: 2px solid #9fb6cc;
+    background: #eef2f7;
+}
+
+.table-wrap {
+    overflow-x: auto;
+    border: 1px solid #cdd7e0;
+}
+
+/* Standings specific */
+.standings-note { font-size: 11px; color: #555; margin: 4px 0 14px 0; }
+
+/* Team color bar */
+.team-bar {
+    height: 6px;
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+/* Two-column league layout */
+.league-columns {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+.league-columns > div { flex: 1; min-width: 380px; }
+
+/* Team grid on home page */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 10px;
+    margin-top: 10px;
+}
+.team-card {
+    border: 1px solid #cdd7e0;
+    border-radius: 3px;
+    padding: 8px 10px;
+    background: #fafbfc;
+}
+.team-card a { font-weight: bold; font-size: 13px; }
+.team-card .rec { color: #555; font-size: 11px; }
+
+footer {
+    text-align: center;
+    color: #888;
+    font-size: 10.5px;
+    padding: 20px 0 30px 0;
+}
