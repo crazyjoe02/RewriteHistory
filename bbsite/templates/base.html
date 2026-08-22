@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>{% block title %}Baseball Reference{% endblock %} | Historical League Reference</title>
+<title>{% block title %}Baseball Reference{% endblock %} | Rewrite History Reference</title>
 <link rel="stylesheet" href="{{ root }}static/style.css">
 </head>
 <body>
 <div class="site-header" data-root="{{ root }}">
-    <a class="brand" href="{{ root }}index.html">Historical League Reference</a>
+    <a class="brand" href="{{ root }}index.html">Rewrite History Reference</a>
     <nav>
         <a href="{{ root }}index.html">Home</a>
         <a href="{{ root }}years/{{ latest_season }}.html">{{ latest_season }} Season</a>
@@ -22,7 +22,7 @@
 <div class="container">
 {% block content %}{% endblock %}
 </div>
-<footer>Historical League Reference &mdash; generated from league simulation data</footer>
+<footer>Rewrite History Reference &mdash; generated from league simulation data</footer>
 <script src="{{ root }}static/search.js"></script>
 </body>
 </html>
