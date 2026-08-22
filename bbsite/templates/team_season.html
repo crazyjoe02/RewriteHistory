@@ -10,6 +10,9 @@
 {% block content %}
 <div class="team-bar" style="background: linear-gradient(90deg, {{ team.ColorPrimary }}, {{ team.ColorSecondary }});"></div>
 <h1 class="page-title">{{ season }} {{ team.FranchiseName }}</h1>
+<div class="subtitle" style="margin-bottom:2px;">
+Manager: <a href="{{ root }}managers/{{ standing.OwnerSlug }}.html">{{ standing.Owner }}</a>
+</div>
 <div class="subtitle">
 Record: {{ standing.W }}-{{ standing.L }} ({{ '%.3f'|format(standing.PCT|float) }}) &middot;
 {{ standing.League }} &middot; GB {{ standing.GB }} &middot;

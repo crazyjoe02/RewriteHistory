@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}{{ manager_name }}{% endblock %}
+{% block breadcrumb %}
+<div class="breadcrumb"><a href="{{ root }}index.html">Home</a> &rsaquo; {{ manager_name }}</div>
+{% endblock %}
+{% block content %}
+<h1 class="page-title">{{ manager_name }}</h1>
+<div class="subtitle">{{ seasons|length }} season(s) managed</div>
+
+<h2 class="section-title">Season-by-Season</h2>
+<div class="table-wrap">
+<table class="stats">
+    <thead>
+    <tr><th>Season</th><th class="left">Team</th><th>Lg</th><th>W</th><th>L</th><th>PCT</th><th>GB</th><th>Finish</th></tr>
+    </thead>
+    <tbody>
+    {% for s in seasons %}
+    <tr>
+        <td><a href="{{ root }}years/{{ s.Season }}.html">{{ s.Season }}</a></td>
+        <td class="left"><a href="{{ root }}teams/{{ s.TeamAbbr }}/{{ s.Season }}.html">{{ s.TeamName }}</a></td>
+        <td>{{ s.League }}</td>
+        <td>{{ s.W }}</td>
+        <td>{{ s.L }}</td>
+        <td>{{ '%.3f'|format(s.PCT|float) }}</td>
+        <td>{{ s.GB }}</td>
+        <td>{{ s.Finish }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock %}

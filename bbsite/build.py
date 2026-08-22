@@ -46,6 +46,12 @@ def slugify_player_id(name):
     return base + "01"
 
 
+def slugify_manager(name):
+    """Simple URL-safe slug for a manager/owner name."""
+    slug = re.sub(r"[^A-Za-z0-9]+", "-", name.strip()).strip("-").lower()
+    return slug or "unknown"
+
+
 def display_name(raw):
     """Convert 'Last, First' -> 'First Last' for display."""
     if "," in raw:
@@ -95,6 +101,8 @@ def main():
             master = teams_by_abbr.get(row["TeamAbbr"])
             if master:
                 row["TeamName"] = master["FranchiseName"]
+            row["Season"] = season
+            row["OwnerSlug"] = slugify_manager(row.get("Owner", ""))
 
         # compute Finish (rank within league) for standings rows
         by_league = defaultdict(list)
@@ -152,7 +160,8 @@ def main():
         leagues_ctx.append((LEAGUE_NAMES[lg_code], lg_code, rows))
 
     write("index.html", "index.html",
-          leagues=leagues_ctx, season=latest_season, all_teams=teams)
+          leagues=leagues_ctx, season=latest_season,
+          all_teams=sorted(teams, key=lambda t: t["FranchiseName"]))
 
     # --- Year standings pages ---
     for season in seasons:
@@ -349,6 +358,19 @@ def main():
           pitching_categories=career_pitching_categories,
           min_ab=career_min_ab, min_ip=career_min_ip)
 
+    # --- Manager pages ---
+    managers = defaultdict(lambda: {"name": None, "seasons": []})
+    for season in seasons:
+        for row in all_standings[season]:
+            slug = row["OwnerSlug"]
+            managers[slug]["name"] = row.get("Owner", "Unknown")
+            managers[slug]["seasons"].append(row)
+
+    for slug, mdata in managers.items():
+        seasons_sorted = sorted(mdata["seasons"], key=lambda r: int(r["Season"]))
+        write(f"managers/{slug}.html", "manager.html",
+              manager_name=mdata["name"], seasons=seasons_sorted)
+
     # --- Search index (client-side JSON, used by the header search box) ---
     import json
     search_entries = []
@@ -383,6 +405,15 @@ def main():
         "sub": "All-time totals",
         "url": "leaders/career.html",
     })
+    for slug, mdata in managers.items():
+        seasons_managed = sorted(set(str(r["Season"]) for r in mdata["seasons"]))
+        yr_range = seasons_managed[0] if len(seasons_managed) == 1 else f"{seasons_managed[0]}\u2013{seasons_managed[-1]}"
+        search_entries.append({
+            "type": "Manager",
+            "name": mdata["name"],
+            "sub": yr_range,
+            "url": f"managers/{slug}.html",
+        })
 
     search_index_path = os.path.join(SITE_DIR, "static", "search-index.json")
     os.makedirs(os.path.dirname(search_index_path), exist_ok=True)

@@ -1,1 +1,6 @@
-site/* !site/static/ !site/static/** __pycache__/ *.pyc .DS_Store This still ignores the generated HTML pages (players/, teams/, years/, leaders/, index.html — rebuilt fresh by Actions each time) but now makes an exception for site/static/, so your CSS and JS files get tracked and pushed.
+site/*
+!site/static/
+!site/static/**
+__pycache__/
+*.pyc
+.DS_Store
