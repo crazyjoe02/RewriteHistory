@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}{{ season }} Standings{% endblock %}
+{% block breadcrumb %}
+<div class="breadcrumb"><a href="{{ root }}index.html">Home</a> &rsaquo; {{ season }} Season</div>
+{% endblock %}
+{% block content %}
+<h1 class="page-title">{{ season }} Standings</h1>
+<div class="subtitle">Final standings for the {{ season }} season</div>
+
+<div class="league-columns">
+{% for lg_name, lg_code, teams in leagues %}
+<div>
+    <h2 class="section-title">{{ lg_name }}</h2>
+    <div class="table-wrap">
+    <table class="stats">
+        <thead>
+        <tr>
+            <th class="left">Team</th>
+            <th>W</th><th>L</th><th>PCT</th><th>GB</th>
+            <th>RF</th><th>RA</th><th>Home</th><th>Away</th><th>1-Run</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for t in teams %}
+        <tr>
+            <td class="left"><a href="{{ root }}teams/{{ t.Abbr }}/{{ season }}.html">{{ t.TeamName }}</a></td>
+            <td>{{ t.W }}</td>
+            <td>{{ t.L }}</td>
+            <td>{{ '%.3f'|format(t.PCT|float) }}</td>
+            <td>{{ t.GB }}</td>
+            <td>{{ t.RF }}</td>
+            <td>{{ t.RA }}</td>
+            <td>{{ t.Home }}</td>
+            <td>{{ t.Away }}</td>
+            <td>{{ t.OneRunRecord }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+</div>
+{% endfor %}
+</div>
+
+{% endblock %}

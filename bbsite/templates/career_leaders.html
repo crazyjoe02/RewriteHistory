@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block title %}Career Leaders{% endblock %}
+{% block breadcrumb %}
+<div class="breadcrumb">
+<a href="{{ root }}index.html">Home</a> &rsaquo;
+<a href="{{ root }}leaders/index.html">League Leaders</a> &rsaquo; Career Leaders
+</div>
+{% endblock %}
+{% block content %}
+<h1 class="page-title">Career Leaders</h1>
+<div class="subtitle">All-time totals through the {{ latest_season }} season &middot; National League and American Association combined</div>
+
+<h2 class="section-title">Batting</h2>
+<div class="league-columns">
+{% for cat in batting_categories %}
+<div>
+    <h3>{{ cat.label }}</h3>
+    <div class="table-wrap">
+    <table class="stats">
+        <thead><tr><th>#</th><th class="left">Player</th><th class="left">Team(s)</th><th>{{ cat.label }}</th></tr></thead>
+        <tbody>
+        {% for row in cat.rows %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td class="left"><a href="{{ root }}players/{{ row.PlayerID }}.html">{{ row.Player }}</a></td>
+            <td class="left">{{ row.Teams }}</td>
+            <td>{{ row.display }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+</div>
+{% endfor %}
+</div>
+
+<h2 class="section-title">Pitching</h2>
+<div class="league-columns">
+{% for cat in pitching_categories %}
+<div>
+    <h3>{{ cat.label }}</h3>
+    <div class="table-wrap">
+    <table class="stats">
+        <thead><tr><th>#</th><th class="left">Player</th><th class="left">Team(s)</th><th>{{ cat.label }}</th></tr></thead>
+        <tbody>
+        {% for row in cat.rows %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td class="left"><a href="{{ root }}players/{{ row.PlayerID }}.html">{{ row.Player }}</a></td>
+            <td class="left">{{ row.Teams }}</td>
+            <td>{{ row.display }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+</div>
+{% endfor %}
+</div>
+
+<div class="standings-note">
+Rate-stat leaders (AVG, OPS, ERA, WHIP) require a career minimum of {{ min_ab }} at-bats (batting) or {{ min_ip }} innings pitched (pitching) to qualify &mdash; scaled to the number of team-games played league-wide across all loaded seasons.
+</div>
+{% endblock %}

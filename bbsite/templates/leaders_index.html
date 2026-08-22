@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}League Leaders{% endblock %}
+{% block breadcrumb %}
+<div class="breadcrumb"><a href="{{ root }}index.html">Home</a> &rsaquo; League Leaders</div>
+{% endblock %}
+{% block content %}
+<h1 class="page-title">League Leaders</h1>
+<div class="subtitle">Season-by-season statistical leaders</div>
+
+<h2 class="section-title">All-Time</h2>
+<div class="table-wrap">
+<table class="stats">
+    <thead><tr><th class="left">&nbsp;</th></tr></thead>
+    <tbody>
+    <tr><td class="left"><a href="{{ root }}leaders/career.html">Career Leaders (all seasons combined)</a></td></tr>
+    </tbody>
+</table>
+</div>
+
+<h2 class="section-title">By Season</h2>
+<div class="table-wrap">
+<table class="stats">
+    <thead><tr><th class="left">Season</th></tr></thead>
+    <tbody>
+    {% for s in seasons %}
+    <tr><td class="left"><a href="{{ root }}leaders/{{ s }}.html">{{ s }} League Leaders</a></td></tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock %}

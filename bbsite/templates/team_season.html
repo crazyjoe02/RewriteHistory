@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block title %}{{ season }} {{ team.FranchiseName }}{% endblock %}
+{% block breadcrumb %}
+<div class="breadcrumb">
+<a href="{{ root }}index.html">Home</a> &rsaquo;
+<a href="{{ root }}teams/{{ team.Abbr }}/index.html">{{ team.FranchiseName }}</a> &rsaquo;
+{{ season }}
+</div>
+{% endblock %}
+{% block content %}
+<div class="team-bar" style="background: linear-gradient(90deg, {{ team.ColorPrimary }}, {{ team.ColorSecondary }});"></div>
+<h1 class="page-title">{{ season }} {{ team.FranchiseName }}</h1>
+<div class="subtitle">
+Record: {{ standing.W }}-{{ standing.L }} ({{ '%.3f'|format(standing.PCT|float) }}) &middot;
+{{ standing.League }} &middot; GB {{ standing.GB }} &middot;
+RF {{ standing.RF }} / RA {{ standing.RA }} &middot;
+Home {{ standing.Home }} / Away {{ standing.Away }}
+</div>
+
+<h2 class="section-title">Batting</h2>
+<div class="table-wrap">
+<table class="stats">
+    <thead>
+    <tr>
+        <th class="left">Player</th><th>B</th><th>G</th><th>AB</th><th>R</th><th>H</th>
+        <th>2B</th><th>3B</th><th>HR</th><th>RBI</th><th>BB</th><th>SO</th><th>HBP</th>
+        <th>SB</th><th>CS</th><th>AVG</th><th>OBP</th><th>SLG</th><th>OPS</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for p in batters %}
+    <tr>
+        <td class="left"><a href="{{ root }}players/{{ p.PlayerID }}.html">{{ p.Player }}</a></td>
+        <td>{{ p.B }}</td><td>{{ p.G }}</td><td>{{ p.AB }}</td><td>{{ p.R }}</td><td>{{ p.H }}</td>
+        <td>{{ p['2B'] }}</td><td>{{ p['3B'] }}</td><td>{{ p.HR }}</td><td>{{ p.RBI }}</td>
+        <td>{{ p.BB }}</td><td>{{ p.SO }}</td><td>{{ p.HBP }}</td><td>{{ p.SB }}</td><td>{{ p.CS }}</td>
+        <td>{{ '%.3f'|format(p.AVG|float) }}</td><td>{{ '%.3f'|format(p.OBP|float) }}</td>
+        <td>{{ '%.3f'|format(p.SLG|float) }}</td><td>{{ '%.3f'|format(p.OPS|float) }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+
+<h2 class="section-title">Pitching</h2>
+<div class="table-wrap">
+<table class="stats">
+    <thead>
+    <tr>
+        <th class="left">Player</th><th>T</th><th>W</th><th>L</th><th>ERA</th><th>G</th><th>GS</th>
+        <th>CG</th><th>SHO</th><th>SV</th><th>IP</th><th>H</th><th>R</th><th>ER</th>
+        <th>HR</th><th>BB</th><th>SO</th><th>WHIP</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for p in pitchers %}
+    <tr>
+        <td class="left"><a href="{{ root }}players/{{ p.PlayerID }}.html">{{ p.Player }}</a></td>
+        <td>{{ p.T }}</td><td>{{ p.W }}</td><td>{{ p.L }}</td><td>{{ '%.2f'|format(p.ERA|float) }}</td>
+        <td>{{ p.G }}</td><td>{{ p.GS }}</td><td>{{ p.CG }}</td><td>{{ p.SHO }}</td><td>{{ p.SV }}</td>
+        <td>{{ p.IP }}</td><td>{{ p.H }}</td><td>{{ p.R }}</td><td>{{ p.ER }}</td>
+        <td>{{ p.HR }}</td><td>{{ p.BB }}</td><td>{{ p.SO }}</td><td>{{ '%.2f'|format(p.WHIP|float) }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock %}

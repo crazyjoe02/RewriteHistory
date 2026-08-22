@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<h1 class="page-title">Historical League Reference</h1>
+<div class="subtitle">Reimagined major league baseball history, {{ first_season }}&ndash;present. Currently through the {{ latest_season }} season.</div>
+
+<h2 class="section-title">{{ latest_season }} Final Standings</h2>
+<div class="league-columns">
+{% for lg_name, lg_code, teams in leagues %}
+<div>
+    <h3>{{ lg_name }}</h3>
+    <div class="table-wrap">
+    <table class="stats">
+        <thead><tr><th class="left">Team</th><th>W</th><th>L</th><th>PCT</th><th>GB</th></tr></thead>
+        <tbody>
+        {% for t in teams %}
+        <tr>
+            <td class="left"><a href="{{ root }}teams/{{ t.Abbr }}/{{ season }}.html">{{ t.TeamName }}</a></td>
+            <td>{{ t.W }}</td><td>{{ t.L }}</td><td>{{ '%.3f'|format(t.PCT|float) }}</td><td>{{ t.GB }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+</div>
+{% endfor %}
+</div>
+
+<h2 class="section-title">Franchises</h2>
+<div class="team-grid">
+{% for t in all_teams %}
+<div class="team-card">
+    <div class="team-bar" style="background: linear-gradient(90deg, {{ t.ColorPrimary }}, {{ t.ColorSecondary }});"></div>
+    <a href="{{ root }}teams/{{ t.Abbr }}/index.html">{{ t.FranchiseName }}</a>
+    <div class="rec">{{ t.League }} &middot; {{ t.City }}</div>
+</div>
+{% endfor %}
+</div>
+
+{% endblock %}

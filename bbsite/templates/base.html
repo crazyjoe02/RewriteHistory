@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{% block title %}Baseball Reference{% endblock %} | Historical League Reference</title>
+<link rel="stylesheet" href="{{ root }}static/style.css">
+</head>
+<body>
+<div class="site-header" data-root="{{ root }}">
+    <a class="brand" href="{{ root }}index.html">Historical League Reference</a>
+    <nav>
+        <a href="{{ root }}index.html">Home</a>
+        <a href="{{ root }}years/{{ latest_season }}.html">{{ latest_season }} Season</a>
+        <a href="{{ root }}leaders/index.html">Leaders</a>
+    </nav>
+    <div class="search-box">
+        <input type="text" id="site-search-input" placeholder="Search players, teams, seasons..." autocomplete="off">
+        <div id="site-search-results" class="search-results"></div>
+    </div>
+</div>
+{% block breadcrumb %}{% endblock %}
+<div class="container">
+{% block content %}{% endblock %}
+</div>
+<footer>Historical League Reference &mdash; generated from league simulation data</footer>
+<script src="{{ root }}static/search.js"></script>
+</body>
+</html>

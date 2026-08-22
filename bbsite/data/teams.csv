@@ -1,0 +1,13 @@
+Abbr,FranchiseName,League,City,ColorPrimary,ColorSecondary
+BLN,Baltimore Orioles,AA,Baltimore,#DF4601,#000000
+BRO,Brooklyn Grays,AA,Brooklyn,#00478A,#EF3E42
+CIN,Cincinnati Red Stockings,AA,Cincinnati,#C6011F,#000000
+LOU,Louisville Colonels,AA,Louisville,#002D62,#B31942
+PAT,Philadelphia Athletics,AA,Philadelphia,#00563F,#FFB81C
+STL,St. Louis Browns,AA,St. Louis,#BA0C2F,#FFFFFF
+BSN,Boston Beaneaters,NL,Boston,#BD3039,#002244
+CHC,Chicago White Stockings,NL,Chicago,#0E3386,#CC3433
+DTN,Detroit Wolverines,NL,Detroit,#0C2340,#FA4616
+NYG,New York Giants,NL,New York,#FF7900,#000000
+PHI,Philadelphia Quakers,NL,Philadelphia,#B02138,#002D5C
+PIT,Pittsburgh Alleghenys,NL,Pittsburgh,#FDB827,#000000

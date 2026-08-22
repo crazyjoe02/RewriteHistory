@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block title %}{{ season }} League Leaders{% endblock %}
+{% block breadcrumb %}
+<div class="breadcrumb">
+<a href="{{ root }}index.html">Home</a> &rsaquo;
+<a href="{{ root }}leaders/index.html">League Leaders</a> &rsaquo; {{ season }}
+</div>
+{% endblock %}
+{% block content %}
+<h1 class="page-title">{{ season }} League Leaders</h1>
+<div class="subtitle">Top 10 in each category &middot; National League and American Association combined</div>
+
+<h2 class="section-title">Batting</h2>
+<div class="league-columns">
+{% for cat in batting_categories %}
+<div>
+    <h3>{{ cat.label }}</h3>
+    <div class="table-wrap">
+    <table class="stats">
+        <thead><tr><th>#</th><th class="left">Player</th><th class="left">Team</th><th>{{ cat.label }}</th></tr></thead>
+        <tbody>
+        {% for row in cat.rows %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td class="left"><a href="{{ root }}players/{{ row.PlayerID }}.html">{{ row.Player }}</a></td>
+            <td class="left"><a href="{{ root }}teams/{{ row.Team }}/{{ season }}.html">{{ row.Team }}</a></td>
+            <td>{{ row.display }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+</div>
+{% endfor %}
+</div>
+
+<h2 class="section-title">Pitching</h2>
+<div class="league-columns">
+{% for cat in pitching_categories %}
+<div>
+    <h3>{{ cat.label }}</h3>
+    <div class="table-wrap">
+    <table class="stats">
+        <thead><tr><th>#</th><th class="left">Player</th><th class="left">Team</th><th>{{ cat.label }}</th></tr></thead>
+        <tbody>
+        {% for row in cat.rows %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td class="left"><a href="{{ root }}players/{{ row.PlayerID }}.html">{{ row.Player }}</a></td>
+            <td class="left"><a href="{{ root }}teams/{{ row.Team }}/{{ season }}.html">{{ row.Team }}</a></td>
+            <td>{{ row.display }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+</div>
+{% endfor %}
+</div>
+
+<div class="standings-note">
+Rate-stat leaders (AVG, OBP, SLG, OPS, ERA, WHIP) require a minimum of {{ min_ab }} at-bats (batting) or {{ min_ip }} innings pitched (pitching) to qualify, matching the season's game length.
+</div>
+{% endblock %}
