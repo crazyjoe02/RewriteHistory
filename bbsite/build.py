@@ -146,7 +146,7 @@ def main():
     # --- Home page (latest season standings) ---
     latest_rows = all_standings[latest_season]
     leagues_ctx = []
-    for lg_code in ["NL", "AA"]:
+    for lg_code in ["AA", "NL"]:
         rows = [r for r in latest_rows if r["League"] == lg_code]
         rows.sort(key=lambda r: -float(r["PCT"]))
         leagues_ctx.append((LEAGUE_NAMES[lg_code], lg_code, rows))
@@ -158,7 +158,7 @@ def main():
     for season in seasons:
         rows = all_standings[season]
         leagues_ctx = []
-        for lg_code in ["NL", "AA"]:
+        for lg_code in ["AA", "NL"]:
             lg_rows = [r for r in rows if r["League"] == lg_code]
             lg_rows.sort(key=lambda r: -float(r["PCT"]))
             leagues_ctx.append((LEAGUE_NAMES[lg_code], lg_code, lg_rows))
