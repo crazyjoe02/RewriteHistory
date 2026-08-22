@@ -152,7 +152,7 @@ def main():
         leagues_ctx.append((LEAGUE_NAMES[lg_code], lg_code, rows))
 
     write("index.html", "index.html",
-          leagues=leagues_ctx, season=latest_season, all_teams=sorted(teams, key=lambda t: t["FranchiseName"]
+          leagues=leagues_ctx, season=latest_season, all_teams=sorted(teams, key=lambda t: t["FranchiseName"]))
 
     # --- Year standings pages ---
     for season in seasons:
