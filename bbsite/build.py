@@ -221,6 +221,35 @@ def main():
             players[pid]["last_name"] = row.get("LastName")
             players[pid]["throws"] = row.get("T")
 
+    # --- All-Star selections ---
+    name_to_pid = {}
+    dupe_names = set()
+    for pid, pdata in players.items():
+        nm = pdata["name"]
+        if nm in name_to_pid and name_to_pid[nm] != pid:
+            dupe_names.add(nm)
+        name_to_pid[nm] = pid
+    if dupe_names:
+        print(f"WARNING: duplicate player display names, All-Star matching may be ambiguous: {sorted(dupe_names)}")
+
+    for pid in players:
+        players[pid]["allstar_seasons"] = []
+
+    for season in seasons:
+        allstar_path = os.path.join(DATA_DIR, str(season), "allstars.csv")
+        if not os.path.exists(allstar_path):
+            continue
+        for row in load_csv(allstar_path):
+            nm = row["Player"].strip()
+            pid = name_to_pid.get(nm)
+            if not pid:
+                print(f"WARNING: All-Star '{nm}' ({season}) not found among loaded players -- check spelling.")
+                continue
+            players[pid]["allstar_seasons"].append({
+                "Season": row["Season"], "League": row["League"],
+                "Pos": row["Pos"], "Team": row["Team"],
+            })
+
     for pid, pdata in players.items():
         batting_rows = sorted(pdata["batting"], key=lambda r: int(r["SN"]))
         pitching_rows = sorted(pdata["pitching"], key=lambda r: int(r["SN"]))
@@ -266,10 +295,14 @@ def main():
         pdata["pitching_career"] = pitching_career
         pdata["teams"] = sorted(set(r["Team"] for r in batting_rows) | set(r["Team"] for r in pitching_rows))
 
+        allstar_seasons = sorted(pdata.get("allstar_seasons", []), key=lambda a: int(a["Season"]))
+        allstar_years = [a["Season"] for a in allstar_seasons]
+
         write(f"players/{pid}.html", "player.html",
               player_name=pdata["name"], bats=pdata["bats"], throws=pdata["throws"],
               batting_rows=batting_rows, pitching_rows=pitching_rows,
-              batting_career=batting_career, pitching_career=pitching_career)
+              batting_career=batting_career, pitching_career=pitching_career,
+              allstar_count=len(allstar_years), allstar_years=allstar_years)
 
     # --- League leaders pages ---
     def top_n(rows, key_field, n=10, reverse=True, min_field=None, min_value=0):

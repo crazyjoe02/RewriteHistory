@@ -5,6 +5,9 @@
 {% endblock %}
 {% block content %}
 <h1 class="page-title">{{ player_name }}</h1>
+{% if allstar_count %}
+<div class="allstar-line">&#9733; {{ allstar_count }}&times; All-Star ({{ allstar_years|join(', ') }})</div>
+{% endif %}
 <div class="subtitle">
 {% if bats %}Bats: {{ bats }}{% endif %}{% if throws %} &middot; Throws: {{ throws }}{% endif %}
 </div>
