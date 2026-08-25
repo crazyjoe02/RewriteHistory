@@ -250,6 +250,66 @@ def main():
                 "Pos": row["Pos"], "Team": row["Team"],
             })
 
+    # --- Awards ---
+    AWARD_ORDER = ["MVP", "Champion Hurler", "Rookie of the Year", "Fireman", "Silver Slugger", "Gold Glove"]
+    AWARD_DISPLAY = {
+        "MVP": "Most Valuable Player",
+        "Champion Hurler": "Champion Hurler Award",
+        "Rookie of the Year": "Rookie of the Year",
+        "Fireman": "Fireman Award",
+        "Silver Slugger": "Silver Slugger Award",
+        "Gold Glove": "Gold Glove Award",
+    }
+    AWARD_TYPE = {
+        "MVP": "voting", "Champion Hurler": "voting", "Rookie of the Year": "voting", "Fireman": "voting",
+        "Silver Slugger": "position", "Gold Glove": "position",
+    }
+    POSITION_ORDER = ["P", "C", "1B", "2B", "3B", "SS", "LF", "CF", "RF", "OF"]
+
+    for pid in players:
+        players[pid]["awards_won"] = []
+
+    awards_by_season = {}
+    for season in seasons:
+        awards_path = os.path.join(DATA_DIR, str(season), "awards.csv")
+        season_awards = []
+        if os.path.exists(awards_path):
+            raw_rows = load_csv(awards_path)
+            by_award = defaultdict(list)
+            for row in raw_rows:
+                row["PlayerID"] = name_to_pid.get(row["Player"].strip())
+                if not row["PlayerID"]:
+                    print(f"WARNING: Award entry '{row['Player']}' ({season}, {row['Award']}) not found among loaded players -- check spelling.")
+                by_award[row["Award"]].append(row)
+
+            for award_key in AWARD_ORDER:
+                rows = by_award.get(award_key, [])
+                if not rows:
+                    continue  # e.g. Rookie of the Year has no valid 1885 nominees
+                nl_rows = [r for r in rows if r["League"] == "NL"]
+                aa_rows = [r for r in rows if r["League"] == "AA"]
+                if AWARD_TYPE[award_key] == "voting":
+                    nl_rows.sort(key=lambda r: int(r["Rank"]))
+                    aa_rows.sort(key=lambda r: int(r["Rank"]))
+                else:
+                    nl_rows.sort(key=lambda r: POSITION_ORDER.index(r["Pos"]) if r["Pos"] in POSITION_ORDER else 99)
+                    aa_rows.sort(key=lambda r: POSITION_ORDER.index(r["Pos"]) if r["Pos"] in POSITION_ORDER else 99)
+                season_awards.append({
+                    "key": award_key,
+                    "display": AWARD_DISPLAY[award_key],
+                    "type": AWARD_TYPE[award_key],
+                    "nl_rows": nl_rows,
+                    "aa_rows": aa_rows,
+                })
+                # winner badges: rank 1 for voting awards; every row for position awards (each is already a sole winner)
+                for row in rows:
+                    if int(row["Rank"]) == 1 and row["PlayerID"]:
+                        label = f"{season} {row['League']} {AWARD_DISPLAY[award_key]}"
+                        if AWARD_TYPE[award_key] == "position":
+                            label += f" ({row['Pos']})"
+                        players[row["PlayerID"]]["awards_won"].append({"Season": season, "Label": label})
+        awards_by_season[season] = season_awards
+
     for pid, pdata in players.items():
         batting_rows = sorted(pdata["batting"], key=lambda r: int(r["SN"]))
         pitching_rows = sorted(pdata["pitching"], key=lambda r: int(r["SN"]))
@@ -297,12 +357,14 @@ def main():
 
         allstar_seasons = sorted(pdata.get("allstar_seasons", []), key=lambda a: int(a["Season"]))
         allstar_years = [a["Season"] for a in allstar_seasons]
+        awards_won = sorted(pdata.get("awards_won", []), key=lambda a: int(a["Season"]))
 
         write(f"players/{pid}.html", "player.html",
               player_name=pdata["name"], bats=pdata["bats"], throws=pdata["throws"],
               batting_rows=batting_rows, pitching_rows=pitching_rows,
               batting_career=batting_career, pitching_career=pitching_career,
-              allstar_count=len(allstar_years), allstar_years=allstar_years)
+              allstar_count=len(allstar_years), allstar_years=allstar_years,
+              awards_won=awards_won)
 
     # --- League leaders pages ---
     def top_n(rows, key_field, n=10, reverse=True, min_field=None, min_value=0):
@@ -418,6 +480,12 @@ def main():
         write(f"managers/{slug}.html", "manager.html",
               manager_name=mdata["name"], seasons=seasons_sorted)
 
+    # --- Awards pages ---
+    write("awards/index.html", "awards_index.html", seasons=seasons)
+    for season in seasons:
+        write(f"awards/{season}.html", "awards_season.html",
+              season=season, categories=awards_by_season[season])
+
     # --- Search index (client-side JSON, used by the header search box) ---
     import json
     search_entries = []
@@ -452,6 +520,13 @@ def main():
         "sub": "All-time totals",
         "url": "leaders/career.html",
     })
+    for season in seasons:
+        search_entries.append({
+            "type": "Awards",
+            "name": f"{season} Awards",
+            "sub": "MVP, Champion Hurler, and more",
+            "url": f"awards/{season}.html",
+        })
     for slug, mdata in managers.items():
         seasons_managed = sorted(set(str(r["Season"]) for r in mdata["seasons"]))
         yr_range = seasons_managed[0] if len(seasons_managed) == 1 else f"{seasons_managed[0]}\u2013{seasons_managed[-1]}"

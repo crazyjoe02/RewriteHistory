@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Awards{% endblock %}
+{% block breadcrumb %}
+<div class="breadcrumb"><a href="{{ root }}index.html">Home</a> &rsaquo; Awards</div>
+{% endblock %}
+{% block content %}
+<h1 class="page-title">Awards</h1>
+<div class="subtitle">Season-by-season award winners and top vote-getters</div>
+
+<h2 class="section-title">By Season</h2>
+<div class="table-wrap">
+<table class="stats">
+    <thead><tr><th class="left">Season</th></tr></thead>
+    <tbody>
+    {% for s in seasons %}
+    <tr><td class="left"><a href="{{ root }}awards/{{ s }}.html">{{ s }} Awards</a></td></tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock %}

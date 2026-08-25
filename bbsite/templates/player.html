@@ -5,8 +5,11 @@
 {% endblock %}
 {% block content %}
 <h1 class="page-title">{{ player_name }}</h1>
-{% if allstar_count %}
-<div class="allstar-line">&#9733; {{ allstar_count }}&times; All-Star ({{ allstar_years|join(', ') }})</div>
+{% if allstar_count or awards_won %}
+<div class="badge-row">
+{% if allstar_count %}<span class="allstar-line">&#9733; {{ allstar_count }}&times; All-Star ({{ allstar_years|join(', ') }})</span>{% endif %}
+{% for a in awards_won %}<span class="award-line">&#127942; {{ a.Label }}</span>{% endfor %}
+</div>
 {% endif %}
 <div class="subtitle">
 {% if bats %}Bats: {{ bats }}{% endif %}{% if throws %} &middot; Throws: {{ throws }}{% endif %}
