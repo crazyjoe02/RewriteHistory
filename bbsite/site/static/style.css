@@ -167,6 +167,29 @@ table.stats tfoot td {
 /* Standings specific */
 .standings-note { font-size: 11px; color: #555; margin: 4px 0 14px 0; }
 
+/* Play-by-play collapsible innings */
+.pbp-inning {
+    border: 1px solid #cdd7e0;
+    border-radius: 3px;
+    margin-bottom: 6px;
+    padding: 0;
+}
+.pbp-inning summary {
+    background: #dce6f1;
+    padding: 6px 10px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 12px;
+    list-style: revert;
+}
+.pbp-inning summary:hover { background: #c9d9ea; }
+.pbp-inning ul {
+    margin: 0;
+    padding: 8px 24px;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
 /* Badge row on player pages - All-Star + Award pills */
 .badge-row {
     display: flex;

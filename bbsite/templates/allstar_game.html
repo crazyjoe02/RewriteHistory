@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% block title %}{{ season }} All-Star Game{% endblock %}
+{% block breadcrumb %}
+<div class="breadcrumb">
+<a href="{{ root }}index.html">Home</a> &rsaquo;
+<a href="{{ root }}years/{{ season }}.html">{{ season }} Season</a> &rsaquo; All-Star Game
+</div>
+{% endblock %}
+{% block content %}
+<h1 class="page-title">{{ season }} All-Star Game</h1>
+<div class="subtitle">{{ game.subtitle }}{% if game.player_of_game %} &middot; Player of the Game: {{ game.player_of_game.player }} ({{ game.player_of_game.team }}) &mdash; {{ game.player_of_game.note }}{% endif %}</div>
+
+<div class="table-wrap">
+<table class="stats">
+    <thead>
+    <tr>
+        <th class="left">Team</th>
+        {% for inn in game.linescore.innings %}<th>{{ inn }}</th>{% endfor %}
+        <th>R</th><th>H</th><th>E</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for row in game.linescore.rows %}
+    <tr>
+        <td class="left">{{ row.label }}</td>
+        {% for val in row.by_inning %}<td>{{ val if val is not none else 'x' }}</td>{% endfor %}
+        <td>{{ row.R }}</td><td>{{ row.H }}</td><td>{{ row.E }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+
+<h2 class="section-title">Batting</h2>
+{% for teamcode in ["NL", "AA"] %}
+{% set b = game.batting[teamcode] %}
+<h3>1885 {{ teamcode }}</h3>
+<div class="table-wrap">
+<table class="stats">
+    <thead>
+    <tr>
+        <th class="left">Player</th><th>Pos</th><th>AB</th><th>R</th><th>H</th><th>RBI</th>
+        <th>BB</th><th>SO</th><th>2B</th><th>3B</th><th>HR</th><th>SB</th><th>CS</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for p in b.rows %}
+    <tr>
+        <td class="left"><a href="{{ root }}players/{{ p.pid }}.html">{{ p.player }}</a></td>
+        <td>{{ p.pos }}</td><td>{{ p.ab }}</td><td>{{ p.r }}</td><td>{{ p.h }}</td><td>{{ p.rbi }}</td>
+        <td>{{ p.bb }}</td><td>{{ p.so }}</td><td>{{ p['2b'] }}</td><td>{{ p['3b'] }}</td><td>{{ p.hr }}</td>
+        <td>{{ p.sb }}</td><td>{{ p.cs }}</td>
+    </tr>
+    {% endfor %}
+    <tr style="font-weight:bold; background:#eef2f7;">
+        <td class="left">Totals</td><td>&mdash;</td>
+        <td>{{ b.totals.ab }}</td><td>{{ b.totals.r }}</td><td>{{ b.totals.h }}</td><td>{{ b.totals.rbi }}</td>
+        <td>{{ b.totals.bb }}</td><td>{{ b.totals.so }}</td><td>{{ b.totals['2b'] }}</td><td>{{ b.totals['3b'] }}</td>
+        <td>{{ b.totals.hr }}</td><td>{{ b.totals.sb }}</td><td>{{ b.totals.cs }}</td>
+    </tr>
+    </tbody>
+</table>
+</div>
+<div class="standings-note">
+{% for label, text in b.footnotes.items() %}<strong>{{ label }}:</strong> {{ text }}<br>{% endfor %}
+</div>
+{% endfor %}
+
+<h2 class="section-title">Pitching</h2>
+{% for teamcode in ["NL", "AA"] %}
+{% set p = game.pitching[teamcode] %}
+<h3>1885 {{ teamcode }}</h3>
+<div class="table-wrap">
+<table class="stats">
+    <thead>
+    <tr>
+        <th class="left">Player</th><th class="left">Dec</th><th>IP</th><th>H</th><th>R</th><th>ER</th>
+        <th>BB</th><th>SO</th><th>HR</th><th>ERA</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for row in p.rows %}
+    <tr>
+        <td class="left"><a href="{{ root }}players/{{ row.pid }}.html">{{ row.player }}</a></td>
+        <td class="left">{{ row.decision }}</td>
+        <td>{{ row.ip }}</td><td>{{ row.h }}</td><td>{{ row.r }}</td><td>{{ row.er }}</td>
+        <td>{{ row.bb }}</td><td>{{ row.so }}</td><td>{{ row.hr }}</td><td>{{ row.era }}</td>
+    </tr>
+    {% endfor %}
+    <tr style="font-weight:bold; background:#eef2f7;">
+        <td class="left">Totals</td><td>&mdash;</td>
+        <td>{{ p.totals.ip }}</td><td>{{ p.totals.h }}</td><td>{{ p.totals.r }}</td><td>{{ p.totals.er }}</td>
+        <td>{{ p.totals.bb }}</td><td>{{ p.totals.so }}</td><td>{{ p.totals.hr }}</td><td>&mdash;</td>
+    </tr>
+    </tbody>
+</table>
+</div>
+{% endfor %}
+
+<h2 class="section-title">Play-by-Play</h2>
+{% for half in game.playbyplay %}
+<details class="pbp-inning">
+    <summary>{{ half.half }} {{ half.inning }} &mdash; {{ half.team }} batting</summary>
+    <ul>
+    {% for play in half.plays %}<li>{{ play }}</li>{% endfor %}
+    </ul>
+</details>
+{% endfor %}
+
+{% endblock %}

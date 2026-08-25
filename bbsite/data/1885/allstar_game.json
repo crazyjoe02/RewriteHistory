@@ -1,0 +1,220 @@
+{
+  "season": 1885,
+  "subtitle": "Exhibition Game",
+  "player_of_game": {"player": "Pete Browning", "team": "AA", "note": "4 RBI"},
+  "linescore": {
+    "innings": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+    "rows": [
+      {"team": "NL", "label": "1885 NL", "by_inning": [0, 0, 2, 0, 1, 0, 1, 0, 1], "R": 5, "H": 8, "E": 3},
+      {"team": "AA", "label": "1885 AA", "by_inning": [1, 6, 2, 0, 2, 3, 1, 0, null], "R": 15, "H": 19, "E": 4}
+    ]
+  },
+  "batting": {
+    "NL": {
+      "rows": [
+        {"player": "Dan Brouthers", "pid": "broutda01", "pos": "1B", "ab": 5, "r": 1, "h": 0, "rbi": 0, "bb": 0, "so": 0, "2b": 0, "3b": 0, "hr": 0, "sb": 0, "cs": 0},
+        {"player": "Hardy Richardson", "pid": "richaha01", "pos": "2B", "ab": 5, "r": 2, "h": 1, "rbi": 0, "bb": 0, "so": 0, "2b": 0, "3b": 0, "hr": 0, "sb": 0, "cs": 0},
+        {"player": "Charley Jones", "pid": "jonesch01", "pos": "CF", "ab": 5, "r": 0, "h": 3, "rbi": 3, "bb": 0, "so": 0, "2b": 1, "3b": 0, "hr": 0, "sb": 0, "cs": 1},
+        {"player": "Abner Dalrymple", "pid": "dalryab01", "pos": "RF", "ab": 3, "r": 0, "h": 0, "rbi": 1, "bb": 1, "so": 0, "2b": 0, "3b": 0, "hr": 0, "sb": 0, "cs": 0},
+        {"player": "Jim O'Rourke", "pid": "orourji01", "pos": "C", "ab": 5, "r": 0, "h": 0, "rbi": 0, "bb": 0, "so": 1, "2b": 0, "3b": 0, "hr": 0, "sb": 0, "cs": 0},
+        {"player": "Ned Williamson", "pid": "willine01", "pos": "3B", "ab": 2, "r": 0, "h": 0, "rbi": 0, "bb": 2, "so": 0, "2b": 0, "3b": 0, "hr": 0, "sb": 1, "cs": 0},
+        {"player": "John Ward", "pid": "wardjo01", "pos": "SS", "ab": 4, "r": 0, "h": 2, "rbi": 0, "bb": 0, "so": 0, "2b": 1, "3b": 0, "hr": 0, "sb": 0, "cs": 0},
+        {"player": "Pete Hotaling", "pid": "hotalpe01", "pos": "LF", "ab": 4, "r": 0, "h": 1, "rbi": 0, "bb": 0, "so": 0, "2b": 0, "3b": 0, "hr": 0, "sb": 0, "cs": 0},
+        {"player": "John Clarkson", "pid": "clarkjo01", "pos": "P", "ab": 0, "r": 0, "h": 0, "rbi": 0, "bb": 0, "so": 0, "2b": 0, "3b": 0, "hr": 0, "sb": 0, "cs": 0},
+        {"player": "Cap Anson", "pid": "ansonca01", "pos": "PH", "ab": 1, "r": 1, "h": 1, "rbi": 0, "bb": 0, "so": 0, "2b": 0, "3b": 0, "hr": 0, "sb": 0, "cs": 0},
+        {"player": "Hank O'Day", "pid": "odayha01", "pos": "P", "ab": 1, "r": 0, "h": 0, "rbi": 0, "bb": 0, "so": 1, "2b": 0, "3b": 0, "hr": 0, "sb": 0, "cs": 0},
+        {"player": "Tim Keefe", "pid": "keefeti01", "pos": "P", "ab": 1, "r": 0, "h": 0, "rbi": 0, "bb": 0, "so": 0, "2b": 0, "3b": 0, "hr": 0, "sb": 0, "cs": 0},
+        {"player": "King Kelly", "pid": "kellyki01", "pos": "PH", "ab": 0, "r": 1, "h": 0, "rbi": 0, "bb": 1, "so": 0, "2b": 0, "3b": 0, "hr": 0, "sb": 0, "cs": 0}
+      ],
+      "totals": {"ab": 36, "r": 5, "h": 8, "rbi": 4, "bb": 4, "so": 2, "2b": 2, "3b": 0, "hr": 0, "sb": 1, "cs": 1},
+      "footnotes": {
+        "2B": "C.Jones (1), J.Ward (1)",
+        "RBI": "C.Jones 3, A.Dalrymple 1",
+        "2-Out RBI": "C.Jones",
+        "SF": "A.Dalrymple",
+        "SB": "N.Williamson (1)",
+        "CS": "C.Jones (1)",
+        "E": "H.Richardson (1), C.Jones 2 (2)"
+      }
+    },
+    "AA": {
+      "rows": [
+        {"player": "Pete Browning", "pid": "brownpe01", "pos": "CF", "ab": 5, "r": 2, "h": 3, "rbi": 4, "bb": 0, "so": 0, "2b": 2, "3b": 0, "hr": 0, "sb": 0, "cs": 0},
+        {"player": "Roger Connor", "pid": "connoro01", "pos": "1B", "ab": 5, "r": 2, "h": 4, "rbi": 1, "bb": 1, "so": 0, "2b": 0, "3b": 0, "hr": 0, "sb": 1, "cs": 0},
+        {"player": "Chicken Wolf", "pid": "wolfch01", "pos": "RF", "ab": 6, "r": 1, "h": 3, "rbi": 3, "bb": 0, "so": 0, "2b": 0, "3b": 0, "hr": 0, "sb": 1, "cs": 1},
+        {"player": "Buck Ewing", "pid": "ewingbu01", "pos": "C", "ab": 5, "r": 0, "h": 0, "rbi": 0, "bb": 0, "so": 1, "2b": 0, "3b": 0, "hr": 0, "sb": 0, "cs": 0},
+        {"player": "Ned Hanlon", "pid": "hanlone01", "pos": "LF", "ab": 5, "r": 1, "h": 2, "rbi": 0, "bb": 0, "so": 0, "2b": 0, "3b": 0, "hr": 0, "sb": 0, "cs": 0},
+        {"player": "Sam Barkley", "pid": "barklsa01", "pos": "2B", "ab": 5, "r": 3, "h": 2, "rbi": 1, "bb": 0, "so": 0, "2b": 1, "3b": 0, "hr": 0, "sb": 1, "cs": 0},
+        {"player": "Hick Carpenter", "pid": "carpehi01", "pos": "3B", "ab": 5, "r": 1, "h": 2, "rbi": 1, "bb": 0, "so": 0, "2b": 0, "3b": 0, "hr": 0, "sb": 0, "cs": 0},
+        {"player": "Jack Glasscock", "pid": "glassja01", "pos": "SS", "ab": 4, "r": 3, "h": 2, "rbi": 1, "bb": 1, "so": 0, "2b": 1, "3b": 1, "hr": 0, "sb": 0, "cs": 0},
+        {"player": "Bob Caruthers", "pid": "carutbo01", "pos": "P", "ab": 4, "r": 2, "h": 1, "rbi": 2, "bb": 0, "so": 1, "2b": 0, "3b": 0, "hr": 0, "sb": 0, "cs": 0}
+      ],
+      "totals": {"ab": 44, "r": 15, "h": 19, "rbi": 13, "bb": 2, "so": 2, "2b": 4, "3b": 1, "hr": 0, "sb": 3, "cs": 1},
+      "footnotes": {
+        "2B": "P.Browning 2 (2), S.Barkley (1), J.Glasscock (1)",
+        "3B": "J.Glasscock (1)",
+        "RBI": "P.Browning 4, R.Connor 1, C.Wolf 3, S.Barkley 1, H.Carpenter 1, J.Glasscock 1, B.Caruthers 2",
+        "2-Out RBI": "P.Browning 3, H.Carpenter",
+        "HBP": "P.Browning",
+        "SH": "B.Caruthers",
+        "SB": "R.Connor (1), C.Wolf (1), S.Barkley (1)",
+        "CS": "C.Wolf (1)",
+        "E": "P.Browning (1), N.Hanlon 3 (3)"
+      }
+    }
+  },
+  "pitching": {
+    "NL": {
+      "rows": [
+        {"player": "John Clarkson", "pid": "clarkjo01", "decision": "L (0-1)", "ip": "2.0", "h": 8, "r": 7, "er": 7, "bb": 0, "so": 1, "hr": 0, "era": "31.50"},
+        {"player": "Hank O'Day", "pid": "odayha01", "decision": "", "ip": "3.0", "h": 4, "r": 4, "er": 2, "bb": 1, "so": 0, "hr": 0, "era": "6.00"},
+        {"player": "Tim Keefe", "pid": "keefeti01", "decision": "", "ip": "3.0", "h": 7, "r": 4, "er": 4, "bb": 1, "so": 1, "hr": 0, "era": "12.00"}
+      ],
+      "totals": {"ip": "8.0", "h": 19, "r": 15, "er": 13, "bb": 2, "so": 2, "hr": 0}
+    },
+    "AA": {
+      "rows": [
+        {"player": "Bob Caruthers", "pid": "carutbo01", "decision": "W (1-0)", "ip": "9.0", "h": 8, "r": 5, "er": 2, "bb": 4, "so": 2, "hr": 0, "era": "2.00"}
+      ],
+      "totals": {"ip": "9.0", "h": 8, "r": 5, "er": 2, "bb": 4, "so": 2, "hr": 0}
+    }
+  },
+  "playbyplay": [
+    {"inning": 1, "half": "Top", "team": "NL", "plays": [
+      "B.Caruthers enters the game to pitch.",
+      "D.Brouthers grounds out to 2B.",
+      "H.Richardson grounds out to 2B.",
+      "C.Jones grounds out to SS."
+    ]},
+    {"inning": 1, "half": "Bottom", "team": "AA", "plays": [
+      "J.Clarkson enters the game to pitch.",
+      "P.Browning grounds out to SS.",
+      "R.Connor bloops a single to LF.",
+      "R.Connor steals second base.",
+      "C.Wolf grounds a single to LCF. R.Connor scores.",
+      "C.Wolf is caught stealing 2B.",
+      "B.Ewing hits a shallow flyout to RF."
+    ]},
+    {"inning": 2, "half": "Top", "team": "NL", "plays": [
+      "A.Dalrymple pops out to 2B.",
+      "J.O'Rourke lines out to 2B.",
+      "N.Williamson takes ball four.",
+      "N.Williamson steals second base.",
+      "J.Ward hits an infield single to 3B.",
+      "P.Hotaling hits into a 6-4 fielder's choice."
+    ]},
+    {"inning": 2, "half": "Bottom", "team": "AA", "plays": [
+      "N.Hanlon grounds a single to RCF.",
+      "S.Barkley hits a laser beam into CF for a double. N.Hanlon scores.",
+      "H.Carpenter flies out to LCF. S.Barkley is safe at 3B in a close play.",
+      "J.Glasscock hits a triple. S.Barkley scores.",
+      "B.Caruthers lines a single to RF. J.Glasscock scores.",
+      "P.Browning is plunked in the arm by a pitch.",
+      "R.Connor hits an infield single to SS.",
+      "C.Wolf grounds a single to LF. B.Caruthers scores. P.Browning scores.",
+      "C.Wolf swipes 2B.",
+      "B.Ewing takes strike 3 looking.",
+      "J.Clarkson uncorks a wild pitch and all runners advance. R.Connor scores.",
+      "N.Hanlon grounds out to SS."
+    ]},
+    {"inning": 3, "half": "Top", "team": "NL", "plays": [
+      "C.Anson enters the game as a pinch-hitter for J.Clarkson.",
+      "C.Anson hits a line drive single to LF.",
+      "D.Brouthers pops out to 2B.",
+      "N.Hanlon misplays a deep drive and H.Richardson reaches via the 2-base error.",
+      "C.Jones hits a line drive single to RCF. C.Anson scores. H.Richardson scores.",
+      "C.Jones is nailed stealing 2B.",
+      "N.Hanlon has the ball ricochet off his glove and A.Dalrymple reaches on a 2-base error.",
+      "J.O'Rourke strikes out looking."
+    ]},
+    {"inning": 3, "half": "Bottom", "team": "AA", "plays": [
+      "H.O'Day enters the game to pitch.",
+      "H.Richardson fields the groundball but makes a bad throw to 1B. S.Barkley reaches on the throwing error.",
+      "S.Barkley steals 2B.",
+      "H.Carpenter pops out to SS.",
+      "J.Glasscock flies out to LF. S.Barkley is safe at 3B in a close play.",
+      "C.Jones misplays a lazy flyball and B.Caruthers reaches on the error. S.Barkley scores.",
+      "P.Browning hits a flyball double to CF. B.Caruthers scores.",
+      "R.Connor takes ball four.",
+      "C.Wolf hits a shallow flyout to LF."
+    ]},
+    {"inning": 4, "half": "Top", "team": "NL", "plays": [
+      "N.Williamson flies out to RF.",
+      "J.Ward pops out to 3B.",
+      "P.Hotaling hits a line drive single to LF.",
+      "H.O'Day strikes out swinging."
+    ]},
+    {"inning": 4, "half": "Bottom", "team": "AA", "plays": [
+      "B.Ewing grounds out to 2B.",
+      "C.Jones botches a routine flyball and N.Hanlon reaches on the error.",
+      "S.Barkley hits a shallow flyout to RCF.",
+      "H.Carpenter grounds out to SS."
+    ]},
+    {"inning": 5, "half": "Top", "team": "NL", "plays": [
+      "D.Brouthers flies out to deep CF.",
+      "H.Richardson smokes a line drive single to LF.",
+      "C.Jones lines a single to LF.",
+      "A.Dalrymple flies out to RCF. C.Wolf's throw is off the mark up the 1B line and H.Richardson scores.",
+      "J.O'Rourke flies out to deep RF."
+    ]},
+    {"inning": 5, "half": "Bottom", "team": "AA", "plays": [
+      "J.Glasscock rips a liner to LCF for a double.",
+      "B.Caruthers hits a sacrifice bunt to the left side of the mound. All runners advance.",
+      "P.Browning bloops a double to LCF. J.Glasscock scores.",
+      "R.Connor hits a line drive single to LF. P.Browning scores.",
+      "C.Wolf pops out to 3B.",
+      "B.Ewing hits a shallow flyout to LF."
+    ]},
+    {"inning": 6, "half": "Top", "team": "NL", "plays": [
+      "N.Williamson walks.",
+      "J.Ward pops out to 2B.",
+      "P.Hotaling grounds into a 4-6-3 double play."
+    ]},
+    {"inning": 6, "half": "Bottom", "team": "AA", "plays": [
+      "T.Keefe enters the game to pitch.",
+      "N.Hanlon hits a shallow flyout to RCF.",
+      "S.Barkley hits a Texas League single to LF.",
+      "H.Carpenter lines a single to CF.",
+      "J.Glasscock draws the walk.",
+      "B.Caruthers grounds out to SS. S.Barkley scores.",
+      "P.Browning smokes a line drive single to LCF. H.Carpenter scores. J.Glasscock scores.",
+      "R.Connor grounds out to 1B."
+    ]},
+    {"inning": 7, "half": "Top", "team": "NL", "plays": [
+      "N.Hanlon misplays a lazy flyball and T.Keefe reaches on the error.",
+      "D.Brouthers grounds to 3B. They get the force at 2B, but the batter beats the throw to 1B to avoid the DP.",
+      "H.Richardson grounds out to 3B.",
+      "C.Jones skies one to LF that falls in for a double. D.Brouthers scores.",
+      "A.Dalrymple grounds out to 1B."
+    ]},
+    {"inning": 7, "half": "Bottom", "team": "AA", "plays": [
+      "C.Wolf hits an infield single to SS.",
+      "B.Ewing flies out to LF.",
+      "N.Hanlon bloops a single to CF.",
+      "S.Barkley hits a shallow flyout to CF.",
+      "H.Carpenter hits a line drive single to LF. C.Wolf scores.",
+      "J.Glasscock hits a shallow flyout to LF."
+    ]},
+    {"inning": 8, "half": "Top", "team": "NL", "plays": [
+      "J.O'Rourke lines out to 2B.",
+      "N.Williamson flies out to deep LF.",
+      "J.Ward hits a flyball double to RCF.",
+      "P.Hotaling grounds out to 1B."
+    ]},
+    {"inning": 8, "half": "Bottom", "team": "AA", "plays": [
+      "B.Caruthers swings and misses for strike 3.",
+      "P.Browning grounds out to 3B.",
+      "R.Connor hits a flyball single to RF.",
+      "C.Wolf fouls out to the C along the screen."
+    ]},
+    {"inning": 9, "half": "Top", "team": "NL", "plays": [
+      "K.Kelly enters the game as a pinch-hitter for T.Keefe.",
+      "K.Kelly takes ball four.",
+      "D.Brouthers hits a shallow flyout to LCF.",
+      "H.Richardson grounds out to SS.",
+      "P.Browning can't handle a flyball and C.Jones reaches on the error. K.Kelly scores.",
+      "A.Dalrymple walks.",
+      "J.O'Rourke flies out to RCF."
+    ]}
+  ]
+}

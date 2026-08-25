@@ -4,8 +4,11 @@
 <div class="breadcrumb"><a href="{{ root }}index.html">Home</a> &rsaquo; {{ season }} Season</div>
 {% endblock %}
 {% block content %}
-<h1 class="page-title">{{ season }} Standings</h1>
-<div class="subtitle">Final standings for the {{ season }} season</div>
+<h1 class="page-title">{{ season }} Season</h1>
+<div class="subtitle">
+Final standings for the {{ season }} season
+{% if has_allstar_game %} &middot; <a href="{{ root }}allstar-game/{{ season }}.html">All-Star Game Box Score</a>{% endif %}
+</div>
 
 <div class="league-columns">
 {% for lg_name, lg_code, teams in leagues %}
@@ -41,5 +44,67 @@
 </div>
 {% endfor %}
 </div>
+
+<h2 class="section-title">Postseason</h2>
+<div class="standings-note">Postseason results will be added once the postseason concludes.</div>
+
+<h2 class="section-title">Awards</h2>
+<div class="standings-note">Full voting order and every position winner: <a href="{{ root }}awards/{{ season }}.html">{{ season }} Awards</a></div>
+{% for cat in categories %}
+<h3>{{ cat.display }}</h3>
+{% if cat.type == "voting" %}
+<div class="league-columns">
+    <div>
+        <strong>AA:</strong>
+        {% for row in cat.aa_rows if row.Rank == "1" %}
+        {% if row.PlayerID %}<a href="{{ root }}players/{{ row.PlayerID }}.html">{{ row.Player }}</a>{% else %}{{ row.Player }}{% endif %}
+        (<a href="{{ root }}teams/{{ row.Team }}/{{ season }}.html">{{ row.Team }}</a>)
+        {% endfor %}
+    </div>
+    <div>
+        <strong>NL:</strong>
+        {% for row in cat.nl_rows if row.Rank == "1" %}
+        {% if row.PlayerID %}<a href="{{ root }}players/{{ row.PlayerID }}.html">{{ row.Player }}</a>{% else %}{{ row.Player }}{% endif %}
+        (<a href="{{ root }}teams/{{ row.Team }}/{{ season }}.html">{{ row.Team }}</a>)
+        {% endfor %}
+    </div>
+</div>
+{% else %}
+<div class="league-columns">
+    <div>
+        <div class="table-wrap">
+        <table class="stats">
+            <thead><tr><th>Pos</th><th class="left">Player</th><th class="left">Team</th></tr></thead>
+            <tbody>
+            {% for row in cat.aa_rows %}
+            <tr>
+                <td>{{ row.Pos }}</td>
+                <td class="left">{% if row.PlayerID %}<a href="{{ root }}players/{{ row.PlayerID }}.html">{{ row.Player }}</a>{% else %}{{ row.Player }}{% endif %}</td>
+                <td class="left"><a href="{{ root }}teams/{{ row.Team }}/{{ season }}.html">{{ row.Team }}</a></td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        </div>
+    </div>
+    <div>
+        <div class="table-wrap">
+        <table class="stats">
+            <thead><tr><th>Pos</th><th class="left">Player</th><th class="left">Team</th></tr></thead>
+            <tbody>
+            {% for row in cat.nl_rows %}
+            <tr>
+                <td>{{ row.Pos }}</td>
+                <td class="left">{% if row.PlayerID %}<a href="{{ root }}players/{{ row.PlayerID }}.html">{{ row.Player }}</a>{% else %}{{ row.Player }}{% endif %}</td>
+                <td class="left"><a href="{{ root }}teams/{{ row.Team }}/{{ season }}.html">{{ row.Team }}</a></td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endfor %}
 
 {% endblock %}

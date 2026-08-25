@@ -14,6 +14,7 @@ Reads:
 Writes the full static site into site/
 """
 import csv
+import json
 import os
 import re
 import shutil
@@ -173,7 +174,8 @@ def main():
           leagues=leagues_ctx, season=latest_season,
           all_teams=sorted(teams, key=lambda t: t["FranchiseName"]))
 
-    # --- Year standings pages ---
+    # --- Year standings pages (data prepared here; written later once awards/ASG data is ready) ---
+    year_leagues_ctx = {}
     for season in seasons:
         rows = all_standings[season]
         leagues_ctx = []
@@ -181,7 +183,7 @@ def main():
             lg_rows = [r for r in rows if r["League"] == lg_code]
             lg_rows.sort(key=lambda r: -float(r["PCT"]))
             leagues_ctx.append((LEAGUE_NAMES[lg_code], lg_code, lg_rows))
-        write(f"years/{season}.html", "standings.html", leagues=leagues_ctx, season=season)
+        year_leagues_ctx[season] = leagues_ctx
 
     # --- Team pages ---
     for abbr, team in teams_by_abbr.items():
@@ -486,8 +488,24 @@ def main():
         write(f"awards/{season}.html", "awards_season.html",
               season=season, categories=awards_by_season[season])
 
+    # --- All-Star Game pages ---
+    allstar_game_seasons = set()
+    for season in seasons:
+        asg_path = os.path.join(DATA_DIR, str(season), "allstar_game.json")
+        if os.path.exists(asg_path):
+            with open(asg_path, encoding="utf-8") as f:
+                game_data = json.load(f)
+            write(f"allstar-game/{season}.html", "allstar_game.html", season=season, game=game_data)
+            allstar_game_seasons.add(season)
+
+    # --- Season hub pages (standings + condensed awards + All-Star Game link + postseason placeholder) ---
+    for season in seasons:
+        write(f"years/{season}.html", "standings.html",
+              leagues=year_leagues_ctx[season], season=season,
+              categories=awards_by_season[season],
+              has_allstar_game=season in allstar_game_seasons)
+
     # --- Search index (client-side JSON, used by the header search box) ---
-    import json
     search_entries = []
     for abbr, team in teams_by_abbr.items():
         if not any(r["TeamAbbr"] == abbr for s in seasons for r in all_standings[s]):
@@ -526,6 +544,13 @@ def main():
             "name": f"{season} Awards",
             "sub": "MVP, Champion Hurler, and more",
             "url": f"awards/{season}.html",
+        })
+    for season in allstar_game_seasons:
+        search_entries.append({
+            "type": "All-Star Game",
+            "name": f"{season} All-Star Game",
+            "sub": "Box score & play-by-play",
+            "url": f"allstar-game/{season}.html",
         })
     for slug, mdata in managers.items():
         seasons_managed = sorted(set(str(r["Season"]) for r in mdata["seasons"]))
