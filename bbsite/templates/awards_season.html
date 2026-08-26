@@ -10,6 +10,23 @@
 <h1 class="page-title">{{ season }} Awards</h1>
 <div class="subtitle">Award winners and top vote-getters for the {{ season }} season</div>
 
+{% if ws_mvp %}
+<h2 class="section-title">World's Championship Series MVP</h2>
+<div class="table-wrap">
+<table class="stats">
+    <thead><tr><th>Pos</th><th class="left">Player</th><th class="left">Team</th></tr></thead>
+    <tbody>
+    <tr>
+        <td>{{ ws_mvp.pos }}</td>
+        <td class="left">{% if ws_mvp.pid %}<a href="{{ root }}players/{{ ws_mvp.pid }}.html">{{ ws_mvp.player }}</a>{% else %}{{ ws_mvp.player }}{% endif %}</td>
+        <td class="left"><a href="{{ root }}teams/{{ ws_mvp.team }}/{{ season }}.html">{{ ws_mvp.team }}</a></td>
+    </tr>
+    </tbody>
+</table>
+</div>
+<div class="standings-note">{{ ws_mvp.note }}</div>
+{% endif %}
+
 {% for cat in categories %}
 <h2 class="section-title">{{ cat.display }}</h2>
 <div class="league-columns">

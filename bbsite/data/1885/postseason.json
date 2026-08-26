@@ -5142,5 +5142,11 @@
     }
    ]
   }
- ]
+ ],
+ "mvp": {
+  "player": "Mike Muldoon",
+  "pos": "3B",
+  "team": "STL",
+  "note": "batted .375 with 4 doubles and 7 RBI across the series"
+ }
 }

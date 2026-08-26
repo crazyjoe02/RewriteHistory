@@ -91,4 +91,81 @@
 </table>
 </div>
 {% endif %}
+
+{% if ps_batting_rows %}
+<h2 class="section-title">Postseason Stats &mdash; Batting</h2>
+<div class="table-wrap">
+<table class="stats">
+    <thead>
+    <tr>
+        <th>Year</th><th class="left">Team</th><th>G</th><th>AB</th><th>R</th><th>H</th>
+        <th>2B</th><th>3B</th><th>HR</th><th>RBI</th><th>BB</th><th>SO</th><th>SB</th><th>CS</th>
+        <th>AVG</th><th>OBP</th><th>SLG</th><th>OPS</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for r in ps_batting_rows %}
+    <tr>
+        <td><a href="{{ root }}postseason/{{ r.SN }}.html">{{ r.SN }}</a></td>
+        <td class="left"><a href="{{ root }}teams/{{ r.Team }}/{{ r.SN }}.html">{{ r.Team }}</a></td>
+        <td>{{ r.G }}</td><td>{{ r.AB }}</td><td>{{ r.R }}</td><td>{{ r.H }}</td>
+        <td>{{ r['2B'] }}</td><td>{{ r['3B'] }}</td><td>{{ r.HR }}</td><td>{{ r.RBI }}</td>
+        <td>{{ r.BB }}</td><td>{{ r.SO }}</td><td>{{ r.SB }}</td><td>{{ r.CS }}</td>
+        <td>{{ '%.3f'|format(r.AVG|float) }}</td><td>{{ '%.3f'|format(r.OBP|float) }}</td>
+        <td>{{ '%.3f'|format(r.SLG|float) }}</td><td>{{ '%.3f'|format(r.OPS|float) }}</td>
+    </tr>
+    {% endfor %}
+    {% if ps_batting_career %}
+    <tr style="font-weight:bold; background:#eef2f7;">
+        <td colspan="2" class="left">Postseason Career</td>
+        <td>{{ ps_batting_career.G }}</td><td>{{ ps_batting_career.AB }}</td><td>{{ ps_batting_career.R }}</td><td>{{ ps_batting_career.H }}</td>
+        <td>{{ ps_batting_career['2B'] }}</td><td>{{ ps_batting_career['3B'] }}</td><td>{{ ps_batting_career.HR }}</td>
+        <td>{{ ps_batting_career.RBI }}</td><td>{{ ps_batting_career.BB }}</td><td>{{ ps_batting_career.SO }}</td>
+        <td>{{ ps_batting_career.SB }}</td><td>{{ ps_batting_career.CS }}</td>
+        <td>{{ '%.3f'|format(ps_batting_career.AVG) }}</td><td>{{ '%.3f'|format(ps_batting_career.OBP) }}</td>
+        <td>{{ '%.3f'|format(ps_batting_career.SLG) }}</td><td>{{ '%.3f'|format(ps_batting_career.OPS) }}</td>
+    </tr>
+    {% endif %}
+    </tbody>
+</table>
+</div>
+{% endif %}
+
+{% if ps_pitching_rows %}
+<h2 class="section-title">Postseason Stats &mdash; Pitching</h2>
+<div class="table-wrap">
+<table class="stats">
+    <thead>
+    <tr>
+        <th>Year</th><th class="left">Team</th><th>W</th><th>L</th><th>ERA</th><th>G</th>
+        <th>GS</th><th>CG</th><th>SHO</th><th>SV</th><th>IP</th><th>H</th><th>R</th><th>ER</th>
+        <th>BB</th><th>SO</th><th>WHIP</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for r in ps_pitching_rows %}
+    <tr>
+        <td><a href="{{ root }}postseason/{{ r.SN }}.html">{{ r.SN }}</a></td>
+        <td class="left"><a href="{{ root }}teams/{{ r.Team }}/{{ r.SN }}.html">{{ r.Team }}</a></td>
+        <td>{{ r.W }}</td><td>{{ r.L }}</td><td>{{ '%.2f'|format(r.ERA|float) }}</td>
+        <td>{{ r.G }}</td><td>{{ r.GS }}</td><td>{{ r.CG }}</td><td>{{ r.SHO }}</td><td>{{ r.SV }}</td>
+        <td>{{ r.IP }}</td><td>{{ r.H }}</td><td>{{ r.R }}</td><td>{{ r.ER }}</td>
+        <td>{{ r.BB }}</td><td>{{ r.SO }}</td><td>{{ '%.2f'|format(r.WHIP|float) }}</td>
+    </tr>
+    {% endfor %}
+    {% if ps_pitching_career %}
+    <tr style="font-weight:bold; background:#eef2f7;">
+        <td colspan="2" class="left">Postseason Career</td>
+        <td>{{ ps_pitching_career.W }}</td><td>{{ ps_pitching_career.L }}</td><td>{{ '%.2f'|format(ps_pitching_career.ERA) }}</td>
+        <td>{{ ps_pitching_career.G }}</td><td>{{ ps_pitching_career.GS }}</td><td>{{ ps_pitching_career.CG }}</td>
+        <td>{{ ps_pitching_career.SHO }}</td><td>{{ ps_pitching_career.SV }}</td>
+        <td>{{ '%.1f'|format(ps_pitching_career.IP) }}</td><td>{{ ps_pitching_career.H }}</td><td>{{ ps_pitching_career.R }}</td>
+        <td>{{ ps_pitching_career.ER }}</td><td>{{ ps_pitching_career.BB }}</td><td>{{ ps_pitching_career.SO }}</td>
+        <td>{{ '%.2f'|format(ps_pitching_career.WHIP) }}</td>
+    </tr>
+    {% endif %}
+    </tbody>
+</table>
+</div>
+{% endif %}
 {% endblock %}

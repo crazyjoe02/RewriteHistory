@@ -94,16 +94,22 @@ def main():
     all_standings = {}   # season -> list of rows
     all_batting = {}     # season -> list of rows
     all_pitching = {}    # season -> list of rows
+    all_ps_batting = {}  # season -> list of postseason batting rows
+    all_ps_pitching = {} # season -> list of postseason pitching rows
 
     for season in seasons:
         sdir = os.path.join(DATA_DIR, str(season))
         standings_path = os.path.join(sdir, "standings.csv")
         batting_path = os.path.join(sdir, "batting.csv")
         pitching_path = os.path.join(sdir, "pitching.csv")
+        ps_batting_path = os.path.join(sdir, "postseason_batting.csv")
+        ps_pitching_path = os.path.join(sdir, "postseason_pitching.csv")
 
         standings_rows = load_csv(standings_path) if os.path.exists(standings_path) else []
         batting_rows = load_csv(batting_path) if os.path.exists(batting_path) else []
         pitching_rows = load_csv(pitching_path) if os.path.exists(pitching_path) else []
+        ps_batting_rows = load_csv(ps_batting_path) if os.path.exists(ps_batting_path) else []
+        ps_pitching_rows = load_csv(ps_pitching_path) if os.path.exists(ps_pitching_path) else []
 
         # normalize display name to master registry (fixes source typos/casing)
         for row in standings_rows:
@@ -131,10 +137,20 @@ def main():
             row["PlayerID"] = slugify_player_id(row["Player"])
             row["LastName"] = last_name_of(row["Player"])
             row["Player"] = display_name(row["Player"])
+        for row in ps_batting_rows:
+            row["PlayerID"] = slugify_player_id(row["Player"])
+            row["LastName"] = last_name_of(row["Player"])
+            row["Player"] = display_name(row["Player"])
+        for row in ps_pitching_rows:
+            row["PlayerID"] = slugify_player_id(row["Player"])
+            row["LastName"] = last_name_of(row["Player"])
+            row["Player"] = display_name(row["Player"])
 
         all_standings[season] = standings_rows
         all_batting[season] = batting_rows
         all_pitching[season] = pitching_rows
+        all_ps_batting[season] = ps_batting_rows
+        all_ps_pitching[season] = ps_pitching_rows
 
     # --- Set up Jinja ---
     env = Environment(loader=FileSystemLoader(TEMPLATES_DIR), trim_blocks=True, lstrip_blocks=True)
@@ -204,7 +220,7 @@ def main():
                   team=team, season=season, standing=standing, batters=batters, pitchers=pitchers)
 
     # --- Player pages ---
-    players = defaultdict(lambda: {"batting": [], "pitching": [], "name": None, "last_name": None, "bats": None, "throws": None})
+    players = defaultdict(lambda: {"batting": [], "pitching": [], "postseason_batting": [], "postseason_pitching": [], "name": None, "last_name": None, "bats": None, "throws": None})
     for season in seasons:
         for row in all_batting[season]:
             pid = row["PlayerID"]
@@ -218,6 +234,16 @@ def main():
             players[pid]["name"] = row["Player"]
             players[pid]["last_name"] = row.get("LastName")
             players[pid]["throws"] = row.get("T")
+        for row in all_ps_batting[season]:
+            pid = row["PlayerID"]
+            players[pid]["postseason_batting"].append(row)
+            players[pid]["name"] = row["Player"]
+            players[pid]["last_name"] = row.get("LastName")
+        for row in all_ps_pitching[season]:
+            pid = row["PlayerID"]
+            players[pid]["postseason_pitching"].append(row)
+            players[pid]["name"] = row["Player"]
+            players[pid]["last_name"] = row.get("LastName")
 
     # --- All-Star selections ---
     name_to_pid = {}
@@ -308,46 +334,75 @@ def main():
                         players[row["PlayerID"]]["awards_won"].append({"Season": season, "Label": label})
         awards_by_season[season] = season_awards
 
+    # --- Postseason data (loaded early so World Series MVP badge is ready before player pages render) ---
+    postseason_by_season = {}
+    for season in seasons:
+        ps_path = os.path.join(DATA_DIR, str(season), "postseason.json")
+        if not os.path.exists(ps_path):
+            continue
+        with open(ps_path, encoding="utf-8") as f:
+            series = json.load(f)
+        mvp = series.get("mvp")
+        if mvp:
+            mvp_pid = name_to_pid.get(mvp["player"])
+            if mvp_pid:
+                label = f"{season} World's Championship Series MVP"
+                players[mvp_pid]["awards_won"].append({"Season": season, "Label": label})
+                mvp["pid"] = mvp_pid
+            else:
+                print(f"WARNING: World Series MVP '{mvp['player']}' ({season}) not found among loaded players -- check spelling.")
+        postseason_by_season[season] = series
+
+    def compute_batting_totals(rows):
+        if not rows:
+            return None
+        sums = defaultdict(int)
+        for r in rows:
+            for k in ["G", "AB", "R", "H", "2B", "3B", "HR", "RBI", "BB", "SO", "HBP", "SB", "CS"]:
+                sums[k] += int(r.get(k) or 0)
+        ab = sums["AB"] or 1
+        hits = sums["H"]
+        walks = sums["BB"]
+        hbp = sums["HBP"]
+        singles = hits - sums["2B"] - sums["3B"] - sums["HR"]
+        tb = singles + 2 * sums["2B"] + 3 * sums["3B"] + 4 * sums["HR"]
+        avg = hits / ab
+        obp = (hits + walks + hbp) / (ab + walks + hbp) if (ab + walks + hbp) else 0
+        slg = tb / ab
+        totals = dict(sums)
+        totals["AVG"] = avg
+        totals["OBP"] = obp
+        totals["SLG"] = slg
+        totals["OPS"] = obp + slg
+        return totals
+
+    def compute_pitching_totals(rows):
+        if not rows:
+            return None
+        psums = defaultdict(float)
+        for r in rows:
+            for k in ["G", "GS", "CG", "SHO", "W", "L", "SV", "IP", "H", "R", "ER", "HR", "BB", "SO"]:
+                psums[k] += float(r.get(k) or 0)
+        ip = psums["IP"] or 1
+        era = 9 * psums["ER"] / ip
+        whip = (psums["BB"] + psums["H"]) / ip
+        totals = dict(psums)
+        for k in ["G", "GS", "CG", "SHO", "W", "L", "SV", "H", "R", "ER", "HR", "BB", "SO"]:
+            totals[k] = int(totals[k])
+        totals["ERA"] = era
+        totals["WHIP"] = whip
+        return totals
+
     for pid, pdata in players.items():
         batting_rows = sorted(pdata["batting"], key=lambda r: int(r["SN"]))
         pitching_rows = sorted(pdata["pitching"], key=lambda r: int(r["SN"]))
+        ps_batting_rows = sorted(pdata["postseason_batting"], key=lambda r: int(r["SN"]))
+        ps_pitching_rows = sorted(pdata["postseason_pitching"], key=lambda r: int(r["SN"]))
 
-        batting_career = None
-        if batting_rows:
-            sums = defaultdict(int)
-            for r in batting_rows:
-                for k in ["G", "AB", "R", "H", "2B", "3B", "HR", "RBI", "BB", "SO", "HBP", "SB", "CS"]:
-                    sums[k] += int(r.get(k) or 0)
-            ab = sums["AB"] or 1
-            hits = sums["H"]
-            walks = sums["BB"]
-            hbp = sums["HBP"]
-            singles = hits - sums["2B"] - sums["3B"] - sums["HR"]
-            tb = singles + 2 * sums["2B"] + 3 * sums["3B"] + 4 * sums["HR"]
-            avg = hits / ab
-            obp = (hits + walks + hbp) / (ab + walks + hbp) if (ab + walks + hbp) else 0
-            slg = tb / ab
-            batting_career = dict(sums)
-            batting_career["AVG"] = avg
-            batting_career["OBP"] = obp
-            batting_career["SLG"] = slg
-            batting_career["OPS"] = obp + slg
-
-        pitching_career = None
-        if pitching_rows:
-            psums = defaultdict(float)
-            for r in pitching_rows:
-                for k in ["G", "GS", "CG", "SHO", "W", "L", "SV", "IP", "H", "R", "ER", "HR", "BB", "SO"]:
-                    psums[k] += float(r.get(k) or 0)
-            ip = psums["IP"] or 1
-            era = 9 * psums["ER"] / ip
-            whip = (psums["BB"] + psums["H"]) / ip
-            pitching_career = dict(psums)
-            # counting stats look better as ints; IP keeps its decimal
-            for k in ["G", "GS", "CG", "SHO", "W", "L", "SV", "H", "R", "ER", "HR", "BB", "SO"]:
-                pitching_career[k] = int(pitching_career[k])
-            pitching_career["ERA"] = era
-            pitching_career["WHIP"] = whip
+        batting_career = compute_batting_totals(batting_rows)
+        pitching_career = compute_pitching_totals(pitching_rows)
+        ps_batting_career = compute_batting_totals(ps_batting_rows)
+        ps_pitching_career = compute_pitching_totals(ps_pitching_rows)
 
         pdata["batting_career"] = batting_career
         pdata["pitching_career"] = pitching_career
@@ -362,7 +417,9 @@ def main():
               batting_rows=batting_rows, pitching_rows=pitching_rows,
               batting_career=batting_career, pitching_career=pitching_career,
               allstar_count=len(allstar_years), allstar_years=allstar_years,
-              awards_won=awards_won)
+              awards_won=awards_won,
+              ps_batting_rows=ps_batting_rows, ps_pitching_rows=ps_pitching_rows,
+              ps_batting_career=ps_batting_career, ps_pitching_career=ps_pitching_career)
 
     # --- League leaders pages ---
     def top_n(rows, key_field, n=10, reverse=True, min_field=None, min_value=0):
@@ -482,7 +539,8 @@ def main():
     write("awards/index.html", "awards_index.html", seasons=seasons)
     for season in seasons:
         write(f"awards/{season}.html", "awards_season.html",
-              season=season, categories=awards_by_season[season])
+              season=season, categories=awards_by_season[season],
+              ws_mvp=postseason_by_season.get(season, {}).get("mvp"))
 
     # --- All-Star Game pages ---
     def resolve_pids(game_data):
@@ -501,14 +559,8 @@ def main():
             write(f"allstar-game/{season}.html", "allstar_game.html", season=season, game=game_data)
             allstar_game_seasons.add(season)
 
-    # --- Postseason pages ---
-    postseason_by_season = {}
-    for season in seasons:
-        ps_path = os.path.join(DATA_DIR, str(season), "postseason.json")
-        if not os.path.exists(ps_path):
-            continue
-        with open(ps_path, encoding="utf-8") as f:
-            series = json.load(f)
+    # --- Postseason pages (write box scores + index using data already loaded above) ---
+    for season, series in postseason_by_season.items():
         for g in series["games"]:
             resolve_pids(g)
             score_rows = {r["team"]: r["R"] for r in g["linescore"]["rows"]}
@@ -517,7 +569,6 @@ def main():
             write(f"postseason-game/{season}-{g['game_number']}.html", "allstar_game.html",
                   season=season, game=g, is_postseason_game=True, series=series)
         write(f"postseason/{season}.html", "postseason_index.html", season=season, series=series)
-        postseason_by_season[season] = series
 
     # --- Season hub pages (standings + condensed awards + All-Star Game link + postseason) ---
     for season in seasons:
