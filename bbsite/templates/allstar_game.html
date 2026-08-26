@@ -1,13 +1,14 @@
 {% extends "base.html" %}
-{% block title %}{{ season }} All-Star Game{% endblock %}
+{% block title %}{% if is_postseason_game %}{{ season }} Postseason Game {{ game.game_number }}{% else %}{{ season }} All-Star Game{% endif %}{% endblock %}
 {% block breadcrumb %}
 <div class="breadcrumb">
 <a href="{{ root }}index.html">Home</a> &rsaquo;
-<a href="{{ root }}years/{{ season }}.html">{{ season }} Season</a> &rsaquo; All-Star Game
+<a href="{{ root }}years/{{ season }}.html">{{ season }} Season</a> &rsaquo;
+{% if is_postseason_game %}<a href="{{ root }}postseason/{{ season }}.html">Postseason</a> &rsaquo; Game {{ game.game_number }}{% else %}All-Star Game{% endif %}
 </div>
 {% endblock %}
 {% block content %}
-<h1 class="page-title">{{ season }} All-Star Game</h1>
+<h1 class="page-title">{% if is_postseason_game %}{{ series.series_name }} &mdash; Game {{ game.game_number }}{% else %}{{ season }} All-Star Game{% endif %}</h1>
 <div class="subtitle">{{ game.subtitle }}{% if game.player_of_game %} &middot; Player of the Game: {{ game.player_of_game.player }} ({{ game.player_of_game.team }}) &mdash; {{ game.player_of_game.note }}{% endif %}</div>
 
 <div class="table-wrap">
@@ -32,9 +33,10 @@
 </div>
 
 <h2 class="section-title">Batting</h2>
-{% for teamcode in ["NL", "AA"] %}
+{% for lsrow in game.linescore.rows %}
+{% set teamcode = lsrow.team %}
 {% set b = game.batting[teamcode] %}
-<h3>1885 {{ teamcode }}</h3>
+<h3>{{ lsrow.label }}</h3>
 <div class="table-wrap">
 <table class="stats">
     <thead>
@@ -46,7 +48,7 @@
     <tbody>
     {% for p in b.rows %}
     <tr>
-        <td class="left"><a href="{{ root }}players/{{ p.pid }}.html">{{ p.player }}</a></td>
+        <td class="left">{% if p.pid %}<a href="{{ root }}players/{{ p.pid }}.html">{{ p.player }}</a>{% else %}{{ p.player }}{% endif %}</td>
         <td>{{ p.pos }}</td><td>{{ p.ab }}</td><td>{{ p.r }}</td><td>{{ p.h }}</td><td>{{ p.rbi }}</td>
         <td>{{ p.bb }}</td><td>{{ p.so }}</td><td>{{ p['2b'] }}</td><td>{{ p['3b'] }}</td><td>{{ p.hr }}</td>
         <td>{{ p.sb }}</td><td>{{ p.cs }}</td>
@@ -67,9 +69,10 @@
 {% endfor %}
 
 <h2 class="section-title">Pitching</h2>
-{% for teamcode in ["NL", "AA"] %}
+{% for lsrow in game.linescore.rows %}
+{% set teamcode = lsrow.team %}
 {% set p = game.pitching[teamcode] %}
-<h3>1885 {{ teamcode }}</h3>
+<h3>{{ lsrow.label }}</h3>
 <div class="table-wrap">
 <table class="stats">
     <thead>
@@ -81,7 +84,7 @@
     <tbody>
     {% for row in p.rows %}
     <tr>
-        <td class="left"><a href="{{ root }}players/{{ row.pid }}.html">{{ row.player }}</a></td>
+        <td class="left">{% if row.pid %}<a href="{{ root }}players/{{ row.pid }}.html">{{ row.player }}</a>{% else %}{{ row.player }}{% endif %}</td>
         <td class="left">{{ row.decision }}</td>
         <td>{{ row.ip }}</td><td>{{ row.h }}</td><td>{{ row.r }}</td><td>{{ row.er }}</td>
         <td>{{ row.bb }}</td><td>{{ row.so }}</td><td>{{ row.hr }}</td><td>{{ row.era }}</td>

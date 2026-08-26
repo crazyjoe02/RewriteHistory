@@ -162,17 +162,13 @@ def main():
         with open(full_path, "w", encoding="utf-8") as f:
             f.write(tmpl.render(**ctx))
 
-    # --- Home page (latest season standings) ---
+    # --- Home page (latest season standings; data prepared here, written later once postseason data is ready) ---
     latest_rows = all_standings[latest_season]
-    leagues_ctx = []
+    home_leagues_ctx = []
     for lg_code in ["AA", "NL"]:
         rows = [r for r in latest_rows if r["League"] == lg_code]
         rows.sort(key=lambda r: -float(r["PCT"]))
-        leagues_ctx.append((LEAGUE_NAMES[lg_code], lg_code, rows))
-
-    write("index.html", "index.html",
-          leagues=leagues_ctx, season=latest_season,
-          all_teams=sorted(teams, key=lambda t: t["FranchiseName"]))
+        home_leagues_ctx.append((LEAGUE_NAMES[lg_code], lg_code, rows))
 
     # --- Year standings pages (data prepared here; written later once awards/ASG data is ready) ---
     year_leagues_ctx = {}
@@ -489,21 +485,52 @@ def main():
               season=season, categories=awards_by_season[season])
 
     # --- All-Star Game pages ---
+    def resolve_pids(game_data):
+        """Fill in each batting/pitching row's player-page link by matching against the site roster."""
+        for team_data in list(game_data.get("batting", {}).values()) + list(game_data.get("pitching", {}).values()):
+            for row in team_data.get("rows", []):
+                row["pid"] = name_to_pid.get(row["player"])
+
     allstar_game_seasons = set()
     for season in seasons:
         asg_path = os.path.join(DATA_DIR, str(season), "allstar_game.json")
         if os.path.exists(asg_path):
             with open(asg_path, encoding="utf-8") as f:
                 game_data = json.load(f)
+            resolve_pids(game_data)
             write(f"allstar-game/{season}.html", "allstar_game.html", season=season, game=game_data)
             allstar_game_seasons.add(season)
 
-    # --- Season hub pages (standings + condensed awards + All-Star Game link + postseason placeholder) ---
+    # --- Postseason pages ---
+    postseason_by_season = {}
+    for season in seasons:
+        ps_path = os.path.join(DATA_DIR, str(season), "postseason.json")
+        if not os.path.exists(ps_path):
+            continue
+        with open(ps_path, encoding="utf-8") as f:
+            series = json.load(f)
+        for g in series["games"]:
+            resolve_pids(g)
+            score_rows = {r["team"]: r["R"] for r in g["linescore"]["rows"]}
+            g["winner_team"] = series["winner"]["team"] if score_rows[series["winner"]["team"]] > score_rows[series["loser"]["team"]] else series["loser"]["team"]
+            g["score_summary"] = f'{series["winner"]["team_name"] if g["winner_team"]==series["winner"]["team"] else series["loser"]["team_name"]} win {max(score_rows.values())}-{min(score_rows.values())}'
+            write(f"postseason-game/{season}-{g['game_number']}.html", "allstar_game.html",
+                  season=season, game=g, is_postseason_game=True, series=series)
+        write(f"postseason/{season}.html", "postseason_index.html", season=season, series=series)
+        postseason_by_season[season] = series
+
+    # --- Season hub pages (standings + condensed awards + All-Star Game link + postseason) ---
     for season in seasons:
         write(f"years/{season}.html", "standings.html",
               leagues=year_leagues_ctx[season], season=season,
               categories=awards_by_season[season],
-              has_allstar_game=season in allstar_game_seasons)
+              has_allstar_game=season in allstar_game_seasons,
+              postseason=postseason_by_season.get(season))
+
+    write("index.html", "index.html",
+          leagues=home_leagues_ctx, season=latest_season,
+          all_teams=sorted(teams, key=lambda t: t["FranchiseName"]),
+          postseason=postseason_by_season.get(latest_season))
 
     # --- Search index (client-side JSON, used by the header search box) ---
     search_entries = []
@@ -551,6 +578,13 @@ def main():
             "name": f"{season} All-Star Game",
             "sub": "Box score & play-by-play",
             "url": f"allstar-game/{season}.html",
+        })
+    for season, series in postseason_by_season.items():
+        search_entries.append({
+            "type": "Postseason",
+            "name": series["series_name"],
+            "sub": series["result"],
+            "url": f"postseason/{season}.html",
         })
     for slug, mdata in managers.items():
         seasons_managed = sorted(set(str(r["Season"]) for r in mdata["seasons"]))

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}{{ season }} Postseason{% endblock %}
+{% block breadcrumb %}
+<div class="breadcrumb">
+<a href="{{ root }}index.html">Home</a> &rsaquo;
+<a href="{{ root }}years/{{ season }}.html">{{ season }} Season</a> &rsaquo; Postseason
+</div>
+{% endblock %}
+{% block content %}
+<h1 class="page-title">{{ series.series_name }}</h1>
+<div class="subtitle">{{ series.result }}</div>
+
+<div class="table-wrap">
+<table class="stats">
+    <thead>
+    <tr><th>Game</th><th class="left">Location</th><th class="left">Result</th><th class="left">Box Score</th></tr>
+    </thead>
+    <tbody>
+    {% for g in series.games %}
+    {% set score_rows = {} %}
+    <tr>
+        <td>{{ g.game_number }}</td>
+        <td class="left">{{ g.location }}</td>
+        <td class="left">
+        {% for r in g.linescore.rows %}{{ r.label }} {{ r.R }}{% if not loop.last %} &ndash; {% endif %}{% endfor %}
+        </td>
+        <td class="left"><a href="{{ root }}postseason-game/{{ season }}-{{ g.game_number }}.html">Box Score</a></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock %}

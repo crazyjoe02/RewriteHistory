@@ -167,6 +167,31 @@ table.stats tfoot td {
 /* Standings specific */
 .standings-note { font-size: 11px; color: #555; margin: 4px 0 14px 0; }
 
+/* Championship banner on home page */
+.champion-banner {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: linear-gradient(135deg, #fff6d8, #fde7a8);
+    border: 1px solid #e0c366;
+    border-radius: 5px;
+    padding: 12px 18px;
+    margin: 10px 0 16px 0;
+}
+.champion-cup-icon {
+    width: 42px;
+    height: 49px;
+    flex-shrink: 0;
+}
+.champion-banner-text {
+    font-size: 13px;
+    color: #4a3b00;
+    line-height: 1.5;
+}
+.champion-banner-text a {
+    font-weight: bold;
+}
+
 /* Play-by-play collapsible innings */
 .pbp-inning {
     border: 1px solid #cdd7e0;
