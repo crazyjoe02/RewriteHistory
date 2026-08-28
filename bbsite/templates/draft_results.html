@@ -17,7 +17,7 @@
     {% for p in draft_picks %}
     <tr>
         <td>{{ p.Round }}.{{ '%02d'|format(p.Pick) }}</td>
-        <td class="left"><a href="{{ root }}teams/{{ p.TeamAbbr }}/index.html">{{ p.TeamName }}</a></td>
+        <td class="left"><a href="{{ root }}teams/{{ hub_abbr.get(p.TeamAbbr, p.TeamAbbr) }}/index.html">{{ p.TeamName }}</a></td>
         <td class="left">{% if p.PlayerID %}<a href="{{ root }}players/{{ p.PlayerID }}.html">{{ p.Player }}</a>{% else %}{{ p.Player }}{% endif %}</td>
         <td>{{ p.Pos }}</td>
     </tr>

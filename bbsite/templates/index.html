@@ -21,19 +21,31 @@
         <rect x="14" y="58" width="32" height="6" rx="1.5" fill="url(#cupGrad)" stroke="#6b6d78" stroke-width="1.2"/>
     </svg>
     <div class="champion-banner-text">
-        Congratulations to {{ postseason.winner.owner }} and the {{ postseason.winner.team_name }} for winning the {{ latest_season }}
-        <a href="{{ root }}postseason/{{ latest_season }}.html">World's Championship Series</a>
+        Congratulations to {{ postseason.winner.owner }} and the {{ postseason.winner.team_name }} for winning the {{ postseason.season }}
+        <a href="{{ root }}postseason/{{ postseason.season }}.html">World's Championship Series</a>
         in {{ postseason.games|length }} games over {{ postseason.loser.owner }}'s {{ postseason.loser.team_name }}.
     </div>
 </div>
 {% endif %}
 <div class="subtitle">Reimagined major league baseball history, {{ first_season }}&ndash;present. Currently through the {{ latest_season }} season.</div>
 
-<h2 class="section-title">{{ latest_season }} Final Standings</h2>
+<h2 class="section-title">{{ latest_season }} {% if is_preseason %}Franchises{% else %}Final Standings{% endif %}</h2>
 <div class="league-columns">
 {% for lg_name, lg_code, teams in leagues %}
 <div>
     <h3>{{ lg_name }}</h3>
+    {% if is_preseason %}
+    <div class="table-wrap">
+    <table class="stats">
+        <thead><tr><th class="left">Team</th></tr></thead>
+        <tbody>
+        {% for t in teams %}
+        <tr><td class="left"><a href="{{ root }}teams/{{ hub_abbr.get(t.Abbr, t.Abbr) }}/index.html">{{ t.FranchiseName }}</a></td></tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+    {% else %}
     <div class="table-wrap">
     <table class="stats">
         <thead><tr><th class="left">Team</th><th>W</th><th>L</th><th>PCT</th><th>GB</th></tr></thead>
@@ -47,6 +59,7 @@
         </tbody>
     </table>
     </div>
+    {% endif %}
 </div>
 {% endfor %}
 </div>
@@ -56,7 +69,7 @@
 {% for t in all_teams %}
 <div class="team-card">
     <div class="team-bar" style="background: linear-gradient(90deg, {{ t.ColorPrimary }}, {{ t.ColorSecondary }});"></div>
-    <a href="{{ root }}teams/{{ t.Abbr }}/index.html">{{ t.FranchiseName }}</a>
+    <a href="{{ root }}teams/{{ hub_abbr.get(t.Abbr, t.Abbr) }}/index.html">{{ t.FranchiseName }}</a>
     <div class="rec">{{ t.League }} &middot; {{ t.City }}</div>
 </div>
 {% endfor %}

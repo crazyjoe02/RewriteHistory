@@ -1,0 +1,2162 @@
+[
+ {
+  "round": 1,
+  "pick": 1,
+  "team_name": "Boston Beaneaters",
+  "owner": "firesalt",
+  "via": "PIT, CIN",
+  "player": "Dan Brouthers",
+  "pos": "1B"
+ },
+ {
+  "round": 1,
+  "pick": 2,
+  "team_name": "New York Giants",
+  "owner": "epup1975",
+  "via": "CIN",
+  "player": "Tim Keefe",
+  "pos": "P"
+ },
+ {
+  "round": 1,
+  "pick": 3,
+  "team_name": "Cincinnati Red Stockings",
+  "owner": "crazyjoe02",
+  "via": "BSN",
+  "player": "Pete Browning",
+  "pos": "OF"
+ },
+ {
+  "round": 1,
+  "pick": 4,
+  "team_name": "St. Louis Browns",
+  "owner": "RedMustard",
+  "via": "",
+  "player": "Bob Caruthers",
+  "pos": "P"
+ },
+ {
+  "round": 1,
+  "pick": 5,
+  "team_name": "St. Louis Browns",
+  "owner": "RedMustard",
+  "via": "BRO",
+  "player": "Roger Connor",
+  "pos": "1B"
+ },
+ {
+  "round": 1,
+  "pick": 6,
+  "team_name": "Philadelphia Quakers",
+  "owner": "danidon",
+  "via": "",
+  "player": "Sam Thompson",
+  "pos": "OF"
+ },
+ {
+  "round": 1,
+  "pick": 7,
+  "team_name": "Chicago White Stockings",
+  "owner": "szczubelek",
+  "via": "",
+  "player": "Cap Anson",
+  "pos": "1B"
+ },
+ {
+  "round": 1,
+  "pick": 8,
+  "team_name": "Cincinnati Red Stockings",
+  "owner": "crazyjoe02",
+  "via": "NYG",
+  "player": "Bid McPhee",
+  "pos": "2B"
+ },
+ {
+  "round": 1,
+  "pick": 9,
+  "team_name": "Philadelphia Athletics",
+  "owner": "bingo_long",
+  "via": "",
+  "player": "Harry Stovey",
+  "pos": "1B"
+ },
+ {
+  "round": 1,
+  "pick": 10,
+  "team_name": "Baltimore Orioles",
+  "owner": "JAMESA",
+  "via": "",
+  "player": "Curt Welch",
+  "pos": "OF"
+ },
+ {
+  "round": 1,
+  "pick": 11,
+  "team_name": "Detroit Wolverines",
+  "owner": "gbakker",
+  "via": "",
+  "player": "Hardy Richardson",
+  "pos": "2B"
+ },
+ {
+  "round": 1,
+  "pick": 12,
+  "team_name": "Louisville Colonels",
+  "owner": "BullMoose",
+  "via": "",
+  "player": "Jack Glasscock",
+  "pos": "SS"
+ },
+ {
+  "round": 2,
+  "pick": 1,
+  "team_name": "Louisville Colonels",
+  "owner": "BullMoose",
+  "via": "",
+  "player": "Mickey Welch",
+  "pos": "P"
+ },
+ {
+  "round": 2,
+  "pick": 2,
+  "team_name": "Detroit Wolverines",
+  "owner": "gbakker",
+  "via": "",
+  "player": "Ed Morris",
+  "pos": "P"
+ },
+ {
+  "round": 2,
+  "pick": 3,
+  "team_name": "Baltimore Orioles",
+  "owner": "JAMESA",
+  "via": "",
+  "player": "Adonis Terry",
+  "pos": "OF"
+ },
+ {
+  "round": 2,
+  "pick": 4,
+  "team_name": "Philadelphia Athletics",
+  "owner": "bingo_long",
+  "via": "",
+  "player": "Jim Whitney",
+  "pos": "P"
+ },
+ {
+  "round": 2,
+  "pick": 5,
+  "team_name": "New York Giants",
+  "owner": "epup1975",
+  "via": "",
+  "player": "Tip O'Neill",
+  "pos": "OF"
+ },
+ {
+  "round": 2,
+  "pick": 6,
+  "team_name": "Chicago White Stockings",
+  "owner": "szczubelek",
+  "via": "",
+  "player": "King Kelly",
+  "pos": "OF"
+ },
+ {
+  "round": 2,
+  "pick": 7,
+  "team_name": "Boston Beaneaters",
+  "owner": "firesalt",
+  "via": "PHI",
+  "player": "Jack Clements",
+  "pos": "C"
+ },
+ {
+  "round": 2,
+  "pick": 8,
+  "team_name": "Cincinnati Red Stockings",
+  "owner": "crazyjoe02",
+  "via": "BRO",
+  "player": "Henry Boyle",
+  "pos": "P"
+ },
+ {
+  "round": 2,
+  "pick": 9,
+  "team_name": "St. Louis Browns",
+  "owner": "RedMustard",
+  "via": "",
+  "player": "Charlie Getzien",
+  "pos": "P"
+ },
+ {
+  "round": 2,
+  "pick": 10,
+  "team_name": "Philadelphia Quakers",
+  "owner": "danidon",
+  "via": "BSN",
+  "player": "Charlie Ferguson",
+  "pos": "P"
+ },
+ {
+  "round": 2,
+  "pick": 11,
+  "team_name": "Pittsburgh Alleghenys",
+  "owner": "ZeeBall",
+  "via": "CIN",
+  "player": "Guy Hecker",
+  "pos": "P"
+ },
+ {
+  "round": 2,
+  "pick": 12,
+  "team_name": "Pittsburgh Alleghenys",
+  "owner": "ZeeBall",
+  "via": "",
+  "player": "Pud Galvin",
+  "pos": "P"
+ },
+ {
+  "round": 3,
+  "pick": 1,
+  "team_name": "Boston Beaneaters",
+  "owner": "firesalt",
+  "via": "PIT",
+  "player": "Billy Nash",
+  "pos": "3B"
+ },
+ {
+  "round": 3,
+  "pick": 2,
+  "team_name": "Philadelphia Quakers",
+  "owner": "danidon",
+  "via": "CIN, PIT",
+  "player": "Charlie Buffinton",
+  "pos": "P"
+ },
+ {
+  "round": 3,
+  "pick": 3,
+  "team_name": "Pittsburgh Alleghenys",
+  "owner": "ZeeBall",
+  "via": "BSN",
+  "player": "Doggie Miller",
+  "pos": "C"
+ },
+ {
+  "round": 3,
+  "pick": 4,
+  "team_name": "St. Louis Browns",
+  "owner": "RedMustard",
+  "via": "",
+  "player": "George Gore",
+  "pos": "OF"
+ },
+ {
+  "round": 3,
+  "pick": 5,
+  "team_name": "St. Louis Browns",
+  "owner": "RedMustard",
+  "via": "BRO",
+  "player": "Toad Ramsey",
+  "pos": "P"
+ },
+ {
+  "round": 3,
+  "pick": 6,
+  "team_name": "Philadelphia Quakers",
+  "owner": "danidon",
+  "via": "",
+  "player": "Tommy McCarthy",
+  "pos": "OF"
+ },
+ {
+  "round": 3,
+  "pick": 7,
+  "team_name": "Boston Beaneaters",
+  "owner": "firesalt",
+  "via": "CHC",
+  "player": "Jim O'Rourke",
+  "pos": "OF"
+ },
+ {
+  "round": 3,
+  "pick": 8,
+  "team_name": "Cincinnati Red Stockings",
+  "owner": "crazyjoe02",
+  "via": "NYG",
+  "player": "Arlie Latham",
+  "pos": "3B"
+ },
+ {
+  "round": 3,
+  "pick": 9,
+  "team_name": "Philadelphia Athletics",
+  "owner": "bingo_long",
+  "via": "",
+  "player": "Henry Larkin",
+  "pos": "OF"
+ },
+ {
+  "round": 3,
+  "pick": 10,
+  "team_name": "Baltimore Orioles",
+  "owner": "JAMESA",
+  "via": "",
+  "player": "Henry Porter",
+  "pos": "P"
+ },
+ {
+  "round": 3,
+  "pick": 11,
+  "team_name": "Detroit Wolverines",
+  "owner": "gbakker",
+  "via": "",
+  "player": "Lady Baldwin",
+  "pos": "P"
+ },
+ {
+  "round": 3,
+  "pick": 12,
+  "team_name": "Louisville Colonels",
+  "owner": "BullMoose",
+  "via": "",
+  "player": "Tom Brown",
+  "pos": "OF"
+ },
+ {
+  "round": 4,
+  "pick": 1,
+  "team_name": "Louisville Colonels",
+  "owner": "BullMoose",
+  "via": "",
+  "player": "Jerry Denny",
+  "pos": "3B"
+ },
+ {
+  "round": 4,
+  "pick": 2,
+  "team_name": "Detroit Wolverines",
+  "owner": "gbakker",
+  "via": "",
+  "player": "Jack Rowe",
+  "pos": "SS"
+ },
+ {
+  "round": 4,
+  "pick": 3,
+  "team_name": "Baltimore Orioles",
+  "owner": "JAMESA",
+  "via": "",
+  "player": "Sam Wise",
+  "pos": "SS"
+ },
+ {
+  "round": 4,
+  "pick": 4,
+  "team_name": "Philadelphia Athletics",
+  "owner": "bingo_long",
+  "via": "",
+  "player": "Bobby Mathews",
+  "pos": "P"
+ },
+ {
+  "round": 4,
+  "pick": 5,
+  "team_name": "New York Giants",
+  "owner": "epup1975",
+  "via": "",
+  "player": "Oyster Burns",
+  "pos": "OF"
+ },
+ {
+  "round": 4,
+  "pick": 6,
+  "team_name": "Chicago White Stockings",
+  "owner": "szczubelek",
+  "via": "",
+  "player": "Tom Burns",
+  "pos": "SS"
+ },
+ {
+  "round": 4,
+  "pick": 7,
+  "team_name": "Pittsburgh Alleghenys",
+  "owner": "ZeeBall",
+  "via": "PHI",
+  "player": "Pop Corkhill",
+  "pos": "OF"
+ },
+ {
+  "round": 4,
+  "pick": 8,
+  "team_name": "Brooklyn Grays",
+  "owner": "eman7400",
+  "via": "",
+  "player": "Tom Lovett",
+  "pos": "P"
+ },
+ {
+  "round": 4,
+  "pick": 9,
+  "team_name": "Brooklyn Grays",
+  "owner": "eman7400",
+  "via": "STL",
+  "player": "Dave Orr",
+  "pos": "1B"
+ },
+ {
+  "round": 4,
+  "pick": 10,
+  "team_name": "Boston Beaneaters",
+  "owner": "firesalt",
+  "via": "",
+  "player": "Paul Hines",
+  "pos": "OF"
+ },
+ {
+  "round": 4,
+  "pick": 11,
+  "team_name": "Pittsburgh Alleghenys",
+  "owner": "ZeeBall",
+  "via": "CIN",
+  "player": "Pete Conway",
+  "pos": "P"
+ },
+ {
+  "round": 4,
+  "pick": 12,
+  "team_name": "Pittsburgh Alleghenys",
+  "owner": "ZeeBall",
+  "via": "",
+  "player": "Deacon White",
+  "pos": "3B"
+ },
+ {
+  "round": 5,
+  "pick": 1,
+  "team_name": "Pittsburgh Alleghenys",
+  "owner": "ZeeBall",
+  "via": "",
+  "player": "Hank O'Day",
+  "pos": "P"
+ },
+ {
+  "round": 5,
+  "pick": 2,
+  "team_name": "New York Giants",
+  "owner": "epup1975",
+  "via": "CIN",
+  "player": "John Ward",
+  "pos": "SS"
+ },
+ {
+  "round": 5,
+  "pick": 3,
+  "team_name": "Boston Beaneaters",
+  "owner": "firesalt",
+  "via": "",
+  "player": "Charlie Sweeney",
+  "pos": "OF"
+ },
+ {
+  "round": 5,
+  "pick": 4,
+  "team_name": "St. Louis Browns",
+  "owner": "RedMustard",
+  "via": "",
+  "player": "Germany Smith",
+  "pos": "SS"
+ },
+ {
+  "round": 5,
+  "pick": 5,
+  "team_name": "Brooklyn Grays",
+  "owner": "eman7400",
+  "via": "",
+  "player": "George Pinkney",
+  "pos": "2B"
+ },
+ {
+  "round": 5,
+  "pick": 6,
+  "team_name": "Philadelphia Quakers",
+  "owner": "danidon",
+  "via": "",
+  "player": "Jim Fogarty",
+  "pos": "OF"
+ },
+ {
+  "round": 5,
+  "pick": 7,
+  "team_name": "Chicago White Stockings",
+  "owner": "szczubelek",
+  "via": "",
+  "player": "Charley Jones",
+  "pos": "OF"
+ },
+ {
+  "round": 5,
+  "pick": 8,
+  "team_name": "Cincinnati Red Stockings",
+  "owner": "crazyjoe02",
+  "via": "NYG",
+  "player": "John Reilly",
+  "pos": "1B"
+ },
+ {
+  "round": 5,
+  "pick": 9,
+  "team_name": "Philadelphia Athletics",
+  "owner": "bingo_long",
+  "via": "",
+  "player": "Blondie Purcell",
+  "pos": "OF"
+ },
+ {
+  "round": 5,
+  "pick": 10,
+  "team_name": "Baltimore Orioles",
+  "owner": "JAMESA",
+  "via": "",
+  "player": "Cub Stricker",
+  "pos": "2B"
+ },
+ {
+  "round": 5,
+  "pick": 11,
+  "team_name": "Detroit Wolverines",
+  "owner": "gbakker",
+  "via": "",
+  "player": "Dupee Shaw",
+  "pos": "P"
+ },
+ {
+  "round": 5,
+  "pick": 12,
+  "team_name": "Louisville Colonels",
+  "owner": "BullMoose",
+  "via": "",
+  "player": "Fred Pfeffer",
+  "pos": "2B"
+ },
+ {
+  "round": 6,
+  "pick": 1,
+  "team_name": "Louisville Colonels",
+  "owner": "BullMoose",
+  "via": "",
+  "player": "Ed Cushman",
+  "pos": "P"
+ },
+ {
+  "round": 6,
+  "pick": 2,
+  "team_name": "Detroit Wolverines",
+  "owner": "gbakker",
+  "via": "",
+  "player": "George Wood",
+  "pos": "OF"
+ },
+ {
+  "round": 6,
+  "pick": 3,
+  "team_name": "Baltimore Orioles",
+  "owner": "JAMESA",
+  "via": "",
+  "player": "John Kerins",
+  "pos": "1B"
+ },
+ {
+  "round": 6,
+  "pick": 4,
+  "team_name": "Philadelphia Athletics",
+  "owner": "bingo_long",
+  "via": "",
+  "player": "Frank Fennelly",
+  "pos": "SS"
+ },
+ {
+  "round": 6,
+  "pick": 5,
+  "team_name": "New York Giants",
+  "owner": "epup1975",
+  "via": "",
+  "player": "Jocko Milligan",
+  "pos": "C"
+ },
+ {
+  "round": 6,
+  "pick": 6,
+  "team_name": "Boston Beaneaters",
+  "owner": "firesalt",
+  "via": "CHC",
+  "player": "Pop Smith",
+  "pos": "2B"
+ },
+ {
+  "round": 6,
+  "pick": 7,
+  "team_name": "Pittsburgh Alleghenys",
+  "owner": "ZeeBall",
+  "via": "PHI",
+  "player": "Fred Dunlap",
+  "pos": "2B"
+ },
+ {
+  "round": 6,
+  "pick": 8,
+  "team_name": "Brooklyn Grays",
+  "owner": "eman7400",
+  "via": "",
+  "player": "Jim McTamany",
+  "pos": "OF"
+ },
+ {
+  "round": 6,
+  "pick": 9,
+  "team_name": "St. Louis Browns",
+  "owner": "RedMustard",
+  "via": "",
+  "player": "Charlie Comiskey",
+  "pos": "1B"
+ },
+ {
+  "round": 6,
+  "pick": 10,
+  "team_name": "Boston Beaneaters",
+  "owner": "firesalt",
+  "via": "",
+  "player": "John Kirby",
+  "pos": "P"
+ },
+ {
+  "round": 6,
+  "pick": 11,
+  "team_name": "Cincinnati Red Stockings",
+  "owner": "crazyjoe02",
+  "via": "",
+  "player": "Frank Foreman",
+  "pos": "P"
+ },
+ {
+  "round": 6,
+  "pick": 12,
+  "team_name": "Pittsburgh Alleghenys",
+  "owner": "ZeeBall",
+  "via": "",
+  "player": "Fred Carroll",
+  "pos": "C"
+ },
+ {
+  "round": 7,
+  "pick": 1,
+  "team_name": "Pittsburgh Alleghenys",
+  "owner": "ZeeBall",
+  "via": "",
+  "player": "Jim McCormick",
+  "pos": "P"
+ },
+ {
+  "round": 7,
+  "pick": 2,
+  "team_name": "Cincinnati Red Stockings",
+  "owner": "crazyjoe02",
+  "via": "",
+  "player": "Joe Quinn",
+  "pos": "OF"
+ },
+ {
+  "round": 7,
+  "pick": 3,
+  "team_name": "Chicago White Stockings",
+  "owner": "szczubelek",
+  "via": "BSN",
+  "player": "Jack Lynch",
+  "pos": "P"
+ },
+ {
+  "round": 7,
+  "pick": 4,
+  "team_name": "St. Louis Browns",
+  "owner": "RedMustard",
+  "via": "",
+  "player": "Yank Robinson",
+  "pos": "OF"
+ },
+ {
+  "round": 7,
+  "pick": 5,
+  "team_name": "Brooklyn Grays",
+  "owner": "eman7400",
+  "via": "",
+  "player": "Al Mays",
+  "pos": "P"
+ },
+ {
+  "round": 7,
+  "pick": 6,
+  "team_name": "Philadelphia Quakers",
+  "owner": "danidon",
+  "via": "",
+  "player": "Deacon McGuire",
+  "pos": "C"
+ },
+ {
+  "round": 7,
+  "pick": 7,
+  "team_name": "Chicago White Stockings",
+  "owner": "szczubelek",
+  "via": "",
+  "player": "Abner Dalrymple",
+  "pos": "OF"
+ },
+ {
+  "round": 7,
+  "pick": 8,
+  "team_name": "New York Giants",
+  "owner": "epup1975",
+  "via": "",
+  "player": "Ed Daily",
+  "pos": "P"
+ },
+ {
+  "round": 7,
+  "pick": 9,
+  "team_name": "Philadelphia Athletics",
+  "owner": "bingo_long",
+  "via": "",
+  "player": "Jack O'Brien",
+  "pos": "C"
+ },
+ {
+  "round": 7,
+  "pick": 10,
+  "team_name": "Baltimore Orioles",
+  "owner": "JAMESA",
+  "via": "",
+  "player": "Ned Hanlon",
+  "pos": "OF"
+ },
+ {
+  "round": 7,
+  "pick": 11,
+  "team_name": "Detroit Wolverines",
+  "owner": "gbakker",
+  "via": "",
+  "player": "Charlie Bennett",
+  "pos": "C"
+ },
+ {
+  "round": 7,
+  "pick": 12,
+  "team_name": "Louisville Colonels",
+  "owner": "BullMoose",
+  "via": "",
+  "player": "Steve Brady",
+  "pos": "OF"
+ },
+ {
+  "round": 8,
+  "pick": 1,
+  "team_name": "Louisville Colonels",
+  "owner": "BullMoose",
+  "via": "",
+  "player": "John Healy",
+  "pos": "P"
+ },
+ {
+  "round": 8,
+  "pick": 2,
+  "team_name": "Detroit Wolverines",
+  "owner": "gbakker",
+  "via": "",
+  "player": "Dan Casey",
+  "pos": "P"
+ },
+ {
+  "round": 8,
+  "pick": 3,
+  "team_name": "Baltimore Orioles",
+  "owner": "JAMESA",
+  "via": "",
+  "player": "Hardie Henderson",
+  "pos": "P"
+ },
+ {
+  "round": 8,
+  "pick": 4,
+  "team_name": "Philadelphia Athletics",
+  "owner": "bingo_long",
+  "via": "",
+  "player": "John Coleman",
+  "pos": "OF"
+ },
+ {
+  "round": 8,
+  "pick": 5,
+  "team_name": "New York Giants",
+  "owner": "epup1975",
+  "via": "",
+  "player": "Alex McKinnon",
+  "pos": "1B"
+ },
+ {
+  "round": 8,
+  "pick": 6,
+  "team_name": "Chicago White Stockings",
+  "owner": "szczubelek",
+  "via": "",
+  "player": "Ned Williamson",
+  "pos": "3B"
+ },
+ {
+  "round": 8,
+  "pick": 7,
+  "team_name": "Philadelphia Quakers",
+  "owner": "danidon",
+  "via": "",
+  "player": "Joe Mulvey",
+  "pos": "3B"
+ },
+ {
+  "round": 8,
+  "pick": 8,
+  "team_name": "Brooklyn Grays",
+  "owner": "eman7400",
+  "via": "",
+  "player": "Paul Radford",
+  "pos": "OF"
+ },
+ {
+  "round": 8,
+  "pick": 9,
+  "team_name": "St. Louis Browns",
+  "owner": "RedMustard",
+  "via": "",
+  "player": "Sam Barkley",
+  "pos": "2B"
+ },
+ {
+  "round": 8,
+  "pick": 10,
+  "team_name": "Boston Beaneaters",
+  "owner": "firesalt",
+  "via": "",
+  "player": "Ed Andrews",
+  "pos": "OF"
+ },
+ {
+  "round": 8,
+  "pick": 11,
+  "team_name": "Cincinnati Red Stockings",
+  "owner": "crazyjoe02",
+  "via": "",
+  "player": "Joe Sommer",
+  "pos": "OF"
+ },
+ {
+  "round": 8,
+  "pick": 12,
+  "team_name": "Pittsburgh Alleghenys",
+  "owner": "ZeeBall",
+  "via": "",
+  "player": "Sid Farrar",
+  "pos": "1B"
+ },
+ {
+  "round": 9,
+  "pick": 1,
+  "team_name": "Pittsburgh Alleghenys",
+  "owner": "ZeeBall",
+  "via": "",
+  "player": "Emmett Seery",
+  "pos": "OF"
+ },
+ {
+  "round": 9,
+  "pick": 2,
+  "team_name": "Cincinnati Red Stockings",
+  "owner": "crazyjoe02",
+  "via": "",
+  "player": "Bill Phillips",
+  "pos": "1B"
+ },
+ {
+  "round": 9,
+  "pick": 3,
+  "team_name": "Boston Beaneaters",
+  "owner": "firesalt",
+  "via": "",
+  "player": "Ezra Sutton",
+  "pos": "3B"
+ },
+ {
+  "round": 9,
+  "pick": 4,
+  "team_name": "St. Louis Browns",
+  "owner": "RedMustard",
+  "via": "",
+  "player": "Chicken Wolf",
+  "pos": "OF"
+ },
+ {
+  "round": 9,
+  "pick": 5,
+  "team_name": "Brooklyn Grays",
+  "owner": "eman7400",
+  "via": "",
+  "player": "Ed Swartwood",
+  "pos": "OF"
+ },
+ {
+  "round": 9,
+  "pick": 6,
+  "team_name": "Philadelphia Quakers",
+  "owner": "danidon",
+  "via": "",
+  "player": "John Morrill",
+  "pos": "1B"
+ },
+ {
+  "round": 9,
+  "pick": 7,
+  "team_name": "Chicago White Stockings",
+  "owner": "szczubelek",
+  "via": "",
+  "player": "Bill McClellan",
+  "pos": "3B"
+ },
+ {
+  "round": 9,
+  "pick": 8,
+  "team_name": "New York Giants",
+  "owner": "epup1975",
+  "via": "",
+  "player": "Mike Dorgan",
+  "pos": "OF"
+ },
+ {
+  "round": 9,
+  "pick": 9,
+  "team_name": "Philadelphia Athletics",
+  "owner": "bingo_long",
+  "via": "",
+  "player": "Al Myers",
+  "pos": "2B"
+ },
+ {
+  "round": 9,
+  "pick": 10,
+  "team_name": "Baltimore Orioles",
+  "owner": "JAMESA",
+  "via": "",
+  "player": "Dick Johnston",
+  "pos": "OF"
+ },
+ {
+  "round": 9,
+  "pick": 11,
+  "team_name": "Detroit Wolverines",
+  "owner": "gbakker",
+  "via": "",
+  "player": "Mox McQuery",
+  "pos": "1B"
+ },
+ {
+  "round": 9,
+  "pick": 12,
+  "team_name": "Louisville Colonels",
+  "owner": "BullMoose",
+  "via": "",
+  "player": "Amos Cross",
+  "pos": "C"
+ },
+ {
+  "round": 10,
+  "pick": 1,
+  "team_name": "Louisville Colonels",
+  "owner": "BullMoose",
+  "via": "",
+  "player": "Chief Roseman",
+  "pos": "OF"
+ },
+ {
+  "round": 10,
+  "pick": 2,
+  "team_name": "Detroit Wolverines",
+  "owner": "gbakker",
+  "via": "",
+  "player": "Art Whitney",
+  "pos": "3B"
+ },
+ {
+  "round": 10,
+  "pick": 3,
+  "team_name": "Baltimore Orioles",
+  "owner": "JAMESA",
+  "via": "",
+  "player": "Larry McKeon",
+  "pos": "P"
+ },
+ {
+  "round": 10,
+  "pick": 4,
+  "team_name": "Philadelphia Athletics",
+  "owner": "bingo_long",
+  "via": "",
+  "player": "Fred Corey",
+  "pos": "3B"
+ },
+ {
+  "round": 10,
+  "pick": 5,
+  "team_name": "New York Giants",
+  "owner": "epup1975",
+  "via": "",
+  "player": "Pete Gillespie",
+  "pos": "OF"
+ },
+ {
+  "round": 10,
+  "pick": 6,
+  "team_name": "Chicago White Stockings",
+  "owner": "szczubelek",
+  "via": "",
+  "player": "John Clarkson",
+  "pos": "P"
+ },
+ {
+  "round": 10,
+  "pick": 7,
+  "team_name": "Philadelphia Quakers",
+  "owner": "danidon",
+  "via": "",
+  "player": "Arthur Irwin",
+  "pos": "SS"
+ },
+ {
+  "round": 10,
+  "pick": 8,
+  "team_name": "Brooklyn Grays",
+  "owner": "eman7400",
+  "via": "",
+  "player": "Dave Foutz",
+  "pos": "P"
+ },
+ {
+  "round": 10,
+  "pick": 9,
+  "team_name": "Cincinnati Red Stockings",
+  "owner": "crazyjoe02",
+  "via": "STL",
+  "player": "Buck Ewing",
+  "pos": "C"
+ },
+ {
+  "round": 10,
+  "pick": 10,
+  "team_name": "Boston Beaneaters",
+  "owner": "firesalt",
+  "via": "",
+  "player": "Pete Hotaling",
+  "pos": "OF"
+ },
+ {
+  "round": 10,
+  "pick": 11,
+  "team_name": "Cincinnati Red Stockings",
+  "owner": "crazyjoe02",
+  "via": "",
+  "player": "Charley Radbourn",
+  "pos": "P"
+ },
+ {
+  "round": 10,
+  "pick": 12,
+  "team_name": "Pittsburgh Alleghenys",
+  "owner": "ZeeBall",
+  "via": "",
+  "player": "Bill Kuehne",
+  "pos": "3B"
+ },
+ {
+  "round": 11,
+  "pick": 1,
+  "team_name": "Pittsburgh Alleghenys",
+  "owner": "ZeeBall",
+  "via": "",
+  "player": "Danny Richardson",
+  "pos": "OF"
+ },
+ {
+  "round": 11,
+  "pick": 2,
+  "team_name": "Brooklyn Grays",
+  "owner": "eman7400",
+  "via": "CIN",
+  "player": "Charlie Bassett",
+  "pos": "2B"
+ },
+ {
+  "round": 11,
+  "pick": 3,
+  "team_name": "Pittsburgh Alleghenys",
+  "owner": "ZeeBall",
+  "via": "BSN",
+  "player": "John Harkins",
+  "pos": "P"
+ },
+ {
+  "round": 11,
+  "pick": 4,
+  "team_name": "Cincinnati Red Stockings",
+  "owner": "crazyjoe02",
+  "via": "STL",
+  "player": "Stump Wiedman",
+  "pos": "P"
+ },
+ {
+  "round": 11,
+  "pick": 5,
+  "team_name": "Brooklyn Grays",
+  "owner": "eman7400",
+  "via": "",
+  "player": "Jumbo McGinnis",
+  "pos": "P"
+ },
+ {
+  "round": 11,
+  "pick": 6,
+  "team_name": "Pittsburgh Alleghenys",
+  "owner": "ZeeBall",
+  "via": "PHI",
+  "player": "Sy Sutcliffe",
+  "pos": "C"
+ },
+ {
+  "round": 11,
+  "pick": 7,
+  "team_name": "Chicago White Stockings",
+  "owner": "szczubelek",
+  "via": "",
+  "player": "Will White",
+  "pos": "P"
+ },
+ {
+  "round": 11,
+  "pick": 8,
+  "team_name": "New York Giants",
+  "owner": "epup1975",
+  "via": "",
+  "player": "Thomas Esterbrook",
+  "pos": "3B"
+ },
+ {
+  "round": 11,
+  "pick": 9,
+  "team_name": "Philadelphia Athletics",
+  "owner": "bingo_long",
+  "via": "",
+  "player": "Charlie Reipschlager",
+  "pos": "C"
+ },
+ {
+  "round": 11,
+  "pick": 10,
+  "team_name": "Baltimore Orioles",
+  "owner": "JAMESA",
+  "via": "",
+  "player": "Hick Carpenter",
+  "pos": "3B"
+ },
+ {
+  "round": 11,
+  "pick": 11,
+  "team_name": "Detroit Wolverines",
+  "owner": "gbakker",
+  "via": "",
+  "player": "Phil Reccius",
+  "pos": "3B"
+ },
+ {
+  "round": 11,
+  "pick": 12,
+  "team_name": "Louisville Colonels",
+  "owner": "BullMoose",
+  "via": "",
+  "player": "Con Daily",
+  "pos": "C"
+ },
+ {
+  "round": 12,
+  "pick": 1,
+  "team_name": "Louisville Colonels",
+  "owner": "BullMoose",
+  "via": "",
+  "player": "Pete Meegan",
+  "pos": "P"
+ },
+ {
+  "round": 12,
+  "pick": 2,
+  "team_name": "Detroit Wolverines",
+  "owner": "gbakker",
+  "via": "",
+  "player": "Cliff Carroll",
+  "pos": "OF"
+ },
+ {
+  "round": 12,
+  "pick": 3,
+  "team_name": "Baltimore Orioles",
+  "owner": "JAMESA",
+  "via": "",
+  "player": "Joe Start",
+  "pos": "1B"
+ },
+ {
+  "round": 12,
+  "pick": 4,
+  "team_name": "Philadelphia Athletics",
+  "owner": "bingo_long",
+  "via": "",
+  "player": "Norm Baker",
+  "pos": "P"
+ },
+ {
+  "round": 12,
+  "pick": 5,
+  "team_name": "New York Giants",
+  "owner": "epup1975",
+  "via": "",
+  "player": "Pat Deasley",
+  "pos": "C"
+ },
+ {
+  "round": 12,
+  "pick": 6,
+  "team_name": "Chicago White Stockings",
+  "owner": "szczubelek",
+  "via": "",
+  "player": "Fred Lewis",
+  "pos": "OF"
+ },
+ {
+  "round": 12,
+  "pick": 7,
+  "team_name": "Philadelphia Quakers",
+  "owner": "danidon",
+  "via": "",
+  "player": "Candy Nelson",
+  "pos": "SS"
+ },
+ {
+  "round": 12,
+  "pick": 8,
+  "team_name": "Brooklyn Grays",
+  "owner": "eman7400",
+  "via": "",
+  "player": "Bill Gleason",
+  "pos": "SS"
+ },
+ {
+  "round": 12,
+  "pick": 9,
+  "team_name": "St. Louis Browns",
+  "owner": "RedMustard",
+  "via": "",
+  "player": "Doc Bushong",
+  "pos": "C"
+ },
+ {
+  "round": 12,
+  "pick": 10,
+  "team_name": "Boston Beaneaters",
+  "owner": "firesalt",
+  "via": "",
+  "player": "John Henry",
+  "pos": "P"
+ },
+ {
+  "round": 12,
+  "pick": 11,
+  "team_name": "Cincinnati Red Stockings",
+  "owner": "crazyjoe02",
+  "via": "",
+  "player": "Fred Mann",
+  "pos": "OF"
+ },
+ {
+  "round": 12,
+  "pick": 12,
+  "team_name": "Pittsburgh Alleghenys",
+  "owner": "ZeeBall",
+  "via": "",
+  "player": "Ed Knouff",
+  "pos": "P"
+ },
+ {
+  "round": 13,
+  "pick": 1,
+  "team_name": "Pittsburgh Alleghenys",
+  "owner": "ZeeBall",
+  "via": "",
+  "player": "Billy Serad",
+  "pos": "P"
+ },
+ {
+  "round": 13,
+  "pick": 2,
+  "team_name": "Cincinnati Red Stockings",
+  "owner": "crazyjoe02",
+  "via": "",
+  "player": "Ed Crane",
+  "pos": "OF"
+ },
+ {
+  "round": 13,
+  "pick": 3,
+  "team_name": "Boston Beaneaters",
+  "owner": "firesalt",
+  "via": "",
+  "player": "Bill Vinton",
+  "pos": "P"
+ },
+ {
+  "round": 13,
+  "pick": 4,
+  "team_name": "St. Louis Browns",
+  "owner": "RedMustard",
+  "via": "",
+  "player": "Mike Muldoon",
+  "pos": "3B"
+ },
+ {
+  "round": 13,
+  "pick": 5,
+  "team_name": "Brooklyn Grays",
+  "owner": "eman7400",
+  "via": "",
+  "player": "George Pechiney",
+  "pos": "P"
+ },
+ {
+  "round": 13,
+  "pick": 6,
+  "team_name": "Brooklyn Grays",
+  "owner": "eman7400",
+  "via": "PHI",
+  "player": "Jim Keenan",
+  "pos": "C"
+ },
+ {
+  "round": 13,
+  "pick": 7,
+  "team_name": "Chicago White Stockings",
+  "owner": "szczubelek",
+  "via": "",
+  "player": "Sam Trott",
+  "pos": "C"
+ },
+ {
+  "round": 13,
+  "pick": 8,
+  "team_name": "New York Giants",
+  "owner": "epup1975",
+  "via": "",
+  "player": "Bill Mountjoy",
+  "pos": "P"
+ },
+ {
+  "round": 13,
+  "pick": 9,
+  "team_name": "Philadelphia Athletics",
+  "owner": "bingo_long",
+  "via": "",
+  "player": "George Strief",
+  "pos": "3B"
+ },
+ {
+  "round": 13,
+  "pick": 10,
+  "team_name": "Baltimore Orioles",
+  "owner": "JAMESA",
+  "via": "",
+  "player": "Hugh Nicol",
+  "pos": "OF"
+ },
+ {
+  "round": 13,
+  "pick": 11,
+  "team_name": "Detroit Wolverines",
+  "owner": "gbakker",
+  "via": "",
+  "player": "Jack Manning",
+  "pos": "OF"
+ },
+ {
+  "round": 13,
+  "pick": 12,
+  "team_name": "Louisville Colonels",
+  "owner": "BullMoose",
+  "via": "",
+  "player": "Milt Scott",
+  "pos": "1B"
+ },
+ {
+  "round": 14,
+  "pick": 1,
+  "team_name": "Louisville Colonels",
+  "owner": "BullMoose",
+  "via": "",
+  "player": "Mike Hines",
+  "pos": "OF"
+ },
+ {
+  "round": 14,
+  "pick": 2,
+  "team_name": "Detroit Wolverines",
+  "owner": "gbakker",
+  "via": "",
+  "player": "Jim Lillie",
+  "pos": "OF"
+ },
+ {
+  "round": 14,
+  "pick": 3,
+  "team_name": "Baltimore Orioles",
+  "owner": "JAMESA",
+  "via": "",
+  "player": "Larry Corcoran",
+  "pos": "P"
+ },
+ {
+  "round": 14,
+  "pick": 4,
+  "team_name": "Philadelphia Athletics",
+  "owner": "bingo_long",
+  "via": "",
+  "player": "Dennis Casey",
+  "pos": "OF"
+ },
+ {
+  "round": 14,
+  "pick": 5,
+  "team_name": "New York Giants",
+  "owner": "epup1975",
+  "via": "",
+  "player": "Hugh Daily",
+  "pos": "P"
+ },
+ {
+  "round": 14,
+  "pick": 6,
+  "team_name": "Chicago White Stockings",
+  "owner": "szczubelek",
+  "via": "",
+  "player": "Billy Sunday",
+  "pos": "OF"
+ },
+ {
+  "round": 14,
+  "pick": 7,
+  "team_name": "Philadelphia Quakers",
+  "owner": "danidon",
+  "via": "",
+  "player": "Silver Flint",
+  "pos": "C"
+ },
+ {
+  "round": 14,
+  "pick": 8,
+  "team_name": "Brooklyn Grays",
+  "owner": "eman7400",
+  "via": "",
+  "player": "Pete Wood",
+  "pos": "P"
+ },
+ {
+  "round": 14,
+  "pick": 9,
+  "team_name": "St. Louis Browns",
+  "owner": "RedMustard",
+  "via": "",
+  "player": "Frank Mountain",
+  "pos": "P"
+ },
+ {
+  "round": 14,
+  "pick": 10,
+  "team_name": "Boston Beaneaters",
+  "owner": "firesalt",
+  "via": "",
+  "player": "Sadie Houck",
+  "pos": "SS"
+ },
+ {
+  "round": 14,
+  "pick": 11,
+  "team_name": "Cincinnati Red Stockings",
+  "owner": "crazyjoe02",
+  "via": "",
+  "player": "Charlie Bastian",
+  "pos": "SS"
+ },
+ {
+  "round": 14,
+  "pick": 12,
+  "team_name": "Pittsburgh Alleghenys",
+  "owner": "ZeeBall",
+  "via": "",
+  "player": "Charlie Ganzel",
+  "pos": "C"
+ },
+ {
+  "round": 15,
+  "pick": 1,
+  "team_name": "Pittsburgh Alleghenys",
+  "owner": "ZeeBall",
+  "via": "",
+  "player": "Ecky Stearns",
+  "pos": "1B"
+ },
+ {
+  "round": 15,
+  "pick": 2,
+  "team_name": "St. Louis Browns",
+  "owner": "RedMustard",
+  "via": "CIN",
+  "player": "Jack Farrell",
+  "pos": "2B"
+ },
+ {
+  "round": 15,
+  "pick": 3,
+  "team_name": "Boston Beaneaters",
+  "owner": "firesalt",
+  "via": "",
+  "player": "Tom Poorman",
+  "pos": "OF"
+ },
+ {
+  "round": 15,
+  "pick": 4,
+  "team_name": "St. Louis Browns",
+  "owner": "RedMustard",
+  "via": "",
+  "player": "Jimmy Peoples",
+  "pos": "C"
+ },
+ {
+  "round": 15,
+  "pick": 5,
+  "team_name": "Brooklyn Grays",
+  "owner": "eman7400",
+  "via": "",
+  "player": "Jim Field",
+  "pos": "1B"
+ },
+ {
+  "round": 15,
+  "pick": 6,
+  "team_name": "Brooklyn Grays",
+  "owner": "eman7400",
+  "via": "PHI",
+  "player": "Doug Crothers",
+  "pos": "P"
+ },
+ {
+  "round": 15,
+  "pick": 7,
+  "team_name": "Chicago White Stockings",
+  "owner": "szczubelek",
+  "via": "",
+  "player": "Daisy Davis",
+  "pos": "P"
+ },
+ {
+  "round": 15,
+  "pick": 8,
+  "team_name": "New York Giants",
+  "owner": "epup1975",
+  "via": "",
+  "player": "Jerry Dorgan",
+  "pos": "OF"
+ },
+ {
+  "round": 15,
+  "pick": 9,
+  "team_name": "Philadelphia Athletics",
+  "owner": "bingo_long",
+  "via": "",
+  "player": "Tim Manning",
+  "pos": "2B"
+ },
+ {
+  "round": 15,
+  "pick": 10,
+  "team_name": "Baltimore Orioles",
+  "owner": "JAMESA",
+  "via": "",
+  "player": "George Meyers",
+  "pos": "C"
+ },
+ {
+  "round": 15,
+  "pick": 11,
+  "team_name": "Detroit Wolverines",
+  "owner": "gbakker",
+  "via": "",
+  "player": "Jimmy Macullar",
+  "pos": "SS"
+ },
+ {
+  "round": 15,
+  "pick": 12,
+  "team_name": "Louisville Colonels",
+  "owner": "BullMoose",
+  "via": "",
+  "player": "Gus Shallix",
+  "pos": "P"
+ },
+ {
+  "round": 16,
+  "pick": 1,
+  "team_name": "Louisville Colonels",
+  "owner": "BullMoose",
+  "via": "",
+  "player": "Charlie Eden",
+  "pos": "OF"
+ },
+ {
+  "round": 16,
+  "pick": 2,
+  "team_name": "Detroit Wolverines",
+  "owner": "gbakker",
+  "via": "",
+  "player": "Ted Kennedy",
+  "pos": "P"
+ },
+ {
+  "round": 16,
+  "pick": 3,
+  "team_name": "Baltimore Orioles",
+  "owner": "JAMESA",
+  "via": "",
+  "player": "The Only Nolan",
+  "pos": "P"
+ },
+ {
+  "round": 16,
+  "pick": 4,
+  "team_name": "Philadelphia Athletics",
+  "owner": "bingo_long",
+  "via": "",
+  "player": "John Hofford",
+  "pos": "P"
+ },
+ {
+  "round": 16,
+  "pick": 5,
+  "team_name": "New York Giants",
+  "owner": "epup1975",
+  "via": "",
+  "player": "Ed Begley",
+  "pos": "P"
+ },
+ {
+  "round": 16,
+  "pick": 6,
+  "team_name": "Chicago White Stockings",
+  "owner": "szczubelek",
+  "via": "",
+  "player": "Joe Hornung",
+  "pos": "OF"
+ },
+ {
+  "round": 16,
+  "pick": 7,
+  "team_name": "Philadelphia Quakers",
+  "owner": "danidon",
+  "via": "",
+  "player": "Bill Crowley",
+  "pos": "OF"
+ },
+ {
+  "round": 16,
+  "pick": 8,
+  "team_name": "Brooklyn Grays",
+  "owner": "eman7400",
+  "via": "",
+  "player": "Bob Emslie",
+  "pos": "P"
+ },
+ {
+  "round": 16,
+  "pick": 9,
+  "team_name": "St. Louis Browns",
+  "owner": "RedMustard",
+  "via": "",
+  "player": "Barney Gilligan",
+  "pos": "C"
+ },
+ {
+  "round": 16,
+  "pick": 10,
+  "team_name": "Boston Beaneaters",
+  "owner": "firesalt",
+  "via": "",
+  "player": "Tom York",
+  "pos": "OF"
+ },
+ {
+  "round": 16,
+  "pick": 11,
+  "team_name": "Cincinnati Red Stockings",
+  "owner": "crazyjoe02",
+  "via": "",
+  "player": "Jim Donnelly",
+  "pos": "3B"
+ },
+ {
+  "round": 17,
+  "pick": 1,
+  "team_name": "Pittsburgh Alleghenys",
+  "owner": "ZeeBall",
+  "via": "",
+  "player": "DONE",
+  "pos": ""
+ },
+ {
+  "round": 17,
+  "pick": 2,
+  "team_name": "Cincinnati Red Stockings",
+  "owner": "crazyjoe02",
+  "via": "",
+  "player": "Kid Baldwin",
+  "pos": "C"
+ },
+ {
+  "round": 17,
+  "pick": 3,
+  "team_name": "Boston Beaneaters",
+  "owner": "firesalt",
+  "via": "",
+  "player": "Jack Burdock",
+  "pos": "2B"
+ },
+ {
+  "round": 17,
+  "pick": 4,
+  "team_name": "St. Louis Browns",
+  "owner": "RedMustard",
+  "via": "",
+  "player": "Joe Miller",
+  "pos": "SS"
+ },
+ {
+  "round": 17,
+  "pick": 5,
+  "team_name": "Brooklyn Grays",
+  "owner": "eman7400",
+  "via": "",
+  "player": "Leech Maskrey",
+  "pos": "OF"
+ },
+ {
+  "round": 17,
+  "pick": 6,
+  "team_name": "Philadelphia Quakers",
+  "owner": "danidon",
+  "via": "",
+  "player": "Unknown Palmer",
+  "pos": "P"
+ },
+ {
+  "round": 17,
+  "pick": 7,
+  "team_name": "Chicago White Stockings",
+  "owner": "szczubelek",
+  "via": "",
+  "player": "Pop Snyder",
+  "pos": "C"
+ },
+ {
+  "round": 17,
+  "pick": 8,
+  "team_name": "New York Giants",
+  "owner": "epup1975",
+  "via": "",
+  "player": "Buck Becannon",
+  "pos": "P"
+ },
+ {
+  "round": 17,
+  "pick": 9,
+  "team_name": "Philadelphia Athletics",
+  "owner": "bingo_long",
+  "via": "",
+  "player": "Ed Greer",
+  "pos": "OF"
+ },
+ {
+  "round": 17,
+  "pick": 10,
+  "team_name": "Baltimore Orioles",
+  "owner": "JAMESA",
+  "via": "",
+  "player": "John Connor",
+  "pos": "P"
+ },
+ {
+  "round": 17,
+  "pick": 11,
+  "team_name": "Detroit Wolverines",
+  "owner": "gbakker",
+  "via": "",
+  "player": "Fatty Briody",
+  "pos": "C"
+ },
+ {
+  "round": 17,
+  "pick": 12,
+  "team_name": "Louisville Colonels",
+  "owner": "BullMoose",
+  "via": "",
+  "player": "Pat Dealy",
+  "pos": "C"
+ },
+ {
+  "round": 18,
+  "pick": 1,
+  "team_name": "Louisville Colonels",
+  "owner": "BullMoose",
+  "via": "",
+  "player": "Frank Hankinson",
+  "pos": "3B"
+ },
+ {
+  "round": 18,
+  "pick": 2,
+  "team_name": "Detroit Wolverines",
+  "owner": "gbakker",
+  "via": "",
+  "player": "Tom McLaughlin",
+  "pos": "2B"
+ },
+ {
+  "round": 18,
+  "pick": 3,
+  "team_name": "Baltimore Orioles",
+  "owner": "JAMESA",
+  "via": "",
+  "player": "Joe Gerhardt",
+  "pos": "2B"
+ },
+ {
+  "round": 18,
+  "pick": 4,
+  "team_name": "Philadelphia Athletics",
+  "owner": "bingo_long",
+  "via": "",
+  "player": "Martin Powell",
+  "pos": "1B"
+ },
+ {
+  "round": 18,
+  "pick": 5,
+  "team_name": "New York Giants",
+  "owner": "epup1975",
+  "via": "",
+  "player": "Bill Krieg",
+  "pos": "C"
+ },
+ {
+  "round": 18,
+  "pick": 6,
+  "team_name": "Chicago White Stockings",
+  "owner": "szczubelek",
+  "via": "",
+  "player": "Orator Shaffer",
+  "pos": "OF"
+ },
+ {
+  "round": 18,
+  "pick": 7,
+  "team_name": "Philadelphia Quakers",
+  "owner": "danidon",
+  "via": "",
+  "player": "Jim Manning",
+  "pos": "OF"
+ },
+ {
+  "round": 18,
+  "pick": 8,
+  "team_name": "Brooklyn Grays",
+  "owner": "eman7400",
+  "via": "",
+  "player": "Bill Traffley",
+  "pos": "C"
+ },
+ {
+  "round": 18,
+  "pick": 9,
+  "team_name": "St. Louis Browns",
+  "owner": "RedMustard",
+  "via": "",
+  "player": "Joe Brown",
+  "pos": "P"
+ },
+ {
+  "round": 18,
+  "pick": 10,
+  "team_name": "Boston Beaneaters",
+  "owner": "firesalt",
+  "via": "",
+  "player": "Jim McCauley",
+  "pos": "C"
+ },
+ {
+  "round": 18,
+  "pick": 11,
+  "team_name": "Cincinnati Red Stockings",
+  "owner": "crazyjoe02",
+  "via": "",
+  "player": "Jim Clinton",
+  "pos": "OF"
+ },
+ {
+  "round": 19,
+  "pick": 1,
+  "team_name": "Cincinnati Red Stockings",
+  "owner": "crazyjoe02",
+  "via": "",
+  "player": "Davy Force",
+  "pos": "2B"
+ },
+ {
+  "round": 19,
+  "pick": 2,
+  "team_name": "Boston Beaneaters",
+  "owner": "firesalt",
+  "via": "",
+  "player": "Billy Geer",
+  "pos": "SS"
+ },
+ {
+  "round": 19,
+  "pick": 3,
+  "team_name": "St. Louis Browns",
+  "owner": "RedMustard",
+  "via": "",
+  "player": "Joe Quest",
+  "pos": "2B"
+ },
+ {
+  "round": 19,
+  "pick": 4,
+  "team_name": "Brooklyn Grays",
+  "owner": "eman7400",
+  "via": "",
+  "player": "Tom Forster",
+  "pos": "2B"
+ },
+ {
+  "round": 19,
+  "pick": 5,
+  "team_name": "Brooklyn Grays",
+  "owner": "eman7400",
+  "via": "PHI",
+  "player": "John Cassidy",
+  "pos": "OF"
+ },
+ {
+  "round": 19,
+  "pick": 6,
+  "team_name": "Chicago White Stockings",
+  "owner": "szczubelek",
+  "via": "",
+  "player": "Gid Gardner",
+  "pos": "2B"
+ },
+ {
+  "round": 19,
+  "pick": 7,
+  "team_name": "New York Giants",
+  "owner": "epup1975",
+  "via": "",
+  "player": "Dave Rowe",
+  "pos": "OF"
+ },
+ {
+  "round": 19,
+  "pick": 8,
+  "team_name": "Philadelphia Athletics",
+  "owner": "bingo_long",
+  "via": "",
+  "player": "Marr Phillips",
+  "pos": "SS"
+ },
+ {
+  "round": 19,
+  "pick": 9,
+  "team_name": "Baltimore Orioles",
+  "owner": "JAMESA",
+  "via": "",
+  "player": "Ed Kennedy",
+  "pos": "OF"
+ },
+ {
+  "round": 19,
+  "pick": 10,
+  "team_name": "Detroit Wolverines",
+  "owner": "gbakker",
+  "via": "",
+  "player": "Ed Caskin",
+  "pos": "3B"
+ },
+ {
+  "round": 19,
+  "pick": 11,
+  "team_name": "Louisville Colonels",
+  "owner": "BullMoose",
+  "via": "",
+  "player": "John Richmond",
+  "pos": "SS"
+ },
+ {
+  "round": 20,
+  "pick": 1,
+  "team_name": "Louisville Colonels",
+  "owner": "BullMoose",
+  "via": "",
+  "player": "Jake Evans",
+  "pos": "OF"
+ },
+ {
+  "round": 20,
+  "pick": 2,
+  "team_name": "Detroit Wolverines",
+  "owner": "gbakker",
+  "via": "",
+  "player": "Charlie Morton",
+  "pos": "3B"
+ },
+ {
+  "round": 20,
+  "pick": 3,
+  "team_name": "Baltimore Orioles",
+  "owner": "JAMESA",
+  "via": "",
+  "player": "Bill Holbert",
+  "pos": "C"
+ },
+ {
+  "round": 20,
+  "pick": 4,
+  "team_name": "Philadelphia Athletics",
+  "owner": "bingo_long",
+  "via": "",
+  "player": "Tom Lynch",
+  "pos": "OF"
+ },
+ {
+  "round": 20,
+  "pick": 5,
+  "team_name": "New York Giants",
+  "owner": "epup1975",
+  "via": "",
+  "player": "Tom Gunning",
+  "pos": "C"
+ },
+ {
+  "round": 20,
+  "pick": 6,
+  "team_name": "Chicago White Stockings",
+  "owner": "szczubelek",
+  "via": "",
+  "player": "Frank Ringo",
+  "pos": "C"
+ },
+ {
+  "round": 20,
+  "pick": 7,
+  "team_name": "Philadelphia Quakers",
+  "owner": "danidon",
+  "via": "",
+  "player": "Dasher Troy",
+  "pos": "2B"
+ },
+ {
+  "round": 20,
+  "pick": 8,
+  "team_name": "Brooklyn Grays",
+  "owner": "eman7400",
+  "via": "",
+  "player": "Dick Burns",
+  "pos": "OF"
+ },
+ {
+  "round": 20,
+  "pick": 9,
+  "team_name": "St. Louis Browns",
+  "owner": "RedMustard",
+  "via": "",
+  "player": "Joe Crotty",
+  "pos": "C"
+ },
+ {
+  "round": 20,
+  "pick": 10,
+  "team_name": "Cincinnati Red Stockings",
+  "owner": "crazyjoe02",
+  "via": "",
+  "player": "Chub Collins",
+  "pos": "SS"
+ },
+ {
+  "round": 21,
+  "pick": 1,
+  "team_name": "Philadelphia Quakers",
+  "owner": "danidon",
+  "via": "",
+  "player": "Gurdon Whiteley",
+  "pos": "OF"
+ },
+ {
+  "round": 21,
+  "pick": 2,
+  "team_name": "Chicago White Stockings",
+  "owner": "szczubelek",
+  "via": "",
+  "player": "Lon Knight",
+  "pos": "OF"
+ },
+ {
+  "round": 21,
+  "pick": 3,
+  "team_name": "New York Giants",
+  "owner": "epup1975",
+  "via": "",
+  "player": "Phil Powers",
+  "pos": "C"
+ },
+ {
+  "round": 22,
+  "pick": 1,
+  "team_name": "Philadelphia Quakers",
+  "owner": "danidon",
+  "via": "",
+  "player": "Sam Crane",
+  "pos": "2B"
+ },
+ {
+  "round": 23,
+  "pick": 1,
+  "team_name": "Philadelphia Quakers",
+  "owner": "danidon",
+  "via": "",
+  "player": "Rudy Kemmler",
+  "pos": "C"
+ }
+]

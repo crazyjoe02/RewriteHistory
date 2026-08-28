@@ -185,13 +185,13 @@
 <ul class="transactions-list">
 {% if draft_pick %}
 <li>Drafted {{ draft_pick.Round }}.{{ '%02d'|format(draft_pick.Pick) }} by
-<a href="{{ root }}teams/{{ draft_pick.TeamAbbr }}/index.html">{{ draft_pick.TeamName }}</a>
+<a href="{{ root }}teams/{{ hub_abbr.get(draft_pick.TeamAbbr, draft_pick.TeamAbbr) }}/index.html">{{ draft_pick.TeamName }}</a>
 in the {{ draft_pick.Season }} Draft.</li>
 {% endif %}
 {% for t in trades %}
 <li>{{ t.Season }}: Traded by
-<a href="{{ root }}teams/{{ t.FromTeamAbbr }}/index.html">{{ t.FromTeamName }}</a> to the
-<a href="{{ root }}teams/{{ t.ToTeamAbbr }}/index.html">{{ t.ToTeamName }}</a>.</li>
+<a href="{{ root }}teams/{{ hub_abbr.get(t.FromTeamAbbr, t.FromTeamAbbr) }}/index.html">{{ t.FromTeamName }}</a> to the
+<a href="{{ root }}teams/{{ hub_abbr.get(t.ToTeamAbbr, t.ToTeamAbbr) }}/index.html">{{ t.ToTeamName }}</a>.</li>
 {% endfor %}
 </ul>
 {% endif %}

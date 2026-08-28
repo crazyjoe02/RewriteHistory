@@ -3,7 +3,7 @@
 {% block breadcrumb %}
 <div class="breadcrumb">
 <a href="{{ root }}index.html">Home</a> &rsaquo;
-<a href="{{ root }}teams/{{ team.Abbr }}/index.html">{{ team.FranchiseName }}</a> &rsaquo;
+<a href="{{ root }}teams/{{ hub_abbr.get(team.Abbr, team.Abbr) }}/index.html">{{ team.FranchiseName }}</a> &rsaquo;
 {{ season }}
 </div>
 {% endblock %}
@@ -18,7 +18,6 @@ Record: {{ standing.W }}-{{ standing.L }} ({{ '%.3f'|format(standing.PCT|float) 
 {{ standing.League }} &middot; GB {{ standing.GB }}
 </div>
 <div class="subtitle">
-Division: {{ standing.DivRecord }} &middot;
 1-Run Games: {{ standing.OneRunRecord }} &middot;
 RF {{ standing.RF }} / RA {{ standing.RA }} &middot;
 Home {{ standing.Home }} / Away {{ standing.Away }}

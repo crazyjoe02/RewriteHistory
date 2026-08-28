@@ -6,7 +6,7 @@
 {% block content %}
 <h1 class="page-title">{{ season }} Season</h1>
 <div class="subtitle">
-Final standings for the {{ season }} season
+{% if is_preseason %}Franchises for the {{ season }} season &mdash; season not yet underway{% else %}Final standings for the {{ season }} season{% endif %}
 {% if has_allstar_game %} &middot; <a href="{{ root }}allstar-game/{{ season }}.html">All-Star Game Box Score</a>{% endif %}
 </div>
 
@@ -14,6 +14,18 @@ Final standings for the {{ season }} season
 {% for lg_name, lg_code, teams in leagues %}
 <div>
     <h2 class="section-title">{{ lg_name }}</h2>
+    {% if is_preseason %}
+    <div class="table-wrap">
+    <table class="stats">
+        <thead><tr><th class="left">Team</th></tr></thead>
+        <tbody>
+        {% for t in teams %}
+        <tr><td class="left"><a href="{{ root }}teams/{{ hub_abbr.get(t.Abbr, t.Abbr) }}/index.html">{{ t.FranchiseName }}</a></td></tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+    {% else %}
     <div class="table-wrap">
     <table class="stats">
         <thead>
@@ -41,6 +53,7 @@ Final standings for the {{ season }} season
         </tbody>
     </table>
     </div>
+    {% endif %}
 </div>
 {% endfor %}
 </div>
@@ -125,9 +138,9 @@ Final standings for the {{ season }} season
     <tr>
         <td>{{ t.Season }}</td>
         <td class="left">
-        <a href="{{ root }}teams/{{ t.FromTeamAbbr }}/index.html">{{ t.FromTeamName }}</a> trade
+        <a href="{{ root }}teams/{{ hub_abbr.get(t.FromTeamAbbr, t.FromTeamAbbr) }}/index.html">{{ t.FromTeamName }}</a> trade
         {% if t.PlayerID %}<a href="{{ root }}players/{{ t.PlayerID }}.html">{{ t.Player }}</a>{% else %}{{ t.Player }}{% endif %}
-        to the <a href="{{ root }}teams/{{ t.ToTeamAbbr }}/index.html">{{ t.ToTeamName }}</a>
+        to the <a href="{{ root }}teams/{{ hub_abbr.get(t.ToTeamAbbr, t.ToTeamAbbr) }}/index.html">{{ t.ToTeamName }}</a>
         </td>
     </tr>
     {% endfor %}

@@ -80,9 +80,26 @@ def discover_seasons():
 
 
 def main():
-    # --- Load master team registry ---
-    teams = load_csv(os.path.join(DATA_DIR, "teams.csv"))
-    teams_by_abbr = {t["Abbr"]: t for t in teams}
+    # --- Load franchise eras registry ---
+    team_eras = load_csv(os.path.join(DATA_DIR, "franchises.csv"))
+    teams = team_eras  # backward-compat alias used elsewhere for "all team rows"
+    teams_by_abbr = {t["Abbr"]: t for t in team_eras}
+
+    franchises_by_id = defaultdict(list)
+    for era in team_eras:
+        franchises_by_id[era["FranchiseID"]].append(era)
+    for fid in franchises_by_id:
+        franchises_by_id[fid].sort(key=lambda e: int(e["StartSeason"]))
+
+    # hub_abbr: every historical abbr -> the CURRENT (most recent / ongoing) abbr for its franchise.
+    # An era with a blank EndSeason is the active one; if somehow none are blank, use the latest StartSeason.
+    hub_abbr = {}
+    current_era_by_franchise = {}
+    for fid, eras in franchises_by_id.items():
+        current = next((e for e in eras if not e["EndSeason"]), eras[-1])
+        current_era_by_franchise[fid] = current
+        for e in eras:
+            hub_abbr[e["Abbr"]] = current["Abbr"]
 
     seasons = discover_seasons()
     if not seasons:
@@ -155,6 +172,7 @@ def main():
 
     # --- Set up Jinja ---
     env = Environment(loader=FileSystemLoader(TEMPLATES_DIR), trim_blocks=True, lstrip_blocks=True)
+    env.globals["hub_abbr"] = hub_abbr
 
     # --- Reset output dir (keep static/) ---
     if os.path.exists(SITE_DIR):
@@ -179,36 +197,43 @@ def main():
         with open(full_path, "w", encoding="utf-8") as f:
             f.write(tmpl.render(**ctx))
 
-    # --- Home page (latest season standings; data prepared here, written later once postseason data is ready) ---
-    latest_rows = all_standings[latest_season]
-    home_leagues_ctx = []
-    for lg_code in ["AA", "NL"]:
-        rows = [r for r in latest_rows if r["League"] == lg_code]
-        rows.sort(key=lambda r: -float(r["PCT"]))
-        home_leagues_ctx.append((LEAGUE_NAMES[lg_code], lg_code, rows))
+    # --- Home page (latest season standings; data written later once postseason data is ready) ---
 
     # --- Year standings pages (data prepared here; written later once awards/ASG data is ready) ---
+    def active_franchises_for_season(season):
+        """Whichever era of each franchise applies to this season (handles relocations)."""
+        active = []
+        for fid, eras in franchises_by_id.items():
+            era = next((e for e in eras if int(e["StartSeason"]) <= season
+                        and (not e["EndSeason"] or int(e["EndSeason"]) >= season)), None)
+            if era:
+                active.append(era)
+        return active
+
     year_leagues_ctx = {}
+    year_is_preseason = {}
     for season in seasons:
         rows = all_standings[season]
-        leagues_ctx = []
-        for lg_code in ["AA", "NL"]:
-            lg_rows = [r for r in rows if r["League"] == lg_code]
-            lg_rows.sort(key=lambda r: -float(r["PCT"]))
-            leagues_ctx.append((LEAGUE_NAMES[lg_code], lg_code, lg_rows))
-        year_leagues_ctx[season] = leagues_ctx
+        if rows:
+            year_is_preseason[season] = False
+            leagues_ctx = []
+            for lg_code in ["AA", "NL"]:
+                lg_rows = [r for r in rows if r["League"] == lg_code]
+                lg_rows.sort(key=lambda r: -float(r["PCT"]))
+                leagues_ctx.append((LEAGUE_NAMES[lg_code], lg_code, lg_rows))
+            year_leagues_ctx[season] = leagues_ctx
+        else:
+            # No games played yet -- list active franchises alphabetically instead of a standings table.
+            year_is_preseason[season] = True
+            active = active_franchises_for_season(season)
+            leagues_ctx = []
+            for lg_code in ["AA", "NL"]:
+                lg_teams = sorted([e for e in active if e["League"] == lg_code], key=lambda e: e["FranchiseName"])
+                leagues_ctx.append((LEAGUE_NAMES[lg_code], lg_code, lg_teams))
+            year_leagues_ctx[season] = leagues_ctx
 
-    # --- Team pages ---
+    # --- Team pages (per-abbr, per-season rosters/stats) ---
     for abbr, team in teams_by_abbr.items():
-        team_seasons = []
-        for season in seasons:
-            match = next((r for r in all_standings[season] if r["TeamAbbr"] == abbr), None)
-            if match:
-                team_seasons.append(match)
-        if not team_seasons:
-            continue  # franchise not active in any loaded season yet
-        write(f"teams/{abbr}/index.html", "team_index.html", team=team, seasons=team_seasons)
-
         for season in seasons:
             standing = next((r for r in all_standings[season] if r["TeamAbbr"] == abbr), None)
             if not standing:
@@ -219,6 +244,18 @@ def main():
             pitchers.sort(key=lambda r: -int(r["W"]))
             write(f"teams/{abbr}/{season}.html", "team_season.html",
                   team=team, season=season, standing=standing, batters=batters, pitchers=pitchers)
+
+    # --- Franchise hub pages (season-by-season across every era, e.g. Detroit -> Cleveland) ---
+    for fid, eras in franchises_by_id.items():
+        current = current_era_by_franchise[fid]
+        franchise_seasons = []
+        for season in seasons:
+            for era in eras:
+                match = next((r for r in all_standings[season] if r["TeamAbbr"] == era["Abbr"]), None)
+                if match:
+                    franchise_seasons.append(match)
+        write(f"teams/{current['Abbr']}/index.html", "team_index.html",
+              team=current, seasons=franchise_seasons, eras=eras)
 
     # --- Player pages ---
     players = defaultdict(lambda: {"batting": [], "pitching": [], "postseason_batting": [], "postseason_pitching": [], "name": None, "last_name": None, "bats": None, "throws": None})
@@ -661,15 +698,42 @@ def main():
               has_allstar_game=season in allstar_game_seasons,
               postseason=postseason_by_season.get(season),
               has_draft=season in draft_by_season,
-              trades=trades_by_season.get(season, []))
+              trades=trades_by_season.get(season, []),
+              is_preseason=year_is_preseason[season])
 
     for season, picks in draft_by_season.items():
         write(f"draft/{season}.html", "draft_results.html", season=season, draft_picks=picks)
 
+    # --- Seasons index page (modeled on baseball-reference.com/leagues/) ---
+    SUMMARY_AWARDS = ["MVP", "Champion Hurler", "Fireman", "Rookie of the Year"]
+    seasons_summary = []
+    for season in sorted(seasons, reverse=True):
+        awards_dict = {cat["key"]: cat for cat in awards_by_season.get(season, [])}
+        row = {"season": season}
+        for lg_code in ["AA", "NL"]:
+            lg_rows = [r for r in all_standings[season] if r["League"] == lg_code]
+            champion = max(lg_rows, key=lambda r: float(r["PCT"]), default=None)
+            entry = {"champion": champion}
+            for award_key in SUMMARY_AWARDS:
+                cat = awards_dict.get(award_key)
+                winner = None
+                if cat:
+                    rows_for_lg = cat["aa_rows"] if lg_code == "AA" else cat["nl_rows"]
+                    winner = next((r for r in rows_for_lg if r["Rank"] == "1"), None)
+                entry[award_key] = winner
+            row[lg_code] = entry
+        seasons_summary.append(row)
+    write("seasons/index.html", "seasons_index.html", seasons_summary=seasons_summary)
+
+    most_recent_postseason = None
+    if postseason_by_season:
+        most_recent_postseason = postseason_by_season[max(postseason_by_season.keys())]
+
     write("index.html", "index.html",
-          leagues=home_leagues_ctx, season=latest_season,
-          all_teams=sorted(teams, key=lambda t: t["FranchiseName"]),
-          postseason=postseason_by_season.get(latest_season))
+          leagues=year_leagues_ctx[latest_season], season=latest_season,
+          all_teams=sorted(current_era_by_franchise.values(), key=lambda t: t["FranchiseName"]),
+          postseason=most_recent_postseason,
+          is_preseason=year_is_preseason[latest_season])
 
     # --- Search index (client-side JSON, used by the header search box) ---
     search_entries = []

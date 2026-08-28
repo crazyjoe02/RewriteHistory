@@ -8,16 +8,24 @@
 <h1 class="page-title">{{ team.FranchiseName }}</h1>
 <div class="subtitle">{{ team.League }} &middot; {{ team.City }} &middot; {{ seasons|length }} season(s) on record</div>
 
+{% if eras|length > 1 %}
+<div class="standings-note">
+<strong>Also known as:</strong>
+{% for e in eras %}{{ e.FranchiseName }} ({{ e.StartSeason }}&ndash;{{ e.EndSeason if e.EndSeason else 'present' }}){% if not loop.last %} &middot; {% endif %}{% endfor %}
+</div>
+{% endif %}
+
 <h2 class="section-title">Season-by-Season</h2>
 <div class="table-wrap">
 <table class="stats">
     <thead>
-    <tr><th>Season</th><th>Lg</th><th>W</th><th>L</th><th>PCT</th><th>GB</th><th>Finish</th></tr>
+    <tr><th>Season</th><th class="left">Team</th><th>Lg</th><th>W</th><th>L</th><th>PCT</th><th>GB</th><th>Finish</th></tr>
     </thead>
     <tbody>
     {% for s in seasons %}
     <tr>
-        <td><a href="{{ root }}teams/{{ team.Abbr }}/{{ s.Season }}.html">{{ s.Season }}</a></td>
+        <td><a href="{{ root }}teams/{{ s.TeamAbbr }}/{{ s.Season }}.html">{{ s.Season }}</a></td>
+        <td class="left">{{ s.TeamName }}</td>
         <td>{{ s.League }}</td>
         <td>{{ s.W }}</td>
         <td>{{ s.L }}</td>

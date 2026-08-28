@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}Seasons{% endblock %}
+{% block breadcrumb %}
+<div class="breadcrumb"><a href="{{ root }}index.html">Home</a> &rsaquo; Seasons</div>
+{% endblock %}
+{% block content %}
+<h1 class="page-title">Seasons</h1>
+<div class="subtitle">Year-by-year league champions and major award winners</div>
+
+<div class="league-columns">
+    <div>
+        <h2 class="section-title">American Association</h2>
+        <div class="table-wrap">
+        <table class="stats">
+            <thead>
+            <tr>
+                <th>Year</th><th class="left">Champion</th><th class="left">MVP</th>
+                <th class="left">Champion Hurler</th><th class="left">Fireman</th><th class="left">Rookie of the Year</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for row in seasons_summary %}
+            {% set e = row.AA %}
+            <tr>
+                <td><a href="{{ root }}years/{{ row.season }}.html">{{ row.season }}</a></td>
+                <td class="left">{% if e.champion %}<a href="{{ root }}teams/{{ e.champion.TeamAbbr }}/{{ row.season }}.html">{{ e.champion.TeamName }}</a>{% else %}&mdash;{% endif %}</td>
+                {% for key in ["MVP", "Champion Hurler", "Fireman", "Rookie of the Year"] %}
+                <td class="left">{% if e[key] %}{% if e[key].PlayerID %}<a href="{{ root }}players/{{ e[key].PlayerID }}.html">{{ e[key].Player }}</a>{% else %}{{ e[key].Player }}{% endif %}{% else %}&mdash;{% endif %}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        </div>
+    </div>
+    <div>
+        <h2 class="section-title">National League</h2>
+        <div class="table-wrap">
+        <table class="stats">
+            <thead>
+            <tr>
+                <th>Year</th><th class="left">Champion</th><th class="left">MVP</th>
+                <th class="left">Champion Hurler</th><th class="left">Fireman</th><th class="left">Rookie of the Year</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for row in seasons_summary %}
+            {% set e = row.NL %}
+            <tr>
+                <td><a href="{{ root }}years/{{ row.season }}.html">{{ row.season }}</a></td>
+                <td class="left">{% if e.champion %}<a href="{{ root }}teams/{{ e.champion.TeamAbbr }}/{{ row.season }}.html">{{ e.champion.TeamName }}</a>{% else %}&mdash;{% endif %}</td>
+                {% for key in ["MVP", "Champion Hurler", "Fireman", "Rookie of the Year"] %}
+                <td class="left">{% if e[key] %}{% if e[key].PlayerID %}<a href="{{ root }}players/{{ e[key].PlayerID }}.html">{{ e[key].Player }}</a>{% else %}{{ e[key].Player }}{% endif %}{% else %}&mdash;{% endif %}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

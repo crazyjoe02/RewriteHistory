@@ -240,6 +240,19 @@ table.stats tfoot td {
     border: 1px solid #b9d3ec;
 }
 
+/* Transactions list on player pages */
+.transactions-list {
+    list-style: none;
+    padding: 0;
+    margin: 6px 0;
+    font-size: 12px;
+}
+.transactions-list li {
+    padding: 5px 8px;
+    border-bottom: 1px solid #eee;
+}
+.transactions-list li:last-child { border-bottom: none; }
+
 /* Team color bar */
 .team-bar {
     height: 6px;
