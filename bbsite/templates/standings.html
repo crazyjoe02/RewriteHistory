@@ -111,4 +111,29 @@ Final standings for the {{ season }} season
 {% endif %}
 {% endfor %}
 
+<h2 class="section-title">Transactions</h2>
+{% if has_draft %}
+<div class="standings-note"><a href="{{ root }}draft/{{ season }}.html">{{ season }} Draft Results</a></div>
+{% endif %}
+{% if trades %}
+<h3>Trades</h3>
+<div class="table-wrap">
+<table class="stats">
+    <thead><tr><th>Year</th><th class="left">Transaction</th></tr></thead>
+    <tbody>
+    {% for t in trades %}
+    <tr>
+        <td>{{ t.Season }}</td>
+        <td class="left">
+        <a href="{{ root }}teams/{{ t.FromTeamAbbr }}/index.html">{{ t.FromTeamName }}</a> trade
+        {% if t.PlayerID %}<a href="{{ root }}players/{{ t.PlayerID }}.html">{{ t.Player }}</a>{% else %}{{ t.Player }}{% endif %}
+        to the <a href="{{ root }}teams/{{ t.ToTeamAbbr }}/index.html">{{ t.ToTeamName }}</a>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endif %}
+
 {% endblock %}

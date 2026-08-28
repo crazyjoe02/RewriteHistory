@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}{{ season }} Draft Results{% endblock %}
+{% block breadcrumb %}
+<div class="breadcrumb">
+<a href="{{ root }}index.html">Home</a> &rsaquo;
+<a href="{{ root }}years/{{ season }}.html">{{ season }} Season</a> &rsaquo; Draft Results
+</div>
+{% endblock %}
+{% block content %}
+<h1 class="page-title">{{ season }} Draft Results</h1>
+<div class="subtitle">{{ draft_picks|length }} picks across {{ draft_picks[-1].Round if draft_picks else 0 }} rounds</div>
+
+<div class="table-wrap">
+<table class="stats">
+    <thead><tr><th>Pick</th><th class="left">Team</th><th class="left">Player</th><th>Pos</th></tr></thead>
+    <tbody>
+    {% for p in draft_picks %}
+    <tr>
+        <td>{{ p.Round }}.{{ '%02d'|format(p.Pick) }}</td>
+        <td class="left"><a href="{{ root }}teams/{{ p.TeamAbbr }}/index.html">{{ p.TeamName }}</a></td>
+        <td class="left">{% if p.PlayerID %}<a href="{{ root }}players/{{ p.PlayerID }}.html">{{ p.Player }}</a>{% else %}{{ p.Player }}{% endif %}</td>
+        <td>{{ p.Pos }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock %}

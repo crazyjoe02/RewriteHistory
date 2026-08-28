@@ -660,8 +660,11 @@ def main():
               categories=awards_by_season[season],
               has_allstar_game=season in allstar_game_seasons,
               postseason=postseason_by_season.get(season),
-              draft_picks=draft_by_season.get(season, []),
+              has_draft=season in draft_by_season,
               trades=trades_by_season.get(season, []))
+
+    for season, picks in draft_by_season.items():
+        write(f"draft/{season}.html", "draft_results.html", season=season, draft_picks=picks)
 
     write("index.html", "index.html",
           leagues=home_leagues_ctx, season=latest_season,
@@ -721,6 +724,13 @@ def main():
             "name": series["series_name"],
             "sub": series["result"],
             "url": f"postseason/{season}.html",
+        })
+    for season in draft_by_season:
+        search_entries.append({
+            "type": "Draft",
+            "name": f"{season} Draft Results",
+            "sub": f"{len(draft_by_season[season])} picks",
+            "url": f"draft/{season}.html",
         })
     for slug, mdata in managers.items():
         seasons_managed = sorted(set(str(r["Season"]) for r in mdata["seasons"]))
