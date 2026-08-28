@@ -18,6 +18,7 @@ import json
 import os
 import re
 import shutil
+import glob
 from collections import defaultdict
 from jinja2 import Environment, FileSystemLoader
 
@@ -353,6 +354,56 @@ def main():
                 print(f"WARNING: World Series MVP '{mvp['player']}' ({season}) not found among loaded players -- check spelling.")
         postseason_by_season[season] = series
 
+    # --- Transactions (draft picks + trades; loaded early so player pages can show them) ---
+    NAME_ALIASES = {
+        "Charlie Bassett": "Charley Bassett",
+        "Thomas Esterbrook": "Dude Esterbrook",
+    }
+
+    def resolve_player_name(name):
+        name = NAME_ALIASES.get(name, name)
+        return name_to_pid.get(name)
+
+    for pid in players:
+        players[pid]["draft_pick"] = None
+        players[pid]["trades"] = []
+
+    draft_by_season = defaultdict(list)
+    trades_by_season = defaultdict(list)
+
+    for draft_path in sorted(glob.glob(os.path.join(DATA_DIR, "*", "draft.csv"))):
+        for row in load_csv(draft_path):
+            row["Season"] = int(row["Season"])
+            row["Round"] = int(row["Round"])
+            row["Pick"] = int(row["Pick"])
+            pid = resolve_player_name(row["Player"])
+            row["PlayerID"] = pid
+            team = teams_by_abbr.get(row["TeamAbbr"])
+            row["TeamName"] = team["FranchiseName"] if team else row["TeamAbbr"]
+            draft_by_season[row["Season"]].append(row)
+            if pid:
+                players[pid]["draft_pick"] = row
+            else:
+                print(f"NOTE: Draft pick for '{row['Player']}' ({row['Season']}) has no matching player page -- shown as plain text.")
+
+    for trades_path in sorted(glob.glob(os.path.join(DATA_DIR, "*", "trades.csv"))):
+        for row in load_csv(trades_path):
+            row["Season"] = int(row["Season"])
+            pid = resolve_player_name(row["Player"])
+            row["PlayerID"] = pid
+            from_team = teams_by_abbr.get(row["FromTeamAbbr"])
+            to_team = teams_by_abbr.get(row["ToTeamAbbr"])
+            row["FromTeamName"] = from_team["FranchiseName"] if from_team else row["FromTeamAbbr"]
+            row["ToTeamName"] = to_team["FranchiseName"] if to_team else row["ToTeamAbbr"]
+            trades_by_season[row["Season"]].append(row)
+            if pid:
+                players[pid]["trades"].append(row)
+            else:
+                print(f"WARNING: Trade involving '{row['Player']}' ({row['Season']}) not found among loaded players -- check spelling.")
+
+    for season_key in draft_by_season:
+        draft_by_season[season_key].sort(key=lambda r: (r["Round"], r["Pick"]))
+
     def compute_batting_totals(rows):
         if not rows:
             return None
@@ -402,6 +453,24 @@ def main():
         totals["WHIP"] = whip
         return totals
 
+    def build_display_rows(rows, totals_fn):
+        """Group a player's rows by season; when a season has stints with more than
+        one team (a mid-season trade), insert a bold combined '2TM'-style row after
+        them, matching Baseball-Reference's convention for split seasons."""
+        from itertools import groupby
+        rows_sorted = sorted(rows, key=lambda r: int(r["SN"]))
+        display = []
+        for season, group in groupby(rows_sorted, key=lambda r: r["SN"]):
+            group = list(group)
+            display.extend(group)
+            if len(group) > 1:
+                combined = totals_fn(group)
+                combined["SN"] = season
+                combined["Team"] = f"{len(group)}TM"
+                combined["_combined"] = True
+                display.append(combined)
+        return display
+
     for pid, pdata in players.items():
         batting_rows = sorted(pdata["batting"], key=lambda r: int(r["SN"]))
         pitching_rows = sorted(pdata["pitching"], key=lambda r: int(r["SN"]))
@@ -420,15 +489,20 @@ def main():
         allstar_seasons = sorted(pdata.get("allstar_seasons", []), key=lambda a: int(a["Season"]))
         allstar_years = [a["Season"] for a in allstar_seasons]
         awards_won = sorted(pdata.get("awards_won", []), key=lambda a: int(a["Season"]))
+        trades = sorted(pdata.get("trades", []), key=lambda t: t["Season"])
+
+        batting_display_rows = build_display_rows(batting_rows, compute_batting_totals)
+        pitching_display_rows = build_display_rows(pitching_rows, compute_pitching_totals)
 
         write(f"players/{pid}.html", "player.html",
               player_name=pdata["name"], bats=pdata["bats"], throws=pdata["throws"],
-              batting_rows=batting_rows, pitching_rows=pitching_rows,
+              batting_rows=batting_display_rows, pitching_rows=pitching_display_rows,
               batting_career=batting_career, pitching_career=pitching_career,
               allstar_count=len(allstar_years), allstar_years=allstar_years,
               awards_won=awards_won,
               ps_batting_rows=ps_batting_rows, ps_pitching_rows=ps_pitching_rows,
-              ps_batting_career=ps_batting_career, ps_pitching_career=ps_pitching_career)
+              ps_batting_career=ps_batting_career, ps_pitching_career=ps_pitching_career,
+              draft_pick=pdata.get("draft_pick"), trades=trades)
 
     # --- League leaders pages ---
     def top_n(rows, key_field, n=10, reverse=True, min_field=None, min_value=0):
@@ -585,7 +659,9 @@ def main():
               leagues=year_leagues_ctx[season], season=season,
               categories=awards_by_season[season],
               has_allstar_game=season in allstar_game_seasons,
-              postseason=postseason_by_season.get(season))
+              postseason=postseason_by_season.get(season),
+              draft_picks=draft_by_season.get(season, []),
+              trades=trades_by_season.get(season, []))
 
     write("index.html", "index.html",
           leagues=home_leagues_ctx, season=latest_season,

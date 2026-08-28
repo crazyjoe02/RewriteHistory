@@ -28,10 +28,15 @@
     </thead>
     <tbody>
     {% for r in batting_rows %}
-    <tr>
+    <tr{% if r._combined %} style="font-weight:bold; background:#f7f4e8;"{% endif %}>
         <td><a href="{{ root }}years/{{ r.SN }}.html">{{ r.SN }}</a></td>
+        {% if r._combined %}
+        <td class="left">{{ r.Team }}</td><td>&mdash;</td>
+        {% else %}
         <td class="left"><a href="{{ root }}teams/{{ r.Team }}/{{ r.SN }}.html">{{ r.Team }}</a></td>
-        <td>{{ r.Lg }}</td><td>{{ r.G }}</td><td>{{ r.AB }}</td><td>{{ r.R }}</td><td>{{ r.H }}</td>
+        <td>{{ r.Lg }}</td>
+        {% endif %}
+        <td>{{ r.G }}</td><td>{{ r.AB }}</td><td>{{ r.R }}</td><td>{{ r.H }}</td>
         <td>{{ r['2B'] }}</td><td>{{ r['3B'] }}</td><td>{{ r.HR }}</td><td>{{ r.RBI }}</td>
         <td>{{ r.BB }}</td><td>{{ r.SO }}</td><td>{{ r.SB }}</td><td>{{ r.CS }}</td>
         <td>{{ '%.3f'|format(r.AVG|float) }}</td><td>{{ '%.3f'|format(r.OBP|float) }}</td>
@@ -67,12 +72,18 @@
     </thead>
     <tbody>
     {% for r in pitching_rows %}
-    <tr>
+    <tr{% if r._combined %} style="font-weight:bold; background:#f7f4e8;"{% endif %}>
         <td><a href="{{ root }}years/{{ r.SN }}.html">{{ r.SN }}</a></td>
+        {% if r._combined %}
+        <td class="left">{{ r.Team }}</td><td>&mdash;</td>
+        {% else %}
         <td class="left"><a href="{{ root }}teams/{{ r.Team }}/{{ r.SN }}.html">{{ r.Team }}</a></td>
-        <td>{{ r.League }}</td><td>{{ r.W }}</td><td>{{ r.L }}</td><td>{{ '%.2f'|format(r.ERA|float) }}</td>
+        <td>{{ r.League }}</td>
+        {% endif %}
+        <td>{{ r.W }}</td><td>{{ r.L }}</td><td>{{ '%.2f'|format(r.ERA|float) }}</td>
         <td>{{ r.G }}</td><td>{{ r.GS }}</td><td>{{ r.CG }}</td><td>{{ r.SHO }}</td><td>{{ r.SV }}</td>
-        <td>{{ r.IP }}</td><td>{{ r.H }}</td><td>{{ r.R }}</td><td>{{ r.ER }}</td>
+        <td>{% if r._combined %}{{ '%.1f'|format(r.IP) }}{% else %}{{ r.IP }}{% endif %}</td>
+        <td>{{ r.H }}</td><td>{{ r.R }}</td><td>{{ r.ER }}</td>
         <td>{{ r.BB }}</td><td>{{ r.SO }}</td><td>{{ '%.2f'|format(r.WHIP|float) }}</td>
     </tr>
     {% endfor %}
@@ -167,5 +178,21 @@
     </tbody>
 </table>
 </div>
+{% endif %}
+
+{% if draft_pick or trades %}
+<h2 class="section-title">Transactions</h2>
+<ul class="transactions-list">
+{% if draft_pick %}
+<li>Drafted {{ draft_pick.Round }}.{{ '%02d'|format(draft_pick.Pick) }} by
+<a href="{{ root }}teams/{{ draft_pick.TeamAbbr }}/index.html">{{ draft_pick.TeamName }}</a>
+in the {{ draft_pick.Season }} Draft.</li>
+{% endif %}
+{% for t in trades %}
+<li>{{ t.Season }}: Traded by
+<a href="{{ root }}teams/{{ t.FromTeamAbbr }}/index.html">{{ t.FromTeamName }}</a> to the
+<a href="{{ root }}teams/{{ t.ToTeamAbbr }}/index.html">{{ t.ToTeamName }}</a>.</li>
+{% endfor %}
+</ul>
 {% endif %}
 {% endblock %}
