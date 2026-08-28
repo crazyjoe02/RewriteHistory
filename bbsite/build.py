@@ -366,14 +366,23 @@ def main():
         hbp = sums["HBP"]
         singles = hits - sums["2B"] - sums["3B"] - sums["HR"]
         tb = singles + 2 * sums["2B"] + 3 * sums["3B"] + 4 * sums["HR"]
-        avg = hits / ab
-        obp = (hits + walks + hbp) / (ab + walks + hbp) if (ab + walks + hbp) else 0
-        slg = tb / ab
         totals = dict(sums)
-        totals["AVG"] = avg
-        totals["OBP"] = obp
-        totals["SLG"] = slg
-        totals["OPS"] = obp + slg
+        if len(rows) == 1:
+            # Single season: mirror the source's own rate stats exactly rather than
+            # re-deriving them (the sim's OBP formula factors in things like SF that
+            # aren't in our export, so a recomputed value can be off by a rounding hair).
+            totals["AVG"] = float(rows[0]["AVG"])
+            totals["OBP"] = float(rows[0]["OBP"])
+            totals["SLG"] = float(rows[0]["SLG"])
+            totals["OPS"] = float(rows[0]["OPS"])
+        else:
+            avg = hits / ab
+            obp = (hits + walks + hbp) / (ab + walks + hbp) if (ab + walks + hbp) else 0
+            slg = tb / ab
+            totals["AVG"] = avg
+            totals["OBP"] = obp
+            totals["SLG"] = slg
+            totals["OPS"] = obp + slg
         return totals
 
     def compute_pitching_totals(rows):
