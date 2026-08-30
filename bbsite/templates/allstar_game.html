@@ -1,14 +1,16 @@
 {% extends "base.html" %}
-{% block title %}{% if is_postseason_game %}{{ season }} Postseason Game {{ game.game_number }}{% else %}{{ season }} All-Star Game{% endif %}{% endblock %}
+{% block title %}{% if is_postseason_game %}{{ season }} Postseason Game {{ game.game_number }}{% elif is_regular_season_game %}{{ game.away }} @ {{ game.home }} &ndash; {{ game.date }}{% else %}{{ season }} All-Star Game{% endif %}{% endblock %}
 {% block breadcrumb %}
 <div class="breadcrumb">
 <a href="{{ root }}index.html">Home</a> &rsaquo;
 <a href="{{ root }}years/{{ season }}.html">{{ season }} Season</a> &rsaquo;
-{% if is_postseason_game %}<a href="{{ root }}postseason/{{ season }}.html">Postseason</a> &rsaquo; Game {{ game.game_number }}{% else %}All-Star Game{% endif %}
+{% if is_postseason_game %}<a href="{{ root }}postseason/{{ season }}.html">Postseason</a> &rsaquo; Game {{ game.game_number }}
+{% elif is_regular_season_game %}<a href="{{ root }}teams/{{ hub_abbr.get(game.home, game.home) }}/{{ season }}.html">{{ game.home }}</a> Schedule &rsaquo; {{ game.date }}
+{% else %}All-Star Game{% endif %}
 </div>
 {% endblock %}
 {% block content %}
-<h1 class="page-title">{% if is_postseason_game %}{{ series.series_name }} &mdash; Game {{ game.game_number }}{% else %}{{ season }} All-Star Game{% endif %}</h1>
+<h1 class="page-title">{% if is_postseason_game %}{{ series.series_name }} &mdash; Game {{ game.game_number }}{% elif is_regular_season_game %}{{ game.away }} @ {{ game.home }}{% else %}{{ season }} All-Star Game{% endif %}</h1>
 <div class="subtitle">{{ game.subtitle }}{% if game.player_of_game %} &middot; Player of the Game: {{ game.player_of_game.player }} ({{ game.player_of_game.team }}) &mdash; {{ game.player_of_game.note }}{% endif %}</div>
 
 <div class="table-wrap">
@@ -100,6 +102,7 @@
 </div>
 {% endfor %}
 
+{% if game.playbyplay %}
 <h2 class="section-title">Play-by-Play</h2>
 {% for half in game.playbyplay %}
 <details class="pbp-inning">
@@ -109,5 +112,5 @@
     </ul>
 </details>
 {% endfor %}
-
+{% endif %}
 {% endblock %}

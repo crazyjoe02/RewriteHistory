@@ -71,4 +71,32 @@ Home {{ standing.Home }} / Away {{ standing.Away }}
     </tbody>
 </table>
 </div>
+
+{% if schedule %}
+<h2 class="section-title">Schedule</h2>
+<div class="table-wrap">
+<table class="stats">
+    <thead>
+    <tr><th>Gm#</th><th class="left">Date</th><th class="left">Opponent</th><th>W/L</th><th>R</th><th>RA</th><th class="left">Box Score</th></tr>
+    </thead>
+    <tbody>
+    {% for g in schedule %}
+    {% set is_home = (g.HomeAbbr == team.Abbr) %}
+    {% set opp_abbr = g.AwayAbbr if is_home else g.HomeAbbr %}
+    {% set own_score = (g.HomeScore if is_home else g.AwayScore) | int %}
+    {% set opp_score = (g.AwayScore if is_home else g.HomeScore) | int %}
+    <tr>
+        <td>{{ g.GameNum }}</td>
+        <td class="left">{{ g.Date }}</td>
+        <td class="left">{% if not is_home %}@ {% endif %}<a href="{{ root }}teams/{{ hub_abbr.get(opp_abbr, opp_abbr) }}/index.html">{{ opp_abbr }}</a></td>
+        <td>{{ 'W' if own_score > opp_score else 'L' }}</td>
+        <td>{{ own_score }}</td>
+        <td>{{ opp_score }}</td>
+        <td class="left">{% if g.BoxScoreSlug %}<a href="{{ root }}boxscore/{{ season }}/{{ g.BoxScoreSlug }}.html">Box Score</a>{% endif %}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endif %}
 {% endblock %}

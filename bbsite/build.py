@@ -232,6 +232,20 @@ def main():
                 leagues_ctx.append((LEAGUE_NAMES[lg_code], lg_code, lg_teams))
             year_leagues_ctx[season] = leagues_ctx
 
+    # --- Schedule (doesn't need player-ID resolution, safe to load early) ---
+    schedule_by_team_season = defaultdict(list)
+    for season in seasons:
+        sched_path = os.path.join(DATA_DIR, str(season), "schedule.csv")
+        if not os.path.exists(sched_path):
+            continue
+        for row in load_csv(sched_path):
+            row["Season"] = int(row["Season"])
+            row["GameNum"] = int(row["GameNum"])
+            schedule_by_team_season[(row["HomeAbbr"], row["Season"])].append(row)
+            schedule_by_team_season[(row["AwayAbbr"], row["Season"])].append(row)
+    for key in schedule_by_team_season:
+        schedule_by_team_season[key].sort(key=lambda r: r["GameNum"])
+
     # --- Team pages (per-abbr, per-season rosters/stats) ---
     for abbr, team in teams_by_abbr.items():
         for season in seasons:
@@ -242,8 +256,10 @@ def main():
             batters.sort(key=lambda r: -float(r["AVG"]) if r["AB"] and int(r["AB"]) > 0 else 0)
             pitchers = [r for r in all_pitching[season] if r["Team"] == abbr]
             pitchers.sort(key=lambda r: -int(r["W"]))
+            schedule = schedule_by_team_season.get((abbr, season), [])
             write(f"teams/{abbr}/{season}.html", "team_season.html",
-                  team=team, season=season, standing=standing, batters=batters, pitchers=pitchers)
+                  team=team, season=season, standing=standing, batters=batters, pitchers=pitchers,
+                  schedule=schedule)
 
     # --- Franchise hub pages (season-by-season across every era, e.g. Detroit -> Cleveland) ---
     for fid, eras in franchises_by_id.items():
@@ -678,6 +694,19 @@ def main():
             resolve_pids(game_data)
             write(f"allstar-game/{season}.html", "allstar_game.html", season=season, game=game_data)
             allstar_game_seasons.add(season)
+
+    # --- Regular season game box scores (linked from each team's Schedule section) ---
+    for season in seasons:
+        games_path = os.path.join(DATA_DIR, str(season), "games.json")
+        if not os.path.exists(games_path):
+            continue
+        with open(games_path, encoding="utf-8") as f:
+            game_list = json.load(f)
+        for g in game_list:
+            slug = f"{g['game_num']}-{g['away'].lower()}-{g['home'].lower()}"
+            resolve_pids(g)
+            write(f"boxscore/{season}/{slug}.html", "allstar_game.html",
+                  season=season, game=g, is_regular_season_game=True)
 
     # --- Postseason pages (write box scores + index using data already loaded above) ---
     for season, series in postseason_by_season.items():
