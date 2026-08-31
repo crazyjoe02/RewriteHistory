@@ -110,6 +110,14 @@
     <ul>
     {% for play in half.plays %}<li>{{ play }}</li>{% endfor %}
     </ul>
+    {% if half.score_after %}
+    <table class="pbp-mini-score">
+        <tbody>
+        <tr><td class="left">{{ team_name_by_abbr.get(half.score_after.away.team, half.score_after.away.team) }}</td><td>{{ half.score_after.away.r }}</td><td>{{ half.score_after.away.h }}</td><td>{{ half.score_after.away.e }}</td></tr>
+        <tr><td class="left">{{ team_name_by_abbr.get(half.score_after.home.team, half.score_after.home.team) }}</td><td>{{ half.score_after.home.r }}</td><td>{{ half.score_after.home.h }}</td><td>{{ half.score_after.home.e }}</td></tr>
+        </tbody>
+    </table>
+    {% endif %}
 </details>
 {% endfor %}
 {% endif %}

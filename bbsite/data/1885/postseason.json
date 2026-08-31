@@ -49,7 +49,7 @@
        0,
        0
       ],
-      "R": 1,
+      "R": 0,
       "H": 5,
       "E": 1
      },
@@ -592,10 +592,27 @@
      "team": "BSN",
      "plays": [
       "B.Caruthers enters the game to pitch.",
-      "D.Brouthers grounds out to 2B.",
-      "H.Richardson grounds out to 2B.",
-      "C.Jones grounds out to SS."
-     ]
+      "P.Hotaling flies out to CF.",
+      "J.O'Rourke grounds out to SS.",
+      "Y.Robinson botches a routine flyball and P.Smith reaches on the error.",
+      "P.Smith steals 2B.",
+      "D.Brouthers is intentionally walked.",
+      "P.Hines grounds out to SS."
+     ],
+     "score_after": {
+      "away": {
+       "team": "BSN",
+       "r": 0,
+       "h": 0,
+       "e": 0
+      },
+      "home": {
+       "team": "STL",
+       "r": 0,
+       "h": 0,
+       "e": 1
+      }
+     }
     },
     {
      "inning": 1,
@@ -606,7 +623,21 @@
       "Y.Robinson grounds out to SS.",
       "C.Wolf grounds out to SS.",
       "R.Connor grounds out to 2B."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "BSN",
+       "r": 0,
+       "h": 0,
+       "e": 0
+      },
+      "home": {
+       "team": "STL",
+       "r": 0,
+       "h": 0,
+       "e": 1
+      }
+     }
     },
     {
      "inning": 2,
@@ -616,7 +647,21 @@
       "E.Andrews hits an infield single to 3B.",
       "G.Ohfor grounds into a 6-4-3 double play.",
       "S.Houck lines out to SS."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "BSN",
+       "r": 0,
+       "h": 1,
+       "e": 0
+      },
+      "home": {
+       "team": "STL",
+       "r": 0,
+       "h": 0,
+       "e": 1
+      }
+     }
     },
     {
      "inning": 2,
@@ -627,7 +672,21 @@
       "G.Smith flies out to RCF.",
       "M.Muldoon rips a liner to LCF for a double.",
       "S.Barkley flies out to LF."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "BSN",
+       "r": 0,
+       "h": 1,
+       "e": 0
+      },
+      "home": {
+       "team": "STL",
+       "r": 0,
+       "h": 1,
+       "e": 1
+      }
+     }
     },
     {
      "inning": 3,
@@ -638,7 +697,21 @@
       "P.Hotaling pops out to 1B.",
       "J.O'Rourke pops out to 2B.",
       "P.Smith grounds out to 2B."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "BSN",
+       "r": 0,
+       "h": 2,
+       "e": 0
+      },
+      "home": {
+       "team": "STL",
+       "r": 0,
+       "h": 1,
+       "e": 1
+      }
+     }
     },
     {
      "inning": 3,
@@ -652,7 +725,21 @@
       "C.Wolf smokes a line drive single to CF. Y.Robinson scores.",
       "C.Wolf swipes 2B.",
       "R.Connor grounds out to 1B."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "BSN",
+       "r": 0,
+       "h": 2,
+       "e": 0
+      },
+      "home": {
+       "team": "STL",
+       "r": 1,
+       "h": 3,
+       "e": 1
+      }
+     }
     },
     {
      "inning": 4,
@@ -664,7 +751,21 @@
       "P.Hines hits a shallow flyout to CF.",
       "E.Andrews grounds out to SS.",
       "G.Ohfor grounds out to 3B."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "BSN",
+       "r": 0,
+       "h": 3,
+       "e": 0
+      },
+      "home": {
+       "team": "STL",
+       "r": 1,
+       "h": 3,
+       "e": 1
+      }
+     }
     },
     {
      "inning": 4,
@@ -674,7 +775,21 @@
       "G.Gore grounds out to 1B.",
       "G.Smith grounds out to SS.",
       "M.Muldoon hits a shallow flyout to CF."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "BSN",
+       "r": 0,
+       "h": 3,
+       "e": 0
+      },
+      "home": {
+       "team": "STL",
+       "r": 1,
+       "h": 3,
+       "e": 1
+      }
+     }
     },
     {
      "inning": 5,
@@ -684,7 +799,21 @@
       "S.Houck grounds out to SS.",
       "G.Hecker hits a shallow flyout to CF.",
       "P.Hotaling grounds out to SS."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "BSN",
+       "r": 0,
+       "h": 3,
+       "e": 0
+      },
+      "home": {
+       "team": "STL",
+       "r": 1,
+       "h": 3,
+       "e": 1
+      }
+     }
     },
     {
      "inning": 5,
@@ -696,7 +825,21 @@
       "J.Peoples hits a sacrifice bunt to 3B. All runners advance.",
       "B.Caruthers hits a shallow flyout to RF.",
       "Y.Robinson grounds out to SS."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "BSN",
+       "r": 0,
+       "h": 3,
+       "e": 0
+      },
+      "home": {
+       "team": "STL",
+       "r": 1,
+       "h": 4,
+       "e": 1
+      }
+     }
     },
     {
      "inning": 6,
@@ -706,7 +849,21 @@
       "J.O'Rourke flies out to deep LCF.",
       "P.Smith grounds out to 3B.",
       "D.Brouthers strikes out looking."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "BSN",
+       "r": 0,
+       "h": 3,
+       "e": 0
+      },
+      "home": {
+       "team": "STL",
+       "r": 1,
+       "h": 4,
+       "e": 1
+      }
+     }
     },
     {
      "inning": 6,
@@ -716,7 +873,21 @@
       "C.Wolf grounds out to 3B.",
       "R.Connor grounds out to SS.",
       "G.Gore flies out to deep RCF."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "BSN",
+       "r": 0,
+       "h": 3,
+       "e": 0
+      },
+      "home": {
+       "team": "STL",
+       "r": 1,
+       "h": 4,
+       "e": 1
+      }
+     }
     },
     {
      "inning": 7,
@@ -729,7 +900,21 @@
       "G.Smith misplays a routine grounder and S.Houck reaches on the error.",
       "E.Sutton enters the game as a pinch-hitter for G.Hecker.",
       "E.Sutton hits into a 4-6 fielder's choice."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "BSN",
+       "r": 0,
+       "h": 4,
+       "e": 0
+      },
+      "home": {
+       "team": "STL",
+       "r": 1,
+       "h": 4,
+       "e": 2
+      }
+     }
     },
     {
      "inning": 7,
@@ -745,7 +930,21 @@
       "B.Caruthers hits an infield single to SS. M.Muldoon scores.",
       "P.Hotaling drops a flyball and Y.Robinson reaches on a 2-base error.",
       "C.Wolf pops out to SS."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "BSN",
+       "r": 0,
+       "h": 4,
+       "e": 1
+      },
+      "home": {
+       "team": "STL",
+       "r": 3,
+       "h": 7,
+       "e": 2
+      }
+     }
     },
     {
      "inning": 8,
@@ -756,7 +955,21 @@
       "J.O'Rourke grounds out to SS.",
       "P.Smith grounds out to SS.",
       "D.Brouthers grounds out to 2B."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "BSN",
+       "r": 0,
+       "h": 5,
+       "e": 1
+      },
+      "home": {
+       "team": "STL",
+       "r": 3,
+       "h": 7,
+       "e": 2
+      }
+     }
     },
     {
      "inning": 8,
@@ -773,7 +986,21 @@
       "J.Kirby enters the game to pitch.",
       "D.Bushong swipes 2B.",
       "S.Barkley flies out to LCF."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "BSN",
+       "r": 0,
+       "h": 5,
+       "e": 1
+      },
+      "home": {
+       "team": "STL",
+       "r": 4,
+       "h": 9,
+       "e": 2
+      }
+     }
     },
     {
      "inning": 9,
@@ -786,7 +1013,21 @@
       "P.Hines grounds out to 2B.",
       "E.Andrews grounds out to 2B.",
       "G.Ohfor grounds out to the pitcher."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "BSN",
+       "r": 0,
+       "h": 5,
+       "e": 1
+      },
+      "home": {
+       "team": "STL",
+       "r": 4,
+       "h": 9,
+       "e": 2
+      }
+     }
     }
    ]
   },
@@ -1374,7 +1615,21 @@
       "A.ADfor grounds out to 2B.",
       "P.Hines grounds out to SS.",
       "J.O'Rourke pops out to SS."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "BSN",
+       "r": 0,
+       "h": 0,
+       "e": 0
+      },
+      "home": {
+       "team": "STL",
+       "r": 0,
+       "h": 0,
+       "e": 0
+      }
+     }
     },
     {
      "inning": 1,
@@ -1393,7 +1648,21 @@
       "M.Muldoon hits a line drive double to LCF. G.Gore scores.",
       "S.Barkley lines a single to RF. M.Muldoon scores.",
       "J.Peoples grounds out to SS."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "BSN",
+       "r": 0,
+       "h": 0,
+       "e": 0
+      },
+      "home": {
+       "team": "STL",
+       "r": 4,
+       "h": 5,
+       "e": 0
+      }
+     }
     },
     {
      "inning": 2,
@@ -1405,7 +1674,21 @@
       "P.Smith hits into a 6-4 fielder's choice.",
       "E.Andrews hits into a 6-4 fielder's choice. D.Brouthers scores.",
       "S.Houck grounds out to SS."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "BSN",
+       "r": 1,
+       "h": 0,
+       "e": 0
+      },
+      "home": {
+       "team": "STL",
+       "r": 4,
+       "h": 5,
+       "e": 0
+      }
+     }
     },
     {
      "inning": 2,
@@ -1417,7 +1700,21 @@
       "C.Wolf hits an infield single to SS.",
       "C.Wolf steals 2B.",
       "R.Connor hits a shallow flyout to LCF."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "BSN",
+       "r": 1,
+       "h": 0,
+       "e": 0
+      },
+      "home": {
+       "team": "STL",
+       "r": 4,
+       "h": 6,
+       "e": 0
+      }
+     }
     },
     {
      "inning": 3,
@@ -1429,7 +1726,21 @@
       "Y.Robinson botches a routine flyball and P.Hines reaches on the error.",
       "T.Ramsey throws a wild pitch and all runners advance.",
       "J.O'Rourke strikes out looking."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "BSN",
+       "r": 1,
+       "h": 0,
+       "e": 0
+      },
+      "home": {
+       "team": "STL",
+       "r": 4,
+       "h": 6,
+       "e": 1
+      }
+     }
     },
     {
      "inning": 3,
@@ -1441,7 +1752,21 @@
       "G.Smith pops out to 3B.",
       "M.Muldoon flies out to RCF. G.Gore is safe at 3B in a close play.",
       "S.Barkley grounds out to SS."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "BSN",
+       "r": 1,
+       "h": 0,
+       "e": 0
+      },
+      "home": {
+       "team": "STL",
+       "r": 4,
+       "h": 7,
+       "e": 1
+      }
+     }
     },
     {
      "inning": 4,
@@ -1462,7 +1787,21 @@
       "P.Hines bloops a single to LCF. C.Sweeney scores.",
       "P.Hines steals second base.",
       "J.O'Rourke hits a shallow flyout to LF."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "BSN",
+       "r": 6,
+       "h": 3,
+       "e": 0
+      },
+      "home": {
+       "team": "STL",
+       "r": 4,
+       "h": 7,
+       "e": 3
+      }
+     }
     },
     {
      "inning": 4,
@@ -1475,7 +1814,21 @@
       "C.Wolf grounds it thru the hole to RCF for a single.",
       "R.Connor hits an infield single to 2B. T.Ramsey scores.",
       "G.Gore hits into a 4-6 fielder's choice."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "BSN",
+       "r": 6,
+       "h": 3,
+       "e": 0
+      },
+      "home": {
+       "team": "STL",
+       "r": 5,
+       "h": 10,
+       "e": 3
+      }
+     }
     },
     {
      "inning": 5,
@@ -1485,7 +1838,21 @@
       "D.Brouthers grounds out to 1B.",
       "E.Sutton lines out to SS.",
       "P.Smith lines out to 3B."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "BSN",
+       "r": 6,
+       "h": 3,
+       "e": 0
+      },
+      "home": {
+       "team": "STL",
+       "r": 5,
+       "h": 10,
+       "e": 3
+      }
+     }
     },
     {
      "inning": 5,
@@ -1499,7 +1866,21 @@
       "J.Peoples grounds it thru the hole to LCF for a single. M.Muldoon scores.",
       "J.Peoples swipes 2B.",
       "T.Ramsey strikes out swinging."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "BSN",
+       "r": 6,
+       "h": 3,
+       "e": 0
+      },
+      "home": {
+       "team": "STL",
+       "r": 6,
+       "h": 12,
+       "e": 3
+      }
+     }
     },
     {
      "inning": 6,
@@ -1511,7 +1892,21 @@
       "C.Sweeney hits a sacrifice bunt to 3B. All runners advance.",
       "A.ADfor strikes out on a ball out of the zone.",
       "P.Hines strikes out on a ball out of the zone."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "BSN",
+       "r": 6,
+       "h": 4,
+       "e": 0
+      },
+      "home": {
+       "team": "STL",
+       "r": 6,
+       "h": 12,
+       "e": 4
+      }
+     }
     },
     {
      "inning": 6,
@@ -1525,7 +1920,21 @@
       "R.Connor flies out to RCF. P.Hines's throw goes home, but Y.Robinson slides in under the tag and scores.",
       "G.Gore pops out to 3B.",
       "G.Smith grounds out to 2B."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "BSN",
+       "r": 6,
+       "h": 4,
+       "e": 0
+      },
+      "home": {
+       "team": "STL",
+       "r": 7,
+       "h": 14,
+       "e": 4
+      }
+     }
     },
     {
      "inning": 7,
@@ -1536,7 +1945,21 @@
       "C.Getzien enters the game to pitch.",
       "D.Brouthers grounds out to 1B.",
       "E.Sutton grounds out to SS."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "BSN",
+       "r": 6,
+       "h": 4,
+       "e": 0
+      },
+      "home": {
+       "team": "STL",
+       "r": 7,
+       "h": 14,
+       "e": 4
+      }
+     }
     },
     {
      "inning": 7,
@@ -1551,7 +1974,21 @@
       "D.Bushong enters the game as a pinch-hitter for C.Getzien.",
       "D.Bushong pops out to 2B.",
       "Y.Robinson flies out to RCF."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "BSN",
+       "r": 6,
+       "h": 4,
+       "e": 0
+      },
+      "home": {
+       "team": "STL",
+       "r": 7,
+       "h": 16,
+       "e": 4
+      }
+     }
     },
     {
      "inning": 8,
@@ -1566,7 +2003,21 @@
       "P.Hotaling hits an infield single to SS. E.Andrews scores.",
       "A.ADfor pops out to 3B.",
       "P.Hines lines out to 2B."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "BSN",
+       "r": 7,
+       "h": 7,
+       "e": 0
+      },
+      "home": {
+       "team": "STL",
+       "r": 7,
+       "h": 16,
+       "e": 4
+      }
+     }
     },
     {
      "inning": 8,
@@ -1580,7 +2031,21 @@
       "G.Gore hits an infield single to 2B.",
       "G.Smith lines out to 3B.",
       "M.Muldoon grounds out to 3B."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "BSN",
+       "r": 7,
+       "h": 7,
+       "e": 0
+      },
+      "home": {
+       "team": "STL",
+       "r": 7,
+       "h": 17,
+       "e": 4
+      }
+     }
     },
     {
      "inning": 9,
@@ -1590,7 +2055,21 @@
       "J.O'Rourke hits a shallow flyout to LF.",
       "D.Brouthers flies out to deep LF.",
       "E.Sutton grounds out to the pitcher."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "BSN",
+       "r": 7,
+       "h": 7,
+       "e": 0
+      },
+      "home": {
+       "team": "STL",
+       "r": 7,
+       "h": 17,
+       "e": 4
+      }
+     }
     },
     {
      "inning": 9,
@@ -1599,7 +2078,21 @@
      "plays": [
       "S.Barkley grounds out to 3B.",
       "J.Peoples smacks a solo homer to LF that barely clears the wall."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "BSN",
+       "r": 7,
+       "h": 7,
+       "e": 0
+      },
+      "home": {
+       "team": "STL",
+       "r": 8,
+       "h": 18,
+       "e": 4
+      }
+     }
     }
    ]
   },
@@ -2225,7 +2718,21 @@
       "R.Connor hits a shallow flyout to RCF.",
       "G.Gore hits a shallow flyout down the LF line.",
       "G.Smith grounds out to 3B."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "STL",
+       "r": 0,
+       "h": 1,
+       "e": 0
+      },
+      "home": {
+       "team": "BSN",
+       "r": 0,
+       "h": 0,
+       "e": 1
+      }
+     }
     },
     {
      "inning": 1,
@@ -2240,7 +2747,21 @@
       "D.Brouthers grounds out to 3B. J.O'Rourke scores.",
       "G.Gore has a flyball ricochet off his glove and P.Hines reaches on a 2-base error. P.Smith scores.",
       "E.Andrews grounds out to 1B."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "STL",
+       "r": 0,
+       "h": 1,
+       "e": 1
+      },
+      "home": {
+       "team": "BSN",
+       "r": 2,
+       "h": 2,
+       "e": 1
+      }
+     }
     },
     {
      "inning": 2,
@@ -2255,7 +2776,21 @@
       "B.Caruthers grounds it past the mound into CF for a single. S.Barkley scores.",
       "Y.Robinson lines a single to RCF.",
       "C.Wolf hits a shallow flyout to CF."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "STL",
+       "r": 1,
+       "h": 4,
+       "e": 1
+      },
+      "home": {
+       "team": "BSN",
+       "r": 2,
+       "h": 2,
+       "e": 1
+      }
+     }
     },
     {
      "inning": 2,
@@ -2265,7 +2800,21 @@
       "G.Ohfor fouls out to first.",
       "S.Houck hits a shallow flyout to LF.",
       "G.Hecker grounds out to 3B."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "STL",
+       "r": 1,
+       "h": 4,
+       "e": 1
+      },
+      "home": {
+       "team": "BSN",
+       "r": 2,
+       "h": 2,
+       "e": 1
+      }
+     }
     },
     {
      "inning": 3,
@@ -2278,7 +2827,21 @@
       "J.O'Rourke throws a pickoff attempt away. All runners advance.",
       "G.Smith grounds out to 3B.",
       "M.Muldoon pops out to 1B."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "STL",
+       "r": 1,
+       "h": 5,
+       "e": 1
+      },
+      "home": {
+       "team": "BSN",
+       "r": 2,
+       "h": 2,
+       "e": 2
+      }
+     }
     },
     {
      "inning": 3,
@@ -2288,7 +2851,21 @@
       "P.Hotaling lines out to 2B.",
       "J.O'Rourke lines out to SS.",
       "P.Smith grounds out to 3B."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "STL",
+       "r": 1,
+       "h": 5,
+       "e": 1
+      },
+      "home": {
+       "team": "BSN",
+       "r": 2,
+       "h": 2,
+       "e": 2
+      }
+     }
     },
     {
      "inning": 4,
@@ -2298,7 +2875,21 @@
       "S.Barkley pops out to 1B.",
       "J.Peoples grounds out to SS.",
       "B.Caruthers grounds out to 2B."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "STL",
+       "r": 1,
+       "h": 5,
+       "e": 1
+      },
+      "home": {
+       "team": "BSN",
+       "r": 2,
+       "h": 2,
+       "e": 2
+      }
+     }
     },
     {
      "inning": 4,
@@ -2312,7 +2903,21 @@
       "G.Ohfor rips a liner to LF for a double. E.Andrews scores.",
       "S.Houck grounds out to 2B.",
       "G.Hecker grounds out to 3B."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "STL",
+       "r": 1,
+       "h": 5,
+       "e": 1
+      },
+      "home": {
+       "team": "BSN",
+       "r": 4,
+       "h": 5,
+       "e": 2
+      }
+     }
     },
     {
      "inning": 5,
@@ -2322,7 +2927,21 @@
       "Y.Robinson lines out to 1B.",
       "C.Wolf hits a shallow flyout to LF.",
       "R.Connor grounds out to SS."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "STL",
+       "r": 1,
+       "h": 5,
+       "e": 1
+      },
+      "home": {
+       "team": "BSN",
+       "r": 4,
+       "h": 5,
+       "e": 2
+      }
+     }
     },
     {
      "inning": 5,
@@ -2340,7 +2959,21 @@
       "J.Peoples is charged with a passed ball and all runners advance.",
       "J.Peoples is charged with a passed ball and all runners advance. D.Brouthers scores.",
       "E.Andrews grounds out to SS."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "STL",
+       "r": 1,
+       "h": 5,
+       "e": 2
+      },
+      "home": {
+       "team": "BSN",
+       "r": 7,
+       "h": 8,
+       "e": 2
+      }
+     }
     },
     {
      "inning": 6,
@@ -2351,7 +2984,21 @@
       "G.Smith grounds out to 2B.",
       "M.Muldoon grounds out to SS. G.Gore scores.",
       "S.Barkley grounds out to 3B."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "STL",
+       "r": 2,
+       "h": 6,
+       "e": 2
+      },
+      "home": {
+       "team": "BSN",
+       "r": 7,
+       "h": 8,
+       "e": 2
+      }
+     }
     },
     {
      "inning": 6,
@@ -2363,7 +3010,21 @@
       "G.Smith boots a routine grounder and G.Hecker reaches on the error.",
       "P.Hotaling flies out to RCF. G.Gore's throw is off the mark up the 1B line and S.Houck scores.",
       "J.O'Rourke hits a shallow flyout to LCF."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "STL",
+       "r": 2,
+       "h": 6,
+       "e": 3
+      },
+      "home": {
+       "team": "BSN",
+       "r": 8,
+       "h": 9,
+       "e": 2
+      }
+     }
     },
     {
      "inning": 7,
@@ -2383,7 +3044,21 @@
       "G.Gore grounds it thru the hole to RF for a single. Y.Robinson scores.",
       "J.Henry enters the game to pitch.",
       "G.Smith flies out to deep RF."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "STL",
+       "r": 4,
+       "h": 9,
+       "e": 3
+      },
+      "home": {
+       "team": "BSN",
+       "r": 8,
+       "h": 9,
+       "e": 2
+      }
+     }
     },
     {
      "inning": 7,
@@ -2394,7 +3069,21 @@
       "D.Brouthers rips a liner to CF for a double.",
       "B.Nash grounds out to 3B.",
       "T.Poorman hits a shallow flyout to RF."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "STL",
+       "r": 4,
+       "h": 9,
+       "e": 3
+      },
+      "home": {
+       "team": "BSN",
+       "r": 8,
+       "h": 10,
+       "e": 2
+      }
+     }
     },
     {
      "inning": 8,
@@ -2409,7 +3098,21 @@
       "J.Peoples hits one to LF that bounces over the wall for a ground-rule double.",
       "D.Bushong enters the game as a pinch-hitter for B.Caruthers.",
       "D.Bushong hits a shallow flyout to CF."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "STL",
+       "r": 4,
+       "h": 10,
+       "e": 3
+      },
+      "home": {
+       "team": "BSN",
+       "r": 8,
+       "h": 10,
+       "e": 2
+      }
+     }
     },
     {
      "inning": 8,
@@ -2421,7 +3124,21 @@
       "E.Sutton hits a shallow flyout to CF.",
       "J.Henry grounds out to 2B.",
       "P.Hotaling grounds out to 1B."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "STL",
+       "r": 4,
+       "h": 10,
+       "e": 3
+      },
+      "home": {
+       "team": "BSN",
+       "r": 9,
+       "h": 11,
+       "e": 2
+      }
+     }
     },
     {
      "inning": 9,
@@ -2432,7 +3149,21 @@
       "C.Wolf grounds out to 3B.",
       "R.Connor grounds out to 2B.",
       "G.Gore hits a shallow flyout to RCF."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "STL",
+       "r": 4,
+       "h": 11,
+       "e": 3
+      },
+      "home": {
+       "team": "BSN",
+       "r": 9,
+       "h": 11,
+       "e": 2
+      }
+     }
     }
    ]
   },
@@ -3116,7 +3847,21 @@
       "G.Gore is issued the free pass.",
       "G.Smith hits a groundball single to RF.",
       "M.Muldoon hits a shallow flyout to RF."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "STL",
+       "r": 0,
+       "h": 1,
+       "e": 0
+      },
+      "home": {
+       "team": "BSN",
+       "r": 0,
+       "h": 0,
+       "e": 0
+      }
+     }
     },
     {
      "inning": 1,
@@ -3128,7 +3873,21 @@
       "P.Hines grounds it thru the hole to RCF for a single.",
       "P.Hines is caught trying to steal 2B.",
       "J.O'Rourke hits a shallow flyout to LF."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "STL",
+       "r": 0,
+       "h": 1,
+       "e": 0
+      },
+      "home": {
+       "team": "BSN",
+       "r": 0,
+       "h": 1,
+       "e": 0
+      }
+     }
     },
     {
      "inning": 2,
@@ -3140,7 +3899,21 @@
       "J.Peoples grounds out to 2B.",
       "T.Ramsey grounds out to 3B.",
       "B.Gilligan grounds out to 3B."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "STL",
+       "r": 0,
+       "h": 2,
+       "e": 0
+      },
+      "home": {
+       "team": "BSN",
+       "r": 0,
+       "h": 1,
+       "e": 0
+      }
+     }
     },
     {
      "inning": 2,
@@ -3151,7 +3924,21 @@
       "E.Sutton lines out to SS.",
       "B.Gilligan misplays a drive and P.Smith reaches via the 2-base error.",
       "E.Andrews hits a shallow flyout to RF."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "STL",
+       "r": 0,
+       "h": 2,
+       "e": 1
+      },
+      "home": {
+       "team": "BSN",
+       "r": 0,
+       "h": 1,
+       "e": 0
+      }
+     }
     },
     {
      "inning": 3,
@@ -3163,7 +3950,21 @@
       "G.Gore hits a line drive single to CF.",
       "G.Gore steals second base.",
       "G.Smith grounds out to 2B."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "STL",
+       "r": 0,
+       "h": 3,
+       "e": 1
+      },
+      "home": {
+       "team": "BSN",
+       "r": 0,
+       "h": 1,
+       "e": 0
+      }
+     }
     },
     {
      "inning": 3,
@@ -3174,7 +3975,21 @@
       "C.Sweeney draws the walk.",
       "A.ADfor is frozen on strike 3.",
       "P.Hines pops out to 3B."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "STL",
+       "r": 0,
+       "h": 3,
+       "e": 1
+      },
+      "home": {
+       "team": "BSN",
+       "r": 0,
+       "h": 1,
+       "e": 0
+      }
+     }
     },
     {
      "inning": 4,
@@ -3188,7 +4003,21 @@
       "S.Barkley steals home. S.Barkley scores.",
       "J.Peoples takes strike 3 looking.",
       "T.Ramsey lines out to 1B."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "STL",
+       "r": 1,
+       "h": 4,
+       "e": 1
+      },
+      "home": {
+       "team": "BSN",
+       "r": 0,
+       "h": 1,
+       "e": 0
+      }
+     }
     },
     {
      "inning": 4,
@@ -3198,7 +4027,21 @@
       "J.O'Rourke fouls out to third.",
       "D.Brouthers flies out to deep CF.",
       "E.Sutton pops out to 3B."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "STL",
+       "r": 1,
+       "h": 4,
+       "e": 1
+      },
+      "home": {
+       "team": "BSN",
+       "r": 0,
+       "h": 1,
+       "e": 0
+      }
+     }
     },
     {
      "inning": 5,
@@ -3209,7 +4052,21 @@
       "C.Wolf grounds a single to RF.",
       "C.Wolf is caught stealing 2B.",
       "R.Connor grounds out to 2B."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "STL",
+       "r": 1,
+       "h": 5,
+       "e": 1
+      },
+      "home": {
+       "team": "BSN",
+       "r": 0,
+       "h": 1,
+       "e": 0
+      }
+     }
     },
     {
      "inning": 5,
@@ -3224,7 +4081,21 @@
       "A.ADfor draws the walk.",
       "P.Hines hits a line drive single to RCF. E.Andrews scores. C.Sweeney scores.",
       "J.O'Rourke grounds out to 2B."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "STL",
+       "r": 1,
+       "h": 5,
+       "e": 2
+      },
+      "home": {
+       "team": "BSN",
+       "r": 2,
+       "h": 3,
+       "e": 0
+      }
+     }
     },
     {
      "inning": 6,
@@ -3234,7 +4105,21 @@
       "G.Gore flies out to RCF.",
       "G.Smith grounds out to SS.",
       "M.Muldoon pops out to SS."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "STL",
+       "r": 1,
+       "h": 5,
+       "e": 2
+      },
+      "home": {
+       "team": "BSN",
+       "r": 2,
+       "h": 3,
+       "e": 0
+      }
+     }
     },
     {
      "inning": 6,
@@ -3244,7 +4129,21 @@
       "D.Brouthers pops out to 2B.",
       "E.Sutton hits a shallow flyout to RF.",
       "P.Smith grounds out to 3B."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "STL",
+       "r": 1,
+       "h": 5,
+       "e": 2
+      },
+      "home": {
+       "team": "BSN",
+       "r": 2,
+       "h": 3,
+       "e": 0
+      }
+     }
     },
     {
      "inning": 7,
@@ -3259,7 +4158,21 @@
       "B.Gilligan lines a single to RCF. J.Peoples scores.",
       "C.Wolf hits a bloop double to LCF. B.Gilligan scores.",
       "R.Connor grounds out to 2B."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "STL",
+       "r": 3,
+       "h": 7,
+       "e": 2
+      },
+      "home": {
+       "team": "BSN",
+       "r": 2,
+       "h": 3,
+       "e": 1
+      }
+     }
     },
     {
      "inning": 7,
@@ -3275,7 +4188,21 @@
       "A.ADfor hits a groundball single to LF.",
       "P.Hines grounds a single to CF. T.York scores.",
       "J.O'Rourke grounds out to 2B."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "STL",
+       "r": 3,
+       "h": 7,
+       "e": 2
+      },
+      "home": {
+       "team": "BSN",
+       "r": 3,
+       "h": 7,
+       "e": 1
+      }
+     }
     },
     {
      "inning": 8,
@@ -3293,7 +4220,21 @@
       "J.Kirby enters the game to pitch.",
       "J.Kirby lets one get away and all runners advance on the wild pitch.",
       "J.Peoples grounds out to 3B."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "STL",
+       "r": 4,
+       "h": 8,
+       "e": 2
+      },
+      "home": {
+       "team": "BSN",
+       "r": 3,
+       "h": 7,
+       "e": 1
+      }
+     }
     },
     {
      "inning": 8,
@@ -3306,7 +4247,21 @@
       "J.Peoples is charged with a passed ball and all runners advance.",
       "P.Smith lines out to 1B.",
       "E.Andrews flies out to LCF."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "STL",
+       "r": 4,
+       "h": 8,
+       "e": 2
+      },
+      "home": {
+       "team": "BSN",
+       "r": 3,
+       "h": 8,
+       "e": 1
+      }
+     }
     },
     {
      "inning": 9,
@@ -3316,7 +4271,21 @@
       "C.Getzien is frozen on strike 3.",
       "B.Gilligan is frozen on strike 3.",
       "C.Wolf lines out to 3B."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "STL",
+       "r": 4,
+       "h": 8,
+       "e": 2
+      },
+      "home": {
+       "team": "BSN",
+       "r": 3,
+       "h": 8,
+       "e": 1
+      }
+     }
     },
     {
      "inning": 9,
@@ -3332,7 +4301,21 @@
       "P.Hines strikes out on a ball out of the zone.",
       "F.Mountain enters the game to pitch.",
       "J.O'Rourke flies out to CF."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "STL",
+       "r": 4,
+       "h": 8,
+       "e": 3
+      },
+      "home": {
+       "team": "BSN",
+       "r": 4,
+       "h": 9,
+       "e": 1
+      }
+     }
     },
     {
      "inning": 10,
@@ -3348,7 +4331,21 @@
       "D.Bushong flies out to LCF. P.Hines's throw goes home, but R.Connor slides in under the tag and scores.",
       "S.Barkley pops out to 3B.",
       "J.Peoples fouls out to third."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "STL",
+       "r": 5,
+       "h": 9,
+       "e": 3
+      },
+      "home": {
+       "team": "BSN",
+       "r": 4,
+       "h": 9,
+       "e": 1
+      }
+     }
     },
     {
      "inning": 10,
@@ -3358,7 +4355,21 @@
       "D.Brouthers walks.",
       "E.Sutton is plunked in the knee by a pitch.",
       "P.Smith hits a triple. D.Brouthers scores. E.Sutton scores."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "STL",
+       "r": 5,
+       "h": 9,
+       "e": 3
+      },
+      "home": {
+       "team": "BSN",
+       "r": 6,
+       "h": 10,
+       "e": 1
+      }
+     }
     }
    ]
   },
@@ -3944,7 +4955,21 @@
       "M.Muldoon steals 2B.",
       "S.Barkley hits an infield single to SS.",
       "D.Bushong flies out to LF."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "STL",
+       "r": 3,
+       "h": 4,
+       "e": 0
+      },
+      "home": {
+       "team": "BSN",
+       "r": 0,
+       "h": 0,
+       "e": 0
+      }
+     }
     },
     {
      "inning": 1,
@@ -3955,7 +4980,21 @@
       "P.Hotaling grounds out to 1B.",
       "J.O'Rourke grounds out to 3B.",
       "P.Smith grounds out to 2B."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "STL",
+       "r": 3,
+       "h": 4,
+       "e": 0
+      },
+      "home": {
+       "team": "BSN",
+       "r": 0,
+       "h": 0,
+       "e": 0
+      }
+     }
     },
     {
      "inning": 2,
@@ -3965,7 +5004,21 @@
       "B.Caruthers grounds out to 2B.",
       "Y.Robinson grounds out to 2B.",
       "C.Wolf grounds out to 1B."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "STL",
+       "r": 3,
+       "h": 4,
+       "e": 0
+      },
+      "home": {
+       "team": "BSN",
+       "r": 0,
+       "h": 0,
+       "e": 0
+      }
+     }
     },
     {
      "inning": 2,
@@ -3977,7 +5030,21 @@
       "P.Hines steals second base.",
       "E.Andrews hits a shallow flyout to LF.",
       "G.Ohfor lines out to SS."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "STL",
+       "r": 3,
+       "h": 4,
+       "e": 0
+      },
+      "home": {
+       "team": "BSN",
+       "r": 0,
+       "h": 1,
+       "e": 0
+      }
+     }
     },
     {
      "inning": 3,
@@ -3993,7 +5060,21 @@
       "S.Barkley grounds it thru the hole to LF for a single. G.Smith scores.",
       "S.Barkley is nailed stealing 2B.",
       "D.Bushong flies out to deep LF."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "STL",
+       "r": 6,
+       "h": 7,
+       "e": 0
+      },
+      "home": {
+       "team": "BSN",
+       "r": 0,
+       "h": 1,
+       "e": 1
+      }
+     }
     },
     {
      "inning": 3,
@@ -4004,7 +5085,21 @@
       "G.Hecker lines a single to LCF.",
       "P.Hotaling fouls out to right.",
       "J.O'Rourke grounds out to SS."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "STL",
+       "r": 6,
+       "h": 7,
+       "e": 0
+      },
+      "home": {
+       "team": "BSN",
+       "r": 0,
+       "h": 2,
+       "e": 1
+      }
+     }
     },
     {
      "inning": 4,
@@ -4014,7 +5109,21 @@
       "B.Caruthers grounds out to SS.",
       "Y.Robinson pops out to SS.",
       "C.Wolf grounds out to SS."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "STL",
+       "r": 6,
+       "h": 7,
+       "e": 0
+      },
+      "home": {
+       "team": "BSN",
+       "r": 0,
+       "h": 2,
+       "e": 1
+      }
+     }
     },
     {
      "inning": 4,
@@ -4024,7 +5133,21 @@
       "P.Smith grounds out to SS.",
       "D.Brouthers pops out to 1B.",
       "P.Hines grounds out to SS."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "STL",
+       "r": 6,
+       "h": 7,
+       "e": 0
+      },
+      "home": {
+       "team": "BSN",
+       "r": 0,
+       "h": 2,
+       "e": 1
+      }
+     }
     },
     {
      "inning": 5,
@@ -4038,7 +5161,21 @@
       "G.Smith swipes 2B.",
       "G.Hecker throws a wild pitch and all runners advance.",
       "M.Muldoon pops out to 3B."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "STL",
+       "r": 6,
+       "h": 7,
+       "e": 0
+      },
+      "home": {
+       "team": "BSN",
+       "r": 0,
+       "h": 2,
+       "e": 3
+      }
+     }
     },
     {
      "inning": 5,
@@ -4051,7 +5188,21 @@
       "G.Hecker flies out to deep CF. E.Andrews scores.",
       "S.Houck steals second base.",
       "P.Hotaling grounds out to 2B."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "STL",
+       "r": 6,
+       "h": 7,
+       "e": 1
+      },
+      "home": {
+       "team": "BSN",
+       "r": 1,
+       "h": 3,
+       "e": 3
+      }
+     }
     },
     {
      "inning": 6,
@@ -4064,7 +5215,21 @@
       "D.Bushong steals 2B.",
       "B.Caruthers grounds out to 1B.",
       "Y.Robinson flies out to RCF."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "STL",
+       "r": 6,
+       "h": 7,
+       "e": 1
+      },
+      "home": {
+       "team": "BSN",
+       "r": 1,
+       "h": 3,
+       "e": 5
+      }
+     }
     },
     {
      "inning": 6,
@@ -4077,7 +5242,21 @@
       "G.Gore misplays a lazy flyball and P.Hines reaches on the error. J.O'Rourke scores.",
       "B.Caruthers is charged with a balk and all runners advance.",
       "E.Andrews grounds out to 3B."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "STL",
+       "r": 6,
+       "h": 7,
+       "e": 2
+      },
+      "home": {
+       "team": "BSN",
+       "r": 2,
+       "h": 4,
+       "e": 5
+      }
+     }
     },
     {
      "inning": 7,
@@ -4087,7 +5266,21 @@
       "C.Wolf grounds out to SS.",
       "R.Connor grounds out to 2B.",
       "G.Gore grounds out to 2B."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "STL",
+       "r": 6,
+       "h": 7,
+       "e": 2
+      },
+      "home": {
+       "team": "BSN",
+       "r": 2,
+       "h": 4,
+       "e": 5
+      }
+     }
     },
     {
      "inning": 7,
@@ -4097,7 +5290,21 @@
       "G.Ohfor pops out to 3B.",
       "S.Houck swings and misses for strike 3.",
       "G.Hecker grounds out to SS."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "STL",
+       "r": 6,
+       "h": 7,
+       "e": 2
+      },
+      "home": {
+       "team": "BSN",
+       "r": 2,
+       "h": 4,
+       "e": 5
+      }
+     }
     },
     {
      "inning": 8,
@@ -4111,7 +5318,21 @@
       "S.Barkley lines out to SS.",
       "D.Bushong grounds out to 2B.",
       "B.Caruthers grounds out to 1B."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "STL",
+       "r": 7,
+       "h": 8,
+       "e": 2
+      },
+      "home": {
+       "team": "BSN",
+       "r": 2,
+       "h": 4,
+       "e": 6
+      }
+     }
     },
     {
      "inning": 8,
@@ -4122,7 +5343,21 @@
       "P.Hotaling hits an infield single to SS.",
       "J.O'Rourke hits into a 3-6 fielder's choice.",
       "P.Smith grounds into a 3-6-3 double play."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "STL",
+       "r": 7,
+       "h": 8,
+       "e": 2
+      },
+      "home": {
+       "team": "BSN",
+       "r": 2,
+       "h": 5,
+       "e": 6
+      }
+     }
     },
     {
      "inning": 9,
@@ -4143,7 +5378,21 @@
       "D.Bushong walks.",
       "B.Caruthers grounds it thru the hole to RF for a single. J.Miller scores. S.Barkley scores.",
       "Y.Robinson fouls out to the C on the 3B side."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "STL",
+       "r": 12,
+       "h": 14,
+       "e": 2
+      },
+      "home": {
+       "team": "BSN",
+       "r": 2,
+       "h": 5,
+       "e": 6
+      }
+     }
     },
     {
      "inning": 9,
@@ -4162,7 +5411,21 @@
       "S.Houck grounds it thru the hole to RF for a single. P.Hines scores.",
       "T.Poorman enters the game as a pinch-hitter for B.Vinton.",
       "T.Poorman grounds out to 1B."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "STL",
+       "r": 12,
+       "h": 14,
+       "e": 2
+      },
+      "home": {
+       "team": "BSN",
+       "r": 3,
+       "h": 7,
+       "e": 6
+      }
+     }
     }
    ]
   },
@@ -4898,7 +6161,21 @@
       "D.Brouthers hits a shallow flyout to RF.",
       "P.Hines hits a groundball single to RF. J.O'Rourke scores.",
       "E.Andrews lines out to SS."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "BSN",
+       "r": 1,
+       "h": 2,
+       "e": 0
+      },
+      "home": {
+       "team": "STL",
+       "r": 0,
+       "h": 0,
+       "e": 1
+      }
+     }
     },
     {
      "inning": 1,
@@ -4914,7 +6191,21 @@
       "G.Smith pops out to 1B.",
       "R.Connor steals 2B.",
       "M.Muldoon strikes out on a ball out of the zone."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "BSN",
+       "r": 1,
+       "h": 2,
+       "e": 0
+      },
+      "home": {
+       "team": "STL",
+       "r": 1,
+       "h": 3,
+       "e": 1
+      }
+     }
     },
     {
      "inning": 2,
@@ -4933,7 +6224,21 @@
       "P.Hines grounds out to SS.",
       "E.Andrews hits a groundball single to RCF. D.Brouthers scores.",
       "G.Ohfor grounds out to 3B."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "BSN",
+       "r": 7,
+       "h": 8,
+       "e": 0
+      },
+      "home": {
+       "team": "STL",
+       "r": 1,
+       "h": 3,
+       "e": 2
+      }
+     }
     },
     {
      "inning": 2,
@@ -4944,7 +6249,21 @@
       "D.Bushong pops out to SS.",
       "C.Comiskey enters the game as a pinch-hitter for C.Getzien.",
       "C.Comiskey grounds out to 2B."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "BSN",
+       "r": 7,
+       "h": 8,
+       "e": 0
+      },
+      "home": {
+       "team": "STL",
+       "r": 1,
+       "h": 3,
+       "e": 2
+      }
+     }
     },
     {
      "inning": 3,
@@ -4958,7 +6277,21 @@
       "J.O'Rourke flies out to RF.",
       "P.Smith grounds a single to CF. C.Sweeney scores.",
       "D.Brouthers hits a shallow flyout to CF."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "BSN",
+       "r": 8,
+       "h": 9,
+       "e": 0
+      },
+      "home": {
+       "team": "STL",
+       "r": 1,
+       "h": 3,
+       "e": 2
+      }
+     }
     },
     {
      "inning": 3,
@@ -4979,7 +6312,21 @@
       "B.Gilligan draws the walk.",
       "C.Wolf hits a line drive single to RF. D.Bushong scores.",
       "R.Connor grounds out to SS."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "BSN",
+       "r": 8,
+       "h": 9,
+       "e": 0
+      },
+      "home": {
+       "team": "STL",
+       "r": 8,
+       "h": 10,
+       "e": 2
+      }
+     }
     },
     {
      "inning": 4,
@@ -4993,7 +6340,21 @@
       "B.Gilligan has a flyball ricochet off his glove and S.Houck reaches on a 2-base error. P.Hines scores.",
       "T.Poorman enters the game as a pinch-hitter for C.Sweeney.",
       "T.Poorman grounds out to 1B."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "BSN",
+       "r": 9,
+       "h": 9,
+       "e": 0
+      },
+      "home": {
+       "team": "STL",
+       "r": 8,
+       "h": 10,
+       "e": 3
+      }
+     }
     },
     {
      "inning": 4,
@@ -5010,7 +6371,21 @@
       "M.Muldoon and S.Barkley each steal a base.",
       "D.Bushong lines out to 2B.",
       "K.Crabtree flies out to CF."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "BSN",
+       "r": 9,
+       "h": 9,
+       "e": 1
+      },
+      "home": {
+       "team": "STL",
+       "r": 9,
+       "h": 11,
+       "e": 3
+      }
+     }
     },
     {
      "inning": 5,
@@ -5020,7 +6395,21 @@
       "P.Hotaling grounds out to 2B.",
       "J.O'Rourke grounds out to the pitcher.",
       "P.Smith grounds out to 3B."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "BSN",
+       "r": 9,
+       "h": 9,
+       "e": 1
+      },
+      "home": {
+       "team": "STL",
+       "r": 9,
+       "h": 11,
+       "e": 3
+      }
+     }
     },
     {
      "inning": 5,
@@ -5033,7 +6422,21 @@
       "R.Connor steals 2B.",
       "G.Gore is intentionally walked.",
       "G.Smith flies out to RCF."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "BSN",
+       "r": 9,
+       "h": 9,
+       "e": 1
+      },
+      "home": {
+       "team": "STL",
+       "r": 9,
+       "h": 11,
+       "e": 3
+      }
+     }
     },
     {
      "inning": 6,
@@ -5046,7 +6449,21 @@
       "P.Hines swipes 2B.",
       "E.Andrews grounds out to 3B.",
       "G.Ohfor grounds out to SS."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "BSN",
+       "r": 9,
+       "h": 10,
+       "e": 1
+      },
+      "home": {
+       "team": "STL",
+       "r": 9,
+       "h": 11,
+       "e": 3
+      }
+     }
     },
     {
      "inning": 6,
@@ -5059,7 +6476,21 @@
       "D.Bushong fouls out to first.",
       "J.Farrell enters the game as a pinch-hitter for T.Ramsey.",
       "J.Farrell grounds out to 3B."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "BSN",
+       "r": 9,
+       "h": 10,
+       "e": 1
+      },
+      "home": {
+       "team": "STL",
+       "r": 9,
+       "h": 12,
+       "e": 3
+      }
+     }
     },
     {
      "inning": 7,
@@ -5072,7 +6503,21 @@
       "P.Hotaling hits an infield single to SS.",
       "J.O'Rourke hits an infield single to 3B.",
       "P.Smith flies out to LF."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "BSN",
+       "r": 9,
+       "h": 12,
+       "e": 1
+      },
+      "home": {
+       "team": "STL",
+       "r": 9,
+       "h": 12,
+       "e": 3
+      }
+     }
     },
     {
      "inning": 7,
@@ -5084,7 +6529,21 @@
       "R.Connor hits a groundball single to RF.",
       "G.Gore hits a shallow flyout to CF.",
       "G.Smith flies out to RCF."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "BSN",
+       "r": 9,
+       "h": 12,
+       "e": 1
+      },
+      "home": {
+       "team": "STL",
+       "r": 9,
+       "h": 14,
+       "e": 3
+      }
+     }
     },
     {
      "inning": 8,
@@ -5095,7 +6554,21 @@
       "P.Hines grounds out to SS.",
       "E.Andrews flies out to RF. D.Brouthers is safe at 3B in a close play.",
       "G.Ohfor grounds out to 1B."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "BSN",
+       "r": 9,
+       "h": 13,
+       "e": 1
+      },
+      "home": {
+       "team": "STL",
+       "r": 9,
+       "h": 14,
+       "e": 3
+      }
+     }
     },
     {
      "inning": 8,
@@ -5108,7 +6581,21 @@
       "D.Bushong draws the walk.",
       "J.Quest enters the game as a pinch-hitter for F.Mountain.",
       "J.Quest hits a shallow flyout to RF."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "BSN",
+       "r": 9,
+       "h": 13,
+       "e": 1
+      },
+      "home": {
+       "team": "STL",
+       "r": 9,
+       "h": 14,
+       "e": 3
+      }
+     }
     },
     {
      "inning": 9,
@@ -5121,7 +6608,21 @@
       "E.Sutton enters the game as a pinch-hitter for J.Henry.",
       "E.Sutton grounds out to SS.",
       "P.Hotaling lines out to SS."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "BSN",
+       "r": 9,
+       "h": 13,
+       "e": 1
+      },
+      "home": {
+       "team": "STL",
+       "r": 9,
+       "h": 14,
+       "e": 3
+      }
+     }
     },
     {
      "inning": 9,
@@ -5138,7 +6639,21 @@
       "G.Gore is issued the free pass.",
       "P.Hines can't handle a groundball and G.Smith reaches on the error.",
       "M.Muldoon hits a groundball single to LCF. C.Wolf scores."
-     ]
+     ],
+     "score_after": {
+      "away": {
+       "team": "BSN",
+       "r": 9,
+       "h": 13,
+       "e": 3
+      },
+      "home": {
+       "team": "STL",
+       "r": 10,
+       "h": 16,
+       "e": 3
+      }
+     }
     }
    ]
   }

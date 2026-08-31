@@ -173,6 +173,7 @@ def main():
     # --- Set up Jinja ---
     env = Environment(loader=FileSystemLoader(TEMPLATES_DIR), trim_blocks=True, lstrip_blocks=True)
     env.globals["hub_abbr"] = hub_abbr
+    env.globals["team_name_by_abbr"] = {abbr: t["FranchiseName"] for abbr, t in teams_by_abbr.items()}
 
     # --- Reset output dir (keep static/) ---
     if os.path.exists(SITE_DIR):

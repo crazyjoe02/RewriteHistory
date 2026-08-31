@@ -214,6 +214,20 @@ table.stats tfoot td {
     font-size: 12px;
     line-height: 1.6;
 }
+.pbp-mini-score {
+    margin: 0 24px 10px 24px;
+    border-collapse: collapse;
+    font-size: 12px;
+}
+.pbp-mini-score td {
+    border: 1px solid #cdd7e0;
+    padding: 3px 10px;
+    text-align: center;
+}
+.pbp-mini-score td.left {
+    text-align: left;
+    font-weight: bold;
+}
 
 /* Badge row on player pages - All-Star + Award pills */
 .badge-row {
