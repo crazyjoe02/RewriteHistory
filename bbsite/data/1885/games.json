@@ -103843,7 +103843,453 @@
     }
    }
   },
-  "playbyplay": []
+  "playbyplay": [
+   {
+    "inning": 1,
+    "half": "Top",
+    "team": "BRO",
+    "plays": [
+     "B.Caruthers enters the game to pitch.",
+     "B.Gleason grounds a single to LF.",
+     "B.Gleason is caught trying to steal 2B.",
+     "G.Pinkney grounds out to 3B.",
+     "E.Swartwood hits an infield single to 3B.",
+     "E.Swartwood steals second base.",
+     "P.Radford grounds out to 1B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BRO",
+      "r": 0,
+      "h": 2,
+      "e": 0
+     },
+     "home": {
+      "team": "STL",
+      "r": 0,
+      "h": 0,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 1,
+    "half": "Bottom",
+    "team": "STL",
+    "plays": [
+     "T.Lovett enters the game to pitch.",
+     "R.Connor grounds out to 1B.",
+     "C.Wolf grounds it thru the hole to LCF for a single.",
+     "C.Wolf is caught trying to steal 2B.",
+     "G.Gore grounds out to the pitcher."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BRO",
+      "r": 0,
+      "h": 2,
+      "e": 0
+     },
+     "home": {
+      "team": "STL",
+      "r": 0,
+      "h": 1,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 2,
+    "half": "Top",
+    "team": "BRO",
+    "plays": [
+     "L.Maskrey hits a shallow flyout to RF.",
+     "J.Field swings and misses for strike 3.",
+     "B.Traffley grounds out to SS."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BRO",
+      "r": 0,
+      "h": 2,
+      "e": 0
+     },
+     "home": {
+      "team": "STL",
+      "r": 0,
+      "h": 1,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 2,
+    "half": "Bottom",
+    "team": "STL",
+    "plays": [
+     "G.Smith hits a shallow flyout to RCF.",
+     "S.Barkley hits an infield single to SS.",
+     "M.Muldoon lines out to SS.",
+     "Y.Robinson grounds out to 3B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BRO",
+      "r": 0,
+      "h": 2,
+      "e": 0
+     },
+     "home": {
+      "team": "STL",
+      "r": 0,
+      "h": 2,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 3,
+    "half": "Top",
+    "team": "BRO",
+    "plays": [
+     "C.Bassett grounds out to 3B.",
+     "T.Lovett hits a shallow flyout to RF.",
+     "B.Gleason hits a shallow flyout to CF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BRO",
+      "r": 0,
+      "h": 2,
+      "e": 0
+     },
+     "home": {
+      "team": "STL",
+      "r": 0,
+      "h": 2,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 3,
+    "half": "Bottom",
+    "team": "STL",
+    "plays": [
+     "D.Bushong flies out to LCF.",
+     "B.Caruthers fouls out to third.",
+     "R.Connor pops out to 3B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BRO",
+      "r": 0,
+      "h": 2,
+      "e": 0
+     },
+     "home": {
+      "team": "STL",
+      "r": 0,
+      "h": 2,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 4,
+    "half": "Top",
+    "team": "BRO",
+    "plays": [
+     "G.Pinkney grounds out to SS.",
+     "E.Swartwood grounds it thru the hole to RF for a single.",
+     "E.Swartwood swipes 2B.",
+     "P.Radford grounds out to 2B.",
+     "L.Maskrey flies out to LF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BRO",
+      "r": 0,
+      "h": 3,
+      "e": 0
+     },
+     "home": {
+      "team": "STL",
+      "r": 0,
+      "h": 2,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 4,
+    "half": "Bottom",
+    "team": "STL",
+    "plays": [
+     "C.Wolf grounds out to 2B.",
+     "G.Gore hits a line drive single to RCF.",
+     "G.Gore swipes 2B.",
+     "G.Smith hits a shallow flyout to RF.",
+     "S.Barkley grounds out to 1B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BRO",
+      "r": 0,
+      "h": 3,
+      "e": 0
+     },
+     "home": {
+      "team": "STL",
+      "r": 0,
+      "h": 3,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 5,
+    "half": "Top",
+    "team": "BRO",
+    "plays": [
+     "J.Field hits a bloop double to LCF.",
+     "B.Traffley hits a shallow flyout to RCF.",
+     "C.Bassett draws the walk.",
+     "J.Field is caught stealing on the front end of a double steal. C.Bassett advances on the throw.",
+     "T.Lovett grounds out to 1B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BRO",
+      "r": 0,
+      "h": 4,
+      "e": 0
+     },
+     "home": {
+      "team": "STL",
+      "r": 0,
+      "h": 3,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 5,
+    "half": "Bottom",
+    "team": "STL",
+    "plays": [
+     "M.Muldoon hits a shallow flyout to LF.",
+     "Y.Robinson hits a shallow flyout to RF.",
+     "D.Bushong is plunked in the knee by a pitch.",
+     "B.Caruthers hits a line drive double to CF. D.Bushong scores.",
+     "R.Connor is intentionally walked.",
+     "C.Wolf grounds out to SS."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BRO",
+      "r": 0,
+      "h": 4,
+      "e": 0
+     },
+     "home": {
+      "team": "STL",
+      "r": 1,
+      "h": 4,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 6,
+    "half": "Top",
+    "team": "BRO",
+    "plays": [
+     "B.Gleason pops out to 1B.",
+     "B.Caruthers kicks a slow roller and G.Pinkney reaches on the error.",
+     "G.Pinkney steals 2B.",
+     "E.Swartwood flies out to CF. G.Pinkney is safe at 3B ahead of the throw.",
+     "P.Radford grounds out to 3B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BRO",
+      "r": 0,
+      "h": 4,
+      "e": 0
+     },
+     "home": {
+      "team": "STL",
+      "r": 1,
+      "h": 4,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 6,
+    "half": "Bottom",
+    "team": "STL",
+    "plays": [
+     "G.Gore takes ball four.",
+     "G.Gore steals second base.",
+     "G.Smith smokes a line drive single to LF. G.Gore scores.",
+     "G.Smith steals 2B.",
+     "S.Barkley grounds out to 1B.",
+     "M.Muldoon hits a line drive double to CF. G.Smith scores.",
+     "Y.Robinson grounds out to 3B.",
+     "D.Bushong is drilled in the arm by a pitch.",
+     "B.Caruthers hits a shallow flyout to RCF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BRO",
+      "r": 0,
+      "h": 4,
+      "e": 0
+     },
+     "home": {
+      "team": "STL",
+      "r": 3,
+      "h": 6,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 7,
+    "half": "Top",
+    "team": "BRO",
+    "plays": [
+     "L.Maskrey grounds out to SS.",
+     "J.Field hits a line drive single to LCF.",
+     "B.Traffley hits a shallow flyout to LCF.",
+     "C.Bassett hits a shallow flyout to LCF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BRO",
+      "r": 0,
+      "h": 5,
+      "e": 0
+     },
+     "home": {
+      "team": "STL",
+      "r": 3,
+      "h": 6,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 7,
+    "half": "Bottom",
+    "team": "STL",
+    "plays": [
+     "J.McGinnis enters the game to pitch.",
+     "P.Radford can't handle a flyball and R.Connor reaches on the error.",
+     "R.Connor swipes 2B.",
+     "C.Wolf lines out to 2B.",
+     "G.Gore hits a groundball single to CF. R.Connor scores.",
+     "G.Gore swipes 2B.",
+     "G.Gore is caught trying to steal 3B.",
+     "G.Smith grounds out to 2B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BRO",
+      "r": 0,
+      "h": 5,
+      "e": 1
+     },
+     "home": {
+      "team": "STL",
+      "r": 4,
+      "h": 7,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 8,
+    "half": "Top",
+    "team": "BRO",
+    "plays": [
+     "J.Miller enters the game at 3B as a defensive replacement.",
+     "J.McTamany enters the game as a pinch-hitter for J.McGinnis.",
+     "J.McTamany grounds out to 3B.",
+     "B.Gleason grounds a single to LF.",
+     "G.Pinkney grounds into a 4-6-3 double play."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BRO",
+      "r": 0,
+      "h": 6,
+      "e": 1
+     },
+     "home": {
+      "team": "STL",
+      "r": 4,
+      "h": 7,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 8,
+    "half": "Bottom",
+    "team": "STL",
+    "plays": [
+     "S.Hance enters the game to pitch.",
+     "S.Barkley grounds out to 3B.",
+     "J.Miller hits a bloop single to LCF.",
+     "J.Miller swipes 2B.",
+     "J.Miller is nailed stealing 3B.",
+     "Y.Robinson grounds out to SS."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BRO",
+      "r": 0,
+      "h": 6,
+      "e": 1
+     },
+     "home": {
+      "team": "STL",
+      "r": 4,
+      "h": 8,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 9,
+    "half": "Top",
+    "team": "BRO",
+    "plays": [
+     "E.Swartwood grounds out to the pitcher.",
+     "B.Hignite enters the game as a pinch-hitter for P.Radford.",
+     "B.Hignite lines out to 3B.",
+     "J.Keenan enters the game as a pinch-hitter for L.Maskrey.",
+     "J.Keenan grounds out to 2B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BRO",
+      "r": 0,
+      "h": 6,
+      "e": 1
+     },
+     "home": {
+      "team": "STL",
+      "r": 4,
+      "h": 8,
+      "e": 1
+     }
+    }
+   }
+  ]
  },
  {
   "season": 1885,
@@ -104276,7 +104722,494 @@
     }
    }
   },
-  "playbyplay": []
+  "playbyplay": [
+   {
+    "inning": 1,
+    "half": "Top",
+    "team": "PHI",
+    "plays": [
+     "J.Lynch enters the game to pitch.",
+     "C.Nelson swings and misses for strike 3.",
+     "J.Morrill lines out to 1B.",
+     "S.Thompson crushes a solo homer to RCF.",
+     "D.Orr grounds out to 3B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PHI",
+      "r": 1,
+      "h": 1,
+      "e": 0
+     },
+     "home": {
+      "team": "CHC",
+      "r": 0,
+      "h": 0,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 1,
+    "half": "Bottom",
+    "team": "CHC",
+    "plays": [
+     "C.Ferguson enters the game to pitch.",
+     "C.Jones flies out to LCF.",
+     "C.Anson flies out to deep LF.",
+     "K.Kelly grounds out to SS."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PHI",
+      "r": 1,
+      "h": 1,
+      "e": 0
+     },
+     "home": {
+      "team": "CHC",
+      "r": 0,
+      "h": 0,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 2,
+    "half": "Top",
+    "team": "PHI",
+    "plays": [
+     "B.Crowley flies out to CF.",
+     "J.Mulvey grounds out to SS.",
+     "J.Fogarty hits a line drive single to LF.",
+     "D.McGuire grounds out to 3B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PHI",
+      "r": 1,
+      "h": 2,
+      "e": 0
+     },
+     "home": {
+      "team": "CHC",
+      "r": 0,
+      "h": 0,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 2,
+    "half": "Bottom",
+    "team": "CHC",
+    "plays": [
+     "A.Dalrymple hits a groundball single to CF.",
+     "T.Burns hits a shallow flyout to LF.",
+     "A.Dalrymple steals second base.",
+     "F.Lewis grounds out to 1B.",
+     "B.McClellan is issued the free pass.",
+     "J.Lynch grounds out to 1B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PHI",
+      "r": 1,
+      "h": 2,
+      "e": 0
+     },
+     "home": {
+      "team": "CHC",
+      "r": 0,
+      "h": 1,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 3,
+    "half": "Top",
+    "team": "PHI",
+    "plays": [
+     "C.Ferguson grounds out to SS.",
+     "C.Nelson hits a shallow flyout to RF.",
+     "J.Morrill strikes out swinging."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PHI",
+      "r": 1,
+      "h": 2,
+      "e": 0
+     },
+     "home": {
+      "team": "CHC",
+      "r": 0,
+      "h": 1,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 3,
+    "half": "Bottom",
+    "team": "CHC",
+    "plays": [
+     "N.Williamson pops out to SS.",
+     "C.Jones grounds out to SS.",
+     "C.Anson flies out to LCF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PHI",
+      "r": 1,
+      "h": 2,
+      "e": 0
+     },
+     "home": {
+      "team": "CHC",
+      "r": 0,
+      "h": 1,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 4,
+    "half": "Top",
+    "team": "PHI",
+    "plays": [
+     "S.Thompson grounds it thru the hole to RCF for a single.",
+     "S.Thompson swipes 2B.",
+     "D.Orr hits a shallow flyout to LCF.",
+     "S.Thompson steals 3B.",
+     "B.Crowley skies one to LF that falls in for a double. S.Thompson scores.",
+     "J.Mulvey hits a shallow flyout to LF.",
+     "J.Fogarty grounds out to 3B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PHI",
+      "r": 2,
+      "h": 4,
+      "e": 0
+     },
+     "home": {
+      "team": "CHC",
+      "r": 0,
+      "h": 1,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 4,
+    "half": "Bottom",
+    "team": "CHC",
+    "plays": [
+     "K.Kelly hits a groundball single to LF.",
+     "K.Kelly swipes 2B.",
+     "J.Morrill boots a routine grounder and A.Dalrymple reaches on the error.",
+     "A.Dalrymple steals second base.",
+     "T.Burns walks.",
+     "F.Lewis takes strike 3 looking.",
+     "B.McClellan hits into a 3-2 fielder's choice.",
+     "J.Lynch hits a shallow flyout to CF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PHI",
+      "r": 2,
+      "h": 4,
+      "e": 1
+     },
+     "home": {
+      "team": "CHC",
+      "r": 0,
+      "h": 2,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 5,
+    "half": "Top",
+    "team": "PHI",
+    "plays": [
+     "D.McGuire strikes out swinging.",
+     "C.Ferguson hits an infield single to SS.",
+     "C.Nelson lines out to 2B.",
+     "J.Morrill flies out to RF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PHI",
+      "r": 2,
+      "h": 5,
+      "e": 1
+     },
+     "home": {
+      "team": "CHC",
+      "r": 0,
+      "h": 2,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 5,
+    "half": "Bottom",
+    "team": "CHC",
+    "plays": [
+     "N.Williamson walks.",
+     "N.Williamson is nailed stealing 2B.",
+     "C.Jones grounds out to 1B.",
+     "C.Anson grounds out to 3B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PHI",
+      "r": 2,
+      "h": 5,
+      "e": 1
+     },
+     "home": {
+      "team": "CHC",
+      "r": 0,
+      "h": 2,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 6,
+    "half": "Top",
+    "team": "PHI",
+    "plays": [
+     "S.Thompson grounds out to 3B.",
+     "D.Orr grounds out to 3B.",
+     "B.Crowley flies out to LCF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PHI",
+      "r": 2,
+      "h": 5,
+      "e": 1
+     },
+     "home": {
+      "team": "CHC",
+      "r": 0,
+      "h": 2,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 6,
+    "half": "Bottom",
+    "team": "CHC",
+    "plays": [
+     "K.Kelly hits a line drive double to RF.",
+     "A.Dalrymple lines out to 1B.",
+     "T.Burns hits an infield single to SS.",
+     "F.Lewis grounds one back to the pitcher who throws to second for the force.",
+     "B.McClellan grounds out to 2B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PHI",
+      "r": 2,
+      "h": 5,
+      "e": 1
+     },
+     "home": {
+      "team": "CHC",
+      "r": 0,
+      "h": 4,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 7,
+    "half": "Top",
+    "team": "PHI",
+    "plays": [
+     "J.Harper enters the game to pitch.",
+     "J.Mulvey grounds a single to LCF.",
+     "J.Mulvey steals second base.",
+     "J.Fogarty grounds out to 2B.",
+     "D.McGuire grounds out to SS.",
+     "C.Ferguson takes ball four.",
+     "C.Nelson hits a shallow flyout to RCF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PHI",
+      "r": 2,
+      "h": 6,
+      "e": 1
+     },
+     "home": {
+      "team": "CHC",
+      "r": 0,
+      "h": 4,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 7,
+    "half": "Bottom",
+    "team": "CHC",
+    "plays": [
+     "J.Harper strikes out swinging.",
+     "N.Williamson strikes out on a ball out of the zone.",
+     "C.Jones hits a line drive single to LCF.",
+     "C.Ferguson throws a wild pitch and all runners advance.",
+     "C.Anson hits a Texas League single to LF. C.Jones scores.",
+     "C.Anson steals 2B.",
+     "K.Kelly pops out to SS."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PHI",
+      "r": 2,
+      "h": 6,
+      "e": 1
+     },
+     "home": {
+      "team": "CHC",
+      "r": 1,
+      "h": 6,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 8,
+    "half": "Top",
+    "team": "PHI",
+    "plays": [
+     "J.Morrill grounds out to SS.",
+     "S.Thompson hits a Texas League single to RF.",
+     "S.Thompson steals 2B.",
+     "D.Orr grounds out to 2B.",
+     "K.Kelly throws a pickoff attempt away. All runners advance. S.Thompson scores.",
+     "B.Crowley grounds out to SS."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PHI",
+      "r": 3,
+      "h": 7,
+      "e": 1
+     },
+     "home": {
+      "team": "CHC",
+      "r": 1,
+      "h": 6,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 8,
+    "half": "Bottom",
+    "team": "CHC",
+    "plays": [
+     "A.Dalrymple takes ball four.",
+     "T.Burns strikes out on a ball out of the zone.",
+     "F.Lewis hits a groundball single to RCF.",
+     "B.McClellan skies one to LF that falls in for a double. A.Dalrymple scores.",
+     "B.Sunday enters the game as a pinch-hitter for J.Harper.",
+     "B.Sunday hits a bloop single to RCF. F.Lewis scores. B.McClellan scores.",
+     "C.Buffinton enters the game to pitch.",
+     "N.Williamson hits a sacrifice bunt to C. All runners advance.",
+     "C.Jones grounds out to SS."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PHI",
+      "r": 3,
+      "h": 7,
+      "e": 1
+     },
+     "home": {
+      "team": "CHC",
+      "r": 4,
+      "h": 9,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 9,
+    "half": "Top",
+    "team": "PHI",
+    "plays": [
+     "S.Manley enters the game to pitch.",
+     "D.Weston enters the game as a pinch-hitter for J.Mulvey.",
+     "D.Weston hits a triple.",
+     "J.Fogarty hits a shallow flyout to CF.",
+     "B.Wilnet enters the game as a pinch-hitter for D.McGuire.",
+     "B.Wilnet draws the walk.",
+     "G.Whiteley enters the game as a pinch-runner for B.Wilnet.",
+     "C.Buffinton takes strike 3 looking.",
+     "C.Nelson grounds a single to RF. D.Weston scores. G.Whiteley advances to 3B despite the throw.",
+     "D.Davis enters the game to pitch.",
+     "K.Kelly can't handle the pitch and is charged with a passed ball. All runners advance. G.Whiteley scores.",
+     "J.Morrill hits a line drive double to LF. C.Nelson scores.",
+     "S.Thompson flies out to CF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PHI",
+      "r": 6,
+      "h": 10,
+      "e": 1
+     },
+     "home": {
+      "team": "CHC",
+      "r": 4,
+      "h": 9,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 9,
+    "half": "Bottom",
+    "team": "CHC",
+    "plays": [
+     "G.Whiteley remains in the game at C.",
+     "D.Weston remains in the game at 3B.",
+     "C.Anson hits a flyball double to CF.",
+     "K.Kelly walks.",
+     "A.Dalrymple draws the walk.",
+     "T.Burns grounds it thru the hole to LF for a single. C.Anson scores. K.Kelly scores. A.Dalrymple slides in under the tag and is safe at 3B.",
+     "F.Lewis grounds out to 2B.",
+     "B.McClellan lines out to 1B.",
+     "O.Shaffer enters the game as a pinch-hitter for D.Davis.",
+     "C.Buffinton throws a wild pitch and all runners advance. A.Dalrymple scores."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PHI",
+      "r": 6,
+      "h": 10,
+      "e": 1
+     },
+     "home": {
+      "team": "CHC",
+      "r": 7,
+      "h": 11,
+      "e": 1
+     }
+    }
+   }
+  ]
  },
  {
   "season": 1885,
@@ -104709,7 +105642,476 @@
     }
    }
   },
-  "playbyplay": []
+  "playbyplay": [
+   {
+    "inning": 1,
+    "half": "Top",
+    "team": "BSN",
+    "plays": [
+     "J.Harkins enters the game to pitch.",
+     "P.Hotaling hits a shallow flyout to RF.",
+     "E.Sutton grounds out to 3B.",
+     "J.O'Rourke pops out to SS."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BSN",
+      "r": 0,
+      "h": 0,
+      "e": 0
+     },
+     "home": {
+      "team": "PIT",
+      "r": 0,
+      "h": 0,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 1,
+    "half": "Bottom",
+    "team": "PIT",
+    "plays": [
+     "G.Hecker enters the game to pitch.",
+     "P.Corkhill grounds out to 1B.",
+     "B.Cramer grounds out to SS.",
+     "F.Dunlap lines out to 3B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BSN",
+      "r": 0,
+      "h": 0,
+      "e": 0
+     },
+     "home": {
+      "team": "PIT",
+      "r": 0,
+      "h": 0,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 2,
+    "half": "Top",
+    "team": "BSN",
+    "plays": [
+     "D.Brouthers hits a shallow flyout to LCF.",
+     "P.Hines grounds out to 1B.",
+     "P.Smith grounds out to SS."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BSN",
+      "r": 0,
+      "h": 0,
+      "e": 0
+     },
+     "home": {
+      "team": "PIT",
+      "r": 0,
+      "h": 0,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 2,
+    "half": "Bottom",
+    "team": "PIT",
+    "plays": [
+     "T.Trubl hits a groundball single to CF.",
+     "S.Farrar hits into a 5-4 fielder's choice.",
+     "S.Farrar steals second base.",
+     "P.Smith can't handle a groundball and J.Clements reaches on the error.",
+     "E.Seery grounds to 2B. They get the force at 2B, but the batter beats the throw to 1B to avoid the DP. S.Farrar scores.",
+     "B.Kuehne hits a triple. E.Seery scores.",
+     "J.Harkins pops out to SS."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BSN",
+      "r": 0,
+      "h": 0,
+      "e": 1
+     },
+     "home": {
+      "team": "PIT",
+      "r": 2,
+      "h": 2,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 3,
+    "half": "Top",
+    "team": "BSN",
+    "plays": [
+     "E.Andrews grounds out to 1B.",
+     "S.Houck is hit in the arm by a pitch.",
+     "S.Houck swipes 2B.",
+     "S.Houck swipes 3B.",
+     "G.Hecker flies out down the LF line. B.Kuehne's relay throw home is on the mark, but S.Houck avoids the tag and scores.",
+     "P.Hotaling grounds out to 2B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BSN",
+      "r": 1,
+      "h": 0,
+      "e": 1
+     },
+     "home": {
+      "team": "PIT",
+      "r": 2,
+      "h": 2,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 3,
+    "half": "Bottom",
+    "team": "PIT",
+    "plays": [
+     "P.Corkhill flies out to deep RF.",
+     "B.Cramer lines out to 3B.",
+     "F.Dunlap hits a shallow flyout to RF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BSN",
+      "r": 1,
+      "h": 0,
+      "e": 1
+     },
+     "home": {
+      "team": "PIT",
+      "r": 2,
+      "h": 2,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 4,
+    "half": "Top",
+    "team": "BSN",
+    "plays": [
+     "E.Sutton grounds out to 3B.",
+     "J.O'Rourke fouls out to first.",
+     "D.Brouthers takes ball four.",
+     "P.Hines lines out to SS."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BSN",
+      "r": 1,
+      "h": 0,
+      "e": 1
+     },
+     "home": {
+      "team": "PIT",
+      "r": 2,
+      "h": 2,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 4,
+    "half": "Bottom",
+    "team": "PIT",
+    "plays": [
+     "T.Trubl grounds out to 1B.",
+     "S.Farrar grounds a single to LCF.",
+     "J.Clements flies out to deep LCF.",
+     "S.Farrar steals 2B.",
+     "E.Seery walks.",
+     "B.Kuehne hits a shallow flyout down the LF line."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BSN",
+      "r": 1,
+      "h": 0,
+      "e": 1
+     },
+     "home": {
+      "team": "PIT",
+      "r": 2,
+      "h": 3,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 5,
+    "half": "Top",
+    "team": "BSN",
+    "plays": [
+     "P.Smith smokes a line drive single to CF.",
+     "P.Smith is caught stealing 2B.",
+     "E.Andrews grounds out to 3B.",
+     "S.Houck hits a flyball solo homer to RCF.",
+     "G.Hecker flies out to CF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BSN",
+      "r": 2,
+      "h": 2,
+      "e": 1
+     },
+     "home": {
+      "team": "PIT",
+      "r": 2,
+      "h": 3,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 5,
+    "half": "Bottom",
+    "team": "PIT",
+    "plays": [
+     "J.Harkins grounds out to SS.",
+     "P.Corkhill hits a groundball single to RF.",
+     "P.Corkhill steals second base.",
+     "P.Corkhill steals 3B.",
+     "B.Cramer pops out to 2B.",
+     "F.Dunlap hits a shallow flyout down the LF line."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BSN",
+      "r": 2,
+      "h": 2,
+      "e": 1
+     },
+     "home": {
+      "team": "PIT",
+      "r": 2,
+      "h": 4,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 6,
+    "half": "Top",
+    "team": "BSN",
+    "plays": [
+     "P.Hotaling grounds out to 2B.",
+     "E.Sutton grounds out to 1B.",
+     "J.O'Rourke grounds it thru the hole to LF for a single.",
+     "J.O'Rourke swipes 2B.",
+     "D.Brouthers is issued the free pass.",
+     "P.Hines smokes a line drive single to LCF. J.O'Rourke scores.",
+     "P.Smith grounds out to 3B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BSN",
+      "r": 3,
+      "h": 4,
+      "e": 1
+     },
+     "home": {
+      "team": "PIT",
+      "r": 2,
+      "h": 4,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 6,
+    "half": "Bottom",
+    "team": "PIT",
+    "plays": [
+     "T.Trubl hits a shallow flyout to RF.",
+     "S.Farrar grounds out to the pitcher.",
+     "J.Clements hits a shallow flyout to CF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BSN",
+      "r": 3,
+      "h": 4,
+      "e": 1
+     },
+     "home": {
+      "team": "PIT",
+      "r": 2,
+      "h": 4,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 7,
+    "half": "Top",
+    "team": "BSN",
+    "plays": [
+     "E.Andrews hits a line drive single to RCF.",
+     "S.Houck grounds a single to LF.",
+     "T.York enters the game as a pinch-hitter for G.Hecker.",
+     "T.York grounds into a 4-6-3 double play. E.Andrews scores.",
+     "P.Hotaling draws the walk.",
+     "P.Hotaling steals second base.",
+     "E.Sutton hits a groundball single to LCF. P.Hotaling scores.",
+     "J.O'Rourke hits a shallow flyout to LF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BSN",
+      "r": 5,
+      "h": 7,
+      "e": 1
+     },
+     "home": {
+      "team": "PIT",
+      "r": 2,
+      "h": 4,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 7,
+    "half": "Bottom",
+    "team": "PIT",
+    "plays": [
+     "B.Taylor enters the game to pitch.",
+     "E.Seery lines out to 2B.",
+     "B.Kuehne grounds out to 2B.",
+     "J.Harkins grounds out to 2B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BSN",
+      "r": 5,
+      "h": 7,
+      "e": 1
+     },
+     "home": {
+      "team": "PIT",
+      "r": 2,
+      "h": 4,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 8,
+    "half": "Top",
+    "team": "BSN",
+    "plays": [
+     "D.Brouthers grounds out to 3B.",
+     "P.Hines flies out to deep LF.",
+     "P.Smith rips a liner to LCF for a double.",
+     "E.Andrews flies out to LF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BSN",
+      "r": 5,
+      "h": 8,
+      "e": 1
+     },
+     "home": {
+      "team": "PIT",
+      "r": 2,
+      "h": 4,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 8,
+    "half": "Bottom",
+    "team": "PIT",
+    "plays": [
+     "P.Corkhill hits an infield single to 1B.",
+     "B.Cramer flies out to deep RF.",
+     "F.Dunlap flies out to LF.",
+     "T.Trubl fouls out to first."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BSN",
+      "r": 5,
+      "h": 8,
+      "e": 1
+     },
+     "home": {
+      "team": "PIT",
+      "r": 2,
+      "h": 5,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 9,
+    "half": "Top",
+    "team": "BSN",
+    "plays": [
+     "S.Houck grounds out to 3B.",
+     "T.Poorman enters the game as a pinch-hitter for B.Taylor.",
+     "T.Poorman grounds out to 1B.",
+     "P.Hotaling hits a shallow flyout to LF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BSN",
+      "r": 5,
+      "h": 8,
+      "e": 1
+     },
+     "home": {
+      "team": "PIT",
+      "r": 2,
+      "h": 5,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 9,
+    "half": "Bottom",
+    "team": "PIT",
+    "plays": [
+     "J.Kirby enters the game to pitch.",
+     "D.Page enters the game as a pinch-hitter for S.Farrar.",
+     "D.Page swings and misses for strike 3.",
+     "J.Clements hits a shallow flyout to RF.",
+     "C.Wass enters the game as a pinch-hitter for E.Seery.",
+     "C.Wass grounds a single to RF.",
+     "H.Gawthrop enters the game as a pinch-hitter for B.Kuehne.",
+     "H.Gawthrop grounds out to 3B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BSN",
+      "r": 5,
+      "h": 8,
+      "e": 1
+     },
+     "home": {
+      "team": "PIT",
+      "r": 2,
+      "h": 6,
+      "e": 0
+     }
+    }
+   }
+  ]
  },
  {
   "season": 1885,
@@ -105141,7 +106543,472 @@
     }
    }
   },
-  "playbyplay": []
+  "playbyplay": [
+   {
+    "inning": 1,
+    "half": "Top",
+    "team": "LOU",
+    "plays": [
+     "H.Boyle enters the game to pitch.",
+     "J.Glasscock lines a single to LF.",
+     "C.Eden hits a shallow flyout to RCF.",
+     "S.Brady grounds it thru the hole to LF for a single.",
+     "T.Brown hits a shallow flyout to RF.",
+     "S.Brady is nailed stealing 2B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "LOU",
+      "r": 0,
+      "h": 2,
+      "e": 0
+     },
+     "home": {
+      "team": "CIN",
+      "r": 0,
+      "h": 0,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 1,
+    "half": "Bottom",
+    "team": "CIN",
+    "plays": [
+     "E.Cushman enters the game to pitch.",
+     "A.Latham takes ball four.",
+     "A.Latham steals 2B.",
+     "B.McPhee grounds out to 1B.",
+     "P.Browning is intentionally walked.",
+     "P.Browning swipes 2B.",
+     "K.Baldwin lines out to SS.",
+     "J.Reilly is intentionally walked.",
+     "C.Bastian flies out to deep CF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "LOU",
+      "r": 0,
+      "h": 2,
+      "e": 0
+     },
+     "home": {
+      "team": "CIN",
+      "r": 0,
+      "h": 0,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 2,
+    "half": "Top",
+    "team": "LOU",
+    "plays": [
+     "C.Roseman hits a shallow flyout to LF.",
+     "F.Pfeffer hits a triple.",
+     "B.McPhee can't handle a groundball and P.Dealy reaches on the error. F.Pfeffer scores.",
+     "F.Hankinson lines out to 3B.",
+     "E.Cushman grounds out to 3B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "LOU",
+      "r": 1,
+      "h": 3,
+      "e": 0
+     },
+     "home": {
+      "team": "CIN",
+      "r": 0,
+      "h": 0,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 2,
+    "half": "Bottom",
+    "team": "CIN",
+    "plays": [
+     "J.Sommer strikes out swinging.",
+     "F.Mann draws the walk.",
+     "F.Mann steals 2B and P.Dealy's throw sails into CF. All runners take an extra base.",
+     "H.Boyle flies out to CF. F.Mann scores on T.Brown's late throw home.",
+     "A.Latham lines out to 3B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "LOU",
+      "r": 1,
+      "h": 3,
+      "e": 1
+     },
+     "home": {
+      "team": "CIN",
+      "r": 1,
+      "h": 0,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 3,
+    "half": "Top",
+    "team": "LOU",
+    "plays": [
+     "J.Glasscock hits an infield single to 3B.",
+     "C.Eden pops out to 1B.",
+     "S.Brady grounds out to 3B.",
+     "T.Brown takes ball four.",
+     "C.Roseman pops out to 2B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "LOU",
+      "r": 1,
+      "h": 4,
+      "e": 1
+     },
+     "home": {
+      "team": "CIN",
+      "r": 1,
+      "h": 0,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 3,
+    "half": "Bottom",
+    "team": "CIN",
+    "plays": [
+     "B.McPhee grounds out to 3B.",
+     "P.Browning grounds out to SS.",
+     "K.Baldwin lines out to SS."
+    ],
+    "score_after": {
+     "away": {
+      "team": "LOU",
+      "r": 1,
+      "h": 4,
+      "e": 1
+     },
+     "home": {
+      "team": "CIN",
+      "r": 1,
+      "h": 0,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 4,
+    "half": "Top",
+    "team": "LOU",
+    "plays": [
+     "F.Pfeffer pops out to SS.",
+     "P.Dealy strikes out on a ball out of the zone.",
+     "F.Hankinson grounds out to 1B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "LOU",
+      "r": 1,
+      "h": 4,
+      "e": 1
+     },
+     "home": {
+      "team": "CIN",
+      "r": 1,
+      "h": 0,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 4,
+    "half": "Bottom",
+    "team": "CIN",
+    "plays": [
+     "J.Reilly lines out to SS.",
+     "C.Bastian flies out to LCF.",
+     "J.Sommer grounds out to 2B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "LOU",
+      "r": 1,
+      "h": 4,
+      "e": 1
+     },
+     "home": {
+      "team": "CIN",
+      "r": 1,
+      "h": 0,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 5,
+    "half": "Top",
+    "team": "LOU",
+    "plays": [
+     "E.Cushman hits a shallow flyout to LCF.",
+     "A.Latham can't handle a groundball and J.Glasscock reaches on the error.",
+     "C.Eden hits into a 4-6 fielder's choice.",
+     "S.Brady grounds out to 3B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "LOU",
+      "r": 1,
+      "h": 4,
+      "e": 1
+     },
+     "home": {
+      "team": "CIN",
+      "r": 1,
+      "h": 0,
+      "e": 2
+     }
+    }
+   },
+   {
+    "inning": 5,
+    "half": "Bottom",
+    "team": "CIN",
+    "plays": [
+     "F.Mann grounds out to 1B.",
+     "H.Boyle lines out to 3B.",
+     "A.Latham flies out to deep CF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "LOU",
+      "r": 1,
+      "h": 4,
+      "e": 1
+     },
+     "home": {
+      "team": "CIN",
+      "r": 1,
+      "h": 0,
+      "e": 2
+     }
+    }
+   },
+   {
+    "inning": 6,
+    "half": "Top",
+    "team": "LOU",
+    "plays": [
+     "T.Brown grounds out to SS.",
+     "C.Roseman pops out to 2B.",
+     "F.Pfeffer flies out to deep RF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "LOU",
+      "r": 1,
+      "h": 4,
+      "e": 1
+     },
+     "home": {
+      "team": "CIN",
+      "r": 1,
+      "h": 0,
+      "e": 2
+     }
+    }
+   },
+   {
+    "inning": 6,
+    "half": "Bottom",
+    "team": "CIN",
+    "plays": [
+     "B.McPhee grounds a single to CF.",
+     "E.Cushman throws a wild pitch and all runners advance.",
+     "P.Browning takes ball four.",
+     "K.Baldwin lines out to P.",
+     "B.McPhee is out on the front end of a double steal attempt. P.Browning advances on the throw.",
+     "J.Reilly is intentionally walked.",
+     "C.Bastian hits a shallow flyout to LCF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "LOU",
+      "r": 1,
+      "h": 4,
+      "e": 1
+     },
+     "home": {
+      "team": "CIN",
+      "r": 1,
+      "h": 1,
+      "e": 2
+     }
+    }
+   },
+   {
+    "inning": 7,
+    "half": "Top",
+    "team": "LOU",
+    "plays": [
+     "P.Dealy grounds out to 2B.",
+     "F.Hankinson lines out to 2B.",
+     "E.Cushman hits a shallow flyout to RF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "LOU",
+      "r": 1,
+      "h": 4,
+      "e": 1
+     },
+     "home": {
+      "team": "CIN",
+      "r": 1,
+      "h": 1,
+      "e": 2
+     }
+    }
+   },
+   {
+    "inning": 7,
+    "half": "Bottom",
+    "team": "CIN",
+    "plays": [
+     "J.Sommer hits a shallow flyout to LCF.",
+     "S.Brady fields the groundball but makes a bad throw to 1B. F.Mann reaches on the throwing error.",
+     "F.Mann swipes 2B.",
+     "F.Mann is nailed stealing 3B.",
+     "H.Boyle hits a shallow flyout to LCF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "LOU",
+      "r": 1,
+      "h": 4,
+      "e": 2
+     },
+     "home": {
+      "team": "CIN",
+      "r": 1,
+      "h": 1,
+      "e": 2
+     }
+    }
+   },
+   {
+    "inning": 8,
+    "half": "Top",
+    "team": "LOU",
+    "plays": [
+     "J.Glasscock hits a shallow flyout to LF.",
+     "C.Eden hits a shallow flyout to RF.",
+     "S.Brady grounds out to 1B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "LOU",
+      "r": 1,
+      "h": 4,
+      "e": 2
+     },
+     "home": {
+      "team": "CIN",
+      "r": 1,
+      "h": 1,
+      "e": 2
+     }
+    }
+   },
+   {
+    "inning": 8,
+    "half": "Bottom",
+    "team": "CIN",
+    "plays": [
+     "A.Latham grounds it past the mound into CF for a single.",
+     "A.Latham is caught trying to steal 2B.",
+     "B.McPhee grounds out to 1B.",
+     "P.Browning hits a line drive single to LF.",
+     "P.Browning steals 2B and P.Dealy's throw sails into CF. All runners take an extra base.",
+     "K.Baldwin grounds out to SS."
+    ],
+    "score_after": {
+     "away": {
+      "team": "LOU",
+      "r": 1,
+      "h": 4,
+      "e": 3
+     },
+     "home": {
+      "team": "CIN",
+      "r": 1,
+      "h": 3,
+      "e": 2
+     }
+    }
+   },
+   {
+    "inning": 9,
+    "half": "Top",
+    "team": "LOU",
+    "plays": [
+     "T.Brown grounds out to 1B.",
+     "C.Roseman grounds out to 2B.",
+     "F.Pfeffer lines one off the 2B's glove for an infield single.",
+     "J.Denny enters the game as a pinch-hitter for P.Dealy.",
+     "F.Pfeffer is caught trying to steal 2B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "LOU",
+      "r": 1,
+      "h": 5,
+      "e": 3
+     },
+     "home": {
+      "team": "CIN",
+      "r": 1,
+      "h": 3,
+      "e": 2
+     }
+    }
+   },
+   {
+    "inning": 9,
+    "half": "Bottom",
+    "team": "CIN",
+    "plays": [
+     "A.Cross enters the game at C.",
+     "S.Dubin enters the game to pitch.",
+     "J.Reilly hits an infield single to 3B.",
+     "D.Emeigh enters the game as a pinch-hitter for C.Bastian.",
+     "D.Emeigh hits a groundball single to LF. J.Reilly is safe at 3B in a close play.",
+     "E.Crane enters the game as a pinch-hitter for J.Sommer.",
+     "A.Molina enters the game to pitch.",
+     "E.Crane grounds a single to LF. J.Reilly scores."
+    ],
+    "score_after": {
+     "away": {
+      "team": "LOU",
+      "r": 1,
+      "h": 5,
+      "e": 3
+     },
+     "home": {
+      "team": "CIN",
+      "r": 2,
+      "h": 6,
+      "e": 2
+     }
+    }
+   }
+  ]
  },
  {
   "season": 1885,
@@ -105575,7 +107442,497 @@
     }
    }
   },
-  "playbyplay": []
+  "playbyplay": [
+   {
+    "inning": 1,
+    "half": "Top",
+    "team": "DTN",
+    "plays": [
+     "E.Daily enters the game to pitch.",
+     "J.Rowe takes ball four.",
+     "J.Manning lays down a sacrifice bunt to 1B. All runners advance.",
+     "H.Richardson hits a laser beam into CF for a double. J.Rowe scores.",
+     "C.Bennett grounds it thru the hole to RF for a single. H.Richardson scores.",
+     "J.Lillie hits a shallow flyout to LCF.",
+     "C.Bennett swipes 2B.",
+     "P.Reccius grounds out to SS."
+    ],
+    "score_after": {
+     "away": {
+      "team": "DTN",
+      "r": 2,
+      "h": 2,
+      "e": 0
+     },
+     "home": {
+      "team": "NYG",
+      "r": 0,
+      "h": 0,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 1,
+    "half": "Bottom",
+    "team": "NYG",
+    "plays": [
+     "L.Baldwin enters the game to pitch.",
+     "J.Ward grounds out to SS.",
+     "T.O'Neill hits a shallow flyout to CF.",
+     "P.Gillespie flies out to CF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "DTN",
+      "r": 2,
+      "h": 2,
+      "e": 0
+     },
+     "home": {
+      "team": "NYG",
+      "r": 0,
+      "h": 0,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 2,
+    "half": "Top",
+    "team": "DTN",
+    "plays": [
+     "C.Carroll grounds out to the pitcher.",
+     "A.Whitney flies out deep down the LF line.",
+     "T.O'Neill botches a routine flyball and L.Baldwin reaches on the error.",
+     "J.Rowe grounds out to 2B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "DTN",
+      "r": 2,
+      "h": 2,
+      "e": 0
+     },
+     "home": {
+      "team": "NYG",
+      "r": 0,
+      "h": 0,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 2,
+    "half": "Bottom",
+    "team": "NYG",
+    "plays": [
+     "A.McKinnon skies one to LF that falls in for a double.",
+     "J.Rowe can't handle a groundball and P.Deasley reaches on the error.",
+     "A.Eugene grounds into a 4-6-3 double play. A.McKinnon scores.",
+     "N.Reed hits a groundball single to LCF.",
+     "J.Pitman hits a shallow flyout to LCF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "DTN",
+      "r": 2,
+      "h": 2,
+      "e": 1
+     },
+     "home": {
+      "team": "NYG",
+      "r": 1,
+      "h": 2,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 3,
+    "half": "Top",
+    "team": "DTN",
+    "plays": [
+     "J.Manning grounds out to SS.",
+     "H.Richardson grounds out to 2B.",
+     "T.O'Neill drops a flyball and C.Bennett reaches on a 2-base error.",
+     "J.Lillie grounds out to SS."
+    ],
+    "score_after": {
+     "away": {
+      "team": "DTN",
+      "r": 2,
+      "h": 2,
+      "e": 1
+     },
+     "home": {
+      "team": "NYG",
+      "r": 1,
+      "h": 2,
+      "e": 2
+     }
+    }
+   },
+   {
+    "inning": 3,
+    "half": "Bottom",
+    "team": "NYG",
+    "plays": [
+     "E.Daily flies out to deep LCF.",
+     "J.Lillie can't handle a groundball and J.Ward reaches on the error.",
+     "T.O'Neill hits a groundball single to RCF.",
+     "T.O'Neill swipes 2B.",
+     "P.Gillespie rips a liner to CF for a double. J.Ward scores. T.O'Neill scores.",
+     "A.McKinnon grounds out to the pitcher.",
+     "P.Deasley hits an infield single to SS.",
+     "A.Eugene takes strike 3 looking."
+    ],
+    "score_after": {
+     "away": {
+      "team": "DTN",
+      "r": 2,
+      "h": 2,
+      "e": 2
+     },
+     "home": {
+      "team": "NYG",
+      "r": 3,
+      "h": 5,
+      "e": 2
+     }
+    }
+   },
+   {
+    "inning": 4,
+    "half": "Top",
+    "team": "DTN",
+    "plays": [
+     "P.Reccius lines out to 1B.",
+     "C.Carroll pops out to 2B.",
+     "A.Whitney rips a liner to LCF for a double.",
+     "L.Baldwin grounds it thru the hole to RCF for a single. A.Whitney scores.",
+     "J.Rowe grounds out to 3B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "DTN",
+      "r": 3,
+      "h": 4,
+      "e": 2
+     },
+     "home": {
+      "team": "NYG",
+      "r": 3,
+      "h": 5,
+      "e": 2
+     }
+    }
+   },
+   {
+    "inning": 4,
+    "half": "Bottom",
+    "team": "NYG",
+    "plays": [
+     "J.Manning drops a deep flyball and N.Reed reaches on a 2-base error.",
+     "J.Pitman flies out to RF.",
+     "E.Daily strikes out swinging.",
+     "J.Ward grounds out to the pitcher."
+    ],
+    "score_after": {
+     "away": {
+      "team": "DTN",
+      "r": 3,
+      "h": 4,
+      "e": 3
+     },
+     "home": {
+      "team": "NYG",
+      "r": 3,
+      "h": 5,
+      "e": 2
+     }
+    }
+   },
+   {
+    "inning": 5,
+    "half": "Top",
+    "team": "DTN",
+    "plays": [
+     "J.Manning hits an infield single to 3B.",
+     "H.Richardson strikes out looking.",
+     "C.Bennett grounds out to 3B.",
+     "J.Lillie lines a 2-run homer down the leftfield line.",
+     "P.Reccius grounds out to 2B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "DTN",
+      "r": 5,
+      "h": 6,
+      "e": 3
+     },
+     "home": {
+      "team": "NYG",
+      "r": 3,
+      "h": 5,
+      "e": 2
+     }
+    }
+   },
+   {
+    "inning": 5,
+    "half": "Bottom",
+    "team": "NYG",
+    "plays": [
+     "T.O'Neill is hit in the leg by a pitch.",
+     "T.O'Neill steals 2B.",
+     "P.Gillespie grounds out to 2B.",
+     "A.McKinnon grounds it thru the hole to RF for a single. T.O'Neill scores.",
+     "A.McKinnon swipes 2B.",
+     "A.McKinnon swipes 3B.",
+     "P.Deasley flies out to CF.",
+     "A.Eugene strikes out looking."
+    ],
+    "score_after": {
+     "away": {
+      "team": "DTN",
+      "r": 5,
+      "h": 6,
+      "e": 3
+     },
+     "home": {
+      "team": "NYG",
+      "r": 4,
+      "h": 6,
+      "e": 2
+     }
+    }
+   },
+   {
+    "inning": 6,
+    "half": "Top",
+    "team": "DTN",
+    "plays": [
+     "C.Carroll hits a shallow flyout to RF.",
+     "A.Whitney draws the walk.",
+     "L.Baldwin hits a shallow flyout to CF.",
+     "A.Whitney is nailed stealing 2B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "DTN",
+      "r": 5,
+      "h": 6,
+      "e": 3
+     },
+     "home": {
+      "team": "NYG",
+      "r": 4,
+      "h": 6,
+      "e": 2
+     }
+    }
+   },
+   {
+    "inning": 6,
+    "half": "Bottom",
+    "team": "NYG",
+    "plays": [
+     "C.Carroll can't handle a flyball and N.Reed reaches on the error.",
+     "J.Pitman grounds a single to LF.",
+     "D.Esterbrook enters the game as a pinch-hitter for E.Daily.",
+     "D.Esterbrook hits into a 6-4 fielder's choice.",
+     "J.Ward draws the walk.",
+     "T.O'Neill lines a single to LF. N.Reed scores. D.Esterbrook scores.",
+     "P.Gillespie is frozen on strike 3.",
+     "A.McKinnon grounds out to the pitcher."
+    ],
+    "score_after": {
+     "away": {
+      "team": "DTN",
+      "r": 5,
+      "h": 6,
+      "e": 4
+     },
+     "home": {
+      "team": "NYG",
+      "r": 6,
+      "h": 8,
+      "e": 2
+     }
+    }
+   },
+   {
+    "inning": 7,
+    "half": "Top",
+    "team": "DTN",
+    "plays": [
+     "B.Mountjoy enters the game to pitch.",
+     "J.Rowe grounds a single to RF.",
+     "J.Manning lays down a sacrifice bunt to 1B. All runners advance.",
+     "H.Richardson strikes out on a ball out of the zone.",
+     "C.Bennett is issued the free pass.",
+     "J.Lillie grounds out to 3B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "DTN",
+      "r": 5,
+      "h": 7,
+      "e": 4
+     },
+     "home": {
+      "team": "NYG",
+      "r": 6,
+      "h": 8,
+      "e": 2
+     }
+    }
+   },
+   {
+    "inning": 7,
+    "half": "Bottom",
+    "team": "NYG",
+    "plays": [
+     "P.Deasley lines a single to LF.",
+     "A.Eugene fouls out to first.",
+     "N.Reed hits a groundball single to LF.",
+     "J.Pitman pops out to SS.",
+     "M.Dorgan enters the game as a pinch-hitter for B.Mountjoy.",
+     "M.Dorgan pops out to 3B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "DTN",
+      "r": 5,
+      "h": 7,
+      "e": 4
+     },
+     "home": {
+      "team": "NYG",
+      "r": 6,
+      "h": 10,
+      "e": 2
+     }
+    }
+   },
+   {
+    "inning": 8,
+    "half": "Top",
+    "team": "DTN",
+    "plays": [
+     "H.Daily enters the game to pitch.",
+     "P.Reccius hits a triple.",
+     "C.Carroll takes ball four.",
+     "A.Whitney grounds a single to RCF. P.Reccius scores.",
+     "L.Baldwin grounds it thru the hole to RCF for a single. C.Carroll scores.",
+     "T.O'Neill can't handle a flyball and J.Rowe reaches on the error. A.Whitney scores.",
+     "J.Manning draws the walk.",
+     "H.Richardson takes ball four. L.Baldwin scores.",
+     "E.Begley enters the game to pitch.",
+     "C.Bennett hits a shallow flyout to CF.",
+     "J.Lillie flies out to CF. P.Gillespie's throw goes home, but J.Rowe avoids the tag and scores.",
+     "P.Reccius hits an infield single to 3B. J.Manning scores.",
+     "C.Carroll grounds a single to RF. H.Richardson scores.",
+     "B.Becannon enters the game to pitch.",
+     "A.Whitney grounds a single to CF. P.Reccius scores.",
+     "L.Baldwin flies out to deep CF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "DTN",
+      "r": 13,
+      "h": 13,
+      "e": 4
+     },
+     "home": {
+      "team": "NYG",
+      "r": 6,
+      "h": 10,
+      "e": 3
+     }
+    }
+   },
+   {
+    "inning": 8,
+    "half": "Bottom",
+    "team": "NYG",
+    "plays": [
+     "D.Casey enters the game to pitch.",
+     "J.Ward grounds out to 2B.",
+     "T.O'Neill pops out to 3B.",
+     "H.Richardson boots a routine grounder and P.Gillespie reaches on the error.",
+     "J.Rowe misplays a routine grounder and A.McKinnon reaches on the error.",
+     "P.Deasley flies out to deep LCF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "DTN",
+      "r": 13,
+      "h": 13,
+      "e": 6
+     },
+     "home": {
+      "team": "NYG",
+      "r": 6,
+      "h": 10,
+      "e": 3
+     }
+    }
+   },
+   {
+    "inning": 9,
+    "half": "Top",
+    "team": "DTN",
+    "plays": [
+     "J.Rowe grounds out to 1B.",
+     "J.Manning grounds out to SS.",
+     "H.Richardson grounds it thru the hole to LF for a single.",
+     "C.Bennett grounds out to 2B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "DTN",
+      "r": 13,
+      "h": 14,
+      "e": 6
+     },
+     "home": {
+      "team": "NYG",
+      "r": 6,
+      "h": 10,
+      "e": 3
+     }
+    }
+   },
+   {
+    "inning": 9,
+    "half": "Bottom",
+    "team": "NYG",
+    "plays": [
+     "T.McLaughlin enters the game at SS as a defensive replacement.",
+     "C.Morton enters the game at 3B as a defensive replacement.",
+     "J.Macullar enters the game at LF as a defensive replacement.",
+     "A.Eugene swings and misses for strike 3.",
+     "N.Reed grounds out to 3B.",
+     "J.Pitman grounds out to 3B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "DTN",
+      "r": 13,
+      "h": 14,
+      "e": 6
+     },
+     "home": {
+      "team": "NYG",
+      "r": 6,
+      "h": 10,
+      "e": 3
+     }
+    }
+   }
+  ]
  },
  {
   "season": 1885,
@@ -106084,7 +108441,464 @@
     }
    }
   },
-  "playbyplay": []
+  "playbyplay": [
+   {
+    "inning": 1,
+    "half": "Top",
+    "team": "PAT",
+    "plays": [
+     "H.Henderson enters the game to pitch.",
+     "H.Stovey walks.",
+     "H.Stovey steals second base.",
+     "M.Powell lays down a sacrifice bunt to 3B. All runners advance.",
+     "H.Larkin hits a bloop double down the rightfield line. H.Stovey scores.",
+     "N.Hanlon misplays a deep drive and F.Fennelly reaches via the 2-base error. H.Larkin scores.",
+     "D.Casey grounds out to 1B.",
+     "E.Greer grounds out to 2B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PAT",
+      "r": 2,
+      "h": 1,
+      "e": 0
+     },
+     "home": {
+      "team": "BLN",
+      "r": 0,
+      "h": 0,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 1,
+    "half": "Bottom",
+    "team": "BLN",
+    "plays": [
+     "B.Mathews enters the game to pitch.",
+     "N.Hanlon grounds out to 2B.",
+     "C.Welch flies out to LCF.",
+     "G.Myers strikes out swinging."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PAT",
+      "r": 2,
+      "h": 1,
+      "e": 0
+     },
+     "home": {
+      "team": "BLN",
+      "r": 0,
+      "h": 0,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 2,
+    "half": "Top",
+    "team": "PAT",
+    "plays": [
+     "F.Corey lines out to 2B.",
+     "C.Reipschlager hits a line drive double to CF.",
+     "B.Mathews grounds out to the catcher.",
+     "H.Stovey is intentionally walked.",
+     "M.Powell pops out to 3B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PAT",
+      "r": 2,
+      "h": 2,
+      "e": 0
+     },
+     "home": {
+      "team": "BLN",
+      "r": 0,
+      "h": 0,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 2,
+    "half": "Bottom",
+    "team": "BLN",
+    "plays": [
+     "S.Wise hits a shallow flyout to CF.",
+     "H.Carpenter grounds out to the pitcher.",
+     "C.Stricker grounds out to 3B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PAT",
+      "r": 2,
+      "h": 2,
+      "e": 0
+     },
+     "home": {
+      "team": "BLN",
+      "r": 0,
+      "h": 0,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 3,
+    "half": "Top",
+    "team": "PAT",
+    "plays": [
+     "H.Larkin hits a line drive double to LCF.",
+     "F.Fennelly hits a flyball 2-run homer to CF.",
+     "D.Casey grounds out to 2B.",
+     "E.Greer pops out to 1B.",
+     "F.Corey pops out to 2B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PAT",
+      "r": 4,
+      "h": 4,
+      "e": 0
+     },
+     "home": {
+      "team": "BLN",
+      "r": 0,
+      "h": 0,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 3,
+    "half": "Bottom",
+    "team": "BLN",
+    "plays": [
+     "J.Kerins takes ball four.",
+     "J.Kerins swipes 2B.",
+     "H.Nicol flies out to CF. J.Kerins slides in under the tag and is safe at 3B.",
+     "H.Henderson hits a shallow flyout to RCF.",
+     "N.Hanlon hits a line drive single to CF. J.Kerins scores.",
+     "N.Hanlon steals 2B.",
+     "C.Welch grounds out to 1B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PAT",
+      "r": 4,
+      "h": 4,
+      "e": 0
+     },
+     "home": {
+      "team": "BLN",
+      "r": 1,
+      "h": 1,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 4,
+    "half": "Top",
+    "team": "PAT",
+    "plays": [
+     "C.Reipschlager strikes out on a ball out of the zone.",
+     "B.Mathews pops out to SS.",
+     "H.Stovey crushes a solo homer to LCF.",
+     "M.Powell hits a shallow flyout to CF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PAT",
+      "r": 5,
+      "h": 5,
+      "e": 0
+     },
+     "home": {
+      "team": "BLN",
+      "r": 1,
+      "h": 1,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 4,
+    "half": "Bottom",
+    "team": "BLN",
+    "plays": [
+     "H.Stovey drops a foulball and G.Myers returns to the plate.",
+     "G.Myers grounds out to SS.",
+     "F.Fennelly misplays a routine grounder and S.Wise reaches on the error.",
+     "S.Wise swipes 2B.",
+     "E.Greer can't hold onto the pitch and is charged with a passed ball. All runners advance.",
+     "H.Carpenter hits a shallow flyout to LF.",
+     "C.Stricker flies out to RCF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PAT",
+      "r": 5,
+      "h": 5,
+      "e": 2
+     },
+     "home": {
+      "team": "BLN",
+      "r": 1,
+      "h": 1,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 5,
+    "half": "Top",
+    "team": "PAT",
+    "plays": [
+     "H.Larkin grounds out to 3B.",
+     "F.Fennelly hits a triple.",
+     "D.Casey draws the walk.",
+     "C.Stricker boots a routine grounder and E.Greer reaches on the error. F.Fennelly scores.",
+     "F.Corey flies out to RF. D.Casey advances to 3B despite the throw.",
+     "C.Reipschlager hits an infield single to SS. D.Casey scores.",
+     "H.Carpenter misplays a routine grounder and B.Mathews reaches on the error.",
+     "H.Stovey grounds out to 2B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PAT",
+      "r": 7,
+      "h": 7,
+      "e": 2
+     },
+     "home": {
+      "team": "BLN",
+      "r": 1,
+      "h": 1,
+      "e": 3
+     }
+    }
+   },
+   {
+    "inning": 6,
+    "half": "Top",
+    "team": "PAT",
+    "plays": [
+     "M.Powell swings and misses for strike 3.",
+     "H.Larkin lines a single to LF.",
+     "H.Larkin swipes 2B.",
+     "F.Fennelly takes ball four.",
+     "D.Casey strikes out looking.",
+     "E.Greer hits a laser beam into CF for a double. H.Larkin scores. F.Fennelly scores.",
+     "T.Nolan enters the game to pitch.",
+     "F.Corey lines a single to CF. E.Greer scores.",
+     "C.Reipschlager grounds out to 1B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PAT",
+      "r": 10,
+      "h": 10,
+      "e": 2
+     },
+     "home": {
+      "team": "BLN",
+      "r": 1,
+      "h": 1,
+      "e": 3
+     }
+    }
+   },
+   {
+    "inning": 6,
+    "half": "Bottom",
+    "team": "BLN",
+    "plays": [
+     "C.Welch pops out to 2B.",
+     "G.Myers hits a laser beam into RF for a double.",
+     "S.Wise takes ball four.",
+     "E.Greer can't handle the pitch and is charged with a passed ball. All runners advance.",
+     "H.Carpenter flies out to CF. G.Myers scores on H.Larkin's throw home.",
+     "H.Stovey has a flyball ricochet off his glove and C.Stricker reaches on a 2-base error. S.Wise scores.",
+     "J.Kerins flies out to deep LCF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PAT",
+      "r": 10,
+      "h": 10,
+      "e": 3
+     },
+     "home": {
+      "team": "BLN",
+      "r": 3,
+      "h": 2,
+      "e": 3
+     }
+    }
+   },
+   {
+    "inning": 7,
+    "half": "Top",
+    "team": "PAT",
+    "plays": [
+     "J.Connor enters the game to pitch.",
+     "B.Mathews pops out to 2B.",
+     "H.Stovey grounds out to 2B.",
+     "M.Powell pops out to 3B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PAT",
+      "r": 10,
+      "h": 10,
+      "e": 3
+     },
+     "home": {
+      "team": "BLN",
+      "r": 3,
+      "h": 2,
+      "e": 3
+     }
+    }
+   },
+   {
+    "inning": 7,
+    "half": "Bottom",
+    "team": "BLN",
+    "plays": [
+     "H.Nicol grounds out to 2B.",
+     "J.Connor grounds out to SS.",
+     "N.Hanlon flies out to LCF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PAT",
+      "r": 10,
+      "h": 10,
+      "e": 3
+     },
+     "home": {
+      "team": "BLN",
+      "r": 3,
+      "h": 2,
+      "e": 3
+     }
+    }
+   },
+   {
+    "inning": 8,
+    "half": "Top",
+    "team": "PAT",
+    "plays": [
+     "H.Larkin grounds out to 3B.",
+     "F.Fennelly hits a triple.",
+     "D.Casey hits a groundball single to LCF. F.Fennelly scores.",
+     "E.Greer hits into a 3-6 fielder's choice.",
+     "F.Corey flies out to LCF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PAT",
+      "r": 11,
+      "h": 12,
+      "e": 3
+     },
+     "home": {
+      "team": "BLN",
+      "r": 3,
+      "h": 2,
+      "e": 3
+     }
+    }
+   },
+   {
+    "inning": 8,
+    "half": "Bottom",
+    "team": "BLN",
+    "plays": [
+     "T.Manning enters the game at 2B as a defensive replacement.",
+     "T.Lynch enters the game at CF as a defensive replacement.",
+     "C.Reipschlager moves to C.",
+     "H.Larkin moves to RF.",
+     "C.Welch swings and misses for strike 3.",
+     "G.Myers lines out to 1B.",
+     "S.Wise hits a shallow flyout to CF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PAT",
+      "r": 11,
+      "h": 12,
+      "e": 3
+     },
+     "home": {
+      "team": "BLN",
+      "r": 3,
+      "h": 2,
+      "e": 3
+     }
+    }
+   },
+   {
+    "inning": 9,
+    "half": "Top",
+    "team": "PAT",
+    "plays": [
+     "C.Reipschlager hits an infield single to 2B.",
+     "B.Mathews flies out to CF.",
+     "H.Stovey hits into a 3-6 fielder's choice.",
+     "M.Powell grounds it thru the hole to RF for a single.",
+     "H.Larkin flies out to LF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PAT",
+      "r": 11,
+      "h": 14,
+      "e": 3
+     },
+     "home": {
+      "team": "BLN",
+      "r": 3,
+      "h": 2,
+      "e": 3
+     }
+    }
+   },
+   {
+    "inning": 9,
+    "half": "Bottom",
+    "team": "BLN",
+    "plays": [
+     "M.Phillips enters the game at SS to rest the starter.",
+     "H.Carpenter grounds out to 3B.",
+     "C.Stricker grounds it thru the hole to LCF for a single.",
+     "J.Kerins grounds it thru the hole to RCF for a single.",
+     "H.Nicol hits into a 6-4 fielder's choice. C.Stricker scores.",
+     "D.Johnston enters the game as a pinch-hitter for J.Connor.",
+     "D.Johnston hits a line drive single to LF.",
+     "N.Hanlon pops out to 3B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PAT",
+      "r": 11,
+      "h": 14,
+      "e": 3
+     },
+     "home": {
+      "team": "BLN",
+      "r": 4,
+      "h": 5,
+      "e": 3
+     }
+    }
+   }
+  ]
  },
  {
   "season": 1885,
