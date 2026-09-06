@@ -440,7 +440,7 @@ def main():
 
     # --- Transactions (draft picks + trades; loaded early so player pages can show them) ---
     for pid in players:
-        players[pid]["draft_pick"] = None
+        players[pid]["draft_picks"] = []
         players[pid]["trades"] = []
 
     draft_by_season = defaultdict(list)
@@ -457,7 +457,7 @@ def main():
             row["TeamName"] = team["FranchiseName"] if team else row["TeamAbbr"]
             draft_by_season[row["Season"]].append(row)
             if pid:
-                players[pid]["draft_pick"] = row
+                players[pid]["draft_picks"].append(row)
             else:
                 print(f"NOTE: Draft pick for '{row['Player']}' ({row['Season']}) has no matching player page -- shown as plain text.")
 
@@ -565,6 +565,7 @@ def main():
         allstar_years = [a["Season"] for a in allstar_seasons]
         awards_won = sorted(pdata.get("awards_won", []), key=lambda a: int(a["Season"]))
         trades = sorted(pdata.get("trades", []), key=lambda t: t["Season"])
+        draft_picks = sorted(pdata.get("draft_picks", []), key=lambda d: d["Season"])
 
         batting_display_rows = build_display_rows(batting_rows, compute_batting_totals)
         pitching_display_rows = build_display_rows(pitching_rows, compute_pitching_totals)
@@ -577,7 +578,7 @@ def main():
               awards_won=awards_won,
               ps_batting_rows=ps_batting_rows, ps_pitching_rows=ps_pitching_rows,
               ps_batting_career=ps_batting_career, ps_pitching_career=ps_pitching_career,
-              draft_pick=pdata.get("draft_pick"), trades=trades,
+              draft_picks=draft_picks, trades=trades,
               is_placeholder=pdata.get("is_placeholder", False))
 
     # --- League leaders pages ---
