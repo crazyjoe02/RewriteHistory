@@ -479,6 +479,56 @@ def main():
     for season_key in draft_by_season:
         draft_by_season[season_key].sort(key=lambda r: (r["Round"], r["Pick"]))
 
+    # --- Narrative draft-day trades (multi-asset trades involving picks + players) ---
+    TEAM_LINK_ALIASES = {
+        "Baltimore Orioles": "BLN", "Orioles": "BLN",
+        "Brooklyn Grays": "BRO", "Grays": "BRO",
+        "Cincinnati Red Stockings": "CIN", "Red Stockings": "CIN",
+        "Louisville Colonels": "LOU", "Colonels": "LOU",
+        "Philadelphia Athletics": "PAT", "Athletics": "PAT",
+        "St. Louis Browns": "STL", "Browns": "STL",
+        "Boston Beaneaters": "BSN", "Beaneaters": "BSN",
+        "Chicago White Stockings": "CHC", "White Stockings": "CHC",
+        "Cleveland Blues": "CLV", "Blues": "CLV",
+        "Detroit Wolverines": "DTN", "Wolverines": "DTN",
+        "New York Giants": "NYG", "Giants": "NYG",
+        "Philadelphia Quakers": "PHI", "Quakers": "PHI",
+        "Pittsburgh Alleghenys": "PIT", "Alleghenys": "PIT",
+    }
+    TRADE_NAME_ALIASES = {"Charlie Radbourne": "Charley Radbourn"}
+
+    _team_pattern = re.compile("|".join(re.escape(k) for k in sorted(TEAM_LINK_ALIASES, key=len, reverse=True)))
+
+    def _team_sub(m):
+        name = m.group(0)
+        abbr = TEAM_LINK_ALIASES[name]
+        return f'<a href="../teams/{hub_abbr.get(abbr, abbr)}/index.html">{name}</a>'
+
+    all_player_names = sorted(set(name_to_pid) | set(TRADE_NAME_ALIASES), key=len, reverse=True)
+    _player_pattern = re.compile("|".join(re.escape(n) for n in all_player_names)) if all_player_names else None
+
+    def _player_sub(m):
+        name = m.group(0)
+        pid = name_to_pid.get(TRADE_NAME_ALIASES.get(name, name))
+        if not pid:
+            print(f"NOTE: Trade text mentions '{name}' -- no matching player page, left as plain text.")
+            return name
+        return f'<a href="../players/{pid}.html">{name}</a>'
+
+    def linkify_trade_text(text):
+        text = _team_pattern.sub(_team_sub, text)
+        if _player_pattern:
+            text = _player_pattern.sub(_player_sub, text)
+        return text
+
+    pick_trades_by_season = {}
+    for pt_path in sorted(glob.glob(os.path.join(DATA_DIR, "*", "pick_trades.json"))):
+        season = int(os.path.basename(os.path.dirname(pt_path)))
+        with open(pt_path, encoding="utf-8") as f:
+            raw_trades = json.load(f)
+        pick_trades_by_season[season] = [linkify_trade_text(t) for t in raw_trades]
+
+
     def compute_batting_totals(rows):
         if not rows:
             return None
@@ -752,6 +802,7 @@ def main():
               postseason=postseason_by_season.get(season),
               has_draft=season in draft_by_season,
               trades=trades_by_season.get(season, []),
+              pick_trades=pick_trades_by_season.get(season, []),
               is_preseason=year_is_preseason[season])
 
     for season, picks in draft_by_season.items():

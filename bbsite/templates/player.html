@@ -189,7 +189,7 @@
 <ul class="transactions-list">
 {% for d in draft_picks %}
 <li>{{ d.Season }}: Drafted {{ d.Round }}.{{ '%02d'|format(d.Pick) }} by
-<a href="{{ root }}teams/{{ hub_abbr.get(d.TeamAbbr, d.TeamAbbr) }}/index.html">{{ d.TeamName }}</a>{% if d.Via %} (via {% for a in d.Via.split(', ') %}<a href="{{ root }}teams/{{ hub_abbr.get(a, a) }}/index.html">{{ a }}</a>{% if not loop.last %}, {% endif %}{% endfor %}){% endif %}
+<a href="{{ root }}teams/{{ hub_abbr.get(d.TeamAbbr, d.TeamAbbr) }}/index.html">{{ d.TeamName }}</a>
 in the {{ d.Season }} Draft.</li>
 {% endfor %}
 {% for t in trades %}

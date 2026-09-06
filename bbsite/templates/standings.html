@@ -128,25 +128,13 @@
 {% if has_draft %}
 <div class="standings-note"><a href="{{ root }}draft/{{ season }}.html">{{ season }} Draft Results</a></div>
 {% endif %}
-{% if trades %}
+{% if pick_trades %}
 <h3>Trades</h3>
-<div class="table-wrap">
-<table class="stats">
-    <thead><tr><th>Year</th><th class="left">Transaction</th></tr></thead>
-    <tbody>
-    {% for t in trades %}
-    <tr>
-        <td>{{ t.Season }}</td>
-        <td class="left">
-        <a href="{{ root }}teams/{{ hub_abbr.get(t.FromTeamAbbr, t.FromTeamAbbr) }}/index.html">{{ t.FromTeamName }}</a> trade
-        {% if t.PlayerID %}<a href="{{ root }}players/{{ t.PlayerID }}.html">{{ t.Player }}</a>{% else %}{{ t.Player }}{% endif %}
-        to the <a href="{{ root }}teams/{{ hub_abbr.get(t.ToTeamAbbr, t.ToTeamAbbr) }}/index.html">{{ t.ToTeamName }}</a>
-        </td>
-    </tr>
-    {% endfor %}
-    </tbody>
-</table>
-</div>
+<ul class="transactions-list">
+{% for t in pick_trades %}
+<li>{{ t }}</li>
+{% endfor %}
+</ul>
 {% endif %}
 
 {% endblock %}
