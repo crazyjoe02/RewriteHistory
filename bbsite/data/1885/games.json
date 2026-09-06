@@ -209288,5 +209288,986 @@
     }
    }
   ]
+ },
+ {
+  "season": 1885,
+  "game_num": 29,
+  "date": "1885-05-01",
+  "home": "CHC",
+  "away": "DTN",
+  "location": "WhatIfSports Park",
+  "subtitle": "Regular Season \u2014 May 1, 1885",
+  "player_of_game": {
+   "player": "Abner Dalrymple",
+   "team": "CHC",
+   "note": "swipes 4 bases"
+  },
+  "linescore": {
+   "innings": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+   ],
+   "rows": [
+    {
+     "team": "DTN",
+     "label": "Detroit Wolverines",
+     "by_inning": [
+      2,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+     ],
+     "R": 3,
+     "H": 9,
+     "E": 8
+    },
+    {
+     "team": "CHC",
+     "label": "Chicago White Stockings",
+     "by_inning": [
+      1,
+      4,
+      1,
+      3,
+      0,
+      1,
+      0,
+      0,
+      null
+     ],
+     "R": 10,
+     "H": 8,
+     "E": 1
+    }
+   ]
+  },
+  "batting": {
+   "DTN": {
+    "rows": [
+     {
+      "player": "Art Whitney",
+      "pos": "CF",
+      "ab": 4,
+      "r": 0,
+      "h": 1,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 1
+     },
+     {
+      "player": "Jack Manning",
+      "pos": "LF",
+      "ab": 3,
+      "r": 1,
+      "h": 1,
+      "rbi": 0,
+      "bb": 1,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 1
+     },
+     {
+      "player": "Hardy Richardson",
+      "pos": "2B",
+      "ab": 4,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Charlie Bennett",
+      "pos": "C",
+      "ab": 4,
+      "r": 2,
+      "h": 3,
+      "rbi": 3,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 2,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Mox McQuery",
+      "pos": "1B",
+      "ab": 4,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 1,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Jim Lillie",
+      "pos": "RF",
+      "ab": 4,
+      "r": 0,
+      "h": 1,
+      "rbi": 0,
+      "bb": 0,
+      "so": 1,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Phil Reccius",
+      "pos": "3B",
+      "ab": 4,
+      "r": 0,
+      "h": 1,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Jack Rowe",
+      "pos": "SS",
+      "ab": 4,
+      "r": 0,
+      "h": 2,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Ed Morris",
+      "pos": "P",
+      "ab": 2,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Ted Kennedy",
+      "pos": "P",
+      "ab": 1,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 1,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Cliff Carroll",
+      "pos": "PH",
+      "ab": 1,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 1,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     }
+    ],
+    "totals": {
+     "ab": 35,
+     "r": 3,
+     "h": 9,
+     "rbi": 3,
+     "bb": 1,
+     "so": 4,
+     "2b": 0,
+     "3b": 0,
+     "hr": 2,
+     "sb": 0,
+     "cs": 2
+    },
+    "footnotes": {
+     "HR": "C.Bennett 2 (2)",
+     "RBI": "C.Bennett 3 (25)",
+     "2-Out RBI": "C.Bennett 3",
+     "CS": "A.Whitney (2), J.Manning (6)",
+     "E": "A.Whitney (2), H.Richardson (15), J.Lillie (9), J.Rowe 5 (38)"
+    }
+   },
+   "CHC": {
+    "rows": [
+     {
+      "player": "Charley Jones",
+      "pos": "CF",
+      "ab": 5,
+      "r": 2,
+      "h": 2,
+      "rbi": 1,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 2
+     },
+     {
+      "player": "Lon Knight",
+      "pos": "CF",
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Cap Anson",
+      "pos": "1B",
+      "ab": 5,
+      "r": 3,
+      "h": 1,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "King Kelly",
+      "pos": "C",
+      "ab": 3,
+      "r": 1,
+      "h": 1,
+      "rbi": 2,
+      "bb": 1,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 1
+     },
+     {
+      "player": "Sam Trott",
+      "pos": "C",
+      "ab": 1,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Abner Dalrymple",
+      "pos": "RF",
+      "ab": 3,
+      "r": 2,
+      "h": 1,
+      "rbi": 3,
+      "bb": 1,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 4,
+      "cs": 0
+     },
+     {
+      "player": "Orator Shaffer",
+      "pos": "RF",
+      "ab": 1,
+      "r": 0,
+      "h": 1,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Tom Burns",
+      "pos": "SS",
+      "ab": 4,
+      "r": 0,
+      "h": 0,
+      "rbi": 1,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Fred Lewis",
+      "pos": "LF",
+      "ab": 3,
+      "r": 1,
+      "h": 1,
+      "rbi": 0,
+      "bb": 1,
+      "so": 1,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 1,
+      "cs": 0
+     },
+     {
+      "player": "John Clarkson",
+      "pos": "P",
+      "ab": 4,
+      "r": 1,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 1,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Bill McClellan",
+      "pos": "2B",
+      "ab": 4,
+      "r": 0,
+      "h": 1,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Ned Williamson",
+      "pos": "3B",
+      "ab": 2,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 1,
+      "so": 1,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     }
+    ],
+    "totals": {
+     "ab": 35,
+     "r": 10,
+     "h": 8,
+     "rbi": 7,
+     "bb": 4,
+     "so": 3,
+     "2b": 0,
+     "3b": 0,
+     "hr": 0,
+     "sb": 5,
+     "cs": 3
+    },
+    "footnotes": {
+     "RBI": "C.Jones (19), K.Kelly 2 (22), A.Dalrymple 3 (25), T.Burns (17)",
+     "2-Out RBI": "C.Jones, K.Kelly 2",
+     "SF": "T.Burns",
+     "SH": "N.Williamson",
+     "SB": "A.Dalrymple 4 (28), F.Lewis (2)",
+     "CS": "C.Jones 2 (11), K.Kelly (12)",
+     "E": "T.Burns (30)",
+     "PB": "K.Kelly"
+    }
+   }
+  },
+  "pitching": {
+   "DTN": {
+    "rows": [
+     {
+      "player": "Ed Morris",
+      "decision": "L (5-8)",
+      "ip": "5.2",
+      "h": 6,
+      "r": 10,
+      "er": 1,
+      "bb": 4,
+      "so": 2,
+      "hr": 0,
+      "era": "3.61"
+     },
+     {
+      "player": "Ted Kennedy",
+      "decision": "",
+      "ip": "2.1",
+      "h": 2,
+      "r": 0,
+      "er": 0,
+      "bb": 0,
+      "so": 1,
+      "hr": 0,
+      "era": "7.84"
+     }
+    ],
+    "totals": {
+     "ip": "8.0",
+     "h": 8,
+     "r": 10,
+     "er": 1,
+     "bb": 4,
+     "so": 3,
+     "hr": 0
+    }
+   },
+   "CHC": {
+    "rows": [
+     {
+      "player": "John Clarkson",
+      "decision": "W (9-4)",
+      "ip": "9.0",
+      "h": 9,
+      "r": 3,
+      "er": 3,
+      "bb": 1,
+      "so": 4,
+      "hr": 2,
+      "era": "2.86"
+     }
+    ],
+    "totals": {
+     "ip": "9.0",
+     "h": 9,
+     "r": 3,
+     "er": 3,
+     "bb": 1,
+     "so": 4,
+     "hr": 2
+    }
+   }
+  },
+  "playbyplay": [
+   {
+    "inning": 1,
+    "half": "Top",
+    "team": "DTN",
+    "plays": [
+     "J.Clarkson enters the game to pitch.",
+     "A.Whitney hits a line drive single to LCF.",
+     "A.Whitney is caught trying to steal 2B.",
+     "J.Manning draws the walk.",
+     "H.Richardson flies out down the LF line.",
+     "C.Bennett crushes a 2-run homer to LF.",
+     "M.McQuery strikes out swinging."
+    ],
+    "score_after": {
+     "away": {
+      "team": "DTN",
+      "r": 2,
+      "h": 2,
+      "e": 0
+     },
+     "home": {
+      "team": "CHC",
+      "r": 0,
+      "h": 0,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 1,
+    "half": "Bottom",
+    "team": "CHC",
+    "plays": [
+     "E.Morris enters the game to pitch.",
+     "C.Jones grounds out to 2B.",
+     "C.Anson bloops a single to LCF.",
+     "J.Rowe fields the groundball but makes a bad throw to 2B. K.Kelly reaches on the throwing error.",
+     "A.Dalrymple grounds out to 1B. C.Anson scores.",
+     "T.Burns hits a shallow flyout to CF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "DTN",
+      "r": 2,
+      "h": 2,
+      "e": 1
+     },
+     "home": {
+      "team": "CHC",
+      "r": 1,
+      "h": 1,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 2,
+    "half": "Top",
+    "team": "DTN",
+    "plays": [
+     "J.Lillie swings and misses for strike 3.",
+     "P.Reccius pops out to SS.",
+     "J.Rowe flies out to LCF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "DTN",
+      "r": 2,
+      "h": 2,
+      "e": 1
+     },
+     "home": {
+      "team": "CHC",
+      "r": 1,
+      "h": 1,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 2,
+    "half": "Bottom",
+    "team": "CHC",
+    "plays": [
+     "F.Lewis grounds a single to RF.",
+     "J.Rowe can't handle a groundball and J.Clarkson reaches on the error.",
+     "B.McClellan fouls out to deep left.",
+     "N.Williamson strikes out looking.",
+     "C.Jones hits an infield single to 3B. F.Lewis scores.",
+     "A.Whitney drops a flyball and C.Anson reaches on a 2-base error. J.Clarkson scores.",
+     "K.Kelly smokes a line drive single to RF. C.Jones scores. C.Anson scores.",
+     "K.Kelly is caught trying to steal 2B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "DTN",
+      "r": 2,
+      "h": 2,
+      "e": 3
+     },
+     "home": {
+      "team": "CHC",
+      "r": 5,
+      "h": 4,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 3,
+    "half": "Top",
+    "team": "DTN",
+    "plays": [
+     "E.Morris hits a shallow flyout to CF.",
+     "A.Whitney hits a shallow flyout to CF.",
+     "J.Manning grounds a single to CF.",
+     "J.Manning is caught stealing 2B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "DTN",
+      "r": 2,
+      "h": 3,
+      "e": 3
+     },
+     "home": {
+      "team": "CHC",
+      "r": 5,
+      "h": 4,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 3,
+    "half": "Bottom",
+    "team": "CHC",
+    "plays": [
+     "A.Dalrymple takes ball four.",
+     "A.Dalrymple swipes 2B.",
+     "T.Burns flies out to LCF. A.Dalrymple slides in under the tag and is safe at 3B.",
+     "J.Rowe misplays a routine grounder and F.Lewis reaches on the error. A.Dalrymple scores.",
+     "J.Clarkson strikes out on a ball out of the zone.",
+     "F.Lewis steals second base.",
+     "B.McClellan pops out to 1B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "DTN",
+      "r": 2,
+      "h": 3,
+      "e": 4
+     },
+     "home": {
+      "team": "CHC",
+      "r": 6,
+      "h": 4,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 4,
+    "half": "Top",
+    "team": "DTN",
+    "plays": [
+     "H.Richardson grounds out to 3B.",
+     "C.Bennett hits a groundball single to LCF.",
+     "M.McQuery flies out to LCF.",
+     "J.Lillie grounds out to 3B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "DTN",
+      "r": 2,
+      "h": 4,
+      "e": 4
+     },
+     "home": {
+      "team": "CHC",
+      "r": 6,
+      "h": 4,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 4,
+    "half": "Bottom",
+    "team": "CHC",
+    "plays": [
+     "N.Williamson walks.",
+     "C.Jones hits into a 5-4 fielder's choice.",
+     "J.Lillie can't handle a flyball and C.Anson reaches on the error.",
+     "H.Richardson boots a routine grounder and K.Kelly reaches on the error.",
+     "A.Dalrymple hits a groundball single to LF. C.Jones scores. C.Anson scores.",
+     "A.Dalrymple steals 2B.",
+     "T.Burns grounds out to 3B.",
+     "F.Lewis walks.",
+     "J.Rowe misplays a routine grounder and J.Clarkson reaches on the error. K.Kelly scores.",
+     "B.McClellan fouls out to first."
+    ],
+    "score_after": {
+     "away": {
+      "team": "DTN",
+      "r": 2,
+      "h": 4,
+      "e": 7
+     },
+     "home": {
+      "team": "CHC",
+      "r": 9,
+      "h": 5,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 5,
+    "half": "Top",
+    "team": "DTN",
+    "plays": [
+     "P.Reccius lines a single to LCF.",
+     "J.Rowe hits a shallow flyout to LCF.",
+     "E.Morris flies out to CF.",
+     "K.Kelly can't handle the pitch and is charged with a passed ball. All runners advance.",
+     "A.Whitney grounds out to SS."
+    ],
+    "score_after": {
+     "away": {
+      "team": "DTN",
+      "r": 2,
+      "h": 5,
+      "e": 7
+     },
+     "home": {
+      "team": "CHC",
+      "r": 9,
+      "h": 5,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 5,
+    "half": "Bottom",
+    "team": "CHC",
+    "plays": [
+     "N.Williamson hits a shallow flyout to LF.",
+     "C.Jones grounds a single to LCF.",
+     "C.Anson flies out to CF.",
+     "C.Jones is nailed stealing 2B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "DTN",
+      "r": 2,
+      "h": 5,
+      "e": 7
+     },
+     "home": {
+      "team": "CHC",
+      "r": 9,
+      "h": 6,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 6,
+    "half": "Top",
+    "team": "DTN",
+    "plays": [
+     "J.Manning hits a shallow flyout to LCF.",
+     "H.Richardson grounds out to SS.",
+     "C.Bennett crushes a solo homer to RF.",
+     "M.McQuery grounds out to 2B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "DTN",
+      "r": 3,
+      "h": 6,
+      "e": 7
+     },
+     "home": {
+      "team": "CHC",
+      "r": 9,
+      "h": 6,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 6,
+    "half": "Bottom",
+    "team": "CHC",
+    "plays": [
+     "K.Kelly walks.",
+     "A.Dalrymple hits into a 4-6 fielder's choice.",
+     "A.Dalrymple steals second base.",
+     "A.Dalrymple steals 3B.",
+     "T.Burns flies out to RF. J.Lillie's throw is up the 3B line and A.Dalrymple scores.",
+     "T.Kennedy enters the game to pitch.",
+     "F.Lewis strikes out on a ball out of the zone."
+    ],
+    "score_after": {
+     "away": {
+      "team": "DTN",
+      "r": 3,
+      "h": 6,
+      "e": 7
+     },
+     "home": {
+      "team": "CHC",
+      "r": 10,
+      "h": 6,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 7,
+    "half": "Top",
+    "team": "DTN",
+    "plays": [
+     "J.Lillie grounds out to 1B.",
+     "T.Burns misplays a routine grounder and P.Reccius reaches on the error.",
+     "J.Rowe smokes a line drive single to RCF.",
+     "T.Kennedy strikes out on a ball out of the zone.",
+     "A.Whitney flies out to LCF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "DTN",
+      "r": 3,
+      "h": 7,
+      "e": 7
+     },
+     "home": {
+      "team": "CHC",
+      "r": 10,
+      "h": 6,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 7,
+    "half": "Bottom",
+    "team": "CHC",
+    "plays": [
+     "J.Clarkson hits a shallow flyout to RCF.",
+     "B.McClellan hits a flyball single to RF.",
+     "N.Williamson hits a sacrifice bunt to 3B. All runners advance.",
+     "J.Rowe boots a routine grounder and C.Jones reaches on the error.",
+     "C.Jones is nailed stealing 2B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "DTN",
+      "r": 3,
+      "h": 7,
+      "e": 8
+     },
+     "home": {
+      "team": "CHC",
+      "r": 10,
+      "h": 7,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 8,
+    "half": "Top",
+    "team": "DTN",
+    "plays": [
+     "S.Trott enters the game at C as a defensive replacement.",
+     "L.Knight enters the game at CF as a defensive replacement.",
+     "O.Shaffer enters the game at RF as a defensive replacement.",
+     "J.Manning flies out to CF.",
+     "H.Richardson fouls out to third.",
+     "C.Bennett grounds out to 3B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "DTN",
+      "r": 3,
+      "h": 7,
+      "e": 8
+     },
+     "home": {
+      "team": "CHC",
+      "r": 10,
+      "h": 7,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 8,
+    "half": "Bottom",
+    "team": "CHC",
+    "plays": [
+     "C.Anson hits a shallow flyout to LCF.",
+     "S.Trott lines out to 2B.",
+     "O.Shaffer bloops a single to LCF.",
+     "T.Burns grounds out to 3B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "DTN",
+      "r": 3,
+      "h": 7,
+      "e": 8
+     },
+     "home": {
+      "team": "CHC",
+      "r": 10,
+      "h": 8,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 9,
+    "half": "Top",
+    "team": "DTN",
+    "plays": [
+     "M.McQuery flies out to deep LF.",
+     "J.Lillie hits a flyball single to LCF.",
+     "P.Reccius hits into a 5-4 fielder's choice.",
+     "J.Rowe hits a Texas League single to LF.",
+     "C.Carroll enters the game as a pinch-hitter for T.Kennedy.",
+     "C.Carroll is frozen on strike 3."
+    ],
+    "score_after": {
+     "away": {
+      "team": "DTN",
+      "r": 3,
+      "h": 9,
+      "e": 8
+     },
+     "home": {
+      "team": "CHC",
+      "r": 10,
+      "h": 8,
+      "e": 1
+     }
+    }
+   }
+  ]
  }
 ]

@@ -306,3 +306,12 @@ footer {
     font-size: 10.5px;
     padding: 20px 0 30px 0;
 }
+
+.draft-via {
+    color: #666;
+    font-size: 0.9em;
+    font-style: italic;
+}
+.draft-via a {
+    color: #666;
+}

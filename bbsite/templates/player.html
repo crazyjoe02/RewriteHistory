@@ -15,6 +15,10 @@
 {% if bats %}Bats: {{ bats }}{% endif %}{% if throws %} &middot; Throws: {{ throws }}{% endif %}
 </div>
 
+{% if is_placeholder %}
+<div class="standings-note">No Rewrite League stats yet &mdash; check back once this player takes the field.</div>
+{% endif %}
+
 {% if batting_rows %}
 <h2 class="section-title">Batting</h2>
 <div class="table-wrap">

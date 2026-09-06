@@ -311,6 +311,36 @@ def main():
     if dupe_names:
         print(f"WARNING: duplicate player display names, All-Star matching may be ambiguous: {sorted(dupe_names)}")
 
+    # --- Placeholder pages for drafted players with no stats yet (e.g. incoming rookies) ---
+    NAME_ALIASES = {
+        "Charlie Bassett": "Charley Bassett",
+        "Thomas Esterbrook": "Dude Esterbrook",
+    }
+
+    def resolve_player_name(name):
+        name = NAME_ALIASES.get(name, name)
+        return name_to_pid.get(name)
+
+    placeholder_count = 0
+    for draft_path in sorted(glob.glob(os.path.join(DATA_DIR, "*", "draft.csv"))):
+        for row in load_csv(draft_path):
+            raw_name = row["Player"].strip()
+            name = NAME_ALIASES.get(raw_name, raw_name)
+            if name in name_to_pid:
+                continue
+            base_pid = slugify_player_id(name)
+            pid = base_pid
+            n = 2
+            while pid in players:
+                pid = base_pid[:-2] + f"{n:02d}"
+                n += 1
+            players[pid]["name"] = name
+            players[pid]["is_placeholder"] = True
+            name_to_pid[name] = pid
+            placeholder_count += 1
+    if placeholder_count:
+        print(f"NOTE: created {placeholder_count} placeholder player page(s) for drafted players with no stats yet.")
+
     for pid in players:
         players[pid]["allstar_seasons"] = []
 
@@ -409,15 +439,6 @@ def main():
         postseason_by_season[season] = series
 
     # --- Transactions (draft picks + trades; loaded early so player pages can show them) ---
-    NAME_ALIASES = {
-        "Charlie Bassett": "Charley Bassett",
-        "Thomas Esterbrook": "Dude Esterbrook",
-    }
-
-    def resolve_player_name(name):
-        name = NAME_ALIASES.get(name, name)
-        return name_to_pid.get(name)
-
     for pid in players:
         players[pid]["draft_pick"] = None
         players[pid]["trades"] = []
@@ -556,7 +577,8 @@ def main():
               awards_won=awards_won,
               ps_batting_rows=ps_batting_rows, ps_pitching_rows=ps_pitching_rows,
               ps_batting_career=ps_batting_career, ps_pitching_career=ps_pitching_career,
-              draft_pick=pdata.get("draft_pick"), trades=trades)
+              draft_pick=pdata.get("draft_pick"), trades=trades,
+              is_placeholder=pdata.get("is_placeholder", False))
 
     # --- League leaders pages ---
     def top_n(rows, key_field, n=10, reverse=True, min_field=None, min_value=0):
@@ -778,7 +800,12 @@ def main():
         })
     for pid, pdata in players.items():
         seasons_played = sorted(set(r["SN"] for r in pdata["batting"] + pdata["pitching"]))
-        yr_range = f"{seasons_played[0]}" if len(seasons_played) == 1 else f"{seasons_played[0]}\u2013{seasons_played[-1]}"
+        if not seasons_played:
+            yr_range = "no stats yet"
+        elif len(seasons_played) == 1:
+            yr_range = f"{seasons_played[0]}"
+        else:
+            yr_range = f"{seasons_played[0]}\u2013{seasons_played[-1]}"
         search_entries.append({
             "type": "Player",
             "name": pdata["name"],
