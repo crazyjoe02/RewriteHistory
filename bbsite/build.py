@@ -267,10 +267,12 @@ def main():
             batters.sort(key=lambda r: -float(r["AVG"]) if r["AB"] and int(r["AB"]) > 0 else 0)
             pitchers = [r for r in all_pitching[season] if r["Team"] == abbr]
             pitchers.sort(key=lambda r: -int(r["W"]))
+            fielders = [r for r in all_fielding[season] if r["Team"] == abbr]
+            fielders.sort(key=lambda r: -float(r["Inn"]))
             schedule = schedule_by_team_season.get((abbr, season), [])
             write(f"teams/{abbr}/{season}.html", "team_season.html",
                   team=team, season=season, standing=standing, batters=batters, pitchers=pitchers,
-                  schedule=schedule)
+                  fielders=fielders, schedule=schedule)
 
     # --- Franchise hub pages (season-by-season across every era, e.g. Detroit -> Cleveland) ---
     for fid, eras in franchises_by_id.items():
@@ -680,10 +682,10 @@ def main():
         def compute_fielding_totals(rows):
             sums = defaultdict(float)
             for r in rows:
-                for k in ["GP", "GS", "Inn", "E", "ThrowE", "PO", "A", "DP", "GoodPlays", "PoorPlays", "SB", "CS", "PB", "PK"]:
+                for k in ["GP", "GS", "Inn", "E", "PO", "A", "DP", "GoodPlays", "PoorPlays", "SB", "CS", "PB", "PK"]:
                     sums[k] += float(r.get(k) or 0)
             totals = dict(sums)
-            for k in ["GP", "GS", "E", "ThrowE", "PO", "A", "DP", "GoodPlays", "PoorPlays", "SB", "CS", "PB", "PK"]:
+            for k in ["GP", "GS", "E", "PO", "A", "DP", "GoodPlays", "PoorPlays", "SB", "CS", "PB", "PK"]:
                 totals[k] = int(totals[k])
             if len(rows) == 1:
                 totals["FPct"] = float(rows[0]["FPct"])

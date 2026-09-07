@@ -72,6 +72,34 @@ Home {{ standing.Home }} / Away {{ standing.Away }}
 </table>
 </div>
 
+{% if fielders %}
+<h2 class="section-title">Fielding</h2>
+<div class="table-wrap">
+<table class="stats">
+    <thead>
+    <tr>
+        <th class="left">Player</th><th>Pos</th><th>GP</th><th>GS</th><th>Inn</th>
+        <th>E</th><th>PO</th><th>A</th><th>DP</th><th>F.Pct</th><th>RF</th>
+        <th>SB</th><th>CS</th><th>C.ERA</th><th>PB</th><th>PK</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for p in fielders %}
+    <tr>
+        <td class="left" data-sort="{{ p.LastName }}"><a href="{{ root }}players/{{ p.PlayerID }}.html">{{ p.Player }}</a></td>
+        <td>{{ p.Pos }}</td>
+        <td>{{ p.GP }}</td><td>{{ p.GS }}</td><td>{{ '%.1f'|format(p.Inn|float) }}</td>
+        <td>{{ p.E }}</td><td>{{ p.PO }}</td><td>{{ p.A }}</td><td>{{ p.DP }}</td>
+        <td>{{ '%.3f'|format(p.FPct|float) }}</td><td>{{ '%.2f'|format(p.RF|float) }}</td>
+        <td>{{ p.SB }}</td><td>{{ p.CS }}</td><td>{{ '%.2f'|format(p.CERA|float) }}</td>
+        <td>{{ p.PB }}</td><td>{{ p.PK }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endif %}
+
 {% if schedule %}
 <h2 class="section-title">Schedule</h2>
 <div class="table-wrap">
