@@ -184,18 +184,57 @@
 </div>
 {% endif %}
 
-{% if draft_picks or trades %}
+{% if fielding_rows %}
+<h2 class="section-title">Fielding</h2>
+<div class="table-wrap">
+<table class="stats">
+    <thead>
+    <tr>
+        <th>Year</th><th class="left">Team</th><th>Pos</th><th>GP</th><th>GS</th><th>Inn</th>
+        <th>E</th><th>ThE</th><th>PO</th><th>A</th><th>DP</th><th>F.Pct</th>
+        <th>SB</th><th>CS</th><th>C.ERA</th><th>PB</th><th>PK</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for r in fielding_rows %}
+    <tr>
+        <td><a href="{{ root }}years/{{ r.Season }}.html">{{ r.Season }}</a></td>
+        <td class="left"><a href="{{ root }}teams/{{ r.Team }}/{{ r.Season }}.html">{{ r.Team }}</a></td>
+        <td>{{ r.Pos }}</td>
+        <td>{{ r.GP }}</td><td>{{ r.GS }}</td><td>{{ '%.1f'|format(r.Inn|float) }}</td>
+        <td>{{ r.E }}</td><td>{{ r.ThrowE }}</td><td>{{ r.PO }}</td><td>{{ r.A }}</td><td>{{ r.DP }}</td>
+        <td>{{ '%.3f'|format(r.FPct|float) }}</td>
+        <td>{{ r.SB }}</td><td>{{ r.CS }}</td><td>{{ '%.2f'|format(r.CERA|float) }}</td>
+        <td>{{ r.PB }}</td><td>{{ r.PK }}</td>
+    </tr>
+    {% endfor %}
+    {% for pos, tot in fielding_career_by_pos.items() %}
+    <tr style="font-weight:bold; background:#eef2f7;">
+        <td colspan="2" class="left">Career</td>
+        <td>{{ pos }}</td>
+        <td>{{ tot.GP }}</td><td>{{ tot.GS }}</td><td>{{ '%.1f'|format(tot.Inn) }}</td>
+        <td>{{ tot.E }}</td><td>{{ tot.ThrowE }}</td><td>{{ tot.PO }}</td><td>{{ tot.A }}</td><td>{{ tot.DP }}</td>
+        <td>{{ '%.3f'|format(tot.FPct) }}</td>
+        <td>{{ tot.SB }}</td><td>{{ tot.CS }}</td><td>{{ '%.2f'|format(tot.CERA) }}</td>
+        <td>{{ tot.PB }}</td><td>{{ tot.PK }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endif %}
+
+{% if transactions %}
 <h2 class="section-title">Transactions</h2>
 <ul class="transactions-list">
-{% for d in draft_picks %}
-<li>{{ d.Season }}: Drafted {{ d.Round }}.{{ '%02d'|format(d.Pick) }} by
-<a href="{{ root }}teams/{{ hub_abbr.get(d.TeamAbbr, d.TeamAbbr) }}/index.html">{{ d.TeamName }}</a>
-in the {{ d.Season }} Draft.</li>
-{% endfor %}
-{% for t in trades %}
-<li>{{ t.Season }}: Traded by
-<a href="{{ root }}teams/{{ hub_abbr.get(t.FromTeamAbbr, t.FromTeamAbbr) }}/index.html">{{ t.FromTeamName }}</a> to the
-<a href="{{ root }}teams/{{ hub_abbr.get(t.ToTeamAbbr, t.ToTeamAbbr) }}/index.html">{{ t.ToTeamName }}</a>.</li>
+{% for tx in transactions %}
+{% if tx.kind == 'draft' %}
+<li>{{ tx.data.Season }}: Drafted {{ tx.data.Round }}.{{ '%02d'|format(tx.data.Pick) }} by
+<a href="{{ root }}teams/{{ hub_abbr.get(tx.data.TeamAbbr, tx.data.TeamAbbr) }}/index.html">{{ tx.data.TeamName }}</a>
+in the {{ tx.data.Season }} Draft.</li>
+{% else %}
+<li>{{ tx.html }}</li>
+{% endif %}
 {% endfor %}
 </ul>
 {% endif %}

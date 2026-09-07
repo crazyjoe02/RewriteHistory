@@ -114,6 +114,7 @@ def main():
     all_pitching = {}    # season -> list of rows
     all_ps_batting = {}  # season -> list of postseason batting rows
     all_ps_pitching = {} # season -> list of postseason pitching rows
+    all_fielding = {}    # season -> list of fielding rows (one row per player+position)
 
     for season in seasons:
         sdir = os.path.join(DATA_DIR, str(season))
@@ -122,12 +123,14 @@ def main():
         pitching_path = os.path.join(sdir, "pitching.csv")
         ps_batting_path = os.path.join(sdir, "postseason_batting.csv")
         ps_pitching_path = os.path.join(sdir, "postseason_pitching.csv")
+        fielding_path = os.path.join(sdir, "fielding.csv")
 
         standings_rows = load_csv(standings_path) if os.path.exists(standings_path) else []
         batting_rows = load_csv(batting_path) if os.path.exists(batting_path) else []
         pitching_rows = load_csv(pitching_path) if os.path.exists(pitching_path) else []
         ps_batting_rows = load_csv(ps_batting_path) if os.path.exists(ps_batting_path) else []
         ps_pitching_rows = load_csv(ps_pitching_path) if os.path.exists(ps_pitching_path) else []
+        fielding_rows = load_csv(fielding_path) if os.path.exists(fielding_path) else []
 
         # normalize display name to master registry (fixes source typos/casing)
         for row in standings_rows:
@@ -163,12 +166,19 @@ def main():
             row["PlayerID"] = slugify_player_id(row["Player"])
             row["LastName"] = last_name_of(row["Player"])
             row["Player"] = display_name(row["Player"])
+        for row in fielding_rows:
+            row["PlayerID"] = slugify_player_id(row["Player"])
+            row["LastName"] = last_name_of(row["Player"])
+            row["Player"] = display_name(row["Player"])
+            row["Season"] = season
+            row["Inn"] = float(str(row["Inn"]).replace(",", "") or 0)
 
         all_standings[season] = standings_rows
         all_batting[season] = batting_rows
         all_pitching[season] = pitching_rows
         all_ps_batting[season] = ps_batting_rows
         all_ps_pitching[season] = ps_pitching_rows
+        all_fielding[season] = fielding_rows
 
     # --- Set up Jinja ---
     env = Environment(loader=FileSystemLoader(TEMPLATES_DIR), trim_blocks=True, lstrip_blocks=True)
@@ -275,7 +285,7 @@ def main():
               team=current, seasons=franchise_seasons, eras=eras)
 
     # --- Player pages ---
-    players = defaultdict(lambda: {"batting": [], "pitching": [], "postseason_batting": [], "postseason_pitching": [], "name": None, "last_name": None, "bats": None, "throws": None})
+    players = defaultdict(lambda: {"batting": [], "pitching": [], "postseason_batting": [], "postseason_pitching": [], "fielding": [], "name": None, "last_name": None, "bats": None, "throws": None})
     for season in seasons:
         for row in all_batting[season]:
             pid = row["PlayerID"]
@@ -297,6 +307,11 @@ def main():
         for row in all_ps_pitching[season]:
             pid = row["PlayerID"]
             players[pid]["postseason_pitching"].append(row)
+            players[pid]["name"] = row["Player"]
+            players[pid]["last_name"] = row.get("LastName")
+        for row in all_fielding[season]:
+            pid = row["PlayerID"]
+            players[pid]["fielding"].append(row)
             players[pid]["name"] = row["Player"]
             players[pid]["last_name"] = row.get("LastName")
 
@@ -507,26 +522,38 @@ def main():
     all_player_names = sorted(set(name_to_pid) | set(TRADE_NAME_ALIASES), key=len, reverse=True)
     _player_pattern = re.compile("|".join(re.escape(n) for n in all_player_names)) if all_player_names else None
 
-    def _player_sub(m):
-        name = m.group(0)
-        pid = name_to_pid.get(TRADE_NAME_ALIASES.get(name, name))
-        if not pid:
-            print(f"NOTE: Trade text mentions '{name}' -- no matching player page, left as plain text.")
-            return name
-        return f'<a href="../players/{pid}.html">{name}</a>'
-
     def linkify_trade_text(text):
+        matched_pids = []
+
+        def player_sub(m):
+            name = m.group(0)
+            pid = name_to_pid.get(TRADE_NAME_ALIASES.get(name, name))
+            if not pid:
+                print(f"NOTE: Trade text mentions '{name}' -- no matching player page, left as plain text.")
+                return name
+            matched_pids.append(pid)
+            return f'<a href="../players/{pid}.html">{name}</a>'
+
         text = _team_pattern.sub(_team_sub, text)
         if _player_pattern:
-            text = _player_pattern.sub(_player_sub, text)
-        return text
+            text = _player_pattern.sub(player_sub, text)
+        return text, matched_pids
+
+    for pid in players:
+        players[pid]["trade_mentions"] = []
 
     pick_trades_by_season = {}
     for pt_path in sorted(glob.glob(os.path.join(DATA_DIR, "*", "pick_trades.json"))):
         season = int(os.path.basename(os.path.dirname(pt_path)))
         with open(pt_path, encoding="utf-8") as f:
             raw_trades = json.load(f)
-        pick_trades_by_season[season] = [linkify_trade_text(t) for t in raw_trades]
+        linked_list = []
+        for t in raw_trades:
+            html, matched_pids = linkify_trade_text(t)
+            linked_list.append(html)
+            for pid in set(matched_pids):
+                players[pid]["trade_mentions"].append({"season": season, "html": html})
+        pick_trades_by_season[season] = linked_list
 
 
     def compute_batting_totals(rows):
@@ -614,11 +641,60 @@ def main():
         allstar_seasons = sorted(pdata.get("allstar_seasons", []), key=lambda a: int(a["Season"]))
         allstar_years = [a["Season"] for a in allstar_seasons]
         awards_won = sorted(pdata.get("awards_won", []), key=lambda a: int(a["Season"]))
-        trades = sorted(pdata.get("trades", []), key=lambda t: t["Season"])
+        old_trades = sorted(pdata.get("trades", []), key=lambda t: t["Season"])
         draft_picks = sorted(pdata.get("draft_picks", []), key=lambda d: d["Season"])
+        trade_mentions = sorted(pdata.get("trade_mentions", []), key=lambda t: t["season"])
+
+        # Fallback for old simple trades.csv entries not covered by a narrative trade
+        # mention in that same season (keeps players like Jim McCormick from losing
+        # their only trade record).
+        narrative_seasons = set(t["season"] for t in trade_mentions)
+        trade_entries = list(trade_mentions)
+        for t in old_trades:
+            if t["Season"] in narrative_seasons:
+                continue
+            html = (f'Traded by <a href="../teams/{hub_abbr.get(t["FromTeamAbbr"], t["FromTeamAbbr"])}/index.html">{t["FromTeamName"]}</a> to the '
+                    f'<a href="../teams/{hub_abbr.get(t["ToTeamAbbr"], t["ToTeamAbbr"])}/index.html">{t["ToTeamName"]}</a>.')
+            trade_entries.append({"season": t["Season"], "html": html})
+
+        # Interleave by season: draft pick(s) for a season, then trade(s) for that season.
+        tx_seasons = sorted(set(d["Season"] for d in draft_picks) | set(e["season"] for e in trade_entries))
+        transactions = []
+        for s in tx_seasons:
+            for d in draft_picks:
+                if d["Season"] == s:
+                    transactions.append({"kind": "draft", "data": d})
+            for e in trade_entries:
+                if e["season"] == s:
+                    transactions.append({"kind": "trade", "html": e["html"]})
 
         batting_display_rows = build_display_rows(batting_rows, compute_batting_totals)
         pitching_display_rows = build_display_rows(pitching_rows, compute_pitching_totals)
+
+        # --- Fielding: season-by-season rows plus one career-totals row per position ---
+        fielding_rows_for_player = sorted(pdata.get("fielding", []), key=lambda r: (r["Season"], r["Pos"]))
+        fielding_by_pos = defaultdict(list)
+        for r in fielding_rows_for_player:
+            fielding_by_pos[r["Pos"]].append(r)
+
+        def compute_fielding_totals(rows):
+            sums = defaultdict(float)
+            for r in rows:
+                for k in ["GP", "GS", "Inn", "E", "ThrowE", "PO", "A", "DP", "GoodPlays", "PoorPlays", "SB", "CS", "PB", "PK"]:
+                    sums[k] += float(r.get(k) or 0)
+            totals = dict(sums)
+            for k in ["GP", "GS", "E", "ThrowE", "PO", "A", "DP", "GoodPlays", "PoorPlays", "SB", "CS", "PB", "PK"]:
+                totals[k] = int(totals[k])
+            if len(rows) == 1:
+                totals["FPct"] = float(rows[0]["FPct"])
+                totals["CERA"] = float(rows[0]["CERA"])
+            else:
+                chances = sums["PO"] + sums["A"] + sums["E"]
+                totals["FPct"] = (sums["PO"] + sums["A"]) / chances if chances else 0.0
+                totals["CERA"] = 9 * sums.get("ER", 0) / sums["Inn"] if sums["Inn"] else 0.0
+            return totals
+
+        fielding_career_by_pos = {pos: compute_fielding_totals(rows) for pos, rows in fielding_by_pos.items()}
 
         write(f"players/{pid}.html", "player.html",
               player_name=pdata["name"], bats=pdata["bats"], throws=pdata["throws"],
@@ -628,7 +704,8 @@ def main():
               awards_won=awards_won,
               ps_batting_rows=ps_batting_rows, ps_pitching_rows=ps_pitching_rows,
               ps_batting_career=ps_batting_career, ps_pitching_career=ps_pitching_career,
-              draft_picks=draft_picks, trades=trades,
+              fielding_rows=fielding_rows_for_player, fielding_career_by_pos=fielding_career_by_pos,
+              transactions=transactions,
               is_placeholder=pdata.get("is_placeholder", False))
 
     # --- League leaders pages ---
