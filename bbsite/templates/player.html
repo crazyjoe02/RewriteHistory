@@ -12,7 +12,11 @@
 </div>
 {% endif %}
 <div class="subtitle">
-{% if bats %}Bats: {{ bats }}{% endif %}{% if throws %} &middot; Throws: {{ throws }}{% endif %}
+{% set parts = [] %}
+{% if position_summary %}{% set _ = parts.append('Position: ' ~ position_summary) %}{% endif %}
+{% if bats %}{% set _ = parts.append('Bats: ' ~ bats) %}{% endif %}
+{% if throws %}{% set _ = parts.append('Throws: ' ~ throws) %}{% endif %}
+{{ parts|join(' &middot; ') }}
 </div>
 
 {% if is_placeholder %}
@@ -191,7 +195,7 @@
     <thead>
     <tr>
         <th>Year</th><th class="left">Team</th><th>Pos</th><th>GP</th><th>GS</th><th>Inn</th>
-        <th>E</th><th>ThE</th><th>PO</th><th>A</th><th>DP</th><th>F.Pct</th>
+        <th>E</th><th>ThE</th><th>PO</th><th>A</th><th>DP</th><th>F.Pct</th><th>RF</th>
         <th>SB</th><th>CS</th><th>C.ERA</th><th>PB</th><th>PK</th>
     </tr>
     </thead>
@@ -203,7 +207,7 @@
         <td>{{ r.Pos }}</td>
         <td>{{ r.GP }}</td><td>{{ r.GS }}</td><td>{{ '%.1f'|format(r.Inn|float) }}</td>
         <td>{{ r.E }}</td><td>{{ r.ThrowE }}</td><td>{{ r.PO }}</td><td>{{ r.A }}</td><td>{{ r.DP }}</td>
-        <td>{{ '%.3f'|format(r.FPct|float) }}</td>
+        <td>{{ '%.3f'|format(r.FPct|float) }}</td><td>{{ '%.2f'|format(r.RF|float) }}</td>
         <td>{{ r.SB }}</td><td>{{ r.CS }}</td><td>{{ '%.2f'|format(r.CERA|float) }}</td>
         <td>{{ r.PB }}</td><td>{{ r.PK }}</td>
     </tr>
@@ -214,7 +218,7 @@
         <td>{{ pos }}</td>
         <td>{{ tot.GP }}</td><td>{{ tot.GS }}</td><td>{{ '%.1f'|format(tot.Inn) }}</td>
         <td>{{ tot.E }}</td><td>{{ tot.ThrowE }}</td><td>{{ tot.PO }}</td><td>{{ tot.A }}</td><td>{{ tot.DP }}</td>
-        <td>{{ '%.3f'|format(tot.FPct) }}</td>
+        <td>{{ '%.3f'|format(tot.FPct) }}</td><td>{{ '%.2f'|format(tot.RF) }}</td>
         <td>{{ tot.SB }}</td><td>{{ tot.CS }}</td><td>{{ '%.2f'|format(tot.CERA) }}</td>
         <td>{{ tot.PB }}</td><td>{{ tot.PK }}</td>
     </tr>

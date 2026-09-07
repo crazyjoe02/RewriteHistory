@@ -688,16 +688,27 @@ def main():
             if len(rows) == 1:
                 totals["FPct"] = float(rows[0]["FPct"])
                 totals["CERA"] = float(rows[0]["CERA"])
+                totals["RF"] = float(rows[0]["RF"])
             else:
                 chances = sums["PO"] + sums["A"] + sums["E"]
                 totals["FPct"] = (sums["PO"] + sums["A"]) / chances if chances else 0.0
                 totals["CERA"] = 9 * sums.get("ER", 0) / sums["Inn"] if sums["Inn"] else 0.0
+                totals["RF"] = 9 * (sums["PO"] + sums["A"]) / sums["Inn"] if sums["Inn"] else 0.0
             return totals
 
         fielding_career_by_pos = {pos: compute_fielding_totals(rows) for pos, rows in fielding_by_pos.items()}
 
+        # Position summary for the subtitle line, ordered by total innings at each
+        # position (career, most-played first) -- e.g. "SS-CF".
+        position_summary = "-".join(
+            pos for pos, _ in sorted(
+                fielding_career_by_pos.items(), key=lambda kv: kv[1]["Inn"], reverse=True
+            )
+        )
+
         write(f"players/{pid}.html", "player.html",
               player_name=pdata["name"], bats=pdata["bats"], throws=pdata["throws"],
+              position_summary=position_summary,
               batting_rows=batting_display_rows, pitching_rows=pitching_display_rows,
               batting_career=batting_career, pitching_career=pitching_career,
               allstar_count=len(allstar_years), allstar_years=allstar_years,
