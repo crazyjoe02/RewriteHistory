@@ -288,6 +288,11 @@ def main():
                 match = next((r for r in all_standings[season] if r["TeamAbbr"] == era["Abbr"]), None)
                 if match:
                     franchise_seasons.append(match)
+                elif schedule_by_team_season.get((era["Abbr"], season)):
+                    franchise_seasons.append({
+                        "Season": season, "TeamAbbr": era["Abbr"], "TeamName": era["FranchiseName"],
+                        "League": era["League"], "W": None, "L": None, "PCT": None, "GB": None, "Finish": None,
+                    })
         write(f"teams/{current['Abbr']}/index.html", "team_index.html",
               team=current, seasons=franchise_seasons, eras=eras)
 
