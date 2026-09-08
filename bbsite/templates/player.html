@@ -4,9 +4,11 @@
 <div class="breadcrumb"><a href="{{ root }}index.html">Home</a> &rsaquo; {{ player_name }}</div>
 {% endblock %}
 {% block content %}
+<div style="display:flex; align-items:flex-start; gap:16px; flex-wrap:wrap;">
 {% if photo_url %}
-<img src="{{ photo_url }}" alt="{{ player_name }}" style="float:right; max-width:150px; margin:0 0 8px 16px; border:1px solid #ccc;">
+<img src="{{ photo_url }}" alt="{{ player_name }}" style="max-width:150px; flex-shrink:0; border:1px solid #ccc;">
 {% endif %}
+<div style="flex:1; min-width:200px;">
 <h1 class="page-title">{{ player_name }}</h1>
 {% if allstar_count or awards_won %}
 <div class="badge-row">
@@ -24,6 +26,8 @@
 {% if photo_url and photo_credit %}
 <div class="subtitle" style="font-size:0.8em; color:#888;">Photo: <a href="{{ photo_credit_url }}">{{ photo_credit }}</a></div>
 {% endif %}
+</div>
+</div>
 
 {% if is_placeholder %}
 <div class="standings-note">No Rewrite League stats yet &mdash; check back once this player takes the field.</div>
