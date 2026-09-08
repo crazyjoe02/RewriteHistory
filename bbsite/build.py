@@ -358,6 +358,23 @@ def main():
     if placeholder_count:
         print(f"NOTE: created {placeholder_count} placeholder player page(s) for drafted players with no stats yet.")
 
+    # --- Player photos (optional; public-domain images only) ---
+    photos_path = os.path.join(DATA_DIR, "photos.csv")
+    photo_count = 0
+    if os.path.exists(photos_path):
+        for row in load_csv(photos_path):
+            name = display_name(row["Player"])
+            pid = name_to_pid.get(name)
+            if not pid:
+                print(f"NOTE: Photo for '{row['Player']}' has no matching player page -- skipped.")
+                continue
+            players[pid]["photo_url"] = row["PhotoURL"]
+            players[pid]["photo_credit"] = row["PhotoCredit"]
+            players[pid]["photo_credit_url"] = row["PhotoCreditURL"]
+            photo_count += 1
+    if photo_count:
+        print(f"NOTE: attached {photo_count} player photo(s).")
+
     for pid in players:
         players[pid]["allstar_seasons"] = []
 
@@ -711,6 +728,8 @@ def main():
         write(f"players/{pid}.html", "player.html",
               player_name=pdata["name"], bats=pdata["bats"], throws=pdata["throws"],
               position_summary=position_summary,
+              photo_url=pdata.get("photo_url"), photo_credit=pdata.get("photo_credit"),
+              photo_credit_url=pdata.get("photo_credit_url"),
               batting_rows=batting_display_rows, pitching_rows=pitching_display_rows,
               batting_career=batting_career, pitching_career=pitching_career,
               allstar_count=len(allstar_years), allstar_years=allstar_years,
