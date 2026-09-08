@@ -294,7 +294,7 @@ def main():
                         "League": era["League"], "W": None, "L": None, "PCT": None, "GB": None, "Finish": None,
                     })
         write(f"teams/{current['Abbr']}/index.html", "team_index.html",
-              team=current, seasons=franchise_seasons, eras=eras)
+              team=current, seasons=list(reversed(franchise_seasons)), eras=eras)
 
     # --- Player pages ---
     players = defaultdict(lambda: {"batting": [], "pitching": [], "postseason_batting": [], "postseason_pitching": [], "fielding": [], "name": None, "last_name": None, "bats": None, "throws": None})
