@@ -252,6 +252,11 @@ def main():
         for row in load_csv(sched_path):
             row["Season"] = int(row["Season"])
             row["GameNum"] = int(row["GameNum"])
+            if row.get("Date") and len(row["Date"]) == 10 and row["Date"][4] == "-":
+                y, m, d = row["Date"].split("-")
+                row["DateDisplay"] = f"{m}-{d}-{y}"
+            else:
+                row["DateDisplay"] = row.get("Date", "")
             schedule_by_team_season[(row["HomeAbbr"], row["Season"])].append(row)
             schedule_by_team_season[(row["AwayAbbr"], row["Season"])].append(row)
     for key in schedule_by_team_season:
@@ -261,7 +266,8 @@ def main():
     for abbr, team in teams_by_abbr.items():
         for season in seasons:
             standing = next((r for r in all_standings[season] if r["TeamAbbr"] == abbr), None)
-            if not standing:
+            schedule = schedule_by_team_season.get((abbr, season), [])
+            if not standing and not schedule:
                 continue
             batters = [r for r in all_batting[season] if r["Team"] == abbr]
             batters.sort(key=lambda r: -float(r["AVG"]) if r["AB"] and int(r["AB"]) > 0 else 0)
@@ -269,7 +275,6 @@ def main():
             pitchers.sort(key=lambda r: -int(r["W"]))
             fielders = [r for r in all_fielding[season] if r["Team"] == abbr]
             fielders.sort(key=lambda r: -float(r["Inn"]))
-            schedule = schedule_by_team_season.get((abbr, season), [])
             write(f"teams/{abbr}/{season}.html", "team_season.html",
                   team=team, season=season, standing=standing, batters=batters, pitchers=pitchers,
                   fielders=fielders, schedule=schedule)

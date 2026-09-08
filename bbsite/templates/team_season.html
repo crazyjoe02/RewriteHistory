@@ -10,6 +10,7 @@
 {% block content %}
 <div class="team-bar" style="background: linear-gradient(90deg, {{ team.ColorPrimary }}, {{ team.ColorSecondary }});"></div>
 <h1 class="page-title">{{ season }} {{ team.FranchiseName }}</h1>
+{% if standing %}
 <div class="subtitle" style="margin-bottom:2px;">
 Manager: <a href="{{ root }}managers/{{ standing.OwnerSlug }}.html">{{ standing.Owner }}</a>
 </div>
@@ -22,7 +23,11 @@ Record: {{ standing.W }}-{{ standing.L }} ({{ '%.3f'|format(standing.PCT|float) 
 RF {{ standing.RF }} / RA {{ standing.RA }} &middot;
 Home {{ standing.Home }} / Away {{ standing.Away }}
 </div>
+{% else %}
+<div class="standings-note">Season not yet underway &mdash; schedule below.</div>
+{% endif %}
 
+{% if batters %}
 <h2 class="section-title">Batting</h2>
 <div class="table-wrap">
 <table class="stats">
@@ -47,7 +52,9 @@ Home {{ standing.Home }} / Away {{ standing.Away }}
     </tbody>
 </table>
 </div>
+{% endif %}
 
+{% if pitchers %}
 <h2 class="section-title">Pitching</h2>
 <div class="table-wrap">
 <table class="stats">
@@ -71,6 +78,7 @@ Home {{ standing.Home }} / Away {{ standing.Away }}
     </tbody>
 </table>
 </div>
+{% endif %}
 
 {% if fielders %}
 <h2 class="section-title">Fielding</h2>
@@ -111,15 +119,16 @@ Home {{ standing.Home }} / Away {{ standing.Away }}
     {% for g in schedule %}
     {% set is_home = (g.HomeAbbr == team.Abbr) %}
     {% set opp_abbr = g.AwayAbbr if is_home else g.HomeAbbr %}
-    {% set own_score = (g.HomeScore if is_home else g.AwayScore) | int %}
-    {% set opp_score = (g.AwayScore if is_home else g.HomeScore) | int %}
+    {% set has_score = (g.HomeScore or '')|trim != '' and (g.AwayScore or '')|trim != '' %}
+    {% set own_score = ((g.HomeScore if is_home else g.AwayScore) | int) if has_score else None %}
+    {% set opp_score = ((g.AwayScore if is_home else g.HomeScore) | int) if has_score else None %}
     <tr>
         <td>{{ g.GameNum }}</td>
-        <td class="left">{{ g.Date }}</td>
+        <td class="left">{{ g.DateDisplay }}</td>
         <td class="left">{% if not is_home %}@ {% endif %}<a href="{{ root }}teams/{{ hub_abbr.get(opp_abbr, opp_abbr) }}/index.html">{{ opp_abbr }}</a></td>
-        <td>{{ 'W' if own_score > opp_score else 'L' }}</td>
-        <td>{{ own_score }}</td>
-        <td>{{ opp_score }}</td>
+        <td>{% if has_score %}{{ 'W' if own_score > opp_score else 'L' }}{% else %}&mdash;{% endif %}</td>
+        <td>{{ own_score if has_score else '' }}</td>
+        <td>{{ opp_score if has_score else '' }}</td>
         <td class="left">{% if g.BoxScoreSlug %}<a href="{{ root }}boxscore/{{ season }}/{{ g.BoxScoreSlug }}.html">Box Score</a>{% endif %}</td>
     </tr>
     {% endfor %}
