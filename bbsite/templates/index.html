@@ -29,10 +29,34 @@
 {% endif %}
 <div class="subtitle">Reimagined major league baseball history, {{ first_season }}&ndash;present. Currently through the {{ latest_season }} season.</div>
 
-<h2 class="section-title">{{ latest_season }} {% if is_preseason %}Franchises{% else %}Final Standings{% endif %}</h2>
+<h2 class="section-title">{{ latest_season }} {% if is_preseason %}Franchises{% elif is_live %}Standings{% else %}Final Standings{% endif %}</h2>
 <div class="league-columns">
 {% for lg_name, lg_code, teams in leagues %}
 <div>
+    {% if is_live %}
+    <h3>{{ lg_name }} Standings</h3>
+    <div class="table-wrap">
+    <table class="stats">
+        <thead><tr><th class="left">East</th><th>W-L</th><th>PCT</th><th>GB</th><th>MagN</th><th>L10</th><th>STRK</th><th>Home</th><th>Away</th><th class="left">Owner</th></tr></thead>
+        <tbody>
+        {% for t in teams %}
+        <tr>
+            <td class="left"><a href="{{ root }}teams/{{ t.TeamAbbr }}/{{ season }}.html">{{ t.TeamName }}</a></td>
+            <td>{{ t.W }}-{{ t.L }}</td>
+            <td>{{ '%.3f'|format(t.PCT) }}</td>
+            <td>{{ t.GB }}</td>
+            <td>-</td>
+            <td>{{ t.L10 }}</td>
+            <td>{{ t.Streak }}</td>
+            <td>{{ t.Home }}</td>
+            <td>{{ t.Away }}</td>
+            <td class="left">{{ t.Owner }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+    {% else %}
     <h3>{{ lg_name }}</h3>
     {% if is_preseason %}
     <div class="table-wrap">
@@ -59,6 +83,7 @@
         </tbody>
     </table>
     </div>
+    {% endif %}
     {% endif %}
 </div>
 {% endfor %}

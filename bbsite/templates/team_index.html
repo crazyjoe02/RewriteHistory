@@ -32,7 +32,8 @@
         <td>{{ s.L }}</td>
         <td>{{ '%.3f'|format(s.PCT|float) }}</td>
         {% if s.InProgress %}
-        <td colspan="2">In Progress</td>
+        <td>{{ s.GB }}</td>
+        <td>In Progress</td>
         {% else %}
         <td>{{ s.GB }}</td>
         <td>{{ s.Finish }}</td>

@@ -221,28 +221,6 @@ def main():
                 active.append(era)
         return active
 
-    year_leagues_ctx = {}
-    year_is_preseason = {}
-    for season in seasons:
-        rows = all_standings[season]
-        if rows:
-            year_is_preseason[season] = False
-            leagues_ctx = []
-            for lg_code in ["AA", "NL"]:
-                lg_rows = [r for r in rows if r["League"] == lg_code]
-                lg_rows.sort(key=lambda r: -float(r["PCT"]))
-                leagues_ctx.append((LEAGUE_NAMES[lg_code], lg_code, lg_rows))
-            year_leagues_ctx[season] = leagues_ctx
-        else:
-            # No games played yet -- list active franchises alphabetically instead of a standings table.
-            year_is_preseason[season] = True
-            active = active_franchises_for_season(season)
-            leagues_ctx = []
-            for lg_code in ["AA", "NL"]:
-                lg_teams = sorted([e for e in active if e["League"] == lg_code], key=lambda e: e["FranchiseName"])
-                leagues_ctx.append((LEAGUE_NAMES[lg_code], lg_code, lg_teams))
-            year_leagues_ctx[season] = leagues_ctx
-
     # --- Schedule (doesn't need player-ID resolution, safe to load early) ---
     schedule_by_team_season = defaultdict(list)
     for season in seasons:
@@ -261,6 +239,118 @@ def main():
             schedule_by_team_season[(row["AwayAbbr"], row["Season"])].append(row)
     for key in schedule_by_team_season:
         schedule_by_team_season[key].sort(key=lambda r: r["GameNum"])
+
+    # --- Owner lookup (persistent per franchise, survives relocations) ---
+    owners_by_fid = {}
+    owners_path = os.path.join(DATA_DIR, "owners.csv")
+    if os.path.exists(owners_path):
+        for row in load_csv(owners_path):
+            owners_by_fid[row["FranchiseID"]] = row["Owner"]
+
+    # --- Live standings, computed directly from schedule.csv results (for in-progress
+    # seasons that don't have a final standings.csv yet) ---
+    def compute_team_record(abbr, season):
+        games = schedule_by_team_season.get((abbr, season), [])
+        played = [g for g in games if str(g.get("HomeScore", "")).strip() != "" and str(g.get("AwayScore", "")).strip() != ""]
+        w = l = home_w = home_l = away_w = away_l = 0
+        results = []
+        for g in played:
+            is_home = g["HomeAbbr"] == abbr
+            own = int(g["HomeScore"]) if is_home else int(g["AwayScore"])
+            opp = int(g["AwayScore"]) if is_home else int(g["HomeScore"])
+            win = own > opp
+            if win:
+                w += 1
+            else:
+                l += 1
+            if is_home:
+                if win: home_w += 1
+                else: home_l += 1
+            else:
+                if win: away_w += 1
+                else: away_l += 1
+            results.append("W" if win else "L")
+        streak = ""
+        if results:
+            last = results[-1]
+            cnt = 0
+            for r in reversed(results):
+                if r != last:
+                    break
+                cnt += 1
+            streak = f"{last}{cnt}"
+        if len(results) >= 10:
+            last10 = results[-10:]
+            l10 = f"{last10.count('W')}-{last10.count('L')}"
+        else:
+            l10 = "-"
+        pct = (w / (w + l)) if (w + l) else 0.0
+        return {
+            "W": w, "L": l, "PCT": pct, "GamesPlayed": len(played), "Streak": streak, "L10": l10,
+            "Home": f"{home_w}-{home_l}", "Away": f"{away_w}-{away_l}",
+        }
+
+    def compute_live_league_table(season, league_code, active_eras):
+        rows = []
+        for era in active_eras:
+            if era["League"] != league_code:
+                continue
+            rec = compute_team_record(era["Abbr"], season)
+            rec["TeamAbbr"] = era["Abbr"]
+            rec["TeamName"] = era["FranchiseName"]
+            rec["Owner"] = owners_by_fid.get(era["FranchiseID"], "")
+            rows.append(rec)
+        rows.sort(key=lambda r: -r["PCT"])
+        if rows:
+            leader = rows[0]
+            for r in rows:
+                gb = ((leader["W"] - r["W"]) + (r["L"] - leader["L"])) / 2
+                r["GB"] = "-" if gb == 0 else (f"{gb:g}")
+        return rows
+
+    live_standings_by_season_team = {}  # (abbr, season) -> record dict with GB, for team-page lookups
+
+    year_leagues_ctx = {}
+    year_is_preseason = {}
+    year_is_live = {}
+    for season in seasons:
+        rows = all_standings[season]
+        active = active_franchises_for_season(season)
+        has_played_games = any(
+            str(g.get("HomeScore", "")).strip() != "" and str(g.get("AwayScore", "")).strip() != ""
+            for era in active
+            for g in schedule_by_team_season.get((era["Abbr"], season), [])
+        )
+        if rows:
+            year_is_preseason[season] = False
+            year_is_live[season] = False
+            leagues_ctx = []
+            for lg_code in ["AA", "NL"]:
+                lg_rows = [r for r in rows if r["League"] == lg_code]
+                lg_rows.sort(key=lambda r: -float(r["PCT"]))
+                leagues_ctx.append((LEAGUE_NAMES[lg_code], lg_code, lg_rows))
+            year_leagues_ctx[season] = leagues_ctx
+        elif has_played_games:
+            # In-progress season: no final standings.csv yet, but games have been played --
+            # compute a live standings table directly from schedule.csv results.
+            year_is_preseason[season] = False
+            year_is_live[season] = True
+            leagues_ctx = []
+            for lg_code in ["AA", "NL"]:
+                lg_rows = compute_live_league_table(season, lg_code, active)
+                leagues_ctx.append((LEAGUE_NAMES[lg_code], lg_code, lg_rows))
+                for r in lg_rows:
+                    live_standings_by_season_team[(r["TeamAbbr"], season)] = r
+            year_leagues_ctx[season] = leagues_ctx
+        else:
+            # No games played yet -- list active franchises alphabetically instead of a standings table.
+            year_is_preseason[season] = True
+            year_is_live[season] = False
+            leagues_ctx = []
+            for lg_code in ["AA", "NL"]:
+                lg_teams = sorted([e for e in active if e["League"] == lg_code], key=lambda e: e["FranchiseName"])
+                leagues_ctx.append((LEAGUE_NAMES[lg_code], lg_code, lg_teams))
+            year_leagues_ctx[season] = leagues_ctx
 
     # --- Team pages (per-abbr, per-season rosters/stats) ---
     for abbr, team in teams_by_abbr.items():
@@ -289,25 +379,19 @@ def main():
                 if match:
                     franchise_seasons.append(match)
                 elif schedule_by_team_season.get((era["Abbr"], season)):
-                    games_for_team = schedule_by_team_season[(era["Abbr"], season)]
-                    played = [g for g in games_for_team if str(g.get("HomeScore", "")).strip() != "" and str(g.get("AwayScore", "")).strip() != ""]
-                    w = l = 0
-                    for g in played:
-                        is_home = g["HomeAbbr"] == era["Abbr"]
-                        own = int(g["HomeScore"]) if is_home else int(g["AwayScore"])
-                        opp = int(g["AwayScore"]) if is_home else int(g["HomeScore"])
-                        if own > opp:
-                            w += 1
-                        else:
-                            l += 1
-                    pct = f"{(w / (w + l)):.3f}" if (w + l) else None
-                    franchise_seasons.append({
-                        "Season": season, "TeamAbbr": era["Abbr"], "TeamName": era["FranchiseName"],
-                        "League": era["League"],
-                        "W": w if played else None, "L": l if played else None,
-                        "PCT": pct, "GB": None, "Finish": None,
-                        "InProgress": bool(played),
-                    })
+                    live = live_standings_by_season_team.get((era["Abbr"], season))
+                    if live:
+                        franchise_seasons.append({
+                            "Season": season, "TeamAbbr": era["Abbr"], "TeamName": era["FranchiseName"],
+                            "League": era["League"], "W": live["W"], "L": live["L"], "PCT": live["PCT"],
+                            "GB": live["GB"], "Finish": None, "InProgress": True,
+                        })
+                    else:
+                        franchise_seasons.append({
+                            "Season": season, "TeamAbbr": era["Abbr"], "TeamName": era["FranchiseName"],
+                            "League": era["League"], "W": None, "L": None, "PCT": None, "GB": None,
+                            "Finish": None, "InProgress": False,
+                        })
         write(f"teams/{current['Abbr']}/index.html", "team_index.html",
               team=current, seasons=list(reversed(franchise_seasons)), eras=eras)
 
@@ -937,7 +1021,7 @@ def main():
               has_draft=season in draft_by_season,
               trades=trades_by_season.get(season, []),
               pick_trades=pick_trades_by_season.get(season, []),
-              is_preseason=year_is_preseason[season])
+              is_preseason=year_is_preseason[season], is_live=year_is_live[season])
 
     for season, picks in draft_by_season.items():
         write(f"draft/{season}.html", "draft_results.html", season=season, draft_picks=picks)
@@ -971,7 +1055,7 @@ def main():
           leagues=year_leagues_ctx[latest_season], season=latest_season,
           all_teams=sorted(current_era_by_franchise.values(), key=lambda t: t["FranchiseName"]),
           postseason=most_recent_postseason,
-          is_preseason=year_is_preseason[latest_season])
+          is_preseason=year_is_preseason[latest_season], is_live=year_is_live[latest_season])
 
     # --- Search index (client-side JSON, used by the header search box) ---
     search_entries = []
