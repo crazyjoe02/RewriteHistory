@@ -289,9 +289,24 @@ def main():
                 if match:
                     franchise_seasons.append(match)
                 elif schedule_by_team_season.get((era["Abbr"], season)):
+                    games_for_team = schedule_by_team_season[(era["Abbr"], season)]
+                    played = [g for g in games_for_team if str(g.get("HomeScore", "")).strip() != "" and str(g.get("AwayScore", "")).strip() != ""]
+                    w = l = 0
+                    for g in played:
+                        is_home = g["HomeAbbr"] == era["Abbr"]
+                        own = int(g["HomeScore"]) if is_home else int(g["AwayScore"])
+                        opp = int(g["AwayScore"]) if is_home else int(g["HomeScore"])
+                        if own > opp:
+                            w += 1
+                        else:
+                            l += 1
+                    pct = f"{(w / (w + l)):.3f}" if (w + l) else None
                     franchise_seasons.append({
                         "Season": season, "TeamAbbr": era["Abbr"], "TeamName": era["FranchiseName"],
-                        "League": era["League"], "W": None, "L": None, "PCT": None, "GB": None, "Finish": None,
+                        "League": era["League"],
+                        "W": w if played else None, "L": l if played else None,
+                        "PCT": pct, "GB": None, "Finish": None,
+                        "InProgress": bool(played),
                     })
         write(f"teams/{current['Abbr']}/index.html", "team_index.html",
               team=current, seasons=list(reversed(franchise_seasons)), eras=eras)
