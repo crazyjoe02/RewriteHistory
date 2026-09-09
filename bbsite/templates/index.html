@@ -37,7 +37,7 @@
     <h3>{{ lg_name }} Standings</h3>
     <div class="table-wrap">
     <table class="stats">
-        <thead><tr><th class="left">East</th><th>W-L</th><th>PCT</th><th>GB</th><th>MagN</th><th>L10</th><th>STRK</th><th>Home</th><th>Away</th><th class="left">Owner</th></tr></thead>
+        <thead><tr><th class="left">Team</th><th>W-L</th><th>PCT</th><th>GB</th><th>RS</th><th>RA</th><th>STRK</th><th>Home</th><th>Away</th><th>1-Run</th></tr></thead>
         <tbody>
         {% for t in teams %}
         <tr>
@@ -45,12 +45,12 @@
             <td>{{ t.W }}-{{ t.L }}</td>
             <td>{{ '%.3f'|format(t.PCT) }}</td>
             <td>{{ t.GB }}</td>
-            <td>-</td>
-            <td>{{ t.L10 }}</td>
+            <td>{{ t.RS }}</td>
+            <td>{{ t.RA }}</td>
             <td>{{ t.Streak }}</td>
             <td>{{ t.Home }}</td>
             <td>{{ t.Away }}</td>
-            <td class="left">{{ t.Owner }}</td>
+            <td>{{ t.OneRun }}</td>
         </tr>
         {% endfor %}
         </tbody>

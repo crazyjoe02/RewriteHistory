@@ -253,12 +253,16 @@ def main():
         games = schedule_by_team_season.get((abbr, season), [])
         played = [g for g in games if str(g.get("HomeScore", "")).strip() != "" and str(g.get("AwayScore", "")).strip() != ""]
         w = l = home_w = home_l = away_w = away_l = 0
+        one_run_w = one_run_l = 0
+        rs = ra = 0
         results = []
         for g in played:
             is_home = g["HomeAbbr"] == abbr
             own = int(g["HomeScore"]) if is_home else int(g["AwayScore"])
             opp = int(g["AwayScore"]) if is_home else int(g["HomeScore"])
             win = own > opp
+            rs += own
+            ra += opp
             if win:
                 w += 1
             else:
@@ -269,6 +273,9 @@ def main():
             else:
                 if win: away_w += 1
                 else: away_l += 1
+            if abs(own - opp) == 1:
+                if win: one_run_w += 1
+                else: one_run_l += 1
             results.append("W" if win else "L")
         streak = ""
         if results:
@@ -288,6 +295,7 @@ def main():
         return {
             "W": w, "L": l, "PCT": pct, "GamesPlayed": len(played), "Streak": streak, "L10": l10,
             "Home": f"{home_w}-{home_l}", "Away": f"{away_w}-{away_l}",
+            "RS": rs, "RA": ra, "OneRun": f"{one_run_w}-{one_run_l}",
         }
 
     def compute_live_league_table(season, league_code, active_eras):
