@@ -386,6 +386,10 @@ def main():
             pitchers.sort(key=lambda r: -int(r["W"]))
             fielders = [r for r in all_fielding[season] if r["Team"] == abbr]
             fielders.sort(key=lambda r: -float(r["Inn"]))
+            playoff_batters = [r for r in all_ps_batting.get(season, []) if r["Team"] == abbr]
+            playoff_batters.sort(key=lambda r: -float(r["AVG"]) if r["AB"] and int(r["AB"]) > 0 else 0)
+            playoff_pitchers = [r for r in all_ps_pitching.get(season, []) if r["Team"] == abbr]
+            playoff_pitchers.sort(key=lambda r: -int(r["W"]))
             pages = franchise_season_pages[team["FranchiseID"]]
             idx = pages.index((season, abbr))
             prev_season = pages[idx - 1] if idx > 0 else None
@@ -395,7 +399,8 @@ def main():
                   live_record=live_standings_by_season_team.get((abbr, season)),
                   prev_season=prev_season, next_season=next_season,
                   batters=batters, pitchers=pitchers,
-                  fielders=fielders, schedule=schedule)
+                  fielders=fielders, schedule=schedule,
+                  playoff_batters=playoff_batters, playoff_pitchers=playoff_pitchers)
 
     # --- Franchise hub pages (season-by-season across every era, e.g. Detroit -> Cleveland) ---
     for fid, eras in franchises_by_id.items():
