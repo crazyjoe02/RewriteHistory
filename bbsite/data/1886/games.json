@@ -13439,5 +13439,6657 @@
     }
    }
   ]
+ },
+ {
+  "season": 1886,
+  "game_num": 3,
+  "date": "1886-03-31",
+  "home": "CLV",
+  "away": "CHC",
+  "location": "National League Park II",
+  "subtitle": "Regular Season \u2014 March 31, 1886",
+  "player_of_game": {
+   "player": "John Clarkson",
+   "team": "CHC",
+   "note": "tosses a 5-hit shutout"
+  },
+  "linescore": {
+   "innings": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+   ],
+   "rows": [
+    {
+     "team": "CHC",
+     "label": "Chicago White Stockings",
+     "by_inning": [
+      5,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+     ],
+     "R": 7,
+     "H": 13,
+     "E": 3
+    },
+    {
+     "team": "CLV",
+     "label": "1886 Cleveland Blues",
+     "by_inning": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "R": 0,
+     "H": 5,
+     "E": 0
+    }
+   ]
+  },
+  "batting": {
+   "CHC": {
+    "rows": [
+     {
+      "player": "King Kelly",
+      "pos": "C",
+      "ab": 4,
+      "r": 1,
+      "h": 2,
+      "rbi": 0,
+      "bb": 1,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 1
+     },
+     {
+      "player": "Fred Lewis",
+      "pos": "LF",
+      "ab": 5,
+      "r": 2,
+      "h": 3,
+      "rbi": 1,
+      "bb": 0,
+      "so": 1,
+      "2b": 0,
+      "3b": 0,
+      "hr": 1,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Billy Sunday",
+      "pos": "LF",
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Cap Anson",
+      "pos": "1B",
+      "ab": 4,
+      "r": 1,
+      "h": 2,
+      "rbi": 1,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 1,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Jimmy Ryan",
+      "pos": "CF",
+      "ab": 5,
+      "r": 1,
+      "h": 2,
+      "rbi": 1,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Joe Hornung",
+      "pos": "CF",
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Charley Jones",
+      "pos": "RF",
+      "ab": 4,
+      "r": 1,
+      "h": 2,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Abner Dalrymple",
+      "pos": "RF",
+      "ab": 1,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Tom Burns",
+      "pos": "3B",
+      "ab": 4,
+      "r": 1,
+      "h": 1,
+      "rbi": 1,
+      "bb": 1,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Bill McClellan",
+      "pos": "2B",
+      "ab": 4,
+      "r": 0,
+      "h": 1,
+      "rbi": 2,
+      "bb": 1,
+      "so": 0,
+      "2b": 1,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Ned Williamson",
+      "pos": "SS",
+      "ab": 3,
+      "r": 0,
+      "h": 0,
+      "rbi": 1,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "John Clarkson",
+      "pos": "P",
+      "ab": 4,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     }
+    ],
+    "totals": {
+     "ab": 38,
+     "r": 7,
+     "h": 13,
+     "rbi": 7,
+     "bb": 3,
+     "so": 1,
+     "2b": 1,
+     "3b": 1,
+     "hr": 1,
+     "sb": 0,
+     "cs": 1
+    },
+    "footnotes": {
+     "2B": "B.McClellan (1)",
+     "3B": "C.Anson (1)",
+     "HR": "F.Lewis (1)",
+     "RBI": "F.Lewis (2), C.Anson (4), J.Ryan (3), T.Burns (3), B.McClellan 2 (3), N.Williamson (2)",
+     "HBP": "C.Anson",
+     "SF": "N.Williamson",
+     "CS": "K.Kelly (1)",
+     "E": "C.Anson (2), C.Jones (1), T.Burns (1)"
+    }
+   },
+   "CLV": {
+    "rows": [
+     {
+      "player": "Jack Rowe",
+      "pos": "SS",
+      "ab": 5,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 1,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "George Wood",
+      "pos": "LF",
+      "ab": 4,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Hardy Richardson",
+      "pos": "2B",
+      "ab": 4,
+      "r": 0,
+      "h": 1,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Charlie Bennett",
+      "pos": "C",
+      "ab": 4,
+      "r": 0,
+      "h": 1,
+      "rbi": 0,
+      "bb": 0,
+      "so": 1,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Mox McQuery",
+      "pos": "1B",
+      "ab": 3,
+      "r": 0,
+      "h": 1,
+      "rbi": 0,
+      "bb": 1,
+      "so": 1,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Art Whitney",
+      "pos": "3B",
+      "ab": 4,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Jack Manning",
+      "pos": "RF",
+      "ab": 4,
+      "r": 0,
+      "h": 1,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Cliff Carroll",
+      "pos": "CF",
+      "ab": 4,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Lady Baldwin",
+      "pos": "P",
+      "ab": 2,
+      "r": 0,
+      "h": 1,
+      "rbi": 0,
+      "bb": 1,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Dupee Shaw",
+      "pos": "P",
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Fatty Briody",
+      "pos": "PH",
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 1,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     }
+    ],
+    "totals": {
+     "ab": 34,
+     "r": 0,
+     "h": 5,
+     "rbi": 0,
+     "bb": 3,
+     "so": 3,
+     "2b": 0,
+     "3b": 0,
+     "hr": 0,
+     "sb": 0,
+     "cs": 2
+    },
+    "footnotes": {
+     "CS": "C.Bennett (1), L.Baldwin (1)"
+    }
+   }
+  },
+  "pitching": {
+   "CHC": {
+    "rows": [
+     {
+      "player": "John Clarkson",
+      "decision": "W (2-0)",
+      "ip": "9.0",
+      "h": 5,
+      "r": 0,
+      "er": 0,
+      "bb": 3,
+      "so": 3,
+      "hr": 0,
+      "era": "0.00"
+     }
+    ],
+    "totals": {
+     "ip": "9.0",
+     "h": 5,
+     "r": 0,
+     "er": 0,
+     "bb": 3,
+     "so": 3,
+     "hr": 0
+    }
+   },
+   "CLV": {
+    "rows": [
+     {
+      "player": "Lady Baldwin",
+      "decision": "L (0-2)",
+      "ip": "7.0",
+      "h": 12,
+      "r": 7,
+      "er": 7,
+      "bb": 3,
+      "so": 1,
+      "hr": 1,
+      "era": "9.26"
+     },
+     {
+      "player": "Dupee Shaw",
+      "decision": "",
+      "ip": "2.0",
+      "h": 1,
+      "r": 0,
+      "er": 0,
+      "bb": 0,
+      "so": 0,
+      "hr": 0,
+      "era": "3.68"
+     }
+    ],
+    "totals": {
+     "ip": "9.0",
+     "h": 13,
+     "r": 7,
+     "er": 7,
+     "bb": 3,
+     "so": 1,
+     "hr": 1
+    }
+   }
+  },
+  "playbyplay": [
+   {
+    "inning": 1,
+    "half": "Top",
+    "team": "CHC",
+    "plays": [
+     "L.Baldwin enters the game to pitch.",
+     "K.Kelly draws the walk.",
+     "F.Lewis hits a flyball single to CF.",
+     "C.Anson grounds a single to LF. K.Kelly scores.",
+     "J.Ryan smokes a line drive single to LCF. F.Lewis scores.",
+     "C.Jones hits a shallow flyout to LF.",
+     "T.Burns hits a Texas League single to RF. C.Anson scores.",
+     "B.McClellan rips a liner to RF for a double. J.Ryan scores. T.Burns scores.",
+     "N.Williamson pops out to 2B.",
+     "J.Clarkson flies out to LF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "CHC",
+      "r": 5,
+      "h": 5,
+      "e": 0
+     },
+     "home": {
+      "team": "CLV",
+      "r": 0,
+      "h": 0,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 1,
+    "half": "Bottom",
+    "team": "CLV",
+    "plays": [
+     "J.Clarkson enters the game to pitch.",
+     "J.Rowe lines out to 1B.",
+     "G.Wood flies out to RF.",
+     "H.Richardson grounds out to 3B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "CHC",
+      "r": 5,
+      "h": 5,
+      "e": 0
+     },
+     "home": {
+      "team": "CLV",
+      "r": 0,
+      "h": 0,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 2,
+    "half": "Top",
+    "team": "CHC",
+    "plays": [
+     "K.Kelly lines out to 3B.",
+     "F.Lewis hits a linedrive solo homer to RCF.",
+     "C.Anson takes a pitch off the arm.",
+     "J.Ryan lines out to SS.",
+     "C.Jones grounds out to 2B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "CHC",
+      "r": 6,
+      "h": 6,
+      "e": 0
+     },
+     "home": {
+      "team": "CLV",
+      "r": 0,
+      "h": 0,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 2,
+    "half": "Bottom",
+    "team": "CLV",
+    "plays": [
+     "T.Burns drops a foulball and C.Bennett returns to the plate.",
+     "C.Bennett flies out to deep LCF.",
+     "M.McQuery strikes out on a ball out of the zone.",
+     "A.Whitney flies out to RF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "CHC",
+      "r": 6,
+      "h": 6,
+      "e": 1
+     },
+     "home": {
+      "team": "CLV",
+      "r": 0,
+      "h": 0,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 3,
+    "half": "Top",
+    "team": "CHC",
+    "plays": [
+     "T.Burns grounds out to 3B.",
+     "B.McClellan hits a shallow flyout to RCF.",
+     "N.Williamson flies out to LF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "CHC",
+      "r": 6,
+      "h": 6,
+      "e": 1
+     },
+     "home": {
+      "team": "CLV",
+      "r": 0,
+      "h": 0,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 3,
+    "half": "Bottom",
+    "team": "CLV",
+    "plays": [
+     "J.Manning flies out to LF.",
+     "C.Jones drops a flyball and C.Carroll reaches on a 2-base error.",
+     "L.Baldwin grounds out to 1B.",
+     "J.Rowe grounds out to 1B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "CHC",
+      "r": 6,
+      "h": 6,
+      "e": 2
+     },
+     "home": {
+      "team": "CLV",
+      "r": 0,
+      "h": 0,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 4,
+    "half": "Top",
+    "team": "CHC",
+    "plays": [
+     "J.Clarkson hits a shallow flyout to LCF.",
+     "K.Kelly hits a line drive single to LCF.",
+     "K.Kelly is caught stealing 2B.",
+     "F.Lewis strikes out on a ball out of the zone."
+    ],
+    "score_after": {
+     "away": {
+      "team": "CHC",
+      "r": 6,
+      "h": 7,
+      "e": 2
+     },
+     "home": {
+      "team": "CLV",
+      "r": 0,
+      "h": 0,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 4,
+    "half": "Bottom",
+    "team": "CLV",
+    "plays": [
+     "G.Wood grounds out to 2B.",
+     "H.Richardson grounds out to 2B.",
+     "C.Bennett lines a single to RCF.",
+     "M.McQuery grounds it thru the hole to RCF for a single.",
+     "A.Whitney lines out to SS."
+    ],
+    "score_after": {
+     "away": {
+      "team": "CHC",
+      "r": 6,
+      "h": 7,
+      "e": 2
+     },
+     "home": {
+      "team": "CLV",
+      "r": 0,
+      "h": 2,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 5,
+    "half": "Top",
+    "team": "CHC",
+    "plays": [
+     "C.Anson grounds out to SS.",
+     "J.Ryan grounds a single to LF.",
+     "C.Jones hits a groundball single to LCF.",
+     "T.Burns hits a shallow flyout to LCF.",
+     "B.McClellan fouls out to third."
+    ],
+    "score_after": {
+     "away": {
+      "team": "CHC",
+      "r": 6,
+      "h": 9,
+      "e": 2
+     },
+     "home": {
+      "team": "CLV",
+      "r": 0,
+      "h": 2,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 5,
+    "half": "Bottom",
+    "team": "CLV",
+    "plays": [
+     "J.Manning hits a shallow flyout to LF.",
+     "C.Carroll grounds out to 2B.",
+     "L.Baldwin takes ball four.",
+     "J.Rowe strikes out swinging."
+    ],
+    "score_after": {
+     "away": {
+      "team": "CHC",
+      "r": 6,
+      "h": 9,
+      "e": 2
+     },
+     "home": {
+      "team": "CLV",
+      "r": 0,
+      "h": 2,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 6,
+    "half": "Top",
+    "team": "CHC",
+    "plays": [
+     "N.Williamson grounds out to 3B.",
+     "J.Clarkson grounds out to 1B.",
+     "K.Kelly hits a line drive single to LF.",
+     "F.Lewis grounds a single to LCF.",
+     "C.Anson grounds out to 1B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "CHC",
+      "r": 6,
+      "h": 11,
+      "e": 2
+     },
+     "home": {
+      "team": "CLV",
+      "r": 0,
+      "h": 2,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 6,
+    "half": "Bottom",
+    "team": "CLV",
+    "plays": [
+     "G.Wood grounds out to SS.",
+     "H.Richardson grounds out to 2B.",
+     "C.Bennett strikes out on a ball out of the zone."
+    ],
+    "score_after": {
+     "away": {
+      "team": "CHC",
+      "r": 6,
+      "h": 11,
+      "e": 2
+     },
+     "home": {
+      "team": "CLV",
+      "r": 0,
+      "h": 2,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 7,
+    "half": "Top",
+    "team": "CHC",
+    "plays": [
+     "J.Ryan flies out to LF.",
+     "C.Jones grounds it thru the hole to LF for a single.",
+     "T.Burns draws the walk.",
+     "B.McClellan walks.",
+     "N.Williamson flies out to deep LCF. C.Jones scores.",
+     "J.Clarkson hits a shallow flyout to LF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "CHC",
+      "r": 7,
+      "h": 12,
+      "e": 2
+     },
+     "home": {
+      "team": "CLV",
+      "r": 0,
+      "h": 2,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 7,
+    "half": "Bottom",
+    "team": "CLV",
+    "plays": [
+     "M.McQuery walks.",
+     "A.Whitney flies out to LCF.",
+     "J.Manning grounds a single to LF.",
+     "C.Carroll lines out to 3B.",
+     "L.Baldwin grounds it thru the hole to RF for a single.",
+     "J.Rowe grounds out to 2B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "CHC",
+      "r": 7,
+      "h": 12,
+      "e": 2
+     },
+     "home": {
+      "team": "CLV",
+      "r": 0,
+      "h": 4,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 8,
+    "half": "Top",
+    "team": "CHC",
+    "plays": [
+     "D.Shaw enters the game to pitch.",
+     "K.Kelly pops out to 3B.",
+     "F.Lewis grounds out to 1B.",
+     "C.Anson hits a triple.",
+     "J.Ryan grounds out to 3B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "CHC",
+      "r": 7,
+      "h": 13,
+      "e": 2
+     },
+     "home": {
+      "team": "CLV",
+      "r": 0,
+      "h": 4,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 8,
+    "half": "Bottom",
+    "team": "CLV",
+    "plays": [
+     "J.Hornung enters the game at CF as a defensive replacement.",
+     "A.Dalrymple enters the game at RF as a defensive replacement.",
+     "B.Sunday enters the game at LF as a defensive replacement.",
+     "C.Anson fields the groundball but makes a bad throw to 1B. G.Wood reaches on the throwing error.",
+     "H.Richardson hits a bloop single to LF.",
+     "C.Bennett hits into a 6-4 fielder's choice.",
+     "M.McQuery pops out to 1B.",
+     "A.Whitney flies out to LCF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "CHC",
+      "r": 7,
+      "h": 13,
+      "e": 3
+     },
+     "home": {
+      "team": "CLV",
+      "r": 0,
+      "h": 5,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 9,
+    "half": "Top",
+    "team": "CHC",
+    "plays": [
+     "A.Dalrymple grounds out to 2B.",
+     "T.Burns hits a shallow flyout to CF.",
+     "B.McClellan grounds out to SS."
+    ],
+    "score_after": {
+     "away": {
+      "team": "CHC",
+      "r": 7,
+      "h": 13,
+      "e": 3
+     },
+     "home": {
+      "team": "CLV",
+      "r": 0,
+      "h": 5,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 9,
+    "half": "Bottom",
+    "team": "CLV",
+    "plays": [
+     "J.Manning pops out to 3B.",
+     "C.Carroll grounds out to 1B.",
+     "F.Briody enters the game as a pinch-hitter for D.Shaw.",
+     "F.Briody draws the walk.",
+     "J.Rowe hits into a 4-6 fielder's choice."
+    ],
+    "score_after": {
+     "away": {
+      "team": "CHC",
+      "r": 7,
+      "h": 13,
+      "e": 3
+     },
+     "home": {
+      "team": "CLV",
+      "r": 0,
+      "h": 5,
+      "e": 0
+     }
+    }
+   }
+  ]
+ },
+ {
+  "season": 1886,
+  "game_num": 3,
+  "date": "1886-03-31",
+  "home": "BRO",
+  "away": "BLN",
+  "location": "Ebbets Field",
+  "subtitle": "Regular Season \u2014 March 31, 1886",
+  "player_of_game": {
+   "player": "George Shoch",
+   "team": "BRO",
+   "note": "drives in game-winning run"
+  },
+  "linescore": {
+   "innings": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+   ],
+   "rows": [
+    {
+     "team": "BLN",
+     "label": "Baltimore Orioles",
+     "by_inning": [
+      1,
+      3,
+      0,
+      0,
+      1,
+      0,
+      0,
+      5,
+      2
+     ],
+     "R": 12,
+     "H": 19,
+     "E": 5
+    },
+    {
+     "team": "BRO",
+     "label": "Brooklyn Grays",
+     "by_inning": [
+      2,
+      0,
+      2,
+      0,
+      1,
+      2,
+      1,
+      1,
+      4
+     ],
+     "R": 13,
+     "H": 17,
+     "E": 4
+    }
+   ]
+  },
+  "batting": {
+   "BLN": {
+    "rows": [
+     {
+      "player": "Curt Welch",
+      "pos": "CF",
+      "ab": 6,
+      "r": 3,
+      "h": 3,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 1,
+      "3b": 0,
+      "hr": 0,
+      "sb": 1,
+      "cs": 0
+     },
+     {
+      "player": "Reddy Mack",
+      "pos": "2B",
+      "ab": 6,
+      "r": 1,
+      "h": 3,
+      "rbi": 4,
+      "bb": 0,
+      "so": 0,
+      "2b": 2,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Sam Wise",
+      "pos": "1B",
+      "ab": 6,
+      "r": 2,
+      "h": 4,
+      "rbi": 4,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 1,
+      "sb": 1,
+      "cs": 1
+     },
+     {
+      "player": "John Kerins",
+      "pos": "C",
+      "ab": 4,
+      "r": 1,
+      "h": 2,
+      "rbi": 1,
+      "bb": 2,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 2,
+      "cs": 2
+     },
+     {
+      "player": "Ned Hanlon",
+      "pos": "LF",
+      "ab": 5,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 1,
+      "so": 1,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 1,
+      "cs": 0
+     },
+     {
+      "player": "Hick Carpenter",
+      "pos": "3B",
+      "ab": 5,
+      "r": 1,
+      "h": 1,
+      "rbi": 1,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Dick Johnston",
+      "pos": "RF",
+      "ab": 4,
+      "r": 1,
+      "h": 2,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 1,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Sadie Houck",
+      "pos": "SS",
+      "ab": 5,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 1,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Tony Mullane",
+      "pos": "P",
+      "ab": 3,
+      "r": 2,
+      "h": 3,
+      "rbi": 1,
+      "bb": 1,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 1,
+      "cs": 0
+     },
+     {
+      "player": "Adonis Terry",
+      "pos": "P",
+      "ab": 1,
+      "r": 1,
+      "h": 1,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Larry McKeon",
+      "pos": "P",
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     }
+    ],
+    "totals": {
+     "ab": 45,
+     "r": 12,
+     "h": 19,
+     "rbi": 11,
+     "bb": 4,
+     "so": 2,
+     "2b": 4,
+     "3b": 0,
+     "hr": 1,
+     "sb": 6,
+     "cs": 3
+    },
+    "footnotes": {
+     "2B": "C.Welch (1), R.Mack 2 (3), D.Johnston (1)",
+     "HR": "S.Wise (1)",
+     "RBI": "R.Mack 4 (4), S.Wise 4 (7), J.Kerins (5), H.Carpenter (3), T.Mullane (2)",
+     "2-Out RBI": "R.Mack 2, H.Carpenter, T.Mullane",
+     "HBP": "D.Johnston",
+     "SB": "C.Welch (5), S.Wise (4), J.Kerins 2 (2), N.Hanlon (6), T.Mullane (1)",
+     "CS": "S.Wise (2), J.Kerins 2 (2)",
+     "E": "C.Welch (1), R.Mack (1), H.Carpenter (2), S.Houck 2 (6)",
+     "PB": "J.Kerins"
+    }
+   },
+   "BRO": {
+    "rows": [
+     {
+      "player": "Bill Gleason",
+      "pos": "SS",
+      "ab": 5,
+      "r": 2,
+      "h": 2,
+      "rbi": 0,
+      "bb": 0,
+      "so": 1,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 1,
+      "cs": 1
+     },
+     {
+      "player": "Jim Keenan",
+      "pos": "PH",
+      "ab": 0,
+      "r": 1,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Paul Radford",
+      "pos": "CF",
+      "ab": 4,
+      "r": 2,
+      "h": 4,
+      "rbi": 1,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 2,
+      "cs": 0
+     },
+     {
+      "player": "George Pinkney",
+      "pos": "3B",
+      "ab": 5,
+      "r": 3,
+      "h": 2,
+      "rbi": 2,
+      "bb": 1,
+      "so": 0,
+      "2b": 0,
+      "3b": 1,
+      "hr": 0,
+      "sb": 1,
+      "cs": 0
+     },
+     {
+      "player": "Ed Swartwood",
+      "pos": "C",
+      "ab": 5,
+      "r": 1,
+      "h": 4,
+      "rbi": 2,
+      "bb": 1,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 1
+     },
+     {
+      "player": "Jimmy Knowles",
+      "pos": "2B",
+      "ab": 4,
+      "r": 2,
+      "h": 1,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 1,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Ryan Hobson",
+      "pos": "PH",
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 1,
+      "bb": 1,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Hub Collins",
+      "pos": "PR",
+      "ab": 0,
+      "r": 1,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Jim McTamany",
+      "pos": "RF",
+      "ab": 2,
+      "r": 0,
+      "h": 0,
+      "rbi": 1,
+      "bb": 4,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Jumbo McGinnis",
+      "pos": "P",
+      "ab": 4,
+      "r": 0,
+      "h": 1,
+      "rbi": 1,
+      "bb": 0,
+      "so": 1,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Bones Ely",
+      "pos": "P",
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Phenomenal Smith",
+      "pos": "P",
+      "ab": 1,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 1,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Mark Wasson",
+      "pos": "P",
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Charley Bassett",
+      "pos": "PH",
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 1,
+      "bb": 1,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Paul Cook",
+      "pos": "1B",
+      "ab": 5,
+      "r": 1,
+      "h": 1,
+      "rbi": 1,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "George Shoch",
+      "pos": "PH",
+      "ab": 1,
+      "r": 0,
+      "h": 1,
+      "rbi": 1,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Tom Forster",
+      "pos": "LF",
+      "ab": 4,
+      "r": 0,
+      "h": 1,
+      "rbi": 0,
+      "bb": 0,
+      "so": 1,
+      "2b": 1,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 1
+     }
+    ],
+    "totals": {
+     "ab": 40,
+     "r": 13,
+     "h": 17,
+     "rbi": 11,
+     "bb": 8,
+     "so": 4,
+     "2b": 1,
+     "3b": 2,
+     "hr": 0,
+     "sb": 4,
+     "cs": 3
+    },
+    "footnotes": {
+     "2B": "T.Forster (1)",
+     "3B": "G.Pinkney (1), J.Knowles (1)",
+     "RBI": "P.Radford (1), G.Pinkney 2 (2), E.Swartwood 2 (3), R.Hobson (1), J.McTamany (1), J.McGinnis (1), C.Bassett (2), P.Cook (1), G.Shoch (1)",
+     "2-Out RBI": "P.Radford, E.Swartwood, J.McGinnis",
+     "HBP": "J.Keenan",
+     "SH": "P.Radford 2, J.Knowles, T.Forster",
+     "SB": "B.Gleason (1), P.Radford 2 (2), G.Pinkney (1)",
+     "CS": "B.Gleason (1), E.Swartwood (1), T.Forster (2)",
+     "E": "B.Gleason (2), E.Swartwood 2 (6), J.Knowles (3)"
+    }
+   }
+  },
+  "pitching": {
+   "BLN": {
+    "rows": [
+     {
+      "player": "Tony Mullane",
+      "decision": "",
+      "ip": "7.0",
+      "h": 14,
+      "r": 8,
+      "er": 4,
+      "bb": 4,
+      "so": 3,
+      "hr": 0,
+      "era": "3.94"
+     },
+     {
+      "player": "Adonis Terry",
+      "decision": "L (0-1)",
+      "ip": "1.1",
+      "h": 2,
+      "r": 5,
+      "er": 4,
+      "bb": 4,
+      "so": 1,
+      "hr": 0,
+      "era": "27.00"
+     },
+     {
+      "player": "Larry McKeon",
+      "decision": "",
+      "ip": "0.0",
+      "h": 1,
+      "r": 0,
+      "er": 0,
+      "bb": 0,
+      "so": 0,
+      "hr": 0,
+      "era": "0.00"
+     }
+    ],
+    "totals": {
+     "ip": "8.1",
+     "h": 17,
+     "r": 13,
+     "er": 8,
+     "bb": 8,
+     "so": 4,
+     "hr": 0
+    }
+   },
+   "BRO": {
+    "rows": [
+     {
+      "player": "Jumbo McGinnis",
+      "decision": "",
+      "ip": "7.0",
+      "h": 11,
+      "r": 6,
+      "er": 6,
+      "bb": 3,
+      "so": 1,
+      "hr": 0,
+      "era": "7.71"
+     },
+     {
+      "player": "Bones Ely",
+      "decision": "",
+      "ip": "0.2",
+      "h": 3,
+      "r": 4,
+      "er": 4,
+      "bb": 1,
+      "so": 0,
+      "hr": 1,
+      "era": "9.82"
+     },
+     {
+      "player": "Phenomenal Smith",
+      "decision": "",
+      "ip": "0.1",
+      "h": 5,
+      "r": 2,
+      "er": 2,
+      "bb": 0,
+      "so": 0,
+      "hr": 0,
+      "era": "19.29"
+     },
+     {
+      "player": "Mark Wasson",
+      "decision": "W (1-0)",
+      "ip": "1.0",
+      "h": 0,
+      "r": 0,
+      "er": 0,
+      "bb": 0,
+      "so": 1,
+      "hr": 0,
+      "era": "0.00"
+     }
+    ],
+    "totals": {
+     "ip": "9.0",
+     "h": 19,
+     "r": 12,
+     "er": 12,
+     "bb": 4,
+     "so": 2,
+     "hr": 1
+    }
+   }
+  },
+  "playbyplay": [
+   {
+    "inning": 1,
+    "half": "Top",
+    "team": "BLN",
+    "plays": [
+     "J.McGinnis enters the game to pitch.",
+     "C.Welch flies out to deep RCF.",
+     "R.Mack skies one to RF that falls in for a double.",
+     "E.Swartwood throws a pickoff attempt away. All runners advance.",
+     "S.Wise hits an infield single to SS. R.Mack scores.",
+     "S.Wise is caught stealing 2B.",
+     "J.Kerins grounds it past the mound into CF for a single.",
+     "N.Hanlon flies out to RCF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BLN",
+      "r": 1,
+      "h": 3,
+      "e": 0
+     },
+     "home": {
+      "team": "BRO",
+      "r": 0,
+      "h": 0,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 1,
+    "half": "Bottom",
+    "team": "BRO",
+    "plays": [
+     "T.Mullane enters the game to pitch.",
+     "C.Welch misplays a lazy flyball and B.Gleason reaches on the error.",
+     "P.Radford lays down a sacrifice bunt to 1B. All runners advance.",
+     "G.Pinkney hits a triple. B.Gleason scores.",
+     "E.Swartwood lines a single to RF. G.Pinkney scores.",
+     "J.Knowles lays down a sacrifice bunt to 1B. All runners advance.",
+     "J.McTamany is intentionally walked.",
+     "J.McGinnis pops out to SS."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BLN",
+      "r": 1,
+      "h": 3,
+      "e": 1
+     },
+     "home": {
+      "team": "BRO",
+      "r": 2,
+      "h": 2,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 2,
+    "half": "Top",
+    "team": "BLN",
+    "plays": [
+     "H.Carpenter flies out to deep LF.",
+     "D.Johnston hits a laser beam into LF for a double.",
+     "S.Houck grounds out to 1B.",
+     "T.Mullane lines a single to RF. D.Johnston scores.",
+     "T.Mullane steals second base.",
+     "C.Welch hits a groundball single to LF.",
+     "R.Mack skies one to RF that falls in for a double. T.Mullane scores. C.Welch scores.",
+     "S.Wise grounds out to 2B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BLN",
+      "r": 4,
+      "h": 7,
+      "e": 1
+     },
+     "home": {
+      "team": "BRO",
+      "r": 2,
+      "h": 2,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 2,
+    "half": "Bottom",
+    "team": "BRO",
+    "plays": [
+     "P.Cook grounds out to SS.",
+     "T.Forster swings and misses for strike 3.",
+     "B.Gleason hits a shallow flyout to LCF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BLN",
+      "r": 4,
+      "h": 7,
+      "e": 1
+     },
+     "home": {
+      "team": "BRO",
+      "r": 2,
+      "h": 2,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 3,
+    "half": "Top",
+    "team": "BLN",
+    "plays": [
+     "J.Kerins draws the walk.",
+     "N.Hanlon lines out to 2B.",
+     "J.Kerins is caught trying to steal 2B.",
+     "H.Carpenter hits a shallow flyout to LCF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BLN",
+      "r": 4,
+      "h": 7,
+      "e": 1
+     },
+     "home": {
+      "team": "BRO",
+      "r": 2,
+      "h": 2,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 3,
+    "half": "Bottom",
+    "team": "BRO",
+    "plays": [
+     "P.Radford grounds it thru the hole to LCF for a single.",
+     "P.Radford steals second base.",
+     "G.Pinkney hits a flyball single to LF. P.Radford scores.",
+     "G.Pinkney steals 2B.",
+     "E.Swartwood hits an infield single to 3B.",
+     "J.Knowles pops out to 1B.",
+     "H.Carpenter misplays a routine grounder and J.McTamany reaches on the error. G.Pinkney scores.",
+     "J.McGinnis hits a shallow flyout to LCF.",
+     "P.Cook hits into a 6-4 fielder's choice."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BLN",
+      "r": 4,
+      "h": 7,
+      "e": 2
+     },
+     "home": {
+      "team": "BRO",
+      "r": 4,
+      "h": 5,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 4,
+    "half": "Top",
+    "team": "BLN",
+    "plays": [
+     "D.Johnston flies out to CF.",
+     "S.Houck grounds out to 2B.",
+     "T.Mullane grounds a single to RCF.",
+     "C.Welch grounds out to 2B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BLN",
+      "r": 4,
+      "h": 8,
+      "e": 2
+     },
+     "home": {
+      "team": "BRO",
+      "r": 4,
+      "h": 5,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 4,
+    "half": "Bottom",
+    "team": "BRO",
+    "plays": [
+     "T.Forster skies one to LCF that falls in for a double.",
+     "T.Forster is picked off 2B by T.Mullane.",
+     "B.Gleason grounds it thru the hole to LCF for a single.",
+     "B.Gleason steals 2B.",
+     "B.Gleason is caught trying to steal 3B.",
+     "P.Radford hits a line drive single to LCF.",
+     "G.Pinkney grounds out to SS."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BLN",
+      "r": 4,
+      "h": 8,
+      "e": 2
+     },
+     "home": {
+      "team": "BRO",
+      "r": 4,
+      "h": 8,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 5,
+    "half": "Top",
+    "team": "BLN",
+    "plays": [
+     "R.Mack flies out to deep RCF.",
+     "S.Wise grounds a single to LF.",
+     "S.Wise steals 2B.",
+     "J.Kerins smokes a line drive single to LF. S.Wise scores.",
+     "J.Knowles misplays a routine grounder and N.Hanlon reaches on the error.",
+     "The double steal is pulled off by J.Kerins and N.Hanlon.",
+     "H.Carpenter grounds out to 1B.",
+     "D.Johnston grounds out to 2B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BLN",
+      "r": 5,
+      "h": 10,
+      "e": 2
+     },
+     "home": {
+      "team": "BRO",
+      "r": 4,
+      "h": 8,
+      "e": 2
+     }
+    }
+   },
+   {
+    "inning": 5,
+    "half": "Bottom",
+    "team": "BRO",
+    "plays": [
+     "E.Swartwood draws the walk.",
+     "E.Swartwood is nailed stealing 2B.",
+     "J.Knowles hits a triple.",
+     "J.McTamany hits a shallow flyout to LCF.",
+     "J.McGinnis grounds a single to LF. J.Knowles scores.",
+     "P.Cook grounds out to 2B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BLN",
+      "r": 5,
+      "h": 10,
+      "e": 2
+     },
+     "home": {
+      "team": "BRO",
+      "r": 5,
+      "h": 10,
+      "e": 2
+     }
+    }
+   },
+   {
+    "inning": 6,
+    "half": "Top",
+    "team": "BLN",
+    "plays": [
+     "S.Houck grounds out to SS.",
+     "T.Mullane draws the walk.",
+     "C.Welch hits into a 6-4 fielder's choice.",
+     "C.Welch steals 2B.",
+     "R.Mack hits a shallow flyout to CF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BLN",
+      "r": 5,
+      "h": 10,
+      "e": 2
+     },
+     "home": {
+      "team": "BRO",
+      "r": 5,
+      "h": 10,
+      "e": 2
+     }
+    }
+   },
+   {
+    "inning": 6,
+    "half": "Bottom",
+    "team": "BRO",
+    "plays": [
+     "T.Forster grounds out to 2B.",
+     "B.Gleason grounds a single to LCF.",
+     "P.Radford lays down a sacrifice bunt to 1B. All runners advance.",
+     "R.Mack fields the groundball but makes a bad throw to 1B. G.Pinkney reaches on the throwing error.",
+     "E.Swartwood hits an infield single to SS. B.Gleason scores.",
+     "S.Houck boots a routine grounder and J.Knowles reaches on the error.",
+     "T.Mullane throws a wild pitch and all runners advance. G.Pinkney scores.",
+     "J.McTamany is issued the free pass.",
+     "J.McGinnis strikes out swinging."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BLN",
+      "r": 5,
+      "h": 10,
+      "e": 4
+     },
+     "home": {
+      "team": "BRO",
+      "r": 7,
+      "h": 12,
+      "e": 2
+     }
+    }
+   },
+   {
+    "inning": 7,
+    "half": "Top",
+    "team": "BLN",
+    "plays": [
+     "S.Wise grounds out to 2B.",
+     "B.Gleason boots a routine grounder and J.Kerins reaches on the error.",
+     "N.Hanlon walks.",
+     "H.Carpenter grounds out to 3B.",
+     "D.Johnston is plunked in the knee by a pitch.",
+     "S.Houck swings and misses for strike 3."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BLN",
+      "r": 5,
+      "h": 10,
+      "e": 4
+     },
+     "home": {
+      "team": "BRO",
+      "r": 7,
+      "h": 12,
+      "e": 3
+     }
+    }
+   },
+   {
+    "inning": 7,
+    "half": "Bottom",
+    "team": "BRO",
+    "plays": [
+     "P.Cook grounds a single to RCF.",
+     "T.Forster hits a sacrifice bunt to 3B. All runners advance.",
+     "B.Gleason takes strike 3 looking.",
+     "P.Radford grounds a single to CF. P.Cook scores.",
+     "P.Radford swipes 2B.",
+     "G.Pinkney walks.",
+     "E.Swartwood pops out to SS."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BLN",
+      "r": 5,
+      "h": 10,
+      "e": 4
+     },
+     "home": {
+      "team": "BRO",
+      "r": 8,
+      "h": 14,
+      "e": 3
+     }
+    }
+   },
+   {
+    "inning": 8,
+    "half": "Top",
+    "team": "BLN",
+    "plays": [
+     "T.Mullane smokes a line drive single to RF.",
+     "B.Ely enters the game to pitch.",
+     "C.Welch hits an infield single to SS.",
+     "R.Mack hits a shallow flyout to RF.",
+     "S.Wise crushes a 3-run homer to RF.",
+     "J.Kerins walks.",
+     "N.Hanlon flies out to LF.",
+     "J.Kerins steals 2B and E.Swartwood's throw sails into CF. All runners take an extra base.",
+     "H.Carpenter hits a groundball single to LF. J.Kerins scores.",
+     "P.Smith enters the game to pitch.",
+     "D.Johnston grounds a single to CF.",
+     "P.Smith lets one get away and all runners advance on the wild pitch. H.Carpenter scores.",
+     "S.Houck hits a shallow flyout to RF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BLN",
+      "r": 10,
+      "h": 15,
+      "e": 4
+     },
+     "home": {
+      "team": "BRO",
+      "r": 8,
+      "h": 14,
+      "e": 4
+     }
+    }
+   },
+   {
+    "inning": 8,
+    "half": "Bottom",
+    "team": "BRO",
+    "plays": [
+     "A.Terry enters the game to pitch.",
+     "S.Houck boots a routine grounder and J.Knowles reaches on the error.",
+     "J.McTamany walks.",
+     "J.Kerins can't hold onto the pitch and is charged with a passed ball. All runners advance.",
+     "P.Smith takes strike 3 looking.",
+     "P.Cook grounds out to 1B. J.Knowles scores.",
+     "T.Forster grounds out to 3B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BLN",
+      "r": 10,
+      "h": 15,
+      "e": 5
+     },
+     "home": {
+      "team": "BRO",
+      "r": 9,
+      "h": 14,
+      "e": 4
+     }
+    }
+   },
+   {
+    "inning": 9,
+    "half": "Top",
+    "team": "BLN",
+    "plays": [
+     "A.Terry grounds a single to RCF.",
+     "C.Welch hits a ground-rule double to LCF.",
+     "R.Mack hits a groundball single to LF. A.Terry scores. C.Welch scores.",
+     "S.Wise grounds it thru the hole to RF for a single.",
+     "M.Wasson enters the game to pitch.",
+     "J.Kerins grounds to 3B. They get the force at 2B, but the batter beats the throw to 1B to avoid the DP.",
+     "N.Hanlon strikes out looking.",
+     "J.Kerins is caught trying to steal 2B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BLN",
+      "r": 12,
+      "h": 19,
+      "e": 5
+     },
+     "home": {
+      "team": "BRO",
+      "r": 9,
+      "h": 14,
+      "e": 4
+     }
+    }
+   },
+   {
+    "inning": 9,
+    "half": "Bottom",
+    "team": "BRO",
+    "plays": [
+     "J.Keenan enters the game as a pinch-hitter for B.Gleason.",
+     "J.Keenan is plunked in the leg by a pitch.",
+     "P.Radford hits a groundball single to LF.",
+     "G.Pinkney fouls out to first.",
+     "E.Swartwood hits a groundball single to RF.",
+     "R.Hobson enters the game as a pinch-hitter for J.Knowles.",
+     "R.Hobson draws the walk. J.Keenan scores.",
+     "H.Collins enters the game as a pinch-runner for R.Hobson.",
+     "J.McTamany walks. P.Radford scores.",
+     "C.Bassett enters the game as a pinch-hitter for M.Wasson.",
+     "C.Bassett takes ball four. E.Swartwood scores.",
+     "G.Shoch enters the game as a pinch-hitter for P.Cook.",
+     "L.McKeon enters the game to pitch.",
+     "G.Shoch grounds a single to RCF. H.Collins scores."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BLN",
+      "r": 12,
+      "h": 19,
+      "e": 5
+     },
+     "home": {
+      "team": "BRO",
+      "r": 13,
+      "h": 17,
+      "e": 4
+     }
+    }
+   }
+  ]
+ },
+ {
+  "season": 1886,
+  "game_num": 3,
+  "date": "1886-03-31",
+  "home": "NYG",
+  "away": "BSN",
+  "location": "Polo Grounds (IV)",
+  "subtitle": "Regular Season \u2014 March 31, 1886",
+  "player_of_game": {
+   "player": "Guy Hecker",
+   "team": "BSN",
+   "note": "goes 8.0 innings for the win"
+  },
+  "linescore": {
+   "innings": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+   ],
+   "rows": [
+    {
+     "team": "BSN",
+     "label": "Boston Beaneaters",
+     "by_inning": [
+      0,
+      1,
+      0,
+      0,
+      2,
+      0,
+      0,
+      1,
+      1
+     ],
+     "R": 5,
+     "H": 14,
+     "E": 0
+    },
+    {
+     "team": "NYG",
+     "label": "New York Giants",
+     "by_inning": [
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "R": 2,
+     "H": 8,
+     "E": 1
+    }
+   ]
+  },
+  "batting": {
+   "BSN": {
+    "rows": [
+     {
+      "player": "Ed Andrews",
+      "pos": "CF",
+      "ab": 4,
+      "r": 1,
+      "h": 2,
+      "rbi": 1,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 1,
+      "hr": 0,
+      "sb": 1,
+      "cs": 0
+     },
+     {
+      "player": "Jim O'Rourke",
+      "pos": "LF",
+      "ab": 5,
+      "r": 1,
+      "h": 3,
+      "rbi": 1,
+      "bb": 0,
+      "so": 1,
+      "2b": 2,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Dan Brouthers",
+      "pos": "1B",
+      "ab": 5,
+      "r": 1,
+      "h": 3,
+      "rbi": 2,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 1,
+      "sb": 1,
+      "cs": 1
+     },
+     {
+      "player": "Paul Hines",
+      "pos": "RF",
+      "ab": 4,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 1,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "John Meister",
+      "pos": "2B",
+      "ab": 5,
+      "r": 1,
+      "h": 2,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Kid Baldwin",
+      "pos": "C",
+      "ab": 3,
+      "r": 0,
+      "h": 2,
+      "rbi": 0,
+      "bb": 0,
+      "so": 1,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Billy Nash",
+      "pos": "3B",
+      "ab": 4,
+      "r": 1,
+      "h": 1,
+      "rbi": 0,
+      "bb": 1,
+      "so": 0,
+      "2b": 1,
+      "3b": 0,
+      "hr": 0,
+      "sb": 1,
+      "cs": 0
+     },
+     {
+      "player": "Pop Smith",
+      "pos": "SS",
+      "ab": 3,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Guy Hecker",
+      "pos": "P",
+      "ab": 3,
+      "r": 0,
+      "h": 1,
+      "rbi": 0,
+      "bb": 1,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Colin Holderman",
+      "pos": "P",
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     }
+    ],
+    "totals": {
+     "ab": 36,
+     "r": 5,
+     "h": 14,
+     "rbi": 4,
+     "bb": 3,
+     "so": 2,
+     "2b": 3,
+     "3b": 1,
+     "hr": 1,
+     "sb": 3,
+     "cs": 1
+    },
+    "footnotes": {
+     "2B": "J.O'Rourke 2 (4), B.Nash (2)",
+     "3B": "E.Andrews (1)",
+     "HR": "D.Brouthers (1)",
+     "RBI": "E.Andrews (2), J.O'Rourke (3), D.Brouthers 2 (2)",
+     "2-Out RBI": "E.Andrews",
+     "SH": "E.Andrews, K.Baldwin 2, P.Smith",
+     "SB": "E.Andrews (2), D.Brouthers (2), B.Nash (1)",
+     "CS": "D.Brouthers (2)"
+    }
+   },
+   "NYG": {
+    "rows": [
+     {
+      "player": "John Ward",
+      "pos": "SS",
+      "ab": 4,
+      "r": 0,
+      "h": 2,
+      "rbi": 1,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Mike Dorgan",
+      "pos": "RF",
+      "ab": 4,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Tip O'Neill",
+      "pos": "LF",
+      "ab": 4,
+      "r": 1,
+      "h": 2,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Jocko Milligan",
+      "pos": "C",
+      "ab": 3,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Alex McKinnon",
+      "pos": "1B",
+      "ab": 4,
+      "r": 0,
+      "h": 1,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Dude Esterbrook",
+      "pos": "3B",
+      "ab": 3,
+      "r": 0,
+      "h": 2,
+      "rbi": 1,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Pete Gillespie",
+      "pos": "CF",
+      "ab": 2,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 1,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 1
+     },
+     {
+      "player": "Jack Burdock",
+      "pos": "2B",
+      "ab": 3,
+      "r": 1,
+      "h": 1,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Tim Keefe",
+      "pos": "P",
+      "ab": 1,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Pat Deasley",
+      "pos": "PH",
+      "ab": 1,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Shawn Dubin",
+      "pos": "P",
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Anthony Molina",
+      "pos": "P",
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     }
+    ],
+    "totals": {
+     "ab": 29,
+     "r": 2,
+     "h": 8,
+     "rbi": 2,
+     "bb": 1,
+     "so": 0,
+     "2b": 0,
+     "3b": 0,
+     "hr": 0,
+     "sb": 0,
+     "cs": 1
+    },
+    "footnotes": {
+     "RBI": "J.Ward (2), D.Esterbrook (1)",
+     "2-Out RBI": "J.Ward, D.Esterbrook",
+     "SH": "J.Milligan, T.Keefe",
+     "CS": "P.Gillespie (1)",
+     "E": "M.Dorgan (1)"
+    }
+   }
+  },
+  "pitching": {
+   "BSN": {
+    "rows": [
+     {
+      "player": "Guy Hecker",
+      "decision": "W (2-0)",
+      "ip": "8.0",
+      "h": 7,
+      "r": 2,
+      "er": 2,
+      "bb": 1,
+      "so": 0,
+      "hr": 0,
+      "era": "3.00"
+     },
+     {
+      "player": "Colin Holderman",
+      "decision": "SV (2)",
+      "ip": "1.0",
+      "h": 1,
+      "r": 0,
+      "er": 0,
+      "bb": 0,
+      "so": 0,
+      "hr": 0,
+      "era": "0.00"
+     }
+    ],
+    "totals": {
+     "ip": "9.0",
+     "h": 8,
+     "r": 2,
+     "er": 2,
+     "bb": 1,
+     "so": 0,
+     "hr": 0
+    }
+   },
+   "NYG": {
+    "rows": [
+     {
+      "player": "Tim Keefe",
+      "decision": "L (0-2)",
+      "ip": "8.0",
+      "h": 12,
+      "r": 4,
+      "er": 3,
+      "bb": 3,
+      "so": 2,
+      "hr": 0,
+      "era": "3.71"
+     },
+     {
+      "player": "Shawn Dubin",
+      "decision": "",
+      "ip": "0.2",
+      "h": 1,
+      "r": 1,
+      "er": 1,
+      "bb": 0,
+      "so": 0,
+      "hr": 1,
+      "era": "27.00"
+     },
+     {
+      "player": "Anthony Molina",
+      "decision": "",
+      "ip": "0.1",
+      "h": 1,
+      "r": 0,
+      "er": 0,
+      "bb": 0,
+      "so": 0,
+      "hr": 0,
+      "era": "13.50"
+     }
+    ],
+    "totals": {
+     "ip": "9.0",
+     "h": 14,
+     "r": 5,
+     "er": 4,
+     "bb": 3,
+     "so": 2,
+     "hr": 1
+    }
+   }
+  },
+  "playbyplay": [
+   {
+    "inning": 1,
+    "half": "Top",
+    "team": "BSN",
+    "plays": [
+     "T.Keefe enters the game to pitch.",
+     "E.Andrews grounds out to 3B.",
+     "J.O'Rourke grounds out to 3B.",
+     "D.Brouthers grounds it past the mound into CF for a single.",
+     "D.Brouthers is nailed stealing 2B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BSN",
+      "r": 0,
+      "h": 1,
+      "e": 0
+     },
+     "home": {
+      "team": "NYG",
+      "r": 0,
+      "h": 0,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 1,
+    "half": "Bottom",
+    "team": "NYG",
+    "plays": [
+     "G.Hecker enters the game to pitch.",
+     "J.Ward hits an infield single to 3B.",
+     "M.Dorgan grounds into a 6-4-3 double play.",
+     "T.O'Neill hits a shallow flyout down the LF line."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BSN",
+      "r": 0,
+      "h": 1,
+      "e": 0
+     },
+     "home": {
+      "team": "NYG",
+      "r": 0,
+      "h": 1,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 2,
+    "half": "Top",
+    "team": "BSN",
+    "plays": [
+     "P.Hines grounds out to SS.",
+     "J.Meister hits a bloop single to CF.",
+     "K.Baldwin lays down a sacrifice bunt to the left side of the mound. All runners advance.",
+     "M.Dorgan has a flyball ricochet off his glove and B.Nash reaches on a 2-base error. J.Meister scores.",
+     "P.Smith grounds out to 1B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BSN",
+      "r": 1,
+      "h": 2,
+      "e": 0
+     },
+     "home": {
+      "team": "NYG",
+      "r": 0,
+      "h": 1,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 2,
+    "half": "Bottom",
+    "team": "NYG",
+    "plays": [
+     "J.Milligan flies out to deep LF.",
+     "A.McKinnon hits a groundball single to CF.",
+     "D.Esterbrook grounds into a 5-4-3 double play."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BSN",
+      "r": 1,
+      "h": 2,
+      "e": 0
+     },
+     "home": {
+      "team": "NYG",
+      "r": 0,
+      "h": 2,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 3,
+    "half": "Top",
+    "team": "BSN",
+    "plays": [
+     "G.Hecker grounds it past the mound into CF for a single.",
+     "E.Andrews hits a sacrifice bunt to 1B. All runners advance.",
+     "J.O'Rourke smokes a line drive single to LCF.",
+     "D.Brouthers grounds into a 4-6-3 double play."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BSN",
+      "r": 1,
+      "h": 4,
+      "e": 0
+     },
+     "home": {
+      "team": "NYG",
+      "r": 0,
+      "h": 2,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 3,
+    "half": "Bottom",
+    "team": "NYG",
+    "plays": [
+     "P.Gillespie hits a shallow flyout to RF.",
+     "J.Burdock smokes a line drive single to LF.",
+     "T.Keefe hits a sacrifice bunt to 3B. All runners advance.",
+     "J.Ward hits a groundball single to CF. J.Burdock scores.",
+     "M.Dorgan flies out to LCF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BSN",
+      "r": 1,
+      "h": 4,
+      "e": 0
+     },
+     "home": {
+      "team": "NYG",
+      "r": 1,
+      "h": 4,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 4,
+    "half": "Top",
+    "team": "BSN",
+    "plays": [
+     "P.Hines lines out to SS.",
+     "J.Meister grounds a single to CF.",
+     "K.Baldwin lays down a sacrifice bunt to 1B. All runners advance.",
+     "B.Nash walks.",
+     "P.Smith hits a shallow flyout to LF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BSN",
+      "r": 1,
+      "h": 5,
+      "e": 0
+     },
+     "home": {
+      "team": "NYG",
+      "r": 1,
+      "h": 4,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 4,
+    "half": "Bottom",
+    "team": "NYG",
+    "plays": [
+     "T.O'Neill hits an infield single to SS.",
+     "J.Milligan hits a sacrifice bunt to 3B. All runners advance.",
+     "A.McKinnon pops out to 2B.",
+     "D.Esterbrook grounds a single to CF. T.O'Neill scores.",
+     "P.Gillespie takes ball four.",
+     "J.Burdock grounds out to SS."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BSN",
+      "r": 1,
+      "h": 5,
+      "e": 0
+     },
+     "home": {
+      "team": "NYG",
+      "r": 2,
+      "h": 6,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 5,
+    "half": "Top",
+    "team": "BSN",
+    "plays": [
+     "G.Hecker flies out to deep RCF.",
+     "E.Andrews grounds a single to LF.",
+     "E.Andrews steals second base.",
+     "J.O'Rourke skies one to LF that falls in for a double. E.Andrews scores.",
+     "D.Brouthers grounds a single to RF. J.O'Rourke scores.",
+     "D.Brouthers swipes 2B.",
+     "P.Hines hits a shallow flyout to LF.",
+     "J.Meister hits a shallow flyout to LCF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BSN",
+      "r": 3,
+      "h": 8,
+      "e": 0
+     },
+     "home": {
+      "team": "NYG",
+      "r": 2,
+      "h": 6,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 6,
+    "half": "Top",
+    "team": "BSN",
+    "plays": [
+     "K.Baldwin grounds a single to LF.",
+     "B.Nash hits into a 4-6 fielder's choice.",
+     "B.Nash steals 2B.",
+     "P.Smith hits a shallow flyout to LF.",
+     "G.Hecker is issued the free pass.",
+     "E.Andrews hits a shallow flyout to RF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BSN",
+      "r": 3,
+      "h": 9,
+      "e": 0
+     },
+     "home": {
+      "team": "NYG",
+      "r": 2,
+      "h": 6,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 6,
+    "half": "Bottom",
+    "team": "NYG",
+    "plays": [
+     "T.O'Neill grounds out to 1B.",
+     "J.Milligan flies out to LF.",
+     "A.McKinnon flies out to LF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BSN",
+      "r": 3,
+      "h": 9,
+      "e": 0
+     },
+     "home": {
+      "team": "NYG",
+      "r": 2,
+      "h": 6,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 7,
+    "half": "Top",
+    "team": "BSN",
+    "plays": [
+     "J.O'Rourke rips a liner to LCF for a double.",
+     "D.Brouthers grounds out to 1B.",
+     "P.Hines walks.",
+     "J.Meister hits a shallow flyout to LCF.",
+     "K.Baldwin is frozen on strike 3."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BSN",
+      "r": 3,
+      "h": 10,
+      "e": 0
+     },
+     "home": {
+      "team": "NYG",
+      "r": 2,
+      "h": 6,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 7,
+    "half": "Bottom",
+    "team": "NYG",
+    "plays": [
+     "D.Esterbrook grounds it past the mound into CF for a single.",
+     "P.Gillespie grounds to 1B. They get the force at 2B, but the batter beats the throw to 1B to avoid the DP.",
+     "P.Gillespie is nailed stealing 2B.",
+     "J.Burdock grounds out to SS."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BSN",
+      "r": 3,
+      "h": 10,
+      "e": 0
+     },
+     "home": {
+      "team": "NYG",
+      "r": 2,
+      "h": 7,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 8,
+    "half": "Top",
+    "team": "BSN",
+    "plays": [
+     "B.Nash skies one to LF that falls in for a double.",
+     "P.Smith hits a sacrifice bunt to 3B. All runners advance.",
+     "G.Hecker grounds out to 2B.",
+     "E.Andrews hits a triple. B.Nash scores.",
+     "J.O'Rourke takes strike 3 looking."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BSN",
+      "r": 4,
+      "h": 12,
+      "e": 0
+     },
+     "home": {
+      "team": "NYG",
+      "r": 2,
+      "h": 7,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 8,
+    "half": "Bottom",
+    "team": "NYG",
+    "plays": [
+     "P.Deasley enters the game as a pinch-hitter for T.Keefe.",
+     "P.Deasley flies out to CF.",
+     "J.Ward lines out to 1B.",
+     "M.Dorgan flies out to CF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BSN",
+      "r": 4,
+      "h": 12,
+      "e": 0
+     },
+     "home": {
+      "team": "NYG",
+      "r": 2,
+      "h": 7,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 9,
+    "half": "Top",
+    "team": "BSN",
+    "plays": [
+     "S.Dubin enters the game to pitch.",
+     "D.Brouthers lines a solo homer to RCF.",
+     "P.Hines fouls out to the C on the 3B side.",
+     "J.Meister grounds out to 3B.",
+     "A.Molina enters the game to pitch.",
+     "K.Baldwin hits a groundball single to LCF.",
+     "B.Nash grounds out to SS."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BSN",
+      "r": 5,
+      "h": 14,
+      "e": 0
+     },
+     "home": {
+      "team": "NYG",
+      "r": 2,
+      "h": 7,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 9,
+    "half": "Bottom",
+    "team": "NYG",
+    "plays": [
+     "C.Holderman enters the game to pitch.",
+     "T.O'Neill lines a single to CF.",
+     "J.Milligan flies out to RCF.",
+     "A.McKinnon grounds into a 3-6-3 double play."
+    ],
+    "score_after": {
+     "away": {
+      "team": "BSN",
+      "r": 5,
+      "h": 14,
+      "e": 0
+     },
+     "home": {
+      "team": "NYG",
+      "r": 2,
+      "h": 8,
+      "e": 1
+     }
+    }
+   }
+  ]
+ },
+ {
+  "season": 1886,
+  "game_num": 3,
+  "date": "1886-03-31",
+  "home": "STL",
+  "away": "PAT",
+  "location": "Sportsman's Park (II)",
+  "subtitle": "Regular Season \u2014 March 31, 1886",
+  "player_of_game": {
+   "player": "Roger Connor",
+   "team": "STL",
+   "note": "drives in game-winning run"
+  },
+  "linescore": {
+   "innings": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+   ],
+   "rows": [
+    {
+     "team": "PAT",
+     "label": "Philadelphia Athletics",
+     "by_inning": [
+      1,
+      2,
+      3,
+      2,
+      0,
+      1,
+      0,
+      0,
+      0
+     ],
+     "R": 9,
+     "H": 10,
+     "E": 3
+    },
+    {
+     "team": "STL",
+     "label": "Saint Louis Browns",
+     "by_inning": [
+      1,
+      0,
+      0,
+      2,
+      0,
+      3,
+      0,
+      2,
+      2
+     ],
+     "R": 10,
+     "H": 12,
+     "E": 4
+    }
+   ]
+  },
+  "batting": {
+   "PAT": {
+    "rows": [
+     {
+      "player": "Harry Stovey",
+      "pos": "LF",
+      "ab": 2,
+      "r": 1,
+      "h": 1,
+      "rbi": 1,
+      "bb": 3,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 1,
+      "sb": 2,
+      "cs": 0
+     },
+     {
+      "player": "Henry Larkin",
+      "pos": "CF",
+      "ab": 5,
+      "r": 0,
+      "h": 1,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 1
+     },
+     {
+      "player": "Frank Fennelly",
+      "pos": "SS",
+      "ab": 5,
+      "r": 2,
+      "h": 1,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 1,
+      "cs": 0
+     },
+     {
+      "player": "Al Myers",
+      "pos": "2B",
+      "ab": 5,
+      "r": 1,
+      "h": 2,
+      "rbi": 1,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Jack O'Brien",
+      "pos": "C",
+      "ab": 5,
+      "r": 1,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "John Coleman",
+      "pos": "RF",
+      "ab": 5,
+      "r": 3,
+      "h": 4,
+      "rbi": 4,
+      "bb": 0,
+      "so": 0,
+      "2b": 1,
+      "3b": 0,
+      "hr": 1,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Phil Baker",
+      "pos": "1B",
+      "ab": 4,
+      "r": 1,
+      "h": 0,
+      "rbi": 0,
+      "bb": 1,
+      "so": 1,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Jack Gleason",
+      "pos": "3B",
+      "ab": 3,
+      "r": 0,
+      "h": 1,
+      "rbi": 1,
+      "bb": 1,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Blondie Purcell",
+      "pos": "PH",
+      "ab": 1,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Denny Lyons",
+      "pos": "3B",
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Jim Whitney",
+      "pos": "P",
+      "ab": 3,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Bill Hart",
+      "pos": "P",
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "John Hofford",
+      "pos": "P",
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     }
+    ],
+    "totals": {
+     "ab": 38,
+     "r": 9,
+     "h": 10,
+     "rbi": 7,
+     "bb": 5,
+     "so": 1,
+     "2b": 1,
+     "3b": 0,
+     "hr": 2,
+     "sb": 3,
+     "cs": 1
+    },
+    "footnotes": {
+     "2B": "J.Coleman (2)",
+     "HR": "H.Stovey (2), J.Coleman (1)",
+     "RBI": "H.Stovey (3), A.Myers (2), J.Coleman 4 (4), J.Gleason (3)",
+     "2-Out RBI": "J.Coleman",
+     "SH": "J.Whitney",
+     "SB": "H.Stovey 2 (3), F.Fennelly (2)",
+     "CS": "H.Larkin (1)",
+     "E": "H.Stovey (2), H.Larkin (1), J.Gleason (1)"
+    }
+   },
+   "STL": {
+    "rows": [
+     {
+      "player": "Yank Robinson",
+      "pos": "2B",
+      "ab": 3,
+      "r": 1,
+      "h": 0,
+      "rbi": 0,
+      "bb": 2,
+      "so": 1,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 1,
+      "cs": 1
+     },
+     {
+      "player": "Deacon White",
+      "pos": "3B",
+      "ab": 5,
+      "r": 0,
+      "h": 2,
+      "rbi": 1,
+      "bb": 0,
+      "so": 1,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Wilbert Robinson",
+      "pos": "PR",
+      "ab": 0,
+      "r": 1,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 1,
+      "cs": 0
+     },
+     {
+      "player": "George Gore",
+      "pos": "CF",
+      "ab": 3,
+      "r": 1,
+      "h": 2,
+      "rbi": 0,
+      "bb": 2,
+      "so": 1,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Roger Connor",
+      "pos": "1B",
+      "ab": 5,
+      "r": 1,
+      "h": 1,
+      "rbi": 1,
+      "bb": 0,
+      "so": 0,
+      "2b": 1,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Chicken Wolf",
+      "pos": "RF",
+      "ab": 4,
+      "r": 3,
+      "h": 3,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Ezra Sutton",
+      "pos": "LF",
+      "ab": 4,
+      "r": 2,
+      "h": 1,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Germany Smith",
+      "pos": "SS",
+      "ab": 4,
+      "r": 1,
+      "h": 3,
+      "rbi": 5,
+      "bb": 0,
+      "so": 0,
+      "2b": 2,
+      "3b": 1,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Doc Bushong",
+      "pos": "C",
+      "ab": 4,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 1,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Toad Ramsey",
+      "pos": "P",
+      "ab": 2,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 1,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Sam Barkley",
+      "pos": "PH",
+      "ab": 1,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Nat Hudson",
+      "pos": "P",
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Charlie Comiskey",
+      "pos": "PH",
+      "ab": 1,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 1
+     },
+     {
+      "player": "Charlie Getzien",
+      "pos": "P",
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     }
+    ],
+    "totals": {
+     "ab": 36,
+     "r": 10,
+     "h": 12,
+     "rbi": 7,
+     "bb": 4,
+     "so": 5,
+     "2b": 2,
+     "3b": 1,
+     "hr": 0,
+     "sb": 2,
+     "cs": 2
+    },
+    "footnotes": {
+     "2B": "R.Connor (1), G.Smith 2 (2)",
+     "3B": "G.Smith (1)",
+     "RBI": "D.White (1), R.Connor (2), G.Smith 5 (5)",
+     "2-Out RBI": "G.Smith 2",
+     "SB": "Y.Robinson (3), W.Robinson (1)",
+     "CS": "Y.Robinson (1), C.Comiskey (1)",
+     "E": "G.Gore (1), G.Smith 3 (3)"
+    }
+   }
+  },
+  "pitching": {
+   "PAT": {
+    "rows": [
+     {
+      "player": "Jim Whitney",
+      "decision": "",
+      "ip": "8.1",
+      "h": 9,
+      "r": 8,
+      "er": 3,
+      "bb": 4,
+      "so": 5,
+      "hr": 0,
+      "era": "3.24"
+     },
+     {
+      "player": "Bill Hart",
+      "decision": "L (1-1)",
+      "ip": "0.0",
+      "h": 2,
+      "r": 2,
+      "er": 2,
+      "bb": 0,
+      "so": 0,
+      "hr": 0,
+      "era": "4.50"
+     },
+     {
+      "player": "John Hofford",
+      "decision": "",
+      "ip": "0.0",
+      "h": 1,
+      "r": 0,
+      "er": 0,
+      "bb": 0,
+      "so": 0,
+      "hr": 0,
+      "era": "0.00"
+     }
+    ],
+    "totals": {
+     "ip": "8.1",
+     "h": 12,
+     "r": 10,
+     "er": 5,
+     "bb": 4,
+     "so": 5,
+     "hr": 0
+    }
+   },
+   "STL": {
+    "rows": [
+     {
+      "player": "Toad Ramsey",
+      "decision": "",
+      "ip": "6.0",
+      "h": 9,
+      "r": 9,
+      "er": 5,
+      "bb": 5,
+      "so": 0,
+      "hr": 2,
+      "era": "5.65"
+     },
+     {
+      "player": "Nat Hudson",
+      "decision": "",
+      "ip": "2.0",
+      "h": 1,
+      "r": 0,
+      "er": 0,
+      "bb": 0,
+      "so": 0,
+      "hr": 0,
+      "era": "7.71"
+     },
+     {
+      "player": "Charlie Getzien",
+      "decision": "W (1-0)",
+      "ip": "1.0",
+      "h": 0,
+      "r": 0,
+      "er": 0,
+      "bb": 0,
+      "so": 1,
+      "hr": 0,
+      "era": "10.80"
+     }
+    ],
+    "totals": {
+     "ip": "9.0",
+     "h": 10,
+     "r": 9,
+     "er": 5,
+     "bb": 5,
+     "so": 1,
+     "hr": 2
+    }
+   }
+  },
+  "playbyplay": [
+   {
+    "inning": 1,
+    "half": "Top",
+    "team": "PAT",
+    "plays": [
+     "T.Ramsey enters the game to pitch.",
+     "H.Stovey smacks a solo homer to LCF that barely clears the wall.",
+     "H.Larkin hits a shallow flyout down the LF line.",
+     "F.Fennelly hits a shallow flyout down the LF line.",
+     "G.Smith misplays a routine grounder and A.Myers reaches on the error.",
+     "J.O'Brien flies out to LCF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PAT",
+      "r": 1,
+      "h": 1,
+      "e": 0
+     },
+     "home": {
+      "team": "STL",
+      "r": 0,
+      "h": 0,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 1,
+    "half": "Bottom",
+    "team": "STL",
+    "plays": [
+     "J.Whitney enters the game to pitch.",
+     "Y.Robinson walks.",
+     "Y.Robinson steals 2B.",
+     "D.White grounds a single to RCF. Y.Robinson scores.",
+     "G.Gore hits a line drive single to RF.",
+     "R.Connor hits a shallow flyout to CF.",
+     "C.Wolf grounds into a 6-4-3 double play."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PAT",
+      "r": 1,
+      "h": 1,
+      "e": 0
+     },
+     "home": {
+      "team": "STL",
+      "r": 1,
+      "h": 2,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 2,
+    "half": "Top",
+    "team": "PAT",
+    "plays": [
+     "J.Coleman hits a groundball single to RCF.",
+     "P.Baker walks.",
+     "J.Gleason grounds a single to LF. J.Coleman scores.",
+     "J.Whitney hits a sacrifice bunt to the left side of the mound. All runners advance.",
+     "T.Ramsey lets one get away and all runners advance on the wild pitch. P.Baker scores.",
+     "H.Stovey takes ball four.",
+     "H.Stovey steals second base.",
+     "H.Larkin grounds out to SS.",
+     "F.Fennelly pops out to 2B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PAT",
+      "r": 3,
+      "h": 3,
+      "e": 0
+     },
+     "home": {
+      "team": "STL",
+      "r": 1,
+      "h": 2,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 2,
+    "half": "Bottom",
+    "team": "STL",
+    "plays": [
+     "E.Sutton hits a Texas League single to RF.",
+     "G.Smith lines out to 3B.",
+     "D.Bushong grounds into a 5-4-3 double play."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PAT",
+      "r": 3,
+      "h": 3,
+      "e": 0
+     },
+     "home": {
+      "team": "STL",
+      "r": 1,
+      "h": 3,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 3,
+    "half": "Top",
+    "team": "PAT",
+    "plays": [
+     "A.Myers grounds a single to LF.",
+     "G.Smith fields the groundball but makes a bad throw to 2B. J.O'Brien reaches on the throwing error.",
+     "J.Coleman hits a linedrive double down the rightfield line. A.Myers scores. J.O'Brien scores.",
+     "P.Baker grounds out to 2B.",
+     "J.Gleason takes ball four.",
+     "J.Whitney lines out to 2B.",
+     "H.Stovey walks.",
+     "T.Ramsey uncorks a wild pitch and all runners advance. J.Coleman scores.",
+     "H.Larkin hits a shallow flyout to LF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PAT",
+      "r": 6,
+      "h": 5,
+      "e": 0
+     },
+     "home": {
+      "team": "STL",
+      "r": 1,
+      "h": 3,
+      "e": 2
+     }
+    }
+   },
+   {
+    "inning": 3,
+    "half": "Bottom",
+    "team": "STL",
+    "plays": [
+     "T.Ramsey hits a shallow flyout to RCF.",
+     "Y.Robinson takes ball four.",
+     "Y.Robinson is nailed stealing 2B.",
+     "D.White hits a shallow flyout to RCF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PAT",
+      "r": 6,
+      "h": 5,
+      "e": 0
+     },
+     "home": {
+      "team": "STL",
+      "r": 1,
+      "h": 3,
+      "e": 2
+     }
+    }
+   },
+   {
+    "inning": 4,
+    "half": "Top",
+    "team": "PAT",
+    "plays": [
+     "G.Gore drops a deep flyball and F.Fennelly reaches on a 2-base error.",
+     "A.Myers hits a Texas League single to LF. F.Fennelly scores.",
+     "J.O'Brien grounds into a 3-6-3 double play.",
+     "J.Coleman lines a solo homer to RF.",
+     "P.Baker grounds out to SS."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PAT",
+      "r": 8,
+      "h": 7,
+      "e": 0
+     },
+     "home": {
+      "team": "STL",
+      "r": 1,
+      "h": 3,
+      "e": 3
+     }
+    }
+   },
+   {
+    "inning": 4,
+    "half": "Bottom",
+    "team": "STL",
+    "plays": [
+     "G.Gore strikes out on a ball out of the zone.",
+     "R.Connor hits a shallow flyout to CF.",
+     "C.Wolf grounds a single to LCF.",
+     "H.Stovey misplays a drive and E.Sutton reaches via the 2-base error.",
+     "G.Smith hits a triple. C.Wolf scores. E.Sutton scores.",
+     "D.Bushong lines out to 3B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PAT",
+      "r": 8,
+      "h": 7,
+      "e": 1
+     },
+     "home": {
+      "team": "STL",
+      "r": 3,
+      "h": 5,
+      "e": 3
+     }
+    }
+   },
+   {
+    "inning": 5,
+    "half": "Top",
+    "team": "PAT",
+    "plays": [
+     "J.Gleason grounds out to SS.",
+     "J.Whitney grounds out to 3B.",
+     "H.Stovey walks.",
+     "H.Stovey steals second base.",
+     "H.Larkin grounds out to SS."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PAT",
+      "r": 8,
+      "h": 7,
+      "e": 1
+     },
+     "home": {
+      "team": "STL",
+      "r": 3,
+      "h": 5,
+      "e": 3
+     }
+    }
+   },
+   {
+    "inning": 5,
+    "half": "Bottom",
+    "team": "STL",
+    "plays": [
+     "T.Ramsey strikes out swinging.",
+     "Y.Robinson grounds out to 3B.",
+     "D.White hits a shallow flyout to RCF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PAT",
+      "r": 8,
+      "h": 7,
+      "e": 1
+     },
+     "home": {
+      "team": "STL",
+      "r": 3,
+      "h": 5,
+      "e": 3
+     }
+    }
+   },
+   {
+    "inning": 6,
+    "half": "Top",
+    "team": "PAT",
+    "plays": [
+     "F.Fennelly grounds it thru the hole to RCF for a single.",
+     "F.Fennelly steals second base.",
+     "G.Smith can't handle a groundball and A.Myers reaches on the error.",
+     "J.O'Brien pops out to SS.",
+     "J.Coleman hits an infield single to SS. F.Fennelly scores.",
+     "P.Baker grounds out to 1B.",
+     "J.Gleason lines out to 2B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PAT",
+      "r": 9,
+      "h": 9,
+      "e": 1
+     },
+     "home": {
+      "team": "STL",
+      "r": 3,
+      "h": 5,
+      "e": 4
+     }
+    }
+   },
+   {
+    "inning": 6,
+    "half": "Bottom",
+    "team": "STL",
+    "plays": [
+     "G.Gore walks.",
+     "R.Connor hits into a 6-4 fielder's choice.",
+     "C.Wolf hits a flyball single to CF.",
+     "J.Gleason misplays a routine grounder and E.Sutton reaches on the error.",
+     "G.Smith hits a flyball double to LF. R.Connor scores. C.Wolf scores. H.Stovey's throw is off the mark up the 1B line and E.Sutton scores.",
+     "D.Bushong grounds out to 3B.",
+     "S.Barkley enters the game as a pinch-hitter for T.Ramsey.",
+     "S.Barkley hits a shallow flyout to LCF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PAT",
+      "r": 9,
+      "h": 9,
+      "e": 2
+     },
+     "home": {
+      "team": "STL",
+      "r": 6,
+      "h": 7,
+      "e": 4
+     }
+    }
+   },
+   {
+    "inning": 7,
+    "half": "Top",
+    "team": "PAT",
+    "plays": [
+     "N.Hudson enters the game to pitch.",
+     "J.Whitney grounds out to 2B.",
+     "H.Stovey lines out to 3B.",
+     "H.Larkin hits an infield single to SS.",
+     "H.Larkin is nailed stealing 2B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PAT",
+      "r": 9,
+      "h": 10,
+      "e": 2
+     },
+     "home": {
+      "team": "STL",
+      "r": 6,
+      "h": 7,
+      "e": 4
+     }
+    }
+   },
+   {
+    "inning": 7,
+    "half": "Bottom",
+    "team": "STL",
+    "plays": [
+     "Y.Robinson is frozen on strike 3.",
+     "D.White strikes out swinging.",
+     "G.Gore walks.",
+     "R.Connor grounds out to 1B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PAT",
+      "r": 9,
+      "h": 10,
+      "e": 2
+     },
+     "home": {
+      "team": "STL",
+      "r": 6,
+      "h": 7,
+      "e": 4
+     }
+    }
+   },
+   {
+    "inning": 8,
+    "half": "Top",
+    "team": "PAT",
+    "plays": [
+     "F.Fennelly grounds out to 3B.",
+     "A.Myers grounds out to 3B.",
+     "J.O'Brien pops out to 3B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PAT",
+      "r": 9,
+      "h": 10,
+      "e": 2
+     },
+     "home": {
+      "team": "STL",
+      "r": 6,
+      "h": 7,
+      "e": 4
+     }
+    }
+   },
+   {
+    "inning": 8,
+    "half": "Bottom",
+    "team": "STL",
+    "plays": [
+     "C.Wolf grounds it thru the hole to RF for a single.",
+     "E.Sutton flies out to LF.",
+     "G.Smith hits a line drive double to RF.",
+     "D.Bushong strikes out swinging.",
+     "C.Comiskey enters the game as a pinch-hitter for N.Hudson.",
+     "H.Larkin misplays a lazy flyball and C.Comiskey reaches on the error. C.Wolf scores. G.Smith scores.",
+     "C.Comiskey is caught trying to steal 2B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PAT",
+      "r": 9,
+      "h": 10,
+      "e": 3
+     },
+     "home": {
+      "team": "STL",
+      "r": 8,
+      "h": 9,
+      "e": 4
+     }
+    }
+   },
+   {
+    "inning": 9,
+    "half": "Top",
+    "team": "PAT",
+    "plays": [
+     "C.Getzien enters the game to pitch.",
+     "J.Coleman lines out to 2B.",
+     "P.Baker strikes out swinging.",
+     "B.Purcell enters the game as a pinch-hitter for J.Gleason.",
+     "B.Purcell grounds out to SS."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PAT",
+      "r": 9,
+      "h": 10,
+      "e": 3
+     },
+     "home": {
+      "team": "STL",
+      "r": 8,
+      "h": 9,
+      "e": 4
+     }
+    }
+   },
+   {
+    "inning": 9,
+    "half": "Bottom",
+    "team": "STL",
+    "plays": [
+     "D.Lyons enters the game at 3B.",
+     "Y.Robinson grounds out to 2B.",
+     "B.Hart enters the game to pitch.",
+     "D.White grounds it past the mound into CF for a single.",
+     "W.Robinson enters the game as a pinch-runner for D.White.",
+     "W.Robinson swipes 2B.",
+     "G.Gore lines one off the SS's glove for an infield single.",
+     "B.Hart uncorks a wild pitch and all runners advance. W.Robinson scores.",
+     "J.Hofford enters the game to pitch.",
+     "R.Connor hits a Texas Leaguer to LCF for a double. G.Gore scores."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PAT",
+      "r": 9,
+      "h": 10,
+      "e": 3
+     },
+     "home": {
+      "team": "STL",
+      "r": 10,
+      "h": 12,
+      "e": 4
+     }
+    }
+   }
+  ]
+ },
+ {
+  "season": 1886,
+  "game_num": 3,
+  "date": "1886-03-31",
+  "home": "PHI",
+  "away": "PIT",
+  "location": "Philadelphia Base Ball Grounds",
+  "subtitle": "Regular Season \u2014 March 31, 1886",
+  "player_of_game": {
+   "player": "Jim Fogarty",
+   "team": "PHI",
+   "note": "collects 4 hits"
+  },
+  "linescore": {
+   "innings": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+   ],
+   "rows": [
+    {
+     "team": "PIT",
+     "label": "Pittsburgh Alleghenys",
+     "by_inning": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "R": 0,
+     "H": 5,
+     "E": 2
+    },
+    {
+     "team": "PHI",
+     "label": "Philadelphia Quakers",
+     "by_inning": [
+      1,
+      6,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      null
+     ],
+     "R": 7,
+     "H": 15,
+     "E": 0
+    }
+   ]
+  },
+  "batting": {
+   "PIT": {
+    "rows": [
+     {
+      "player": "Sid Farrar",
+      "pos": "1B",
+      "ab": 4,
+      "r": 0,
+      "h": 1,
+      "rbi": 0,
+      "bb": 0,
+      "so": 1,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Shelby Bairey",
+      "pos": "3B",
+      "ab": 3,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 1,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Jumbo Davis",
+      "pos": "3B",
+      "ab": 1,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Otto Schomberg",
+      "pos": "LF",
+      "ab": 3,
+      "r": 0,
+      "h": 2,
+      "rbi": 0,
+      "bb": 1,
+      "so": 0,
+      "2b": 0,
+      "3b": 1,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Fred Carroll",
+      "pos": "C",
+      "ab": 3,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Doggie Miller",
+      "pos": "C",
+      "ab": 1,
+      "r": 0,
+      "h": 1,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Pop Corkhill",
+      "pos": "CF",
+      "ab": 3,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Bill Kuehne",
+      "pos": "CF",
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 1,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Emmett Seery",
+      "pos": "RF",
+      "ab": 3,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 2,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Luis Saggio",
+      "pos": "RF",
+      "ab": 1,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Lou Bierbauer",
+      "pos": "2B",
+      "ab": 4,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 1,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Arthur Irwin",
+      "pos": "SS",
+      "ab": 2,
+      "r": 0,
+      "h": 1,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Danny Richardson",
+      "pos": "SS",
+      "ab": 1,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Tony Madigan",
+      "pos": "P",
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Elmer Smith",
+      "pos": "P",
+      "ab": 1,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Joe Murphy",
+      "pos": "P",
+      "ab": 1,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 1,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Marques Clemmons",
+      "pos": "P",
+      "ab": 1,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     }
+    ],
+    "totals": {
+     "ab": 32,
+     "r": 0,
+     "h": 5,
+     "rbi": 0,
+     "bb": 2,
+     "so": 6,
+     "2b": 0,
+     "3b": 1,
+     "hr": 0,
+     "sb": 0,
+     "cs": 0
+    },
+    "footnotes": {
+     "3B": "O.Schomberg (1)",
+     "E": "D.Richardson 2 (2)",
+     "PB": "F.Carroll"
+    }
+   },
+   "PHI": {
+    "rows": [
+     {
+      "player": "Jim Fogarty",
+      "pos": "CF",
+      "ab": 4,
+      "r": 2,
+      "h": 4,
+      "rbi": 1,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 1,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Jim Manning",
+      "pos": "CF-RF",
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 1,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Fred Dunlap",
+      "pos": "2B",
+      "ab": 3,
+      "r": 1,
+      "h": 0,
+      "rbi": 0,
+      "bb": 1,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Ricardo Dogg",
+      "pos": "2B",
+      "ab": 1,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Sam Thompson",
+      "pos": "LF",
+      "ab": 4,
+      "r": 1,
+      "h": 1,
+      "rbi": 2,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Lou Sylvester",
+      "pos": "LF",
+      "ab": 1,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Dave Orr",
+      "pos": "1B",
+      "ab": 4,
+      "r": 1,
+      "h": 3,
+      "rbi": 2,
+      "bb": 1,
+      "so": 0,
+      "2b": 0,
+      "3b": 1,
+      "hr": 0,
+      "sb": 1,
+      "cs": 0
+     },
+     {
+      "player": "John Morrill",
+      "pos": "SS",
+      "ab": 3,
+      "r": 0,
+      "h": 1,
+      "rbi": 1,
+      "bb": 1,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Candy Nelson",
+      "pos": "SS",
+      "ab": 1,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Chris Fulmer",
+      "pos": "C",
+      "ab": 4,
+      "r": 0,
+      "h": 4,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Richard Broughton",
+      "pos": "C",
+      "ab": 1,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Joe Mulvey",
+      "pos": "3B",
+      "ab": 3,
+      "r": 1,
+      "h": 0,
+      "rbi": 0,
+      "bb": 1,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "John Cahill",
+      "pos": "3B",
+      "ab": 1,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Cole Holland",
+      "pos": "RF",
+      "ab": 3,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Charlie Buffinton",
+      "pos": "RF",
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Ed Greer",
+      "pos": "CF",
+      "ab": 1,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Charlie Ferguson",
+      "pos": "P",
+      "ab": 5,
+      "r": 1,
+      "h": 2,
+      "rbi": 1,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Al Atkinson",
+      "pos": "P",
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     }
+    ],
+    "totals": {
+     "ab": 39,
+     "r": 7,
+     "h": 15,
+     "rbi": 7,
+     "bb": 5,
+     "so": 0,
+     "2b": 0,
+     "3b": 1,
+     "hr": 1,
+     "sb": 1,
+     "cs": 0
+    },
+    "footnotes": {
+     "3B": "D.Orr (1)",
+     "HR": "J.Fogarty (1)",
+     "RBI": "J.Fogarty (2), S.Thompson 2 (3), D.Orr 2 (3), J.Morrill (1), C.Ferguson (1)",
+     "2-Out RBI": "S.Thompson 2, D.Orr 2, J.Morrill, C.Ferguson",
+     "SH": "C.Holland",
+     "SB": "D.Orr (1)"
+    }
+   }
+  },
+  "pitching": {
+   "PIT": {
+    "rows": [
+     {
+      "player": "Tony Madigan",
+      "decision": "L (0-1)",
+      "ip": "1.2",
+      "h": 6,
+      "r": 7,
+      "er": 7,
+      "bb": 2,
+      "so": 0,
+      "hr": 1,
+      "era": "37.80"
+     },
+     {
+      "player": "Elmer Smith",
+      "decision": "",
+      "ip": "1.2",
+      "h": 5,
+      "r": 0,
+      "er": 0,
+      "bb": 1,
+      "so": 0,
+      "hr": 0,
+      "era": "0.00"
+     },
+     {
+      "player": "Joe Murphy",
+      "decision": "",
+      "ip": "2.2",
+      "h": 3,
+      "r": 0,
+      "er": 0,
+      "bb": 1,
+      "so": 0,
+      "hr": 0,
+      "era": "0.00"
+     },
+     {
+      "player": "Marques Clemmons",
+      "decision": "",
+      "ip": "2.0",
+      "h": 1,
+      "r": 0,
+      "er": 0,
+      "bb": 1,
+      "so": 0,
+      "hr": 0,
+      "era": "0.00"
+     }
+    ],
+    "totals": {
+     "ip": "8.0",
+     "h": 15,
+     "r": 7,
+     "er": 7,
+     "bb": 5,
+     "so": 0,
+     "hr": 1
+    }
+   },
+   "PHI": {
+    "rows": [
+     {
+      "player": "Charlie Ferguson",
+      "decision": "W (1-1)",
+      "ip": "8.1",
+      "h": 5,
+      "r": 0,
+      "er": 0,
+      "bb": 2,
+      "so": 5,
+      "hr": 0,
+      "era": "1.17"
+     },
+     {
+      "player": "Al Atkinson",
+      "decision": "",
+      "ip": "0.2",
+      "h": 0,
+      "r": 0,
+      "er": 0,
+      "bb": 0,
+      "so": 1,
+      "hr": 0,
+      "era": "0.00"
+     }
+    ],
+    "totals": {
+     "ip": "9.0",
+     "h": 5,
+     "r": 0,
+     "er": 0,
+     "bb": 2,
+     "so": 6,
+     "hr": 0
+    }
+   }
+  },
+  "playbyplay": [
+   {
+    "inning": 1,
+    "half": "Top",
+    "team": "PIT",
+    "plays": [
+     "C.Ferguson enters the game to pitch.",
+     "S.Farrar grounds a single to LF.",
+     "S.Bairey takes strike 3 looking.",
+     "O.Schomberg hits a shallow flyout to RCF.",
+     "F.Carroll hits into a 4-6 fielder's choice."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PIT",
+      "r": 0,
+      "h": 1,
+      "e": 0
+     },
+     "home": {
+      "team": "PHI",
+      "r": 0,
+      "h": 0,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 1,
+    "half": "Bottom",
+    "team": "PHI",
+    "plays": [
+     "T.Madigan enters the game to pitch.",
+     "J.Fogarty smacks a solo homer to RF that barely clears the wall.",
+     "F.Dunlap pops out to SS.",
+     "S.Thompson grounds out to SS.",
+     "D.Orr draws the walk.",
+     "D.Orr steals 2B.",
+     "J.Morrill pops out to 3B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PIT",
+      "r": 0,
+      "h": 1,
+      "e": 0
+     },
+     "home": {
+      "team": "PHI",
+      "r": 1,
+      "h": 1,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 2,
+    "half": "Top",
+    "team": "PIT",
+    "plays": [
+     "P.Corkhill pops out to 3B.",
+     "E.Seery hits a shallow flyout to CF.",
+     "L.Bierbauer hits a shallow flyout to LCF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PIT",
+      "r": 0,
+      "h": 1,
+      "e": 0
+     },
+     "home": {
+      "team": "PHI",
+      "r": 1,
+      "h": 1,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 2,
+    "half": "Bottom",
+    "team": "PHI",
+    "plays": [
+     "C.Fulmer hits an infield single to 2B.",
+     "J.Mulvey hits into a 6-4 fielder's choice.",
+     "C.Holland hits a sacrifice bunt to 3B. All runners advance.",
+     "C.Ferguson lines a single to RF. J.Mulvey scores.",
+     "J.Fogarty grounds a single to LF.",
+     "F.Dunlap walks.",
+     "S.Thompson hits a flyball single to RCF. C.Ferguson scores. J.Fogarty scores.",
+     "D.Orr hits a triple. F.Dunlap scores. S.Thompson scores.",
+     "E.Smith enters the game to pitch.",
+     "J.Morrill smokes a line drive single to LF. D.Orr scores.",
+     "C.Fulmer hits a line drive single to LCF.",
+     "J.Mulvey pops out to 3B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PIT",
+      "r": 0,
+      "h": 1,
+      "e": 0
+     },
+     "home": {
+      "team": "PHI",
+      "r": 7,
+      "h": 8,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 3,
+    "half": "Top",
+    "team": "PIT",
+    "plays": [
+     "A.Irwin grounds out to 2B.",
+     "E.Smith grounds out to 1B.",
+     "S.Farrar hits a shallow flyout to LCF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PIT",
+      "r": 0,
+      "h": 1,
+      "e": 0
+     },
+     "home": {
+      "team": "PHI",
+      "r": 7,
+      "h": 8,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 3,
+    "half": "Bottom",
+    "team": "PHI",
+    "plays": [
+     "C.Holland flies out to RF.",
+     "C.Ferguson hits a shallow flyout to LCF.",
+     "J.Fogarty grounds a single to LF.",
+     "F.Carroll can't hold onto the pitch and is charged with a passed ball. All runners advance.",
+     "F.Dunlap grounds out to 3B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PIT",
+      "r": 0,
+      "h": 1,
+      "e": 0
+     },
+     "home": {
+      "team": "PHI",
+      "r": 7,
+      "h": 9,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 4,
+    "half": "Top",
+    "team": "PIT",
+    "plays": [
+     "S.Bairey lines out to 3B.",
+     "O.Schomberg draws the walk.",
+     "F.Carroll lines out to SS.",
+     "P.Corkhill grounds out to 3B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PIT",
+      "r": 0,
+      "h": 1,
+      "e": 0
+     },
+     "home": {
+      "team": "PHI",
+      "r": 7,
+      "h": 9,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 4,
+    "half": "Bottom",
+    "team": "PHI",
+    "plays": [
+     "S.Thompson grounds out to 1B.",
+     "D.Orr lines a single to LF.",
+     "J.Morrill draws the walk.",
+     "C.Fulmer grounds a single to LF.",
+     "J.Murphy enters the game to pitch.",
+     "J.Mulvey hits into a 3-2 fielder's choice.",
+     "C.Holland grounds out to 1B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PIT",
+      "r": 0,
+      "h": 1,
+      "e": 0
+     },
+     "home": {
+      "team": "PHI",
+      "r": 7,
+      "h": 11,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 5,
+    "half": "Top",
+    "team": "PIT",
+    "plays": [
+     "E.Seery swings and misses for strike 3.",
+     "L.Bierbauer grounds out to 1B.",
+     "A.Irwin hits an infield single to 3B.",
+     "J.Murphy takes strike 3 looking."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PIT",
+      "r": 0,
+      "h": 2,
+      "e": 0
+     },
+     "home": {
+      "team": "PHI",
+      "r": 7,
+      "h": 11,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 5,
+    "half": "Bottom",
+    "team": "PHI",
+    "plays": [
+     "C.Ferguson grounds a single to RCF.",
+     "J.Fogarty hits an infield single to 3B.",
+     "F.Dunlap grounds into a 6-4-3 double play.",
+     "S.Thompson flies out to deep LCF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PIT",
+      "r": 0,
+      "h": 2,
+      "e": 0
+     },
+     "home": {
+      "team": "PHI",
+      "r": 7,
+      "h": 13,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 6,
+    "half": "Top",
+    "team": "PIT",
+    "plays": [
+     "S.Farrar strikes out swinging.",
+     "S.Bairey hits a shallow flyout to RF.",
+     "O.Schomberg hits a triple.",
+     "F.Carroll pops out to 3B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PIT",
+      "r": 0,
+      "h": 3,
+      "e": 0
+     },
+     "home": {
+      "team": "PHI",
+      "r": 7,
+      "h": 13,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 6,
+    "half": "Bottom",
+    "team": "PHI",
+    "plays": [
+     "D.Orr flies out to deep CF.",
+     "J.Morrill grounds out to 3B.",
+     "C.Fulmer hits a line drive single to RCF.",
+     "J.Mulvey takes ball four.",
+     "C.Holland flies out to deep LF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PIT",
+      "r": 0,
+      "h": 3,
+      "e": 0
+     },
+     "home": {
+      "team": "PHI",
+      "r": 7,
+      "h": 14,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 7,
+    "half": "Top",
+    "team": "PIT",
+    "plays": [
+     "R.Broughton enters the game at C to rest the starter.",
+     "C.Nelson enters the game at SS to rest the starter.",
+     "R.Dogg enters the game at 2B to rest the starter.",
+     "J.Manning enters the game at CF to rest the starter.",
+     "J.Cahill enters the game at 3B to rest the starter.",
+     "C.Buffinton enters the game at RF to rest the starter.",
+     "L.Sylvester enters the game at LF to rest the starter.",
+     "P.Corkhill grounds out to 1B.",
+     "E.Seery strikes out on a ball out of the zone.",
+     "L.Bierbauer grounds out to the pitcher."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PIT",
+      "r": 0,
+      "h": 3,
+      "e": 0
+     },
+     "home": {
+      "team": "PHI",
+      "r": 7,
+      "h": 14,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 7,
+    "half": "Bottom",
+    "team": "PHI",
+    "plays": [
+     "D.Miller enters the game at C to rest the starter.",
+     "D.Richardson enters the game at SS to rest the starter.",
+     "B.Kuehne enters the game at CF to rest the starter.",
+     "J.Davis enters the game at 3B to rest the starter.",
+     "L.Saggio enters the game at RF to rest the starter.",
+     "M.Clemmons enters the game to pitch.",
+     "C.Ferguson hits a shallow flyout to CF.",
+     "J.Manning draws the walk.",
+     "R.Dogg flies out to LCF.",
+     "D.Richardson fields the groundball but makes a bad throw to 1B. L.Sylvester reaches on the throwing error.",
+     "D.Orr hits an infield single to 3B.",
+     "C.Nelson flies out to CF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PIT",
+      "r": 0,
+      "h": 3,
+      "e": 1
+     },
+     "home": {
+      "team": "PHI",
+      "r": 7,
+      "h": 15,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 8,
+    "half": "Top",
+    "team": "PIT",
+    "plays": [
+     "E.Greer enters the game at CF as a defensive replacement.",
+     "J.Manning moves to RF.",
+     "D.Richardson grounds out to SS.",
+     "M.Clemmons flies out deep down the RF line.",
+     "S.Farrar grounds out to 2B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PIT",
+      "r": 0,
+      "h": 3,
+      "e": 1
+     },
+     "home": {
+      "team": "PHI",
+      "r": 7,
+      "h": 15,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 8,
+    "half": "Bottom",
+    "team": "PHI",
+    "plays": [
+     "R.Broughton flies out to RCF.",
+     "J.Cahill grounds out to 3B.",
+     "D.Richardson boots a routine grounder and E.Greer reaches on the error.",
+     "C.Ferguson grounds out to 3B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PIT",
+      "r": 0,
+      "h": 3,
+      "e": 2
+     },
+     "home": {
+      "team": "PHI",
+      "r": 7,
+      "h": 15,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 9,
+    "half": "Top",
+    "team": "PIT",
+    "plays": [
+     "J.Davis grounds out to 3B.",
+     "O.Schomberg grounds a single to RF.",
+     "D.Miller hits an infield single to 2B.",
+     "B.Kuehne draws the walk.",
+     "A.Atkinson enters the game to pitch.",
+     "L.Saggio hits a shallow flyout to RCF.",
+     "L.Bierbauer is frozen on strike 3."
+    ],
+    "score_after": {
+     "away": {
+      "team": "PIT",
+      "r": 0,
+      "h": 5,
+      "e": 2
+     },
+     "home": {
+      "team": "PHI",
+      "r": 7,
+      "h": 15,
+      "e": 0
+     }
+    }
+   }
+  ]
+ },
+ {
+  "season": 1886,
+  "game_num": 3,
+  "date": "1886-03-31",
+  "home": "CIN",
+  "away": "LOU",
+  "location": "League Park (II)",
+  "subtitle": "Regular Season \u2014 March 31, 1886",
+  "player_of_game": {
+   "player": "Amos Cross",
+   "team": "LOU",
+   "note": "drives in 3 runs"
+  },
+  "linescore": {
+   "innings": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+   ],
+   "rows": [
+    {
+     "team": "LOU",
+     "label": "Louisvill Colonels",
+     "by_inning": [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      3,
+      3
+     ],
+     "R": 7,
+     "H": 12,
+     "E": 2
+    },
+    {
+     "team": "CIN",
+     "label": "Cincinnati Red Stockings",
+     "by_inning": [
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      3,
+      1,
+      0
+     ],
+     "R": 6,
+     "H": 13,
+     "E": 5
+    }
+   ]
+  },
+  "batting": {
+   "LOU": {
+    "rows": [
+     {
+      "player": "Tom Brown",
+      "pos": "CF",
+      "ab": 5,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Amos Cross",
+      "pos": "C",
+      "ab": 4,
+      "r": 1,
+      "h": 3,
+      "rbi": 3,
+      "bb": 1,
+      "so": 0,
+      "2b": 0,
+      "3b": 1,
+      "hr": 0,
+      "sb": 0,
+      "cs": 1
+     },
+     {
+      "player": "Ed Glenn",
+      "pos": "PR",
+      "ab": 0,
+      "r": 1,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Jeffery Hoffmiester",
+      "pos": "P",
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Jack Glasscock",
+      "pos": "SS",
+      "ab": 5,
+      "r": 0,
+      "h": 2,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 1
+     },
+     {
+      "player": "Fred Pfeffer",
+      "pos": "2B",
+      "ab": 5,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Chief Roseman",
+      "pos": "LF",
+      "ab": 5,
+      "r": 1,
+      "h": 2,
+      "rbi": 1,
+      "bb": 0,
+      "so": 0,
+      "2b": 1,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Jerry Denny",
+      "pos": "3B",
+      "ab": 4,
+      "r": 0,
+      "h": 1,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 1
+     },
+     {
+      "player": "Jerry Johns",
+      "pos": "1B",
+      "ab": 4,
+      "r": 0,
+      "h": 1,
+      "rbi": 1,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Richard Frazier",
+      "pos": "RF",
+      "ab": 4,
+      "r": 2,
+      "h": 2,
+      "rbi": 0,
+      "bb": 0,
+      "so": 1,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Ed Cushman",
+      "pos": "P",
+      "ab": 2,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 1,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "John Healy",
+      "pos": "P",
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Nate Litt",
+      "pos": "PH",
+      "ab": 1,
+      "r": 1,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Vic Poole",
+      "pos": "P",
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Joe Werrick",
+      "pos": "PH",
+      "ab": 1,
+      "r": 0,
+      "h": 1,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 1,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Joe Strauss",
+      "pos": "PR-C",
+      "ab": 0,
+      "r": 1,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     }
+    ],
+    "totals": {
+     "ab": 40,
+     "r": 7,
+     "h": 12,
+     "rbi": 5,
+     "bb": 1,
+     "so": 2,
+     "2b": 2,
+     "3b": 1,
+     "hr": 0,
+     "sb": 0,
+     "cs": 3
+    },
+    "footnotes": {
+     "2B": "C.Roseman (1), J.Werrick (1)",
+     "3B": "A.Cross (1)",
+     "RBI": "A.Cross 3 (4), C.Roseman (1), J.Johns (1)",
+     "2-Out RBI": "A.Cross 2, C.Roseman, J.Johns",
+     "CS": "A.Cross (2), J.Glasscock (1), J.Denny (1)",
+     "E": "A.Cross (3), J.Denny (1)"
+    }
+   },
+   "CIN": {
+    "rows": [
+     {
+      "player": "Arlie Latham",
+      "pos": "3B",
+      "ab": 5,
+      "r": 2,
+      "h": 3,
+      "rbi": 1,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 3,
+      "cs": 1
+     },
+     {
+      "player": "Bill Phillips",
+      "pos": "1B",
+      "ab": 5,
+      "r": 1,
+      "h": 1,
+      "rbi": 1,
+      "bb": 0,
+      "so": 1,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Pete Browning",
+      "pos": "LF",
+      "ab": 3,
+      "r": 0,
+      "h": 1,
+      "rbi": 0,
+      "bb": 1,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Jack McGeachy",
+      "pos": "LF",
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Charlie Ganzel",
+      "pos": "PH",
+      "ab": 1,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Buck Ewing",
+      "pos": "C",
+      "ab": 4,
+      "r": 1,
+      "h": 2,
+      "rbi": 3,
+      "bb": 1,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 2,
+      "cs": 1
+     },
+     {
+      "player": "Bid McPhee",
+      "pos": "2B",
+      "ab": 5,
+      "r": 0,
+      "h": 1,
+      "rbi": 1,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 2,
+      "cs": 0
+     },
+     {
+      "player": "Fred Mann",
+      "pos": "CF-RF",
+      "ab": 4,
+      "r": 0,
+      "h": 2,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 1,
+      "cs": 1
+     },
+     {
+      "player": "Ernie Burch",
+      "pos": "RF",
+      "ab": 3,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 1,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Joe Quinn",
+      "pos": "CF",
+      "ab": 1,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Joe Sommer",
+      "pos": "SS",
+      "ab": 2,
+      "r": 0,
+      "h": 1,
+      "rbi": 0,
+      "bb": 1,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Charlie Bastian",
+      "pos": "SS",
+      "ab": 1,
+      "r": 1,
+      "h": 1,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 1,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Charley Radbourn",
+      "pos": "P",
+      "ab": 3,
+      "r": 1,
+      "h": 1,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "John Reilly",
+      "pos": "PH",
+      "ab": 1,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Stump Wiedman",
+      "pos": "P",
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     },
+     {
+      "player": "Elton Chamberlain",
+      "pos": "P",
+      "ab": 0,
+      "r": 0,
+      "h": 0,
+      "rbi": 0,
+      "bb": 0,
+      "so": 0,
+      "2b": 0,
+      "3b": 0,
+      "hr": 0,
+      "sb": 0,
+      "cs": 0
+     }
+    ],
+    "totals": {
+     "ab": 38,
+     "r": 6,
+     "h": 13,
+     "rbi": 6,
+     "bb": 3,
+     "so": 2,
+     "2b": 2,
+     "3b": 0,
+     "hr": 0,
+     "sb": 6,
+     "cs": 3
+    },
+    "footnotes": {
+     "2B": "B.Phillips (1), C.Bastian (1)",
+     "RBI": "A.Latham (1), B.Phillips (1), B.Ewing 3 (4), B.McPhee (4)",
+     "2-Out RBI": "A.Latham, B.Ewing 3, B.McPhee",
+     "SB": "A.Latham 3 (4), B.Ewing (2), B.McPhee (2), F.Mann (1)",
+     "CS": "A.Latham (1), B.Ewing (1), F.Mann (1)",
+     "E": "A.Latham (3), B.Phillips (1), B.McPhee (1), E.Burch (2), C.Bastian (1)",
+     "PB": "B.Ewing"
+    }
+   }
+  },
+  "pitching": {
+   "LOU": {
+    "rows": [
+     {
+      "player": "Ed Cushman",
+      "decision": "",
+      "ip": "6.2",
+      "h": 10,
+      "r": 5,
+      "er": 3,
+      "bb": 2,
+      "so": 2,
+      "hr": 0,
+      "era": "4.05"
+     },
+     {
+      "player": "John Healy",
+      "decision": "",
+      "ip": "0.1",
+      "h": 1,
+      "r": 0,
+      "er": 0,
+      "bb": 0,
+      "so": 0,
+      "hr": 0,
+      "era": "0.00"
+     },
+     {
+      "player": "Vic Poole",
+      "decision": "W (1-0)",
+      "ip": "1.0",
+      "h": 2,
+      "r": 1,
+      "er": 1,
+      "bb": 0,
+      "so": 0,
+      "hr": 0,
+      "era": "9.00"
+     },
+     {
+      "player": "Jeffery Hoffmiester",
+      "decision": "SV (1)",
+      "ip": "1.0",
+      "h": 0,
+      "r": 0,
+      "er": 0,
+      "bb": 1,
+      "so": 0,
+      "hr": 0,
+      "era": "0.00"
+     }
+    ],
+    "totals": {
+     "ip": "9.0",
+     "h": 13,
+     "r": 6,
+     "er": 4,
+     "bb": 3,
+     "so": 2,
+     "hr": 0
+    }
+   },
+   "CIN": {
+    "rows": [
+     {
+      "player": "Charley Radbourn",
+      "decision": "",
+      "ip": "8.0",
+      "h": 8,
+      "r": 4,
+      "er": 1,
+      "bb": 1,
+      "so": 2,
+      "hr": 0,
+      "era": "1.62"
+     },
+     {
+      "player": "Stump Wiedman",
+      "decision": "L (0-2)",
+      "ip": "0.2",
+      "h": 3,
+      "r": 3,
+      "er": 2,
+      "bb": 0,
+      "so": 0,
+      "hr": 0,
+      "era": "9.45"
+     },
+     {
+      "player": "Elton Chamberlain",
+      "decision": "",
+      "ip": "0.1",
+      "h": 1,
+      "r": 0,
+      "er": 0,
+      "bb": 0,
+      "so": 0,
+      "hr": 0,
+      "era": "0.00"
+     }
+    ],
+    "totals": {
+     "ip": "9.0",
+     "h": 12,
+     "r": 7,
+     "er": 3,
+     "bb": 1,
+     "so": 2,
+     "hr": 0
+    }
+   }
+  },
+  "playbyplay": [
+   {
+    "inning": 1,
+    "half": "Top",
+    "team": "LOU",
+    "plays": [
+     "C.Radbourn enters the game to pitch.",
+     "T.Brown grounds out to 2B.",
+     "A.Cross hits a triple. F.Mann's throw is in time and A.Cross is called out in a close play at the plate.",
+     "J.Glasscock hits an infield single to SS.",
+     "J.Glasscock is caught stealing 2B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "LOU",
+      "r": 0,
+      "h": 2,
+      "e": 0
+     },
+     "home": {
+      "team": "CIN",
+      "r": 0,
+      "h": 0,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 1,
+    "half": "Bottom",
+    "team": "CIN",
+    "plays": [
+     "E.Cushman enters the game to pitch.",
+     "A.Latham hits an infield single to 3B.",
+     "B.Phillips takes strike 3 looking.",
+     "A.Latham is caught trying to steal 2B.",
+     "P.Browning pops out to 3B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "LOU",
+      "r": 0,
+      "h": 2,
+      "e": 0
+     },
+     "home": {
+      "team": "CIN",
+      "r": 0,
+      "h": 1,
+      "e": 0
+     }
+    }
+   },
+   {
+    "inning": 2,
+    "half": "Top",
+    "team": "LOU",
+    "plays": [
+     "F.Pfeffer grounds out to the catcher.",
+     "C.Roseman rips a liner to LCF for a double.",
+     "E.Burch botches a routine flyball and J.Denny reaches on the error.",
+     "J.Denny is caught trying to steal 2B.",
+     "J.Johns smokes a line drive single to LF. C.Roseman scores.",
+     "R.Frazier grounds it thru the hole to LCF for a single.",
+     "E.Cushman lines out to 2B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "LOU",
+      "r": 1,
+      "h": 5,
+      "e": 0
+     },
+     "home": {
+      "team": "CIN",
+      "r": 0,
+      "h": 1,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 2,
+    "half": "Bottom",
+    "team": "CIN",
+    "plays": [
+     "B.Ewing lines out to SS.",
+     "B.McPhee flies out to LCF.",
+     "F.Mann smokes a line drive single to RCF.",
+     "F.Mann swipes 2B.",
+     "E.Burch flies out to LCF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "LOU",
+      "r": 1,
+      "h": 5,
+      "e": 0
+     },
+     "home": {
+      "team": "CIN",
+      "r": 0,
+      "h": 2,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 3,
+    "half": "Top",
+    "team": "LOU",
+    "plays": [
+     "T.Brown grounds out to 1B.",
+     "A.Cross lines out to SS.",
+     "J.Glasscock grounds out to 3B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "LOU",
+      "r": 1,
+      "h": 5,
+      "e": 0
+     },
+     "home": {
+      "team": "CIN",
+      "r": 0,
+      "h": 2,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 3,
+    "half": "Bottom",
+    "team": "CIN",
+    "plays": [
+     "J.Sommer grounds one off the pitcher's glove for an infield single.",
+     "C.Radbourn hits into a 3-6 fielder's choice.",
+     "J.Denny misplays a routine grounder and A.Latham reaches on the error.",
+     "B.Phillips pops out to 3B.",
+     "P.Browning walks.",
+     "B.Ewing grounds it thru the hole to LF for a single. C.Radbourn scores. A.Latham scores.",
+     "B.McPhee hits a shallow flyout to LCF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "LOU",
+      "r": 1,
+      "h": 5,
+      "e": 1
+     },
+     "home": {
+      "team": "CIN",
+      "r": 2,
+      "h": 4,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 4,
+    "half": "Top",
+    "team": "LOU",
+    "plays": [
+     "F.Pfeffer hits a shallow flyout to RF.",
+     "C.Roseman hits a shallow flyout to LF.",
+     "J.Denny hits a line drive single to LF.",
+     "J.Johns grounds out to 1B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "LOU",
+      "r": 1,
+      "h": 6,
+      "e": 1
+     },
+     "home": {
+      "team": "CIN",
+      "r": 2,
+      "h": 4,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 4,
+    "half": "Bottom",
+    "team": "CIN",
+    "plays": [
+     "F.Mann flies out to RF.",
+     "E.Burch flies out to CF.",
+     "J.Sommer walks.",
+     "C.Radbourn grounds a single to LF.",
+     "A.Latham grounds out to 3B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "LOU",
+      "r": 1,
+      "h": 6,
+      "e": 1
+     },
+     "home": {
+      "team": "CIN",
+      "r": 2,
+      "h": 5,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 5,
+    "half": "Top",
+    "team": "LOU",
+    "plays": [
+     "R.Frazier swings and misses for strike 3.",
+     "E.Cushman strikes out on a ball out of the zone.",
+     "T.Brown grounds out to 1B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "LOU",
+      "r": 1,
+      "h": 6,
+      "e": 1
+     },
+     "home": {
+      "team": "CIN",
+      "r": 2,
+      "h": 5,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 5,
+    "half": "Bottom",
+    "team": "CIN",
+    "plays": [
+     "B.Phillips grounds out to SS.",
+     "P.Browning hits a groundball single to LF.",
+     "B.Ewing hits into a 5-4 fielder's choice.",
+     "B.McPhee flies out to LF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "LOU",
+      "r": 1,
+      "h": 6,
+      "e": 1
+     },
+     "home": {
+      "team": "CIN",
+      "r": 2,
+      "h": 6,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 6,
+    "half": "Top",
+    "team": "LOU",
+    "plays": [
+     "A.Cross walks.",
+     "A.Cross is caught trying to steal 2B.",
+     "J.Glasscock flies out to RF.",
+     "F.Pfeffer flies out to LCF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "LOU",
+      "r": 1,
+      "h": 6,
+      "e": 1
+     },
+     "home": {
+      "team": "CIN",
+      "r": 2,
+      "h": 6,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 6,
+    "half": "Bottom",
+    "team": "CIN",
+    "plays": [
+     "F.Mann pops out to SS.",
+     "E.Burch strikes out swinging.",
+     "J.Sommer lines out to SS."
+    ],
+    "score_after": {
+     "away": {
+      "team": "LOU",
+      "r": 1,
+      "h": 6,
+      "e": 1
+     },
+     "home": {
+      "team": "CIN",
+      "r": 2,
+      "h": 6,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 7,
+    "half": "Top",
+    "team": "LOU",
+    "plays": [
+     "C.Roseman flies out to RF.",
+     "J.Denny grounds out to 1B.",
+     "J.Johns pops out to 2B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "LOU",
+      "r": 1,
+      "h": 6,
+      "e": 1
+     },
+     "home": {
+      "team": "CIN",
+      "r": 2,
+      "h": 6,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 7,
+    "half": "Bottom",
+    "team": "CIN",
+    "plays": [
+     "C.Radbourn grounds out to 3B.",
+     "A.Latham hits a bloop single to CF.",
+     "A.Latham steals 2B.",
+     "A.Latham steals third base.",
+     "B.Phillips hits a line drive double to LCF. A.Latham scores.",
+     "P.Browning grounds out to SS.",
+     "B.Ewing grounds it past the mound into CF for a single. B.Phillips scores.",
+     "B.Ewing swipes 2B.",
+     "B.McPhee lines a single to LCF. B.Ewing scores.",
+     "J.Healy enters the game to pitch.",
+     "B.McPhee steals 2B.",
+     "F.Mann hits an infield single to SS.",
+     "F.Mann is nailed stealing 2B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "LOU",
+      "r": 1,
+      "h": 6,
+      "e": 1
+     },
+     "home": {
+      "team": "CIN",
+      "r": 5,
+      "h": 11,
+      "e": 1
+     }
+    }
+   },
+   {
+    "inning": 8,
+    "half": "Top",
+    "team": "LOU",
+    "plays": [
+     "C.Bastian enters the game at SS as a defensive replacement.",
+     "J.Quinn enters the game at CF as a defensive replacement.",
+     "J.McGeachy enters the game at LF as a defensive replacement.",
+     "F.Mann moves to RF.",
+     "A.Latham misplays a routine grounder and R.Frazier reaches on the error.",
+     "N.Litt enters the game as a pinch-hitter for J.Healy.",
+     "B.McPhee misplays a routine grounder and N.Litt reaches on the error.",
+     "T.Brown hits a shallow flyout to LCF.",
+     "A.Cross grounds it thru the hole to LCF for a single. R.Frazier scores.",
+     "B.Ewing can't hold onto the pitch and is charged with a passed ball. All runners advance. N.Litt scores.",
+     "B.Phillips can't handle a groundball and J.Glasscock reaches on the error.",
+     "F.Pfeffer pops out to SS.",
+     "C.Roseman hits a groundball single to RF. A.Cross scores.",
+     "J.Denny grounds out to 3B."
+    ],
+    "score_after": {
+     "away": {
+      "team": "LOU",
+      "r": 4,
+      "h": 8,
+      "e": 1
+     },
+     "home": {
+      "team": "CIN",
+      "r": 5,
+      "h": 11,
+      "e": 4
+     }
+    }
+   },
+   {
+    "inning": 8,
+    "half": "Bottom",
+    "team": "CIN",
+    "plays": [
+     "V.Poole enters the game to pitch.",
+     "J.Quinn hits a shallow flyout to LCF.",
+     "C.Bastian hits a laser beam into CF for a double.",
+     "J.Reilly enters the game as a pinch-hitter for C.Radbourn.",
+     "J.Reilly grounds out to SS.",
+     "A.Latham hits a flyball single to LCF. C.Bastian scores.",
+     "A.Latham steals 2B and A.Cross's throw sails into CF. All runners take an extra base.",
+     "B.Phillips grounds out to SS."
+    ],
+    "score_after": {
+     "away": {
+      "team": "LOU",
+      "r": 4,
+      "h": 8,
+      "e": 2
+     },
+     "home": {
+      "team": "CIN",
+      "r": 6,
+      "h": 13,
+      "e": 4
+     }
+    }
+   },
+   {
+    "inning": 9,
+    "half": "Top",
+    "team": "LOU",
+    "plays": [
+     "S.Wiedman enters the game to pitch.",
+     "J.Johns flies out to RF.",
+     "R.Frazier hits a bloop single to LF.",
+     "J.Werrick enters the game as a pinch-hitter for V.Poole.",
+     "J.Werrick hits a ground-rule double to LF.",
+     "J.Strauss enters the game as a pinch-runner for J.Werrick.",
+     "T.Brown lines out to SS.",
+     "A.Cross lines a single to LCF. R.Frazier scores. J.Strauss scores.",
+     "E.Glenn enters the game as a pinch-runner for A.Cross.",
+     "E.Chamberlain enters the game to pitch.",
+     "J.Glasscock hits a groundball single to RF. E.Glenn is safe at 3B ahead of the throw.",
+     "C.Bastian boots a routine grounder and F.Pfeffer reaches on the error. E.Glenn scores.",
+     "C.Roseman flies out to deep LCF."
+    ],
+    "score_after": {
+     "away": {
+      "team": "LOU",
+      "r": 7,
+      "h": 12,
+      "e": 2
+     },
+     "home": {
+      "team": "CIN",
+      "r": 6,
+      "h": 13,
+      "e": 5
+     }
+    }
+   },
+   {
+    "inning": 9,
+    "half": "Bottom",
+    "team": "CIN",
+    "plays": [
+     "J.Strauss remains in the game at C.",
+     "J.Hoffmiester enters the game to pitch.",
+     "C.Ganzel enters the game as a pinch-hitter for J.McGeachy.",
+     "C.Ganzel flies out to CF.",
+     "B.Ewing takes ball four.",
+     "B.Ewing is caught trying to steal 2B.",
+     "B.McPhee grounds out to SS."
+    ],
+    "score_after": {
+     "away": {
+      "team": "LOU",
+      "r": 7,
+      "h": 12,
+      "e": 2
+     },
+     "home": {
+      "team": "CIN",
+      "r": 6,
+      "h": 13,
+      "e": 5
+     }
+    }
+   }
+  ]
  }
 ]
