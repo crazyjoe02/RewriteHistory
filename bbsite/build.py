@@ -900,9 +900,16 @@ def main():
         batting_rows = all_batting[season]
         pitching_rows = all_pitching[season]
 
-        # season length proxy from standings (W+L), used for qualifying thresholds
+        # season length proxy from standings (W+L), used for qualifying thresholds.
+        # Fall back to live-computed records (schedule.csv) for in-progress seasons
+        # that don't have a final standings.csv yet, so the qualifier scales with
+        # actual games played instead of defaulting to a full 162-game season.
         srows = all_standings[season]
-        team_games = max((int(r["W"]) + int(r["L"]) for r in srows), default=162)
+        if srows:
+            team_games = max((int(r["W"]) + int(r["L"]) for r in srows), default=162)
+        else:
+            live_games = [rec["W"] + rec["L"] for (abbr, s), rec in live_standings_by_season_team.items() if s == season]
+            team_games = max(live_games, default=162)
         min_ab = int(round(3.1 * team_games))
         min_ip = team_games  # 1.0 * team games, B-Ref convention
 
