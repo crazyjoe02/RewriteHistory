@@ -5,7 +5,7 @@
 <a href="{{ root }}index.html">Home</a> &rsaquo;
 <a href="{{ root }}years/{{ season }}.html">{{ season }} Season</a> &rsaquo;
 {% if is_postseason_game %}<a href="{{ root }}postseason/{{ season }}.html">Postseason</a> &rsaquo; Game {{ game.game_number }}
-{% elif is_regular_season_game %}<a href="{{ root }}teams/{{ hub_abbr.get(game.home, game.home) }}/{{ season }}.html">{{ game.home }}</a> Schedule &rsaquo; {{ game.date }}
+{% elif is_regular_season_game %}<a href="{{ root }}teams/{{ game.home }}/{{ season }}.html">{{ game.home }}</a> Schedule &rsaquo; {{ game.date }}
 {% else %}All-Star Game{% endif %}
 </div>
 {% endblock %}

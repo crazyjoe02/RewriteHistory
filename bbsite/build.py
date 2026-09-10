@@ -307,6 +307,7 @@ def main():
             rec["TeamAbbr"] = era["Abbr"]
             rec["TeamName"] = era["FranchiseName"]
             rec["Owner"] = owners_by_fid.get(era["FranchiseID"], "")
+            rec["OwnerSlug"] = slugify_manager(rec["Owner"]) if rec["Owner"] else ""
             rows.append(rec)
         rows.sort(key=lambda r: -r["PCT"])
         if rows:
@@ -361,6 +362,18 @@ def main():
             year_leagues_ctx[season] = leagues_ctx
 
     # --- Team pages (per-abbr, per-season rosters/stats) ---
+    # First pass: figure out which (season, abbr) pages will actually be built for each
+    # franchise, so we can link "Prev Season" / "Next Season" across relocations too.
+    franchise_season_pages = defaultdict(list)
+    for abbr, team in teams_by_abbr.items():
+        for season in seasons:
+            has_standing = any(r["TeamAbbr"] == abbr for r in all_standings[season])
+            has_schedule = bool(schedule_by_team_season.get((abbr, season)))
+            if has_standing or has_schedule:
+                franchise_season_pages[team["FranchiseID"]].append((season, abbr))
+    for fid in franchise_season_pages:
+        franchise_season_pages[fid].sort(key=lambda t: t[0])
+
     for abbr, team in teams_by_abbr.items():
         for season in seasons:
             standing = next((r for r in all_standings[season] if r["TeamAbbr"] == abbr), None)
@@ -373,8 +386,15 @@ def main():
             pitchers.sort(key=lambda r: -int(r["W"]))
             fielders = [r for r in all_fielding[season] if r["Team"] == abbr]
             fielders.sort(key=lambda r: -float(r["Inn"]))
+            pages = franchise_season_pages[team["FranchiseID"]]
+            idx = pages.index((season, abbr))
+            prev_season = pages[idx - 1] if idx > 0 else None
+            next_season = pages[idx + 1] if idx < len(pages) - 1 else None
             write(f"teams/{abbr}/{season}.html", "team_season.html",
-                  team=team, season=season, standing=standing, batters=batters, pitchers=pitchers,
+                  team=team, season=season, standing=standing,
+                  live_record=live_standings_by_season_team.get((abbr, season)),
+                  prev_season=prev_season, next_season=next_season,
+                  batters=batters, pitchers=pitchers,
                   fielders=fielders, schedule=schedule)
 
     # --- Franchise hub pages (season-by-season across every era, e.g. Detroit -> Cleveland) ---

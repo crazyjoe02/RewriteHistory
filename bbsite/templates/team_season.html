@@ -10,6 +10,13 @@
 {% block content %}
 <div class="team-bar" style="background: linear-gradient(90deg, {{ team.ColorPrimary }}, {{ team.ColorSecondary }});"></div>
 <h1 class="page-title">{{ season }} {{ team.FranchiseName }}</h1>
+{% if prev_season or next_season %}
+<div class="subtitle" style="margin-bottom:6px;">
+{% if prev_season %}<a href="{{ root }}teams/{{ prev_season[1] }}/{{ prev_season[0] }}.html">&laquo; {{ prev_season[0] }} Season</a>{% endif %}
+{% if prev_season and next_season %} &middot; {% endif %}
+{% if next_season %}<a href="{{ root }}teams/{{ next_season[1] }}/{{ next_season[0] }}.html">{{ next_season[0] }} Season &raquo;</a>{% endif %}
+</div>
+{% endif %}
 {% if standing %}
 <div class="subtitle" style="margin-bottom:2px;">
 Manager: <a href="{{ root }}managers/{{ standing.OwnerSlug }}.html">{{ standing.Owner }}</a>
@@ -22,6 +29,19 @@ Record: {{ standing.W }}-{{ standing.L }} ({{ '%.3f'|format(standing.PCT|float) 
 1-Run Games: {{ standing.OneRunRecord }} &middot;
 RS {{ standing.RF }} / RA {{ standing.RA }} &middot;
 Home {{ standing.Home }} / Away {{ standing.Away }}
+</div>
+{% elif live_record %}
+<div class="subtitle" style="margin-bottom:2px;">
+Manager: <a href="{{ root }}managers/{{ live_record.OwnerSlug }}.html">{{ live_record.Owner }}</a>
+</div>
+<div class="subtitle">
+Record: {{ live_record.W }}-{{ live_record.L }} ({{ '%.3f'|format(live_record.PCT) }}) &middot;
+{{ team.League }} &middot; GB {{ live_record.GB }}
+</div>
+<div class="subtitle">
+1-Run Games: {{ live_record.OneRun }} &middot;
+RS {{ live_record.RS }} / RA {{ live_record.RA }} &middot;
+Home {{ live_record.Home }} / Away {{ live_record.Away }}
 </div>
 {% else %}
 <div class="standings-note">Season not yet underway &mdash; schedule below.</div>
