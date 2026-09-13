@@ -25,6 +25,34 @@
         </tbody>
     </table>
     </div>
+    {% elif is_live %}
+    <div class="table-wrap">
+    <table class="stats">
+        <thead>
+        <tr>
+            <th class="left">Team</th>
+            <th>W</th><th>L</th><th>PCT</th><th>GB</th>
+            <th>RS</th><th>RA</th><th>Home</th><th>Away</th><th>1-Run</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for t in teams %}
+        <tr>
+            <td class="left"><a href="{{ root }}teams/{{ t.TeamAbbr }}/{{ season }}.html">{{ t.TeamName }}</a></td>
+            <td>{{ t.W }}</td>
+            <td>{{ t.L }}</td>
+            <td>{{ '%.3f'|format(t.PCT|float) }}</td>
+            <td>{{ t.GB }}</td>
+            <td>{{ t.RS }}</td>
+            <td>{{ t.RA }}</td>
+            <td>{{ t.Home }}</td>
+            <td>{{ t.Away }}</td>
+            <td>{{ t.OneRun }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
     {% else %}
     <div class="table-wrap">
     <table class="stats">
