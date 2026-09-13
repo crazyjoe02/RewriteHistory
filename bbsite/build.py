@@ -945,7 +945,11 @@ def main():
     total_team_games = 0
     for season in seasons:
         srows = all_standings[season]
-        total_team_games += max((int(r["W"]) + int(r["L"]) for r in srows), default=162)
+        if srows:
+            total_team_games += max(int(r["W"]) + int(r["L"]) for r in srows)
+        else:
+            live_games = [rec["W"] + rec["L"] for (abbr, s), rec in live_standings_by_season_team.items() if s == season]
+            total_team_games += max(live_games, default=162)
     career_min_ab = int(round(3.1 * total_team_games))
     career_min_ip = total_team_games
 
