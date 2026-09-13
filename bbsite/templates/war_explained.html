@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}How WAR Is Calculated{% endblock %}
+{% block breadcrumb %}
+<div class="breadcrumb"><a href="{{ root }}index.html">Home</a> &rsaquo; How WAR Is Calculated</div>
+{% endblock %}
+{% block content %}
+<h1 class="page-title">How WAR Is Calculated on This Site</h1>
+<div class="subtitle">An adaptation of Baseball-Reference's methodology, using the stats this project actually tracks.</div>
+
+<p>WAR (Wins Above Replacement) here is adapted from the framework described at
+<a href="https://www.baseball-reference.com/about/war_explained_position.shtml">baseball-reference.com/about/war_explained_position.shtml</a>.
+It is <strong>not an exact replica</strong> &mdash; several inputs the official system uses (play-by-play
+baserunning, double-play data, advanced defensive metrics) don't exist for this league, so the calculation
+below is a principled simplification built from what this site's box scores and season stats actually contain.</p>
+
+<h2 class="section-title">Position players</h2>
+<p>Runs above replacement = Batting Runs + Baserunning Runs + Fielding Runs + Positional Adjustment + Replacement Runs, converted to wins.</p>
+<ul>
+<li><strong>Batting Runs (Rbat)</strong> &mdash; a linear-weights formula (Pete Palmer&rsquo;s classic Batting
+Runs coefficients: singles 0.46, doubles 0.80, triples 1.02, home runs 1.40, walks/HBP 0.33, outs &minus;0.25),
+recentered so the league-average hitter that season (excluding pitchers) is exactly 0.</li>
+<li><strong>Baserunning Runs (Rbr)</strong> &mdash; stolen bases (+0.30 runs each) and caught stealing
+(&minus;0.60 runs each), recentered the same way. Non-steal baserunning (first-to-third on a single, tagging
+up, etc.) isn&rsquo;t tracked in this project's data, so it isn't included.</li>
+<li><strong>Double-play runs (Rdp)</strong> &mdash; set to 0 for everyone; this project doesn't track GIDP.</li>
+<li><strong>Fielding Runs (Rfield)</strong> &mdash; set to 0 for everyone. A Range-Factor-based estimate was
+attempted, but the underlying fielding data (assembled from several pasted spreadsheets over the life of this
+project) contains individual data-entry errors severe enough to produce wrong results for specific players.
+Rather than publish defensive value that's confidently wrong for an unknown subset of players, this component
+was dropped rather than guessed at.</li>
+<li><strong>Positional Adjustment (Rpos)</strong> &mdash; Baseball-Reference's own published 1885/1886
+per-1,350-inning positional constants (C +10, SS +10, 3B +5, 2B +3, CF &minus;8, RF &minus;9, LF &minus;9.5,
+1B 0), prorated by innings played at each position. Pitchers get their own hitting-only adjustment computed
+from BR's stated formula (&minus;600 &times; league pitcher batting runs / league pitcher PA, applied per 600 PA),
+then the whole season's positional runs are recentered to sum to zero.</li>
+<li><strong>Replacement Runs (Rrep)</strong> &mdash; 20.5 runs per 600 plate appearances, BR's stated offensive
+replacement-level constant, prorated by the player's own PA.</li>
+</ul>
+
+<h2 class="section-title">Pitchers</h2>
+<p>Pitching WAR is based on runs allowed per out, compared to the league average, then to a replacement-level
+pitcher:</p>
+<ul>
+<li>Runs above average = (league runs-allowed-per-out &minus; pitcher's own runs-allowed-per-out) &times; outs pitched.</li>
+<li>The replacement-level increment is league runs-per-out &times; (20.5&minus;1.8)/100, matching BR's stated
+formula, added on top of runs above average and converted to wins the same way as the batting side.</li>
+<li>Runs allowed (not just earned runs) are used, per BR's own methodology.</li>
+<li>No park factors, opponent-strength adjustment, or reliever leverage index are applied &mdash; this project
+doesn't have the data to support them.</li>
+</ul>
+
+<h2 class="section-title">Runs to Wins</h2>
+<p>Runs above replacement are converted to wins using Runs Per Win = 10 &times; &radic;(RPG / 9), where RPG is
+that season's actual combined runs-per-game scoring environment (a standard simplification of BR's PythagenPat
+approach). Higher-scoring seasons need more runs to produce a win; lower-scoring seasons need fewer.</p>
+
+<p class="standings-note">In short: treat these WAR values as a reasonable, internally-consistent way to compare
+players within this league and across its seasons &mdash; not as numbers directly comparable to real-world
+Baseball-Reference WAR, which draws on data this project doesn't have.</p>
+
+{% endblock %}

@@ -362,6 +362,152 @@ def main():
             year_leagues_ctx[season] = leagues_ctx
 
     # --- Team pages (per-abbr, per-season rosters/stats) ---
+    def compute_batting_totals(rows):
+        if not rows:
+            return None
+        sums = defaultdict(int)
+        for r in rows:
+            for k in ["G", "AB", "R", "H", "2B", "3B", "HR", "RBI", "BB", "SO", "HBP", "SB", "CS"]:
+                sums[k] += int(r.get(k) or 0)
+        war_sum = sum(float(r.get("WAR") or 0) for r in rows)
+        ab = sums["AB"] or 1
+        hits = sums["H"]
+        walks = sums["BB"]
+        hbp = sums["HBP"]
+        singles = hits - sums["2B"] - sums["3B"] - sums["HR"]
+        tb = singles + 2 * sums["2B"] + 3 * sums["3B"] + 4 * sums["HR"]
+        totals = dict(sums)
+        if len(rows) == 1:
+            # Single season: mirror the source's own rate stats exactly rather than
+            # re-deriving them (the sim's OBP formula factors in things like SF that
+            # aren't in our export, so a recomputed value can be off by a rounding hair).
+            totals["AVG"] = float(rows[0]["AVG"])
+            totals["OBP"] = float(rows[0]["OBP"])
+            totals["SLG"] = float(rows[0]["SLG"])
+            totals["OPS"] = float(rows[0]["OPS"])
+        else:
+            avg = hits / ab
+            obp = (hits + walks + hbp) / (ab + walks + hbp) if (ab + walks + hbp) else 0
+            slg = tb / ab
+            totals["AVG"] = avg
+            totals["OBP"] = obp
+            totals["SLG"] = slg
+            totals["OPS"] = obp + slg
+        totals["WAR"] = round(war_sum, 1)
+        return totals
+
+    def compute_pitching_totals(rows):
+        if not rows:
+            return None
+        psums = defaultdict(float)
+        for r in rows:
+            for k in ["G", "GS", "CG", "SHO", "W", "L", "SV", "IP", "H", "R", "ER", "HR", "BB", "SO"]:
+                psums[k] += float(r.get(k) or 0)
+        war_sum = sum(float(r.get("WAR") or 0) for r in rows)
+        ip = psums["IP"] or 1
+        era = 9 * psums["ER"] / ip
+        whip = (psums["BB"] + psums["H"]) / ip
+        totals = dict(psums)
+        for k in ["G", "GS", "CG", "SHO", "W", "L", "SV", "H", "R", "ER", "HR", "BB", "SO"]:
+            totals[k] = int(totals[k])
+        totals["ERA"] = era
+        totals["WHIP"] = whip
+        totals["WAR"] = round(war_sum, 1)
+        return totals
+
+    def compute_fielding_totals(rows):
+        """Team fielding totals row. Straight column sums for counting stats,
+        with FPct and RF re-derived from the summed PO/A/E/Inn (the correct
+        way to combine rate stats, rather than averaging each player's own
+        FPct/RF). CERA is catcher-specific and not meaningfully combinable
+        across positions with the data available, so it's left blank."""
+        if not rows:
+            return None
+        sums = defaultdict(float)
+        for r in rows:
+            for k in ["GP", "GS", "Inn", "E", "PO", "A", "DP", "GoodPlays", "PoorPlays", "SB", "CS", "PB", "PK"]:
+                sums[k] += float(r.get(k) or 0)
+        totals = dict(sums)
+        po_a = sums["PO"] + sums["A"]
+        totals["FPct"] = (po_a / (po_a + sums["E"])) if (po_a + sums["E"]) else 0.0
+        totals["RF"] = (po_a / sums["Inn"] * 9) if sums["Inn"] else 0.0
+        for k in ["GP", "GS", "E", "PO", "A", "DP", "GoodPlays", "PoorPlays", "SB", "CS", "PB", "PK"]:
+            totals[k] = int(totals[k])
+        return totals
+
+    # --- Season stat-leader lookups, for bold (led league) / bold+italic (led
+    # all major leagues) notation on individual player stat lines, matching
+    # Baseball-Reference's team-page convention. Scoped to the same categories
+    # the site already tracks on its own Leaders pages, using the same
+    # qualifying-AB/IP thresholds as those pages.
+    LEADER_FIELDS_BAT = {
+        "AVG": {"qualify": "AB", "reverse": True},
+        "HR": {"qualify": None, "reverse": True},
+        "RBI": {"qualify": None, "reverse": True},
+        "R": {"qualify": None, "reverse": True},
+        "H": {"qualify": None, "reverse": True},
+        "SB": {"qualify": None, "reverse": True},
+        "OPS": {"qualify": "AB", "reverse": True},
+    }
+    LEADER_FIELDS_PIT = {
+        "W": {"qualify": None, "reverse": True},
+        "SO": {"qualify": None, "reverse": True},
+        "SV": {"qualify": None, "reverse": True},
+        "ERA": {"qualify": "IP", "reverse": False},
+        "WHIP": {"qualify": "IP", "reverse": False},
+    }
+
+    def season_qual_thresholds(season):
+        srows = all_standings[season]
+        if srows:
+            team_games = max((int(r["W"]) + int(r["L"]) for r in srows), default=162)
+        else:
+            live_games = [rec["W"] + rec["L"] for (abbr, s), rec in live_standings_by_season_team.items() if s == season]
+            team_games = max(live_games, default=162)
+        return int(round(3.1 * team_games)), team_games
+
+    season_leaders = {}
+    for season in seasons:
+        min_ab, min_ip = season_qual_thresholds(season)
+        entry = {}
+        for field, cfg in LEADER_FIELDS_BAT.items():
+            min_value = min_ab if cfg["qualify"] == "AB" else 0
+            pool = [r for r in all_batting[season] if r.get(field) not in (None, "")
+                    and (not cfg["qualify"] or float(r.get(cfg["qualify"]) or 0) >= min_value)]
+            pick = max if cfg["reverse"] else min
+            vals = {lg: pick([float(r[field]) for r in pool if r["Lg"] == lg], default=None) for lg in ("AA", "NL")}
+            vals["ALL"] = pick([float(r[field]) for r in pool], default=None) if pool else None
+            entry[field] = {**vals, "qualify": cfg["qualify"], "min": min_value}
+        for field, cfg in LEADER_FIELDS_PIT.items():
+            min_value = min_ip if cfg["qualify"] == "IP" else 0
+            pool = [r for r in all_pitching[season] if r.get(field) not in (None, "")
+                    and (not cfg["qualify"] or float(r.get(cfg["qualify"]) or 0) >= min_value)]
+            pick = max if cfg["reverse"] else min
+            vals = {lg: pick([float(r[field]) for r in pool if r["League"] == lg], default=None) for lg in ("AA", "NL")}
+            vals["ALL"] = pick([float(r[field]) for r in pool], default=None) if pool else None
+            entry[field] = {**vals, "qualify": cfg["qualify"], "min": min_value}
+        season_leaders[season] = entry
+
+    def stat_mark(season, league, field, value, qualifier_value=None):
+        """Returns 'mlb', 'league', or '' for template use in bolding/italicizing
+        a player's stat if it ties that season's league or all-majors leader."""
+        entry = season_leaders.get(season, {}).get(field)
+        if not entry or value in (None, ""):
+            return ""
+        value = float(value)
+        if entry["qualify"] and float(qualifier_value or 0) < entry["min"]:
+            return ""
+        all_leader = entry.get("ALL")
+        league_leader = entry.get(league)
+        if all_leader is not None and abs(value - all_leader) < 1e-9:
+            return "mlb"
+        if league_leader is not None and abs(value - league_leader) < 1e-9:
+            return "league"
+        return ""
+
+    env.globals["stat_mark"] = stat_mark
+
+
     # First pass: figure out which (season, abbr) pages will actually be built for each
     # franchise, so we can link "Prev Season" / "Next Season" across relocations too.
     franchise_season_pages = defaultdict(list)
@@ -390,6 +536,9 @@ def main():
             playoff_batters.sort(key=lambda r: -float(r["AVG"]) if r["AB"] and int(r["AB"]) > 0 else 0)
             playoff_pitchers = [r for r in all_ps_pitching.get(season, []) if r["Team"] == abbr]
             playoff_pitchers.sort(key=lambda r: -int(r["W"]))
+            batting_totals = compute_batting_totals(batters)
+            pitching_totals = compute_pitching_totals(pitchers)
+            fielding_totals = compute_fielding_totals(fielders)
             pages = franchise_season_pages[team["FranchiseID"]]
             idx = pages.index((season, abbr))
             prev_season = pages[idx - 1] if idx > 0 else None
@@ -400,6 +549,8 @@ def main():
                   prev_season=prev_season, next_season=next_season,
                   batters=batters, pitchers=pitchers,
                   fielders=fielders, schedule=schedule,
+                  batting_totals=batting_totals, pitching_totals=pitching_totals,
+                  fielding_totals=fielding_totals,
                   playoff_batters=playoff_batters, playoff_pitchers=playoff_pitchers)
 
     # --- Franchise hub pages (season-by-season across every era, e.g. Detroit -> Cleveland) ---
@@ -717,58 +868,6 @@ def main():
         pick_trades_by_season[season] = linked_list
 
 
-    def compute_batting_totals(rows):
-        if not rows:
-            return None
-        sums = defaultdict(int)
-        for r in rows:
-            for k in ["G", "AB", "R", "H", "2B", "3B", "HR", "RBI", "BB", "SO", "HBP", "SB", "CS"]:
-                sums[k] += int(r.get(k) or 0)
-        war_sum = sum(float(r.get("WAR") or 0) for r in rows)
-        ab = sums["AB"] or 1
-        hits = sums["H"]
-        walks = sums["BB"]
-        hbp = sums["HBP"]
-        singles = hits - sums["2B"] - sums["3B"] - sums["HR"]
-        tb = singles + 2 * sums["2B"] + 3 * sums["3B"] + 4 * sums["HR"]
-        totals = dict(sums)
-        if len(rows) == 1:
-            # Single season: mirror the source's own rate stats exactly rather than
-            # re-deriving them (the sim's OBP formula factors in things like SF that
-            # aren't in our export, so a recomputed value can be off by a rounding hair).
-            totals["AVG"] = float(rows[0]["AVG"])
-            totals["OBP"] = float(rows[0]["OBP"])
-            totals["SLG"] = float(rows[0]["SLG"])
-            totals["OPS"] = float(rows[0]["OPS"])
-        else:
-            avg = hits / ab
-            obp = (hits + walks + hbp) / (ab + walks + hbp) if (ab + walks + hbp) else 0
-            slg = tb / ab
-            totals["AVG"] = avg
-            totals["OBP"] = obp
-            totals["SLG"] = slg
-            totals["OPS"] = obp + slg
-        totals["WAR"] = round(war_sum, 1)
-        return totals
-
-    def compute_pitching_totals(rows):
-        if not rows:
-            return None
-        psums = defaultdict(float)
-        for r in rows:
-            for k in ["G", "GS", "CG", "SHO", "W", "L", "SV", "IP", "H", "R", "ER", "HR", "BB", "SO"]:
-                psums[k] += float(r.get(k) or 0)
-        war_sum = sum(float(r.get("WAR") or 0) for r in rows)
-        ip = psums["IP"] or 1
-        era = 9 * psums["ER"] / ip
-        whip = (psums["BB"] + psums["H"]) / ip
-        totals = dict(psums)
-        for k in ["G", "GS", "CG", "SHO", "W", "L", "SV", "H", "R", "ER", "HR", "BB", "SO"]:
-            totals[k] = int(totals[k])
-        totals["ERA"] = era
-        totals["WHIP"] = whip
-        totals["WAR"] = round(war_sum, 1)
-        return totals
 
     def build_display_rows(rows, totals_fn):
         """Group a player's rows by season; when a season has stints with more than
@@ -885,6 +984,9 @@ def main():
               fielding_rows=fielding_rows_for_player, fielding_career_by_pos=fielding_career_by_pos,
               transactions=transactions,
               is_placeholder=pdata.get("is_placeholder", False))
+
+    # --- WAR explanation page ---
+    write("war-explained.html", "war_explained.html")
 
     # --- League leaders pages ---
     def top_n(rows, key_field, n=10, reverse=True, min_field=None, min_value=0):

@@ -8,6 +8,13 @@
 </div>
 {% endblock %}
 {% block content %}
+{% macro statcell(season, league, field, value, fmt, qualifier=none) -%}
+{%- set m = stat_mark(season, league, field, value, qualifier) -%}
+{%- if m == 'mlb' -%}<strong><em>{{ fmt|format(value) }}</em></strong>
+{%- elif m == 'league' -%}<strong>{{ fmt|format(value) }}</strong>
+{%- else -%}{{ fmt|format(value) }}
+{%- endif -%}
+{%- endmacro %}
 <div class="team-bar" style="background: linear-gradient(90deg, {{ team.ColorPrimary }}, {{ team.ColorSecondary }});"></div>
 <h1 class="page-title">{{ season }} {{ team.FranchiseName }}</h1>
 {% if prev_season or next_season %}
@@ -55,24 +62,49 @@ Home {{ live_record.Home }} / Away {{ live_record.Away }}
     <tr>
         <th class="left">Player</th><th>B</th><th>G</th><th>AB</th><th>R</th><th>H</th>
         <th>2B</th><th>3B</th><th>HR</th><th>RBI</th><th>BB</th><th>SO</th><th>HBP</th>
-        <th>SB</th><th>CS</th><th>AVG</th><th>OBP</th><th>SLG</th><th>OPS</th><th>WAR</th>
+        <th>SB</th><th>CS</th><th>AVG</th><th>OBP</th><th>SLG</th><th>OPS</th>
+        <th><a href="{{ root }}war-explained.html">WAR</a></th>
     </tr>
     </thead>
     <tbody>
     {% for p in batters %}
     <tr>
         <td class="left" data-sort="{{ p.LastName }}"><a href="{{ root }}players/{{ p.PlayerID }}.html">{{ p.Player }}</a></td>
-        <td>{{ p.B }}</td><td>{{ p.G }}</td><td>{{ p.AB }}</td><td>{{ p.R }}</td><td>{{ p.H }}</td>
-        <td>{{ p['2B'] }}</td><td>{{ p['3B'] }}</td><td>{{ p.HR }}</td><td>{{ p.RBI }}</td>
-        <td>{{ p.BB }}</td><td>{{ p.SO }}</td><td>{{ p.HBP }}</td><td>{{ p.SB }}</td><td>{{ p.CS }}</td>
-        <td>{{ '%.3f'|format(p.AVG|float) }}</td><td>{{ '%.3f'|format(p.OBP|float) }}</td>
-        <td>{{ '%.3f'|format(p.SLG|float) }}</td><td>{{ '%.3f'|format(p.OPS|float) }}</td>
+        <td>{{ p.B }}</td><td>{{ p.G }}</td><td>{{ p.AB }}</td>
+        <td>{{ statcell(season, p.Lg, 'R', p.R|float, '%.0f') }}</td>
+        <td>{{ statcell(season, p.Lg, 'H', p.H|float, '%.0f') }}</td>
+        <td>{{ p['2B'] }}</td><td>{{ p['3B'] }}</td>
+        <td>{{ statcell(season, p.Lg, 'HR', p.HR|float, '%.0f') }}</td>
+        <td>{{ statcell(season, p.Lg, 'RBI', p.RBI|float, '%.0f') }}</td>
+        <td>{{ p.BB }}</td><td>{{ p.SO }}</td><td>{{ p.HBP }}</td>
+        <td>{{ statcell(season, p.Lg, 'SB', p.SB|float, '%.0f') }}</td><td>{{ p.CS }}</td>
+        <td>{{ statcell(season, p.Lg, 'AVG', p.AVG|float, '%.3f', p.AB|float) }}</td>
+        <td>{{ '%.3f'|format(p.OBP|float) }}</td>
+        <td>{{ '%.3f'|format(p.SLG|float) }}</td>
+        <td>{{ statcell(season, p.Lg, 'OPS', p.OPS|float, '%.3f', p.AB|float) }}</td>
         <td>{{ '%.1f'|format(p.WAR|float) if p.WAR is defined and p.WAR != '' else '' }}</td>
     </tr>
     {% endfor %}
     </tbody>
+    {% if batting_totals %}
+    <tfoot>
+    <tr style="font-weight:bold; background:#eef2f7;">
+        <td class="left">Team Totals</td><td>&mdash;</td>
+        <td>{{ batting_totals.G }}</td><td>{{ batting_totals.AB }}</td><td>{{ batting_totals.R }}</td><td>{{ batting_totals.H }}</td>
+        <td>{{ batting_totals['2B'] }}</td><td>{{ batting_totals['3B'] }}</td><td>{{ batting_totals.HR }}</td><td>{{ batting_totals.RBI }}</td>
+        <td>{{ batting_totals.BB }}</td><td>{{ batting_totals.SO }}</td><td>{{ batting_totals.HBP }}</td>
+        <td>{{ batting_totals.SB }}</td><td>{{ batting_totals.CS }}</td>
+        <td>{{ '%.3f'|format(batting_totals.AVG) }}</td><td>{{ '%.3f'|format(batting_totals.OBP) }}</td>
+        <td>{{ '%.3f'|format(batting_totals.SLG) }}</td><td>{{ '%.3f'|format(batting_totals.OPS) }}</td>
+        <td>{{ '%.1f'|format(batting_totals.WAR) }}</td>
+    </tr>
+    </tfoot>
+    {% endif %}
 </table>
 </div>
+<div class="standings-note"><strong>Bold</strong> season stats indicate the player led their league (AA or NL) that season.
+<strong><em>Bold italic</em></strong> season stats indicate the player led both major leagues that season.
+See <a href="{{ root }}war-explained.html">how WAR is calculated</a> on this site.</div>
 {% endif %}
 
 {% if pitchers %}
@@ -83,23 +115,47 @@ Home {{ live_record.Home }} / Away {{ live_record.Away }}
     <tr>
         <th class="left">Player</th><th>T</th><th>W</th><th>L</th><th>ERA</th><th>G</th><th>GS</th>
         <th>CG</th><th>SHO</th><th>SV</th><th>IP</th><th>H</th><th>R</th><th>ER</th>
-        <th>HR</th><th>BB</th><th>SO</th><th>WHIP</th><th>WAR</th>
+        <th>HR</th><th>BB</th><th>SO</th><th>WHIP</th>
+        <th><a href="{{ root }}war-explained.html">WAR</a></th>
     </tr>
     </thead>
     <tbody>
     {% for p in pitchers %}
     <tr>
         <td class="left" data-sort="{{ p.LastName }}"><a href="{{ root }}players/{{ p.PlayerID }}.html">{{ p.Player }}</a></td>
-        <td>{{ p.T }}</td><td>{{ p.W }}</td><td>{{ p.L }}</td><td>{{ '%.2f'|format(p.ERA|float) }}</td>
-        <td>{{ p.G }}</td><td>{{ p.GS }}</td><td>{{ p.CG }}</td><td>{{ p.SHO }}</td><td>{{ p.SV }}</td>
+        <td>{{ p.T }}</td>
+        <td>{{ statcell(season, p.League, 'W', p.W|float, '%.0f') }}</td>
+        <td>{{ p.L }}</td>
+        <td>{{ statcell(season, p.League, 'ERA', p.ERA|float, '%.2f', p.IP|float) }}</td>
+        <td>{{ p.G }}</td><td>{{ p.GS }}</td><td>{{ p.CG }}</td><td>{{ p.SHO }}</td>
+        <td>{{ statcell(season, p.League, 'SV', p.SV|float, '%.0f') }}</td>
         <td>{{ p.IP }}</td><td>{{ p.H }}</td><td>{{ p.R }}</td><td>{{ p.ER }}</td>
-        <td>{{ p.HR }}</td><td>{{ p.BB }}</td><td>{{ p.SO }}</td><td>{{ '%.2f'|format(p.WHIP|float) }}</td>
+        <td>{{ p.HR }}</td><td>{{ p.BB }}</td>
+        <td>{{ statcell(season, p.League, 'SO', p.SO|float, '%.0f') }}</td>
+        <td>{{ statcell(season, p.League, 'WHIP', p.WHIP|float, '%.2f', p.IP|float) }}</td>
         <td>{{ '%.1f'|format(p.WAR|float) if p.WAR is defined and p.WAR != '' else '' }}</td>
     </tr>
     {% endfor %}
     </tbody>
+    {% if pitching_totals %}
+    <tfoot>
+    <tr style="font-weight:bold; background:#eef2f7;">
+        <td class="left">Team Totals</td><td>&mdash;</td>
+        <td>{{ pitching_totals.W }}</td><td>{{ pitching_totals.L }}</td><td>{{ '%.2f'|format(pitching_totals.ERA) }}</td>
+        <td>{{ pitching_totals.G }}</td><td>{{ pitching_totals.GS }}</td><td>{{ pitching_totals.CG }}</td>
+        <td>{{ pitching_totals.SHO }}</td><td>{{ pitching_totals.SV }}</td>
+        <td>{{ '%.1f'|format(pitching_totals.IP) }}</td><td>{{ pitching_totals.H }}</td><td>{{ pitching_totals.R }}</td><td>{{ pitching_totals.ER }}</td>
+        <td>{{ pitching_totals.HR }}</td><td>{{ pitching_totals.BB }}</td><td>{{ pitching_totals.SO }}</td>
+        <td>{{ '%.2f'|format(pitching_totals.WHIP) }}</td>
+        <td>{{ '%.1f'|format(pitching_totals.WAR) }}</td>
+    </tr>
+    </tfoot>
+    {% endif %}
 </table>
 </div>
+<div class="standings-note"><strong>Bold</strong> season stats indicate the player led their league (AA or NL) that season.
+<strong><em>Bold italic</em></strong> season stats indicate the player led both major leagues that season.
+See <a href="{{ root }}war-explained.html">how WAR is calculated</a> on this site.</div>
 {% endif %}
 
 {% if fielders %}
@@ -126,8 +182,23 @@ Home {{ live_record.Home }} / Away {{ live_record.Away }}
     </tr>
     {% endfor %}
     </tbody>
+    {% if fielding_totals %}
+    <tfoot>
+    <tr style="font-weight:bold; background:#eef2f7;">
+        <td class="left">Team Totals</td><td>&mdash;</td>
+        <td>{{ fielding_totals.GP }}</td><td>{{ fielding_totals.GS }}</td><td>{{ '%.1f'|format(fielding_totals.Inn) }}</td>
+        <td>{{ fielding_totals.E }}</td><td>{{ fielding_totals.PO }}</td><td>{{ fielding_totals.A }}</td><td>{{ fielding_totals.DP }}</td>
+        <td>{{ '%.3f'|format(fielding_totals.FPct) }}</td><td>{{ '%.2f'|format(fielding_totals.RF) }}</td>
+        <td>{{ fielding_totals.SB }}</td><td>{{ fielding_totals.CS }}</td><td>&mdash;</td>
+        <td>{{ fielding_totals.PB }}</td><td>{{ fielding_totals.PK }}</td>
+    </tr>
+    </tfoot>
+    {% endif %}
 </table>
 </div>
+<div class="standings-note">Team Totals: counting stats are column sums; F.Pct and RF are re-derived from the
+summed PO/A/E/Inn (not averaged per player). C.ERA isn't shown for the team total since it's specific to
+each individual catcher's time behind the plate and isn't meaningfully combinable across players.</div>
 {% endif %}
 
 {% if playoff_batters %}
