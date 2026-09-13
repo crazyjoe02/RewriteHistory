@@ -41,7 +41,7 @@
     <tr>
         <th>Year</th><th class="left">Team</th><th>Lg</th><th>G</th><th>AB</th><th>R</th><th>H</th>
         <th>2B</th><th>3B</th><th>HR</th><th>RBI</th><th>BB</th><th>SO</th><th>SB</th><th>CS</th>
-        <th>AVG</th><th>OBP</th><th>SLG</th><th>OPS</th>
+        <th>AVG</th><th>OBP</th><th>SLG</th><th>OPS</th><th>WAR</th>
     </tr>
     </thead>
     <tbody>
@@ -59,6 +59,7 @@
         <td>{{ r.BB }}</td><td>{{ r.SO }}</td><td>{{ r.SB }}</td><td>{{ r.CS }}</td>
         <td>{{ '%.3f'|format(r.AVG|float) }}</td><td>{{ '%.3f'|format(r.OBP|float) }}</td>
         <td>{{ '%.3f'|format(r.SLG|float) }}</td><td>{{ '%.3f'|format(r.OPS|float) }}</td>
+        <td>{{ '%.1f'|format(r.WAR|float) if r.WAR is defined and r.WAR != '' else '' }}</td>
     </tr>
     {% endfor %}
     {% if batting_career %}
@@ -70,6 +71,7 @@
         <td>{{ batting_career.SB }}</td><td>{{ batting_career.CS }}</td>
         <td>{{ '%.3f'|format(batting_career.AVG) }}</td><td>{{ '%.3f'|format(batting_career.OBP) }}</td>
         <td>{{ '%.3f'|format(batting_career.SLG) }}</td><td>{{ '%.3f'|format(batting_career.OPS) }}</td>
+        <td>{{ '%.1f'|format(batting_career.WAR) if batting_career.WAR is defined else '' }}</td>
     </tr>
     {% endif %}
     </tbody>
@@ -85,7 +87,7 @@
     <tr>
         <th>Year</th><th class="left">Team</th><th>Lg</th><th>W</th><th>L</th><th>ERA</th><th>G</th>
         <th>GS</th><th>CG</th><th>SHO</th><th>SV</th><th>IP</th><th>H</th><th>R</th><th>ER</th>
-        <th>BB</th><th>SO</th><th>WHIP</th>
+        <th>BB</th><th>SO</th><th>WHIP</th><th>WAR</th>
     </tr>
     </thead>
     <tbody>
@@ -103,6 +105,7 @@
         <td>{% if r._combined %}{{ '%.1f'|format(r.IP) }}{% else %}{{ r.IP }}{% endif %}</td>
         <td>{{ r.H }}</td><td>{{ r.R }}</td><td>{{ r.ER }}</td>
         <td>{{ r.BB }}</td><td>{{ r.SO }}</td><td>{{ '%.2f'|format(r.WHIP|float) }}</td>
+        <td>{{ '%.1f'|format(r.WAR|float) if r.WAR is defined and r.WAR != '' else '' }}</td>
     </tr>
     {% endfor %}
     {% if pitching_career %}
@@ -114,6 +117,7 @@
         <td>{{ '%.1f'|format(pitching_career.IP) }}</td><td>{{ pitching_career.H }}</td><td>{{ pitching_career.R }}</td>
         <td>{{ pitching_career.ER }}</td><td>{{ pitching_career.BB }}</td><td>{{ pitching_career.SO }}</td>
         <td>{{ '%.2f'|format(pitching_career.WHIP) }}</td>
+        <td>{{ '%.1f'|format(pitching_career.WAR) if pitching_career.WAR is defined else '' }}</td>
     </tr>
     {% endif %}
     </tbody>

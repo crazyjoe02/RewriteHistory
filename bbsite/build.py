@@ -724,6 +724,7 @@ def main():
         for r in rows:
             for k in ["G", "AB", "R", "H", "2B", "3B", "HR", "RBI", "BB", "SO", "HBP", "SB", "CS"]:
                 sums[k] += int(r.get(k) or 0)
+        war_sum = sum(float(r.get("WAR") or 0) for r in rows)
         ab = sums["AB"] or 1
         hits = sums["H"]
         walks = sums["BB"]
@@ -747,6 +748,7 @@ def main():
             totals["OBP"] = obp
             totals["SLG"] = slg
             totals["OPS"] = obp + slg
+        totals["WAR"] = round(war_sum, 1)
         return totals
 
     def compute_pitching_totals(rows):
@@ -756,6 +758,7 @@ def main():
         for r in rows:
             for k in ["G", "GS", "CG", "SHO", "W", "L", "SV", "IP", "H", "R", "ER", "HR", "BB", "SO"]:
                 psums[k] += float(r.get(k) or 0)
+        war_sum = sum(float(r.get("WAR") or 0) for r in rows)
         ip = psums["IP"] or 1
         era = 9 * psums["ER"] / ip
         whip = (psums["BB"] + psums["H"]) / ip
@@ -764,6 +767,7 @@ def main():
             totals[k] = int(totals[k])
         totals["ERA"] = era
         totals["WHIP"] = whip
+        totals["WAR"] = round(war_sum, 1)
         return totals
 
     def build_display_rows(rows, totals_fn):
@@ -926,9 +930,11 @@ def main():
             {"label": "Hits", "rows": fmt_rows(top_n(batting_rows, "H"), "H", "{:.0f}")},
             {"label": "SB", "rows": fmt_rows(top_n(batting_rows, "SB"), "SB", "{:.0f}")},
             {"label": "OPS", "rows": fmt_rows(top_n(batting_rows, "OPS", min_field="AB", min_value=min_ab), "OPS", "{:.3f}")},
+            {"label": "WAR", "rows": fmt_rows(top_n(batting_rows, "WAR"), "WAR", "{:.1f}")},
         ]
         pitching_categories = [
             {"label": "Wins", "rows": fmt_rows(top_n(pitching_rows, "W"), "W", "{:.0f}")},
+            {"label": "WAR", "rows": fmt_rows(top_n(pitching_rows, "WAR"), "WAR", "{:.1f}")},
             {"label": "ERA", "rows": fmt_rows(top_n(pitching_rows, "ERA", reverse=False, min_field="IP", min_value=min_ip), "ERA", "{:.2f}")},
             {"label": "Strikeouts", "rows": fmt_rows(top_n(pitching_rows, "SO"), "SO", "{:.0f}")},
             {"label": "Saves", "rows": fmt_rows(top_n(pitching_rows, "SV"), "SV", "{:.0f}")},
@@ -980,9 +986,11 @@ def main():
         {"label": "Hits", "rows": fmt_rows(top_n(career_batting_pool, "H"), "H", "{:.0f}")},
         {"label": "SB", "rows": fmt_rows(top_n(career_batting_pool, "SB"), "SB", "{:.0f}")},
         {"label": "OPS", "rows": fmt_rows(top_n(career_batting_pool, "OPS", min_field="AB", min_value=career_min_ab), "OPS", "{:.3f}")},
+        {"label": "WAR", "rows": fmt_rows(top_n(career_batting_pool, "WAR"), "WAR", "{:.1f}")},
     ]
     career_pitching_categories = [
         {"label": "Wins", "rows": fmt_rows(top_n(career_pitching_pool, "W"), "W", "{:.0f}")},
+        {"label": "WAR", "rows": fmt_rows(top_n(career_pitching_pool, "WAR"), "WAR", "{:.1f}")},
         {"label": "ERA", "rows": fmt_rows(top_n(career_pitching_pool, "ERA", reverse=False, min_field="IP", min_value=career_min_ip), "ERA", "{:.2f}")},
         {"label": "Strikeouts", "rows": fmt_rows(top_n(career_pitching_pool, "SO"), "SO", "{:.0f}")},
         {"label": "Saves", "rows": fmt_rows(top_n(career_pitching_pool, "SV"), "SV", "{:.0f}")},

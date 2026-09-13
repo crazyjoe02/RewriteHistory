@@ -55,7 +55,7 @@ Home {{ live_record.Home }} / Away {{ live_record.Away }}
     <tr>
         <th class="left">Player</th><th>B</th><th>G</th><th>AB</th><th>R</th><th>H</th>
         <th>2B</th><th>3B</th><th>HR</th><th>RBI</th><th>BB</th><th>SO</th><th>HBP</th>
-        <th>SB</th><th>CS</th><th>AVG</th><th>OBP</th><th>SLG</th><th>OPS</th>
+        <th>SB</th><th>CS</th><th>AVG</th><th>OBP</th><th>SLG</th><th>OPS</th><th>WAR</th>
     </tr>
     </thead>
     <tbody>
@@ -67,6 +67,7 @@ Home {{ live_record.Home }} / Away {{ live_record.Away }}
         <td>{{ p.BB }}</td><td>{{ p.SO }}</td><td>{{ p.HBP }}</td><td>{{ p.SB }}</td><td>{{ p.CS }}</td>
         <td>{{ '%.3f'|format(p.AVG|float) }}</td><td>{{ '%.3f'|format(p.OBP|float) }}</td>
         <td>{{ '%.3f'|format(p.SLG|float) }}</td><td>{{ '%.3f'|format(p.OPS|float) }}</td>
+        <td>{{ '%.1f'|format(p.WAR|float) if p.WAR is defined and p.WAR != '' else '' }}</td>
     </tr>
     {% endfor %}
     </tbody>
@@ -82,7 +83,7 @@ Home {{ live_record.Home }} / Away {{ live_record.Away }}
     <tr>
         <th class="left">Player</th><th>T</th><th>W</th><th>L</th><th>ERA</th><th>G</th><th>GS</th>
         <th>CG</th><th>SHO</th><th>SV</th><th>IP</th><th>H</th><th>R</th><th>ER</th>
-        <th>HR</th><th>BB</th><th>SO</th><th>WHIP</th>
+        <th>HR</th><th>BB</th><th>SO</th><th>WHIP</th><th>WAR</th>
     </tr>
     </thead>
     <tbody>
@@ -93,6 +94,7 @@ Home {{ live_record.Home }} / Away {{ live_record.Away }}
         <td>{{ p.G }}</td><td>{{ p.GS }}</td><td>{{ p.CG }}</td><td>{{ p.SHO }}</td><td>{{ p.SV }}</td>
         <td>{{ p.IP }}</td><td>{{ p.H }}</td><td>{{ p.R }}</td><td>{{ p.ER }}</td>
         <td>{{ p.HR }}</td><td>{{ p.BB }}</td><td>{{ p.SO }}</td><td>{{ '%.2f'|format(p.WHIP|float) }}</td>
+        <td>{{ '%.1f'|format(p.WAR|float) if p.WAR is defined and p.WAR != '' else '' }}</td>
     </tr>
     {% endfor %}
     </tbody>

@@ -25582,7 +25582,7 @@
       "era": "4.84"
      },
      {
-      "player": "Unknown Palmer",
+      "player": "Billy Palmer",
       "decision": "",
       "ip": "0.2",
       "h": 1,
@@ -26221,7 +26221,7 @@
      "J.Morrill moves to 1B.",
      "S.Thompson moves to LF.",
      "B.Cramer lines out to 2B.",
-     "U.Palmer enters the game to pitch.",
+     "B.Palmer enters the game to pitch.",
      "S.Farrar pops out to SS.",
      "D.Page grounds it thru the hole to RF for a single.",
      "B.Kuehne strikes out looking."
@@ -30384,7 +30384,7 @@
       "cs": 0
      },
      {
-      "player": "Unknown Palmer",
+      "player": "Billy Palmer",
       "pos": "P",
       "ab": 0,
       "r": 0,
@@ -30667,7 +30667,7 @@
       "era": "4.02"
      },
      {
-      "player": "Unknown Palmer",
+      "player": "Billy Palmer",
       "decision": "L (0-1)",
       "ip": "1.0",
       "h": 2,
@@ -31170,7 +31170,7 @@
     "half": "Bottom",
     "team": "BSN",
     "plays": [
-     "U.Palmer enters the game to pitch.",
+     "B.Palmer enters the game to pitch.",
      "P.Smith grounds it thru the hole to RCF for a single.",
      "E.Andrews takes ball four.",
      "S.Houck pops out to 2B.",
@@ -51278,7 +51278,7 @@
       "cs": 0
      },
      {
-      "player": "Martin Powell",
+      "player": "Jim Powell",
       "pos": "1B",
       "ab": 0,
       "r": 1,
@@ -51520,7 +51520,7 @@
      "2B": "J.Coleman (1)",
      "3B": "F.Fennelly (2), B.Purcell (2)",
      "RBI": "F.Fennelly 3 (8), M.Phillips (1), B.Purcell 3 (11), J.O'Brien (1), F.Corey (3), C.Reipschlager 2 (2)",
-     "HBP": "M.Powell",
+     "HBP": "J.Powell",
      "SF": "M.Phillips",
      "SH": "B.Mathews",
      "SB": "F.Fennelly (3), F.Corey (3)",
@@ -52276,7 +52276,7 @@
      "A.Myers enters the game at 2B to rest the starter.",
      "D.Casey enters the game at CF to rest the starter.",
      "T.Manning enters the game at 3B to rest the starter.",
-     "M.Powell enters the game at 1B to rest the starter.",
+     "J.Powell enters the game at 1B to rest the starter.",
      "C.Sane enters the game as a pinch-hitter for G.Pechiney.",
      "C.Sane pops out to 3B.",
      "B.Gleason flies out down the LF line.",
@@ -52304,10 +52304,10 @@
     "plays": [
      "B.Emslie enters the game to pitch.",
      "B.Mathews grounds it past the mound into CF for a single.",
-     "M.Powell is drilled in the arm by a pitch.",
+     "J.Powell is drilled in the arm by a pitch.",
      "J.Coleman draws the walk.",
      "D.Casey hits into a 5-2 fielder's choice.",
-     "B.Emslie lets one get away and all runners advance on the wild pitch. M.Powell scores.",
+     "B.Emslie lets one get away and all runners advance on the wild pitch. J.Powell scores.",
      "M.Phillips flies out to RCF. P.Radford's throw is off the mark up the 1B line and J.Coleman scores.",
      "B.Purcell grounds out to SS."
     ],
@@ -88393,7 +88393,7 @@
       "cs": 0
      },
      {
-      "player": "Martin Powell",
+      "player": "Jim Powell",
       "pos": "1B",
       "ab": 4,
       "r": 1,
@@ -88560,7 +88560,7 @@
      "2B": "D.Casey (1)",
      "RBI": "D.Casey 3 (3)",
      "SH": "T.Lynch",
-     "SB": "H.Stovey 3 (12), M.Powell (1), F.Fennelly 2 (7)",
+     "SB": "H.Stovey 3 (12), J.Powell (1), F.Fennelly 2 (7)",
      "CS": "G.Strief (1)",
      "E": "H.Stovey (2), F.Fennelly (11)"
     }
@@ -88691,11 +88691,11 @@
     "plays": [
      "M.Welch enters the game to pitch.",
      "H.Stovey grounds out to the catcher.",
-     "M.Powell walks.",
-     "M.Powell steals second base.",
+     "J.Powell walks.",
+     "J.Powell steals second base.",
      "H.Larkin walks.",
      "T.Brown botches a routine flyball and F.Fennelly reaches on the error.",
-     "D.Casey lines a single to CF. M.Powell scores. H.Larkin scores.",
+     "D.Casey lines a single to CF. J.Powell scores. H.Larkin scores.",
      "C.Reipschlager walks.",
      "T.Manning strikes out on a ball out of the zone.",
      "G.Strief hits a grounder to the 3B who steps on the bag for the force."
@@ -88749,7 +88749,7 @@
      "B.Mathews grounds out to 3B.",
      "H.Stovey draws the walk.",
      "H.Stovey swipes 2B.",
-     "M.Powell fouls out to the C on the 3B side.",
+     "J.Powell fouls out to the C on the 3B side.",
      "H.Larkin hits a shallow flyout to LCF."
     ],
     "score_after": {
@@ -88856,7 +88856,7 @@
      "H.Stovey hits a line drive single to CF.",
      "H.Stovey swipes 2B.",
      "H.Stovey steals third base.",
-     "M.Powell swings and misses for strike 3.",
+     "J.Powell swings and misses for strike 3.",
      "H.Larkin grounds out to SS."
     ],
     "score_after": {
@@ -89010,7 +89010,7 @@
     "half": "Bottom",
     "team": "PAT",
     "plays": [
-     "M.Powell hits an infield single to 1B.",
+     "J.Powell hits an infield single to 1B.",
      "H.Larkin flies out to LF.",
      "F.Pfeffer can't handle a groundball and F.Fennelly reaches on the error.",
      "D.Casey hits into a 6-4 fielder's choice.",
@@ -89113,7 +89113,7 @@
     "team": "PAT",
     "plays": [
      "A.Molina enters the game to pitch.",
-     "M.Powell pops out to 1B.",
+     "J.Powell pops out to 1B.",
      "H.Larkin strikes out on a ball out of the zone.",
      "F.Fennelly hits a shallow flyout to CF."
     ],
@@ -108017,7 +108017,7 @@
       "cs": 0
      },
      {
-      "player": "Martin Powell",
+      "player": "Jim Powell",
       "pos": "1B",
       "ab": 5,
       "r": 0,
@@ -108450,7 +108450,7 @@
      "H.Henderson enters the game to pitch.",
      "H.Stovey walks.",
      "H.Stovey steals second base.",
-     "M.Powell lays down a sacrifice bunt to 3B. All runners advance.",
+     "J.Powell lays down a sacrifice bunt to 3B. All runners advance.",
      "H.Larkin hits a bloop double down the rightfield line. H.Stovey scores.",
      "N.Hanlon misplays a deep drive and F.Fennelly reaches via the 2-base error. H.Larkin scores.",
      "D.Casey grounds out to 1B.",
@@ -108505,7 +108505,7 @@
      "C.Reipschlager hits a line drive double to CF.",
      "B.Mathews grounds out to the catcher.",
      "H.Stovey is intentionally walked.",
-     "M.Powell pops out to 3B."
+     "J.Powell pops out to 3B."
     ],
     "score_after": {
      "away": {
@@ -108608,7 +108608,7 @@
      "C.Reipschlager strikes out on a ball out of the zone.",
      "B.Mathews pops out to SS.",
      "H.Stovey crushes a solo homer to LCF.",
-     "M.Powell hits a shallow flyout to CF."
+     "J.Powell hits a shallow flyout to CF."
     ],
     "score_after": {
      "away": {
@@ -108687,7 +108687,7 @@
     "half": "Top",
     "team": "PAT",
     "plays": [
-     "M.Powell swings and misses for strike 3.",
+     "J.Powell swings and misses for strike 3.",
      "H.Larkin lines a single to LF.",
      "H.Larkin swipes 2B.",
      "F.Fennelly takes ball four.",
@@ -108748,7 +108748,7 @@
      "J.Connor enters the game to pitch.",
      "B.Mathews pops out to 2B.",
      "H.Stovey grounds out to 2B.",
-     "M.Powell pops out to 3B."
+     "J.Powell pops out to 3B."
     ],
     "score_after": {
      "away": {
@@ -108851,7 +108851,7 @@
      "C.Reipschlager hits an infield single to 2B.",
      "B.Mathews flies out to CF.",
      "H.Stovey hits into a 3-6 fielder's choice.",
-     "M.Powell grounds it thru the hole to RF for a single.",
+     "J.Powell grounds it thru the hole to RF for a single.",
      "H.Larkin flies out to LF."
     ],
     "score_after": {
@@ -146489,7 +146489,7 @@
       "cs": 0
      },
      {
-      "player": "Unknown Palmer",
+      "player": "Billy Palmer",
       "pos": "P",
       "ab": 0,
       "r": 0,
@@ -146643,7 +146643,7 @@
       "era": "5.86"
      },
      {
-      "player": "Unknown Palmer",
+      "player": "Billy Palmer",
       "decision": "",
       "ip": "2.0",
       "h": 4,
@@ -146871,7 +146871,7 @@
     "half": "Top",
     "team": "NYG",
     "plays": [
-     "U.Palmer enters the game to pitch.",
+     "B.Palmer enters the game to pitch.",
      "E.Daily hits a line drive double to LF.",
      "D.McGuire can't handle the pitch and is charged with a passed ball. All runners advance.",
      "J.Ward grounds out to 1B. E.Daily scores.",
