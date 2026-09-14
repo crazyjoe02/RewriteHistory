@@ -491,6 +491,10 @@ def main():
     def stat_mark(season, league, field, value, qualifier_value=None):
         """Returns 'mlb', 'league', or '' for template use in bolding/italicizing
         a player's stat if it ties that season's league or all-majors leader."""
+        try:
+            season = int(season)
+        except (TypeError, ValueError):
+            return ""
         entry = season_leaders.get(season, {}).get(field)
         if not entry or value in (None, ""):
             return ""

@@ -4,6 +4,13 @@
 <div class="breadcrumb"><a href="{{ root }}index.html">Home</a> &rsaquo; {{ player_name }}</div>
 {% endblock %}
 {% block content %}
+{% macro statcell(season, league, field, value, fmt, qualifier=none) -%}
+{%- set m = stat_mark(season, league, field, value, qualifier) -%}
+{%- if m == 'mlb' -%}<strong><em>{{ fmt|format(value) }}</em></strong>
+{%- elif m == 'league' -%}<strong>{{ fmt|format(value) }}</strong>
+{%- else -%}{{ fmt|format(value) }}
+{%- endif -%}
+{%- endmacro %}
 <div style="display:flex; align-items:flex-start; gap:16px; flex-wrap:wrap;">
 {% if photo_url %}
 <img src="{{ photo_url }}" alt="{{ player_name }}" style="max-width:150px; flex-shrink:0; border:1px solid #ccc;">
@@ -54,11 +61,18 @@
         <td class="left"><a href="{{ root }}teams/{{ r.Team }}/{{ r.SN }}.html">{{ r.Team }}</a></td>
         <td>{{ r.Lg }}</td>
         {% endif %}
-        <td>{{ r.G }}</td><td>{{ r.AB }}</td><td>{{ r.R }}</td><td>{{ r.H }}</td>
-        <td>{{ r['2B'] }}</td><td>{{ r['3B'] }}</td><td>{{ r.HR }}</td><td>{{ r.RBI }}</td>
-        <td>{{ r.BB }}</td><td>{{ r.SO }}</td><td>{{ r.SB }}</td><td>{{ r.CS }}</td>
-        <td>{{ '%.3f'|format(r.AVG|float) }}</td><td>{{ '%.3f'|format(r.OBP|float) }}</td>
-        <td>{{ '%.3f'|format(r.SLG|float) }}</td><td>{{ '%.3f'|format(r.OPS|float) }}</td>
+        <td>{{ r.G }}</td><td>{{ r.AB }}</td>
+        <td>{{ statcell(r.SN, r.Lg if r.Lg is defined else '', 'R', r.R|float, '%.0f') }}</td>
+        <td>{{ statcell(r.SN, r.Lg if r.Lg is defined else '', 'H', r.H|float, '%.0f') }}</td>
+        <td>{{ r['2B'] }}</td><td>{{ r['3B'] }}</td>
+        <td>{{ statcell(r.SN, r.Lg if r.Lg is defined else '', 'HR', r.HR|float, '%.0f') }}</td>
+        <td>{{ statcell(r.SN, r.Lg if r.Lg is defined else '', 'RBI', r.RBI|float, '%.0f') }}</td>
+        <td>{{ r.BB }}</td><td>{{ r.SO }}</td>
+        <td>{{ statcell(r.SN, r.Lg if r.Lg is defined else '', 'SB', r.SB|float, '%.0f') }}</td><td>{{ r.CS }}</td>
+        <td>{{ statcell(r.SN, r.Lg if r.Lg is defined else '', 'AVG', r.AVG|float, '%.3f', r.AB|float) }}</td>
+        <td>{{ '%.3f'|format(r.OBP|float) }}</td>
+        <td>{{ '%.3f'|format(r.SLG|float) }}</td>
+        <td>{{ statcell(r.SN, r.Lg if r.Lg is defined else '', 'OPS', r.OPS|float, '%.3f', r.AB|float) }}</td>
         <td>{{ '%.1f'|format(r.WAR|float) if r.WAR is defined and r.WAR != '' else '' }}</td>
     </tr>
     {% endfor %}
@@ -77,8 +91,10 @@
     </tbody>
 </table>
 </div>
+<div class="standings-note"><strong>Bold</strong> season stats indicate the player led their league (AA or NL) that season.
+<strong><em>Bold italic</em></strong> season stats indicate the player led both major leagues that season.
+See <a href="{{ root }}war-explained.html">how WAR is calculated</a> on this site.</div>
 {% endif %}
-
 {% if pitching_rows %}
 <h2 class="section-title">Pitching</h2>
 <div class="table-wrap">
@@ -100,11 +116,16 @@
         <td class="left"><a href="{{ root }}teams/{{ r.Team }}/{{ r.SN }}.html">{{ r.Team }}</a></td>
         <td>{{ r.League }}</td>
         {% endif %}
-        <td>{{ r.W }}</td><td>{{ r.L }}</td><td>{{ '%.2f'|format(r.ERA|float) }}</td>
-        <td>{{ r.G }}</td><td>{{ r.GS }}</td><td>{{ r.CG }}</td><td>{{ r.SHO }}</td><td>{{ r.SV }}</td>
+        <td>{{ statcell(r.SN, r.League if r.League is defined else '', 'W', r.W|float, '%.0f') }}</td>
+        <td>{{ r.L }}</td>
+        <td>{{ statcell(r.SN, r.League if r.League is defined else '', 'ERA', r.ERA|float, '%.2f', r.IP|float) }}</td>
+        <td>{{ r.G }}</td><td>{{ r.GS }}</td><td>{{ r.CG }}</td><td>{{ r.SHO }}</td>
+        <td>{{ statcell(r.SN, r.League if r.League is defined else '', 'SV', r.SV|float, '%.0f') }}</td>
         <td>{% if r._combined %}{{ '%.1f'|format(r.IP) }}{% else %}{{ r.IP }}{% endif %}</td>
         <td>{{ r.H }}</td><td>{{ r.R }}</td><td>{{ r.ER }}</td>
-        <td>{{ r.BB }}</td><td>{{ r.SO }}</td><td>{{ '%.2f'|format(r.WHIP|float) }}</td>
+        <td>{{ r.BB }}</td>
+        <td>{{ statcell(r.SN, r.League if r.League is defined else '', 'SO', r.SO|float, '%.0f') }}</td>
+        <td>{{ statcell(r.SN, r.League if r.League is defined else '', 'WHIP', r.WHIP|float, '%.2f', r.IP|float) }}</td>
         <td>{{ '%.1f'|format(r.WAR|float) if r.WAR is defined and r.WAR != '' else '' }}</td>
     </tr>
     {% endfor %}
@@ -123,6 +144,9 @@
     </tbody>
 </table>
 </div>
+<div class="standings-note"><strong>Bold</strong> season stats indicate the player led their league (AA or NL) that season.
+<strong><em>Bold italic</em></strong> season stats indicate the player led both major leagues that season.
+See <a href="{{ root }}war-explained.html">how WAR is calculated</a> on this site.</div>
 {% endif %}
 
 {% if ps_batting_rows %}
