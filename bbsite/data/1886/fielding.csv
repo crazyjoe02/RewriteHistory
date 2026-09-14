@@ -171,9 +171,9 @@ Player,Team,Lg,SN,Pos,GP,GS,Inn,E,PO,A,DP,GoodPlays,PoorPlays,FPct,RF,SB,CS,CERA
 "Healy, John",LOU,AA,1886,P,12,0,20,0,3,1,0,0,0,1,1.8,2,3,0,0,0
 "Brown, Tom",LOU,AA,1886,LF,2,2,18.3,1,5,0,0,0,0,0.833,2.45,0,0,0,0,0
 "Roseman, Chief",LOU,AA,1886,RF,2,2,16.3,0,4,0,0,0,0,1,2.2,0,0,0,0,0
-"White, Bill ",LOU,AA,1886,SS,7,1,16,0,7,3,0,0,0,1,5.63,0,0,0,0,0
+"White, Bill",LOU,AA,1886,SS,7,1,16,0,7,3,0,0,0,1,5.63,0,0,0,0,0
 "Strauss, Joe",LOU,AA,1886,C,4,0,9,0,4,1,0,0,0,1,5,1,1,3,0,0
-"White, Bill ",LOU,AA,1886,1B,1,1,9,0,6,1,0,0,0,1,7,0,0,0,0,0
+"White, Bill",LOU,AA,1886,1B,1,1,9,0,6,1,0,0,0,1,7,0,0,0,0,0
 "Gilligan, Barney",LOU,AA,1886,C,1,1,9,0,1,1,0,0,0,1,2,0,0,0,0,0
 "Glenn, Ed",LOU,AA,1886,RF,4,0,8,0,1,0,0,0,0,1,1.13,0,0,0,0,0
 "Glasscock, Jack",LOU,AA,1886,LF,1,1,8,0,4,0,0,0,0,1,4.5,0,0,0,0,0
@@ -199,7 +199,7 @@ Player,Team,Lg,SN,Pos,GP,GS,Inn,E,PO,A,DP,GoodPlays,PoorPlays,FPct,RF,SB,CS,CERA
 "O'Neill, Tip",NYG,NL,1886,CF,8,8,67,6,22,0,0,2,0,0.786,2.96,0,0,0,0,0
 "Gillespie, Pete",NYG,NL,1886,CF,7,7,64,3,18,0,0,0,2,0.857,2.53,0,0,0,0,0
 "O'Neill, Tip",NYG,NL,1886,LF,7,7,64,0,20,0,0,0,0,1,2.81,0,0,0,0,0
-"Burdock, Jack (AAA)",NYG,NL,1886,2B,7,7,63,1,28,26,3,0,0,0.982,7.71,0,0,0,0,0
+"Burdock, Jack",NYG,NL,1886,2B,7,7,63,1,28,26,3,0,0,0.982,7.71,0,0,0,0,0
 "Daily, Ed",NYG,NL,1886,P,6,0,34.7,0,2,7,0,0,0,1,2.34,7,3,0,0,0
 "Tate, Pop",NYG,NL,1886,C,3,3,24,1,9,1,0,0,0,0.909,3.75,8,1,3.75,2,0
 "Decker, Harry",NYG,NL,1886,C,2,2,18,0,11,3,0,0,0,1,7,1,3,0,0,0
