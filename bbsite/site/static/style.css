@@ -106,8 +106,7 @@ h1.page-title {
 }
 .masthead-image {
     display: block;
-    width: 792px;
-    max-width: 100%;
+    width: 100%;
     height: auto;
     margin: 6px auto 12px auto;
 }
