@@ -25,6 +25,14 @@ a:hover { text-decoration: underline; color: #6622CC; }
     font-size: 20px;
     font-weight: bold;
     letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+}
+.site-header a.brand img {
+    height: 54px;
+    width: auto;
+    display: block;
+    border-radius: 2px;
 }
 .site-header nav a {
     color: #cfe0f4;
