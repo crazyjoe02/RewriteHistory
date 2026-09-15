@@ -296,9 +296,15 @@ table.stats tfoot td {
 /* Team grid on home page */
 .team-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 10px;
     margin-top: 10px;
+}
+@media (max-width: 820px) {
+    .team-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+    .team-grid { grid-template-columns: 1fr; }
 }
 .team-card {
     border: 1px solid #cdd7e0;
