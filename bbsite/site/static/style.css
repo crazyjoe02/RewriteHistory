@@ -25,14 +25,6 @@ a:hover { text-decoration: underline; color: #6622CC; }
     font-size: 20px;
     font-weight: bold;
     letter-spacing: 0.5px;
-    display: flex;
-    align-items: center;
-}
-.site-header a.brand img {
-    height: 54px;
-    width: auto;
-    display: block;
-    border-radius: 2px;
 }
 .site-header nav a {
     color: #cfe0f4;
@@ -111,6 +103,13 @@ h1.page-title {
     margin: 6px 0 2px 0;
     border-bottom: 2px solid #002950;
     padding-bottom: 6px;
+}
+.masthead-image {
+    display: block;
+    width: 792px;
+    max-width: 100%;
+    height: auto;
+    margin: 6px auto 12px auto;
 }
 .subtitle {
     color: #555;
