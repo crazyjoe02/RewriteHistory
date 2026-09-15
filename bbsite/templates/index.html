@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 {% block title %}Home{% endblock %}
 {% block content %}
-<img class="masthead-image" src="{{ root }}static/masthead.jpg" alt="Rewrite History Reference">
 {% if postseason %}
 <div class="champion-banner">
     <svg class="champion-cup-icon" width="42" height="49" viewBox="0 0 60 70" xmlns="http://www.w3.org/2000/svg">
@@ -27,6 +26,7 @@
     </div>
 </div>
 {% endif %}
+<img class="masthead-image" src="{{ root }}static/masthead.jpg" alt="Rewrite History Reference">
 <div class="subtitle">Reimagined major league baseball history, {{ first_season }}&ndash;present. Currently through the {{ latest_season }} season.</div>
 
 <h2 class="section-title">{{ latest_season }} {% if is_preseason %}Franchises{% elif is_live %}Standings{% else %}Final Standings{% endif %}</h2>
