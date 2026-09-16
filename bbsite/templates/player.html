@@ -13,7 +13,7 @@
 {%- endmacro %}
 <div style="display:flex; align-items:flex-start; gap:16px; flex-wrap:wrap;">
 {% if photo_url %}
-<img src="{{ photo_url }}" alt="{{ player_name }}" class="player-photo">
+<img src="{{ photo_url }}" data-thumb="{{ photo_url }}" data-full="{{ photo_url.replace('f_150px.jpg', 'fv.jpg') }}" alt="{{ player_name }}" class="player-photo" onmouseenter="this.src=this.dataset.full" onmouseleave="this.src=this.dataset.thumb">
 {% endif %}
 <div style="flex:1; min-width:200px;">
 <h1 class="page-title">{{ player_name }}</h1>
