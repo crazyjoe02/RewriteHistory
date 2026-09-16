@@ -330,3 +330,20 @@ footer {
 .draft-via a {
     color: #666;
 }
+
+/* Player profile photo with hover zoom */
+.player-photo {
+    max-width: 150px;
+    flex-shrink: 0;
+    border: 1px solid #ccc;
+    position: relative;
+    z-index: 1;
+    cursor: zoom-in;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    transform-origin: top left;
+}
+.player-photo:hover {
+    transform: scale(2.6);
+    z-index: 50;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+}
