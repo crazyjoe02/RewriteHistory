@@ -18,16 +18,16 @@
     <thead>
     <tr>
         <th class="left">Team</th>
-        {% for inn in game.linescore.innings %}<th>{{ inn }}</th>{% endfor %}
-        <th>R</th><th>H</th><th>E</th>
+        {% for inn in game.linescore.innings %}<th class="inn-col">{{ inn }}</th>{% endfor %}
+        <th class="rhe-col">R</th><th class="rhe-col">H</th><th class="rhe-col">E</th>
     </tr>
     </thead>
     <tbody>
     {% for row in game.linescore.rows %}
     <tr>
         <td class="left">{{ row.label }}</td>
-        {% for val in row.by_inning %}<td>{{ val if val is not none else 'x' }}</td>{% endfor %}
-        <td>{{ row.R }}</td><td>{{ row.H }}</td><td>{{ row.E }}</td>
+        {% for val in row.by_inning %}<td class="inn-col">{{ val if val is not none else 'x' }}</td>{% endfor %}
+        <td class="rhe-col">{{ row.R }}</td><td class="rhe-col">{{ row.H }}</td><td class="rhe-col">{{ row.E }}</td>
     </tr>
     {% endfor %}
     </tbody>

@@ -88,6 +88,19 @@
         <td>{{ '%.1f'|format(batting_career.WAR) if batting_career.WAR is defined else '' }}</td>
     </tr>
     {% endif %}
+    {% for tot in batting_by_franchise %}
+    <tr style="background:#f9fafb; color:#444;">
+        <td class="left">{{ tot.Years }} {{ 'Yr' if tot.Years == 1 else 'Yrs' }}</td>
+        <td class="left">{{ tot.Franchise }}</td><td>&mdash;</td>
+        <td>{{ tot.G }}</td><td>{{ tot.AB }}</td><td>{{ tot.R }}</td><td>{{ tot.H }}</td>
+        <td>{{ tot['2B'] }}</td><td>{{ tot['3B'] }}</td><td>{{ tot.HR }}</td>
+        <td>{{ tot.RBI }}</td><td>{{ tot.BB }}</td><td>{{ tot.SO }}</td>
+        <td>{{ tot.SB }}</td><td>{{ tot.CS }}</td>
+        <td>{{ '%.3f'|format(tot.AVG) }}</td><td>{{ '%.3f'|format(tot.OBP) }}</td>
+        <td>{{ '%.3f'|format(tot.SLG) }}</td><td>{{ '%.3f'|format(tot.OPS) }}</td>
+        <td>{{ '%.1f'|format(tot.WAR) if tot.WAR is defined else '' }}</td>
+    </tr>
+    {% endfor %}
     </tbody>
 </table>
 </div>
@@ -140,6 +153,19 @@ See <a href="{{ root }}war-explained.html">how WAR is calculated</a> on this sit
         <td>{{ '%.2f'|format(pitching_career.WHIP) }}</td>
         <td>{{ '%.1f'|format(pitching_career.WAR) if pitching_career.WAR is defined else '' }}</td>
     </tr>
+    {% for tot in pitching_by_franchise %}
+    <tr style="background:#f9fafb; color:#444;">
+        <td class="left">{{ tot.Years }} {{ 'Yr' if tot.Years == 1 else 'Yrs' }}</td>
+        <td class="left">{{ tot.Franchise }}</td><td>&mdash;</td>
+        <td>{{ tot.W }}</td><td>{{ tot.L }}</td><td>{{ '%.2f'|format(tot.ERA) }}</td>
+        <td>{{ tot.G }}</td><td>{{ tot.GS }}</td><td>{{ tot.CG }}</td>
+        <td>{{ tot.SHO }}</td><td>{{ tot.SV }}</td>
+        <td>{{ '%.1f'|format(tot.IP) }}</td><td>{{ tot.H }}</td><td>{{ tot.R }}</td>
+        <td>{{ tot.ER }}</td><td>{{ tot.BB }}</td><td>{{ tot.SO }}</td>
+        <td>{{ '%.2f'|format(tot.WHIP) }}</td>
+        <td>{{ '%.1f'|format(tot.WAR) if tot.WAR is defined else '' }}</td>
+    </tr>
+    {% endfor %}
     {% endif %}
     </tbody>
 </table>

@@ -415,6 +415,29 @@ def main():
         totals["WAR"] = round(war_sum, 1)
         return totals
 
+    def group_rows_by_franchise(rows, weight_fn):
+        """Group a player's season rows by franchise (collapsing relocations like
+        DTN->CLV via hub_abbr to the current/latest abbr), ordered by descending
+        total playing time (PA for batting rows, IP for pitching rows) -- matching
+        how a player's most-played team should lead a multi-team display."""
+        groups = defaultdict(list)
+        for r in rows:
+            fr = hub_abbr.get(r["Team"], r["Team"])
+            groups[fr].append(r)
+        out = []
+        for fr, grp in groups.items():
+            weight = sum(weight_fn(r) for r in grp)
+            years = sorted(set(r["SN"] for r in grp), key=lambda s: int(s))
+            out.append({"franchise": fr, "rows": grp, "weight": weight, "years": years})
+        out.sort(key=lambda g: g["weight"], reverse=True)
+        return out
+
+    def _pa_weight(r):
+        return float(r.get("AB") or 0) + float(r.get("BB") or 0) + float(r.get("HBP") or 0)
+
+    def _ip_weight(r):
+        return float(r.get("IP") or 0)
+
     def compute_fielding_totals(rows):
         """Team fielding totals row. Straight column sums for counting stats,
         with FPct and RF re-derived from the summed PO/A/E/Inn (the correct
@@ -906,6 +929,31 @@ def main():
         pdata["pitching_career"] = pitching_career
         pdata["teams"] = sorted(set(r["Team"] for r in batting_rows) | set(r["Team"] for r in pitching_rows))
 
+        # Franchise-grouped career splits (relocations like DTN->CLV collapsed to the
+        # current abbr via hub_abbr), ordered by descending playing time -- used both
+        # for the "Team(s)" column on the Career Leaders page and for the per-franchise
+        # breakdown rows shown under the career totals on this player's own page.
+        batting_franchise_groups = group_rows_by_franchise(batting_rows, _pa_weight)
+        pitching_franchise_groups = group_rows_by_franchise(pitching_rows, _ip_weight)
+        pdata["teams_by_pa"] = [g["franchise"] for g in batting_franchise_groups]
+        pdata["teams_by_ip"] = [g["franchise"] for g in pitching_franchise_groups]
+
+        batting_by_franchise = []
+        if len(batting_franchise_groups) > 1:
+            for g in batting_franchise_groups:
+                tot = compute_batting_totals(g["rows"])
+                tot["Franchise"] = g["franchise"]
+                tot["Years"] = len(g["years"])
+                batting_by_franchise.append(tot)
+
+        pitching_by_franchise = []
+        if len(pitching_franchise_groups) > 1:
+            for g in pitching_franchise_groups:
+                tot = compute_pitching_totals(g["rows"])
+                tot["Franchise"] = g["franchise"]
+                tot["Years"] = len(g["years"])
+                pitching_by_franchise.append(tot)
+
         allstar_seasons = sorted(pdata.get("allstar_seasons", []), key=lambda a: int(a["Season"]))
         allstar_years = [a["Season"] for a in allstar_seasons]
         awards_won = sorted(pdata.get("awards_won", []), key=lambda a: int(a["Season"]))
@@ -981,6 +1029,7 @@ def main():
               photo_credit_url=pdata.get("photo_credit_url"),
               batting_rows=batting_display_rows, pitching_rows=pitching_display_rows,
               batting_career=batting_career, pitching_career=pitching_career,
+              batting_by_franchise=batting_by_franchise, pitching_by_franchise=pitching_by_franchise,
               allstar_count=len(allstar_years), allstar_years=allstar_years,
               awards_won=awards_won,
               ps_batting_rows=ps_batting_rows, ps_pitching_rows=ps_pitching_rows,
@@ -1068,20 +1117,24 @@ def main():
     career_batting_pool = []
     career_pitching_pool = []
     for pid, pdata in players.items():
-        teams_str = "/".join(pdata["teams"])
+        # Team(s) column: franchises ordered by how much the player played for each
+        # (PA for the batting board, IP for the pitching board), with relocated
+        # franchises (e.g. DTN->CLV) already collapsed to their current abbr.
+        batting_teams_str = "/".join(pdata["teams_by_pa"]) or "/".join(pdata["teams"])
+        pitching_teams_str = "/".join(pdata["teams_by_ip"]) or "/".join(pdata["teams"])
         if pdata["batting_career"]:
             row = dict(pdata["batting_career"])
             row["PlayerID"] = pid
             row["Player"] = pdata["name"]
             row["LastName"] = pdata["last_name"]
-            row["Teams"] = teams_str
+            row["Teams"] = batting_teams_str
             career_batting_pool.append(row)
         if pdata["pitching_career"]:
             row = dict(pdata["pitching_career"])
             row["PlayerID"] = pid
             row["Player"] = pdata["name"]
             row["LastName"] = pdata["last_name"]
-            row["Teams"] = teams_str
+            row["Teams"] = pitching_teams_str
             career_pitching_pool.append(row)
 
     career_batting_categories = [
