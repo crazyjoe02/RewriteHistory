@@ -41,6 +41,7 @@
 <div class="standings-note">No Rewrite League stats yet &mdash; check back once this player takes the field.</div>
 {% endif %}
 
+{% set batting_section %}
 {% if batting_rows %}
 <h2 class="section-title">Batting</h2>
 <div class="table-wrap">
@@ -109,6 +110,8 @@
 <strong><em>Bold italic</em></strong> season stats indicate the player led both major leagues that season.
 See <a href="{{ root }}war-explained.html">how WAR is calculated</a> on this site.</div>
 {% endif %}
+{% endset %}
+{% set pitching_section %}
 {% if pitching_rows %}
 <h2 class="section-title">Pitching</h2>
 <div class="table-wrap">
@@ -176,6 +179,8 @@ See <a href="{{ root }}war-explained.html">how WAR is calculated</a> on this sit
 See <a href="{{ root }}war-explained.html">how WAR is calculated</a> on this site.</div>
 {% endif %}
 
+{% endset %}
+{% set ps_batting_section %}
 {% if ps_batting_rows %}
 <h2 class="section-title">Postseason Stats &mdash; Batting</h2>
 <div class="table-wrap">
@@ -215,6 +220,8 @@ See <a href="{{ root }}war-explained.html">how WAR is calculated</a> on this sit
 </div>
 {% endif %}
 
+{% endset %}
+{% set ps_pitching_section %}
 {% if ps_pitching_rows %}
 <h2 class="section-title">Postseason Stats &mdash; Pitching</h2>
 <div class="table-wrap">
@@ -251,6 +258,19 @@ See <a href="{{ root }}war-explained.html">how WAR is calculated</a> on this sit
     </tbody>
 </table>
 </div>
+{% endif %}
+
+{% endset %}
+{% if is_pitcher %}
+{{ pitching_section }}
+{{ batting_section }}
+{{ ps_pitching_section }}
+{{ ps_batting_section }}
+{% else %}
+{{ batting_section }}
+{{ pitching_section }}
+{{ ps_batting_section }}
+{{ ps_pitching_section }}
 {% endif %}
 
 {% if fielding_rows %}

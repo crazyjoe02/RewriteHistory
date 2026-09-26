@@ -60,7 +60,7 @@ Home {{ live_record.Home }} / Away {{ live_record.Away }}
 <table class="stats">
     <thead>
     <tr>
-        <th class="left">Player</th><th>B</th><th>G</th><th>AB</th><th>R</th><th>H</th>
+        <th class="left">Player</th><th>Pos</th><th>B</th><th>G</th><th>AB</th><th>R</th><th>H</th>
         <th>2B</th><th>3B</th><th>HR</th><th>RBI</th><th>BB</th><th>SO</th><th>HBP</th>
         <th>SB</th><th>CS</th><th>AVG</th><th>OBP</th><th>SLG</th><th>OPS</th>
         <th><a href="{{ root }}war-explained.html">WAR</a></th>
@@ -70,7 +70,7 @@ Home {{ live_record.Home }} / Away {{ live_record.Away }}
     {% for p in batters %}
     <tr>
         <td class="left" data-sort="{{ p.LastName }}"><a href="{{ root }}players/{{ p.PlayerID }}.html">{{ p.Player }}</a></td>
-        <td>{{ p.B }}</td><td>{{ p.G }}</td><td>{{ p.AB }}</td>
+        <td>{{ p.PrimaryPos }}</td><td>{{ p.B }}</td><td>{{ p.G }}</td><td>{{ p.AB }}</td>
         <td>{{ statcell(season, p.Lg, 'R', p.R|float, '%.0f') }}</td>
         <td>{{ statcell(season, p.Lg, 'H', p.H|float, '%.0f') }}</td>
         <td>{{ p['2B'] }}</td><td>{{ p['3B'] }}</td>
@@ -89,7 +89,7 @@ Home {{ live_record.Home }} / Away {{ live_record.Away }}
     {% if batting_totals %}
     <tfoot>
     <tr style="font-weight:bold; background:#eef2f7;">
-        <td class="left">Team Totals</td><td>&mdash;</td>
+        <td class="left">Team Totals</td><td>&mdash;</td><td>&mdash;</td>
         <td>{{ batting_totals.G }}</td><td>{{ batting_totals.AB }}</td><td>{{ batting_totals.R }}</td><td>{{ batting_totals.H }}</td>
         <td>{{ batting_totals['2B'] }}</td><td>{{ batting_totals['3B'] }}</td><td>{{ batting_totals.HR }}</td><td>{{ batting_totals.RBI }}</td>
         <td>{{ batting_totals.BB }}</td><td>{{ batting_totals.SO }}</td><td>{{ batting_totals.HBP }}</td>
@@ -207,7 +207,7 @@ each individual catcher's time behind the plate and isn't meaningfully combinabl
 <table class="stats">
     <thead>
     <tr>
-        <th class="left">Player</th><th>B</th><th>G</th><th>AB</th><th>R</th><th>H</th>
+        <th class="left">Player</th><th>Pos</th><th>B</th><th>G</th><th>AB</th><th>R</th><th>H</th>
         <th>2B</th><th>3B</th><th>HR</th><th>RBI</th><th>BB</th><th>SO</th><th>HBP</th>
         <th>SB</th><th>CS</th><th>AVG</th><th>OBP</th><th>SLG</th><th>OPS</th>
     </tr>
@@ -216,7 +216,7 @@ each individual catcher's time behind the plate and isn't meaningfully combinabl
     {% for p in playoff_batters %}
     <tr>
         <td class="left" data-sort="{{ p.LastName }}"><a href="{{ root }}players/{{ p.PlayerID }}.html">{{ p.Player }}</a></td>
-        <td>{{ p.B }}</td><td>{{ p.G }}</td><td>{{ p.AB }}</td><td>{{ p.R }}</td><td>{{ p.H }}</td>
+        <td>{{ p.PrimaryPos }}</td><td>{{ p.B }}</td><td>{{ p.G }}</td><td>{{ p.AB }}</td><td>{{ p.R }}</td><td>{{ p.H }}</td>
         <td>{{ p['2B'] }}</td><td>{{ p['3B'] }}</td><td>{{ p.HR }}</td><td>{{ p.RBI }}</td>
         <td>{{ p.BB }}</td><td>{{ p.SO }}</td><td>{{ p.HBP }}</td><td>{{ p.SB }}</td><td>{{ p.CS }}</td>
         <td>{{ '%.3f'|format(p.AVG|float) }}</td><td>{{ '%.3f'|format(p.OBP|float) }}</td>

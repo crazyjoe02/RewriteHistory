@@ -563,6 +563,21 @@ def main():
             playoff_batters.sort(key=lambda r: -float(r["AVG"]) if r["AB"] and int(r["AB"]) > 0 else 0)
             playoff_pitchers = [r for r in all_ps_pitching.get(season, []) if r["Team"] == abbr]
             playoff_pitchers.sort(key=lambda r: -int(r["W"]))
+            # Primary position per player for this team-season: the position with the
+            # most innings in the fielding data; pitchers with no fielding row -> P, else PH.
+            _inn_by_pos = defaultdict(lambda: defaultdict(float))
+            for r in fielders:
+                _inn_by_pos[r["PlayerID"]][r["Pos"]] += float(r.get("Inn") or 0)
+            _pitcher_ids = {r["PlayerID"] for r in pitchers}
+            def _primary(pid):
+                d = _inn_by_pos.get(pid)
+                if d:
+                    return max(d.items(), key=lambda kv: kv[1])[0]
+                return "P" if pid in _pitcher_ids else "PH"
+            for r in batters:
+                r["PrimaryPos"] = _primary(r["PlayerID"])
+            for r in playoff_batters:
+                r["PrimaryPos"] = _primary(r["PlayerID"])
             batting_totals = compute_batting_totals(batters)
             pitching_totals = compute_pitching_totals(pitchers)
             fielding_totals = compute_fielding_totals(fielders)
@@ -915,8 +930,12 @@ def main():
         return display
 
     for pid, pdata in players.items():
-        batting_rows = sorted(pdata["batting"], key=lambda r: int(r["SN"]))
-        pitching_rows = sorted(pdata["pitching"], key=lambda r: int(r["SN"]))
+        # Within a season, list a traded player's stints chronologically: the team he was
+        # traded away from comes before the team he was traded to.
+        _from_teams = {(int(t["Season"]), t["FromTeamAbbr"]) for t in pdata.get("trades", [])}
+        _stint_key = lambda r: (int(r["SN"]), 0 if (int(r["SN"]), r["Team"]) in _from_teams else 1)
+        batting_rows = sorted(pdata["batting"], key=_stint_key)
+        pitching_rows = sorted(pdata["pitching"], key=_stint_key)
         ps_batting_rows = sorted(pdata["postseason_batting"], key=lambda r: int(r["SN"]))
         ps_pitching_rows = sorted(pdata["postseason_pitching"], key=lambda r: int(r["SN"]))
 
@@ -1022,6 +1041,11 @@ def main():
             )
         )
 
+        # Pitchers (primary career position P, or pitching-only with no fielding rows)
+        # get their Pitching section shown before Batting on the player page.
+        _first_pos = position_summary.split("-")[0] if position_summary else ""
+        is_pitcher = _first_pos == "P" or (not position_summary and bool(pitching_rows) and not batting_rows)
+
         # --- Current team (header line): most recent trade destination if the trade is in/after
         # the player's latest stat season; otherwise the single team he played for that season.
         # Only shown for players active in the most recent season.
@@ -1056,7 +1080,7 @@ def main():
               ps_batting_rows=ps_batting_rows, ps_pitching_rows=ps_pitching_rows,
               ps_batting_career=ps_batting_career, ps_pitching_career=ps_pitching_career,
               fielding_rows=fielding_rows_for_player, fielding_career_by_pos=fielding_career_by_pos,
-              transactions=transactions, current_team=current_team,
+              transactions=transactions, current_team=current_team, is_pitcher=is_pitcher,
               is_placeholder=pdata.get("is_placeholder", False))
 
     # --- WAR explanation page ---
