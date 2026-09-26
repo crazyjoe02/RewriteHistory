@@ -25,6 +25,7 @@
 {% endif %}
 <div class="subtitle">
 {% set parts = [] %}
+{% if current_team %}{% set _ = parts.append('Team: <a href="' ~ root ~ 'teams/' ~ current_team.abbr ~ '/index.html">' ~ current_team.name ~ '</a>') %}{% endif %}
 {% if position_summary %}{% set _ = parts.append('Position: ' ~ position_summary) %}{% endif %}
 {% if bats %}{% set _ = parts.append('Bats: ' ~ bats) %}{% endif %}
 {% if throws %}{% set _ = parts.append('Throws: ' ~ throws) %}{% endif %}

@@ -1022,6 +1022,27 @@ def main():
             )
         )
 
+        # --- Current team (header line): most recent trade destination if the trade is in/after
+        # the player's latest stat season; otherwise the single team he played for that season.
+        # Only shown for players active in the most recent season.
+        current_team = None
+        stat_seasons = [int(r["SN"]) for r in batting_rows + pitching_rows] + [int(r["Season"]) for r in fielding_rows_for_player]
+        if stat_seasons and max(stat_seasons) == max(seasons):
+            latest = max(stat_seasons)
+            later_trades = [t for t in pdata.get("trades", []) if int(t["Season"]) >= latest]
+            cur_abbr = None
+            if later_trades:
+                cur_abbr = later_trades[-1]["ToTeamAbbr"]
+            else:
+                season_teams = {r["Team"] for r in batting_rows + pitching_rows if int(r["SN"]) == latest}
+                season_teams |= {r["Team"] for r in fielding_rows_for_player if int(r["Season"]) == latest}
+                if len(season_teams) == 1:
+                    cur_abbr = next(iter(season_teams))
+            if cur_abbr:
+                tinfo = teams_by_abbr.get(cur_abbr)
+                current_team = {"abbr": hub_abbr.get(cur_abbr, cur_abbr),
+                                "name": tinfo["FranchiseName"] if tinfo else cur_abbr}
+
         write(f"players/{pid}.html", "player.html",
               player_name=pdata["name"], bats=pdata["bats"], throws=pdata["throws"],
               position_summary=position_summary,
@@ -1035,7 +1056,7 @@ def main():
               ps_batting_rows=ps_batting_rows, ps_pitching_rows=ps_pitching_rows,
               ps_batting_career=ps_batting_career, ps_pitching_career=ps_pitching_career,
               fielding_rows=fielding_rows_for_player, fielding_career_by_pos=fielding_career_by_pos,
-              transactions=transactions,
+              transactions=transactions, current_team=current_team,
               is_placeholder=pdata.get("is_placeholder", False))
 
     # --- WAR explanation page ---
