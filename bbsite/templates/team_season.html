@@ -122,7 +122,7 @@ See <a href="{{ root }}war-explained.html">how WAR is calculated</a> on this sit
     <tbody>
     {% for p in pitchers %}
     <tr>
-        <td class="left" data-sort="{{ p.LastName }}"><a href="{{ root }}players/{{ p.PlayerID }}.html">{{ p.Player }}</a></td>
+        <td class="left" data-sort="{{ p.LastName }}"><a href="{{ root }}players/{{ p.PlayerID }}.html">{{ p.Player }}</a>{% if p.Prospect %} <span style="font-size:0.85em;color:#777;">(Prospect)</span>{% endif %}</td>
         <td>{{ p.Role }}</td><td>{{ p.T }}</td>
         <td>{{ statcell(season, p.League, 'W', p.W|float, '%.0f') }}</td>
         <td>{{ p.L }}</td>

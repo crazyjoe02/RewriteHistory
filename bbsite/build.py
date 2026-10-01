@@ -1103,7 +1103,7 @@ def main():
         # Pitchers (primary career position P, or pitching-only with no fielding rows)
         # get their Pitching section shown before Batting on the player page.
         _first_pos = position_summary.split("-")[0] if position_summary else ""
-        is_pitcher = _first_pos == "P" or (not position_summary and bool(pitching_rows) and not batting_rows)
+        is_pitcher = _first_pos == "P" or (not position_summary and bool(pitching_rows))
 
         # --- Current team (header line): most recent trade destination if the trade is in/after
         # the player's latest stat season; otherwise the single team he played for that season.
