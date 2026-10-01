@@ -400,11 +400,16 @@ def main():
         if not rows:
             return None
         psums = defaultdict(float)
+        outs = 0
         for r in rows:
-            for k in ["G", "GS", "CG", "SHO", "W", "L", "SV", "IP", "H", "R", "ER", "HR", "BB", "SO"]:
+            for k in ["G", "GS", "CG", "SHO", "W", "L", "SV", "H", "R", "ER", "HR", "BB", "SO"]:
                 psums[k] += float(r.get(k) or 0)
+            # IP is written in thirds: x.3/x.7 (sim export) or x.1/x.2 (box-score style).
+            whole, _, frac = str(r.get("IP") or "0").partition(".")
+            outs += int(whole or 0) * 3 + {"": 0, "0": 0, "1": 1, "3": 1, "2": 2, "7": 2}.get(frac[:1], 0)
         war_sum = sum(float(r.get("WAR") or 0) for r in rows)
-        ip = psums["IP"] or 1
+        psums["IP"] = f"{outs // 3}.{ {0: 0, 1: 3, 2: 7}[outs % 3] }"
+        ip = outs / 3 or 1
         era = 9 * psums["ER"] / ip
         whip = (psums["BB"] + psums["H"]) / ip
         totals = dict(psums)
@@ -578,6 +583,39 @@ def main():
                 r["PrimaryPos"] = _primary(r["PlayerID"])
             for r in playoff_batters:
                 r["PrimaryPos"] = _primary(r["PlayerID"])
+
+            # Default order (Baseball-Reference style): the player with the most AB at each
+            # position, in the order C, 1B, 2B, SS, 3B, LF, CF, RF, then everyone else by AB.
+            def _bref_batting_order(rows):
+                _ab = lambda r: int(r.get("AB") or 0)
+                for r in rows:
+                    r["_starter"] = False
+                starters, used = [], set()
+                for pos in ["C", "1B", "2B", "SS", "3B", "LF", "CF", "RF"]:
+                    cands = [r for r in rows if r["PrimaryPos"] == pos and id(r) not in used]
+                    if cands:
+                        best = max(cands, key=_ab)
+                        best["_starter"] = True
+                        starters.append(best)
+                        used.add(id(best))
+                rest = sorted((r for r in rows if id(r) not in used),
+                              key=lambda r: (-_ab(r), r.get("LastName") or r["Player"]))
+                return starters + rest
+            batters = _bref_batting_order(batters)
+            playoff_batters = _bref_batting_order(playoff_batters)
+
+            # Pitchers: SP (more starts than relief appearances) first, then RP; each by IP.
+            def _outs(ip):
+                whole, _, frac = str(ip or "0").partition(".")
+                return int(whole or 0) * 3 + int(frac[:1] or 0)
+            def _bref_pitching_order(rows):
+                for r in rows:
+                    gs = int(r.get("GS") or 0)
+                    r["Role"] = "SP" if gs > int(r.get("G") or 0) - gs else "RP"
+                return sorted(rows, key=lambda r: (r["Role"] != "SP", -_outs(r.get("IP"))))
+            pitchers = _bref_pitching_order(pitchers)
+            playoff_pitchers = _bref_pitching_order(playoff_pitchers)
+
             batting_totals = compute_batting_totals(batters)
             pitching_totals = compute_pitching_totals(pitchers)
             fielding_totals = compute_fielding_totals(fielders)

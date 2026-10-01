@@ -70,7 +70,7 @@ Home {{ live_record.Home }} / Away {{ live_record.Away }}
     {% for p in batters %}
     <tr>
         <td class="left" data-sort="{{ p.LastName }}"><a href="{{ root }}players/{{ p.PlayerID }}.html">{{ p.Player }}</a>{% if p.Prospect %} <span style="font-size:0.85em;color:#777;">(Prospect)</span>{% endif %}</td>
-        <td>{{ p.PrimaryPos }}</td><td>{{ p.B }}</td><td>{{ p.G }}</td><td>{{ p.AB }}</td>
+        <td>{% if p._starter %}<strong>{{ p.PrimaryPos }}</strong>{% else %}{{ p.PrimaryPos }}{% endif %}</td><td>{{ p.B }}</td><td>{{ p.G }}</td><td>{{ p.AB }}</td>
         <td>{{ statcell(season, p.Lg, 'R', p.R|float, '%.0f') }}</td>
         <td>{{ statcell(season, p.Lg, 'H', p.H|float, '%.0f') }}</td>
         <td>{{ p['2B'] }}</td><td>{{ p['3B'] }}</td>
@@ -113,7 +113,7 @@ See <a href="{{ root }}war-explained.html">how WAR is calculated</a> on this sit
 <table class="stats">
     <thead>
     <tr>
-        <th class="left">Player</th><th>T</th><th>W</th><th>L</th><th>ERA</th><th>G</th><th>GS</th>
+        <th class="left">Player</th><th>Pos</th><th>T</th><th>W</th><th>L</th><th>ERA</th><th>G</th><th>GS</th>
         <th>CG</th><th>SHO</th><th>SV</th><th>IP</th><th>H</th><th>R</th><th>ER</th>
         <th>HR</th><th>BB</th><th>SO</th><th>WHIP</th>
         <th>WAR</th>
@@ -123,7 +123,7 @@ See <a href="{{ root }}war-explained.html">how WAR is calculated</a> on this sit
     {% for p in pitchers %}
     <tr>
         <td class="left" data-sort="{{ p.LastName }}"><a href="{{ root }}players/{{ p.PlayerID }}.html">{{ p.Player }}</a></td>
-        <td>{{ p.T }}</td>
+        <td>{{ p.Role }}</td><td>{{ p.T }}</td>
         <td>{{ statcell(season, p.League, 'W', p.W|float, '%.0f') }}</td>
         <td>{{ p.L }}</td>
         <td>{{ statcell(season, p.League, 'ERA', p.ERA|float, '%.2f', p.IP|float) }}</td>
@@ -140,11 +140,11 @@ See <a href="{{ root }}war-explained.html">how WAR is calculated</a> on this sit
     {% if pitching_totals %}
     <tfoot>
     <tr style="font-weight:bold; background:#eef2f7;">
-        <td class="left">Team Totals</td><td>&mdash;</td>
+        <td class="left">Team Totals</td><td>&mdash;</td><td>&mdash;</td>
         <td>{{ pitching_totals.W }}</td><td>{{ pitching_totals.L }}</td><td>{{ '%.2f'|format(pitching_totals.ERA) }}</td>
         <td>{{ pitching_totals.G }}</td><td>{{ pitching_totals.GS }}</td><td>{{ pitching_totals.CG }}</td>
         <td>{{ pitching_totals.SHO }}</td><td>{{ pitching_totals.SV }}</td>
-        <td>{{ '%.1f'|format(pitching_totals.IP) }}</td><td>{{ pitching_totals.H }}</td><td>{{ pitching_totals.R }}</td><td>{{ pitching_totals.ER }}</td>
+        <td>{{ pitching_totals.IP }}</td><td>{{ pitching_totals.H }}</td><td>{{ pitching_totals.R }}</td><td>{{ pitching_totals.ER }}</td>
         <td>{{ pitching_totals.HR }}</td><td>{{ pitching_totals.BB }}</td><td>{{ pitching_totals.SO }}</td>
         <td>{{ '%.2f'|format(pitching_totals.WHIP) }}</td>
         <td>{{ '%.1f'|format(pitching_totals.WAR) }}</td>
@@ -216,7 +216,7 @@ each individual catcher's time behind the plate and isn't meaningfully combinabl
     {% for p in playoff_batters %}
     <tr>
         <td class="left" data-sort="{{ p.LastName }}"><a href="{{ root }}players/{{ p.PlayerID }}.html">{{ p.Player }}</a></td>
-        <td>{{ p.PrimaryPos }}</td><td>{{ p.B }}</td><td>{{ p.G }}</td><td>{{ p.AB }}</td><td>{{ p.R }}</td><td>{{ p.H }}</td>
+        <td>{% if p._starter %}<strong>{{ p.PrimaryPos }}</strong>{% else %}{{ p.PrimaryPos }}{% endif %}</td><td>{{ p.B }}</td><td>{{ p.G }}</td><td>{{ p.AB }}</td><td>{{ p.R }}</td><td>{{ p.H }}</td>
         <td>{{ p['2B'] }}</td><td>{{ p['3B'] }}</td><td>{{ p.HR }}</td><td>{{ p.RBI }}</td>
         <td>{{ p.BB }}</td><td>{{ p.SO }}</td><td>{{ p.HBP }}</td><td>{{ p.SB }}</td><td>{{ p.CS }}</td>
         <td>{{ '%.3f'|format(p.AVG|float) }}</td><td>{{ '%.3f'|format(p.OBP|float) }}</td>
@@ -234,7 +234,7 @@ each individual catcher's time behind the plate and isn't meaningfully combinabl
 <table class="stats">
     <thead>
     <tr>
-        <th class="left">Player</th><th>T</th><th>W</th><th>L</th><th>ERA</th><th>G</th><th>GS</th>
+        <th class="left">Player</th><th>Pos</th><th>T</th><th>W</th><th>L</th><th>ERA</th><th>G</th><th>GS</th>
         <th>CG</th><th>SHO</th><th>SV</th><th>IP</th><th>H</th><th>R</th><th>ER</th>
         <th>HR</th><th>BB</th><th>SO</th><th>WHIP</th>
     </tr>
@@ -243,7 +243,7 @@ each individual catcher's time behind the plate and isn't meaningfully combinabl
     {% for p in playoff_pitchers %}
     <tr>
         <td class="left" data-sort="{{ p.LastName }}"><a href="{{ root }}players/{{ p.PlayerID }}.html">{{ p.Player }}</a></td>
-        <td>{{ p.T }}</td><td>{{ p.W }}</td><td>{{ p.L }}</td><td>{{ '%.2f'|format(p.ERA|float) }}</td>
+        <td>{{ p.Role }}</td><td>{{ p.T }}</td><td>{{ p.W }}</td><td>{{ p.L }}</td><td>{{ '%.2f'|format(p.ERA|float) }}</td>
         <td>{{ p.G }}</td><td>{{ p.GS }}</td><td>{{ p.CG }}</td><td>{{ p.SHO }}</td><td>{{ p.SV }}</td>
         <td>{{ p.IP }}</td><td>{{ p.H }}</td><td>{{ p.R }}</td><td>{{ p.ER }}</td>
         <td>{{ p.HR }}</td><td>{{ p.BB }}</td><td>{{ p.SO }}</td><td>{{ '%.2f'|format(p.WHIP|float) }}</td>

@@ -50,7 +50,7 @@
     <tr>
         <th>Year</th><th class="left">Team</th><th>Lg</th><th>G</th><th>AB</th><th>R</th><th>H</th>
         <th>2B</th><th>3B</th><th>HR</th><th>RBI</th><th>BB</th><th>SO</th><th>SB</th><th>CS</th>
-        <th>AVG</th><th>OBP</th><th>SLG</th><th>OPS</th><th><a href="{{ root }}war-explained.html">WAR</a></th>
+        <th>AVG</th><th>OBP</th><th>SLG</th><th>OPS</th><th>WAR</th>
     </tr>
     </thead>
     <tbody>
@@ -120,7 +120,7 @@ See <a href="{{ root }}war-explained.html">how WAR is calculated</a> on this sit
     <tr>
         <th>Year</th><th class="left">Team</th><th>Lg</th><th>W</th><th>L</th><th>ERA</th><th>G</th>
         <th>GS</th><th>CG</th><th>SHO</th><th>SV</th><th>IP</th><th>H</th><th>R</th><th>ER</th>
-        <th>BB</th><th>SO</th><th>WHIP</th><th><a href="{{ root }}war-explained.html">WAR</a></th>
+        <th>BB</th><th>SO</th><th>WHIP</th><th>WAR</th>
     </tr>
     </thead>
     <tbody>
@@ -138,7 +138,7 @@ See <a href="{{ root }}war-explained.html">how WAR is calculated</a> on this sit
         <td>{{ statcell(r.SN, r.League if r.League is defined else '', 'ERA', r.ERA|float, '%.2f', r.IP|float) }}</td>
         <td>{{ r.G }}</td><td>{{ r.GS }}</td><td>{{ r.CG }}</td><td>{{ r.SHO }}</td>
         <td>{{ statcell(r.SN, r.League if r.League is defined else '', 'SV', r.SV|float, '%.0f') }}</td>
-        <td>{% if r._combined %}{{ '%.1f'|format(r.IP) }}{% else %}{{ r.IP }}{% endif %}</td>
+        <td>{% if r._combined %}{{ r.IP }}{% else %}{{ r.IP }}{% endif %}</td>
         <td>{{ r.H }}</td><td>{{ r.R }}</td><td>{{ r.ER }}</td>
         <td>{{ r.BB }}</td>
         <td>{{ statcell(r.SN, r.League if r.League is defined else '', 'SO', r.SO|float, '%.0f') }}</td>
@@ -152,7 +152,7 @@ See <a href="{{ root }}war-explained.html">how WAR is calculated</a> on this sit
         <td>{{ pitching_career.W }}</td><td>{{ pitching_career.L }}</td><td>{{ '%.2f'|format(pitching_career.ERA) }}</td>
         <td>{{ pitching_career.G }}</td><td>{{ pitching_career.GS }}</td><td>{{ pitching_career.CG }}</td>
         <td>{{ pitching_career.SHO }}</td><td>{{ pitching_career.SV }}</td>
-        <td>{{ '%.1f'|format(pitching_career.IP) }}</td><td>{{ pitching_career.H }}</td><td>{{ pitching_career.R }}</td>
+        <td>{{ pitching_career.IP }}</td><td>{{ pitching_career.H }}</td><td>{{ pitching_career.R }}</td>
         <td>{{ pitching_career.ER }}</td><td>{{ pitching_career.BB }}</td><td>{{ pitching_career.SO }}</td>
         <td>{{ '%.2f'|format(pitching_career.WHIP) }}</td>
         <td>{{ '%.1f'|format(pitching_career.WAR) if pitching_career.WAR is defined else '' }}</td>
@@ -164,7 +164,7 @@ See <a href="{{ root }}war-explained.html">how WAR is calculated</a> on this sit
         <td>{{ tot.W }}</td><td>{{ tot.L }}</td><td>{{ '%.2f'|format(tot.ERA) }}</td>
         <td>{{ tot.G }}</td><td>{{ tot.GS }}</td><td>{{ tot.CG }}</td>
         <td>{{ tot.SHO }}</td><td>{{ tot.SV }}</td>
-        <td>{{ '%.1f'|format(tot.IP) }}</td><td>{{ tot.H }}</td><td>{{ tot.R }}</td>
+        <td>{{ tot.IP }}</td><td>{{ tot.H }}</td><td>{{ tot.R }}</td>
         <td>{{ tot.ER }}</td><td>{{ tot.BB }}</td><td>{{ tot.SO }}</td>
         <td>{{ '%.2f'|format(tot.WHIP) }}</td>
         <td>{{ '%.1f'|format(tot.WAR) if tot.WAR is defined else '' }}</td>
@@ -250,7 +250,7 @@ See <a href="{{ root }}war-explained.html">how WAR is calculated</a> on this sit
         <td>{{ ps_pitching_career.W }}</td><td>{{ ps_pitching_career.L }}</td><td>{{ '%.2f'|format(ps_pitching_career.ERA) }}</td>
         <td>{{ ps_pitching_career.G }}</td><td>{{ ps_pitching_career.GS }}</td><td>{{ ps_pitching_career.CG }}</td>
         <td>{{ ps_pitching_career.SHO }}</td><td>{{ ps_pitching_career.SV }}</td>
-        <td>{{ '%.1f'|format(ps_pitching_career.IP) }}</td><td>{{ ps_pitching_career.H }}</td><td>{{ ps_pitching_career.R }}</td>
+        <td>{{ ps_pitching_career.IP }}</td><td>{{ ps_pitching_career.H }}</td><td>{{ ps_pitching_career.R }}</td>
         <td>{{ ps_pitching_career.ER }}</td><td>{{ ps_pitching_career.BB }}</td><td>{{ ps_pitching_career.SO }}</td>
         <td>{{ '%.2f'|format(ps_pitching_career.WHIP) }}</td>
     </tr>
