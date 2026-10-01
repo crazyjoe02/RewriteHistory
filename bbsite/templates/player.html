@@ -286,9 +286,9 @@ See <a href="{{ root }}war-explained.html">how WAR is calculated</a> on this sit
     </thead>
     <tbody>
     {% for r in fielding_rows %}
-    <tr>
+    <tr{% if r._combined %} style="font-weight:bold; background:#f7f4e8;"{% endif %}>
         <td><a href="{{ root }}years/{{ r.Season }}.html">{{ r.Season }}</a></td>
-        <td class="left"><a href="{{ root }}teams/{{ r.Team }}/{{ r.Season }}.html">{{ r.Team }}</a></td>
+        <td class="left">{% if r._combined %}{{ r.Team }}{% else %}<a href="{{ root }}teams/{{ r.Team }}/{{ r.Season }}.html">{{ r.Team }}</a>{% endif %}</td>
         <td>{{ r.Pos }}</td>
         <td>{{ r.GP }}</td><td>{{ r.GS }}</td><td>{{ '%.1f'|format(r.Inn|float) }}</td>
         <td>{{ r.E }}</td><td>{{ r.PO }}</td><td>{{ r.A }}</td><td>{{ r.DP }}</td>

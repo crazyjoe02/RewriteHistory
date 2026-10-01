@@ -913,20 +913,21 @@ def main():
 
     def build_display_rows(rows, totals_fn):
         """Group a player's rows by season; when a season has stints with more than
-        one team (a mid-season trade), insert a bold combined '2TM'-style row after
-        them, matching Baseball-Reference's convention for split seasons."""
+        one team (a mid-season trade), insert a bold combined '2TM'-style row BEFORE
+        the individual stints (which follow in the order he played for each team),
+        matching Baseball-Reference's convention for split seasons."""
         from itertools import groupby
         rows_sorted = sorted(rows, key=lambda r: int(r["SN"]))
         display = []
         for season, group in groupby(rows_sorted, key=lambda r: r["SN"]):
             group = list(group)
-            display.extend(group)
             if len(group) > 1:
                 combined = totals_fn(group)
                 combined["SN"] = season
                 combined["Team"] = f"{len(group)}TM"
                 combined["_combined"] = True
                 display.append(combined)
+            display.extend(group)
         return display
 
     for pid, pdata in players.items():
@@ -1007,7 +1008,13 @@ def main():
         pitching_display_rows = build_display_rows(pitching_rows, compute_pitching_totals)
 
         # --- Fielding: season-by-season rows plus one career-totals row per position ---
-        fielding_rows_for_player = sorted(pdata.get("fielding", []), key=lambda r: (r["Season"], r["Pos"]))
+        # Scorebook order: P, C, 1B, 2B, 3B, SS, LF, CF, RF (anything else after).
+        _FLD_ORDER = ["P", "C", "1B", "2B", "3B", "SS", "LF", "CF", "RF", "OF", "DH"]
+        _pos_rank = lambda p: _FLD_ORDER.index(p) if p in _FLD_ORDER else len(_FLD_ORDER)
+        _fld_stint = lambda r: 0 if (int(r["Season"]), r["Team"]) in _from_teams else 1
+        fielding_rows_for_player = sorted(
+            pdata.get("fielding", []),
+            key=lambda r: (int(r["Season"]), _pos_rank(r["Pos"]), _fld_stint(r)))
         fielding_by_pos = defaultdict(list)
         for r in fielding_rows_for_player:
             fielding_by_pos[r["Pos"]].append(r)
@@ -1027,11 +1034,25 @@ def main():
             else:
                 chances = sums["PO"] + sums["A"] + sums["E"]
                 totals["FPct"] = (sums["PO"] + sums["A"]) / chances if chances else 0.0
-                totals["CERA"] = 9 * sums.get("ER", 0) / sums["Inn"] if sums["Inn"] else 0.0
+                totals["CERA"] = (sum(float(r.get("CERA") or 0) * float(r.get("Inn") or 0) for r in rows) / sums["Inn"]) if sums["Inn"] else 0.0
                 totals["RF"] = 9 * (sums["PO"] + sums["A"]) / sums["Inn"] if sums["Inn"] else 0.0
             return totals
 
-        fielding_career_by_pos = {pos: compute_fielding_totals(rows) for pos, rows in fielding_by_pos.items()}
+        fielding_career_by_pos = {pos: compute_fielding_totals(fielding_by_pos[pos])
+                                  for pos in sorted(fielding_by_pos, key=_pos_rank)}
+
+        # Display rows: per season, per position (scorebook order); when a player played a
+        # position for more than one team that season, a bold combined 'nTM' line comes
+        # first, then each team's line in the order he played for them.
+        fielding_display_rows = []
+        from itertools import groupby as _gb
+        for (_sn, _pos), _grp in _gb(fielding_rows_for_player, key=lambda r: (r["Season"], r["Pos"])):
+            _grp = list(_grp)
+            if len(_grp) > 1:
+                _c = compute_fielding_totals(_grp)
+                _c.update({"Season": _sn, "Pos": _pos, "Team": f"{len(_grp)}TM", "_combined": True})
+                fielding_display_rows.append(_c)
+            fielding_display_rows.extend(_grp)
 
         # Position summary for the subtitle line, ordered by total innings at each
         # position (career, most-played first) -- e.g. "SS-CF".
@@ -1079,7 +1100,7 @@ def main():
               awards_won=awards_won,
               ps_batting_rows=ps_batting_rows, ps_pitching_rows=ps_pitching_rows,
               ps_batting_career=ps_batting_career, ps_pitching_career=ps_pitching_career,
-              fielding_rows=fielding_rows_for_player, fielding_career_by_pos=fielding_career_by_pos,
+              fielding_rows=fielding_display_rows, fielding_career_by_pos=fielding_career_by_pos,
               transactions=transactions, current_team=current_team, is_pitcher=is_pitcher,
               is_placeholder=pdata.get("is_placeholder", False))
 

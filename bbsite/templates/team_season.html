@@ -69,7 +69,7 @@ Home {{ live_record.Home }} / Away {{ live_record.Away }}
     <tbody>
     {% for p in batters %}
     <tr>
-        <td class="left" data-sort="{{ p.LastName }}"><a href="{{ root }}players/{{ p.PlayerID }}.html">{{ p.Player }}</a></td>
+        <td class="left" data-sort="{{ p.LastName }}"><a href="{{ root }}players/{{ p.PlayerID }}.html">{{ p.Player }}</a>{% if p.Prospect %} <span style="font-size:0.85em;color:#777;">(Prospect)</span>{% endif %}</td>
         <td>{{ p.PrimaryPos }}</td><td>{{ p.B }}</td><td>{{ p.G }}</td><td>{{ p.AB }}</td>
         <td>{{ statcell(season, p.Lg, 'R', p.R|float, '%.0f') }}</td>
         <td>{{ statcell(season, p.Lg, 'H', p.H|float, '%.0f') }}</td>
