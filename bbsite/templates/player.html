@@ -147,22 +147,22 @@
 <div class="table-wrap">
 <table class="stats">
 <thead><tr>
-  <th>Year</th><th>Age</th><th class="left">Tm</th><th>Lg</th><th>PA</th><th>Rbat</th><th>Rbaser</th><th>Rfield</th><th>Rpos</th><th>RAA</th><th>WAA</th><th>Rrep</th><th>RAR</th><th>WAR</th><th>oWAR</th><th>dWAR</th><th class="left">Pos</th><th class="left">Awards</th>
+  <th>Year</th><th>Age</th><th class="left">Tm</th><th>Lg</th><th>PA</th><th>Rbat</th><th>Rbaser</th><th>Rpos</th><th>RAA</th><th>WAA</th><th>Rrep</th><th>RAR</th><th>WAR</th><th>oWAR</th><th>dWAR</th><th class="left">Pos</th><th class="left">Awards</th>
 </tr></thead>
 <tbody>
 {% for r in B %}
 <tr{{ rowstyle(r) }}>
   {{ yearcell(r) }}<td>{{ i(r.PA) }}</td>
-  {% for k in ['Rbat','Rbaser','Rfield','Rpos','RAA','WAA','Rrep','RAR','WAR','oWAR','dWAR'] %}<td>{{ f1(r[k]) }}</td>{% endfor %}
+  {% for k in ['Rbat','Rbaser','Rpos','RAA','WAA','Rrep','RAR','WAR','oWAR','dWAR'] %}<td>{{ f1(r[k]) }}</td>{% endfor %}
   <td class="left">{{ r.Pos }}</td><td class="left">{{ r.Awards }}</td>
 </tr>
 {% endfor %}
 <tr class="career-row"><td colspan="4" class="left">{{ BC.Years }} Yr{{ 's' if BC.Years != 1 }}</td><td>{{ i(BC.PA) }}</td>
-  {% for k in ['Rbat','Rbaser','Rfield','Rpos','RAA','WAA','Rrep','RAR','WAR','oWAR','dWAR'] %}<td>{{ f1(BC[k]) }}</td>{% endfor %}<td></td><td></td></tr>
+  {% for k in ['Rbat','Rbaser','Rpos','RAA','WAA','Rrep','RAR','WAR','oWAR','dWAR'] %}<td>{{ f1(BC[k]) }}</td>{% endfor %}<td></td><td></td></tr>
 </tbody>
 </table>
 </div>
-<div class="standings-note">Runs above average from batting (Rbat), baserunning (Rbaser), fielding (Rfield) and position (Rpos); RAA/WAA = runs/wins above average, Rrep = replacement runs, RAR = runs above replacement. Rfield is 0 for everyone in this league (see <a href="{{ root }}war-explained.html">how WAR is calculated</a>).</div>
+<div class="standings-note">Runs above average from batting (Rbat), baserunning (Rbaser) and position (Rpos); RAA/WAA = runs/wins above average, Rrep = replacement runs, RAR = runs above replacement (see <a href="{{ root }}war-explained.html">how WAR is calculated</a>).</div>
 
 <h2 class="section-title" id="batting_advanced">Advanced Batting</h2>
 <div class="table-wrap">
@@ -376,16 +376,16 @@ See <a href="{{ root }}war-explained.html">how WAR is calculated</a> on this sit
 <div class="table-wrap">
 <table class="stats">
 <thead><tr><th>Year</th><th>Age</th><th class="left">Tm</th><th>Lg</th><th>G</th><th>GS</th><th>Batting</th><th>Defense</th>
-{% for p in ['P','C','1B','2B','3B','SS','LF','CF','RF'] %}<th>{{ p }}</th>{% endfor %}<th>OF</th><th>PH</th><th>PR</th></tr></thead>
+{% for p in ['P','C','1B','2B','3B','SS','LF','CF','RF'] %}<th>{{ p }}</th>{% endfor %}<th>PH</th><th>PR</th></tr></thead>
 <tbody>
 {% for r in B %}
 <tr{{ rowstyle(r) }}>{{ yearcell(r) }}<td>{{ i(r.G) }}</td><td>{{ i(r.GS) }}</td><td>{{ i(r.G) }}</td><td>{{ i(r.Def) }}</td>
 {% for p in ['P','C','1B','2B','3B','SS','LF','CF','RF'] %}<td>{{ i(r.posG[p]) if r.posG[p] else '' }}</td>{% endfor %}
-<td>{{ i(r.OF) if r.OF else '' }}</td><td>{{ i(r.PH) if r.PH else '' }}</td><td>{{ i(r.PR) if r.PR else '' }}</td></tr>
+<td>{{ i(r.PH) if r.PH else '' }}</td><td>{{ i(r.PR) if r.PR else '' }}</td></tr>
 {% endfor %}
 <tr class="career-row"><td colspan="4" class="left">{{ BC.Years }} Yr{{ 's' if BC.Years != 1 }}</td><td>{{ i(BC.G) }}</td><td>{{ i(BC.GS) }}</td><td>{{ i(BC.G) }}</td><td>{{ i(BC.Def) }}</td>
 {% for p in ['P','C','1B','2B','3B','SS','LF','CF','RF'] %}<td>{{ i(BC.posG[p]) if BC.posG[p] else '' }}</td>{% endfor %}
-<td>{{ i(BC.OF) if BC.OF else '' }}</td><td>{{ i(BC.PH) if BC.PH else '' }}</td><td>{{ i(BC.PR) if BC.PR else '' }}</td></tr>
+<td>{{ i(BC.PH) if BC.PH else '' }}</td><td>{{ i(BC.PR) if BC.PR else '' }}</td></tr>
 </tbody>
 </table>
 </div>
@@ -437,14 +437,14 @@ See <a href="{{ root }}war-explained.html">how WAR is calculated</a> on this sit
     <h3>Awards &amp; Honors</h3>
     <ul>
     {% for a in x.honors.allstar %}<li><a href="{{ root }}allstar-game/{{ a.Season }}.html">{{ a.Season }} {{ a.League }} All-Star</a> ({{ a.Pos }})</li>{% endfor %}
-    {% for a in x.honors.awards %}<li>{{ a.Season }} {{ a.League }} {{ a.Award }}{% if a.Award in ['MVP','Champion Hurler','Fireman'] %} &mdash; {{ ord(a.Rank|int) }} place{% endif %}</li>{% endfor %}
+    {% for a in x.honors.awards %}<li>{% if a.Won %}<strong>{% endif %}<a href="{{ root }}awards/{{ a.Season }}.html#{{ a.Anchor }}">{{ a.Season }} {{ a.League }} {{ a.Full }}</a>{% if a.Voting %} &mdash; {{ ord(a.Rank|int) }} place{% endif %}{% if a.Won %}</strong>{% endif %}</li>{% endfor %}
     </ul>
   </div>
   {% endif %}
   {% for cat in x.leaderboards %}
   <div class="lb-box">
     <h3>{{ cat.label }}</h3>
-    <ul>{% for e in cat.entries %}<li><a href="{{ root }}leaders/{{ e.season }}.html">{{ e.season }}</a> {{ e.lg }} &nbsp;<span class="lb-val">{{ e.value }}</span> ({{ ord(e.rank) }}){% if e.rank == 1 %} &#9733;{% endif %}</li>{% endfor %}</ul>
+    <ul>{% for e in cat.entries %}<li><a href="{{ root }}leaders/{{ e.season }}.html#{{ cat.anchor }}">{{ e.season }}</a> {{ e.lg }} &nbsp;<span class="lb-val">{{ e.value }}</span> ({{ ord(e.rank) }}){% if e.rank == 1 %} &#9733;{% endif %}</li>{% endfor %}</ul>
   </div>
   {% endfor %}
 </div>

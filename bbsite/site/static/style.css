@@ -399,3 +399,8 @@ table.stats tr.career-row td { font-weight: bold; background: #eef2f7; }
     .player-nav ul { display: flex; flex-wrap: wrap; }
     .player-nav-top { display: none; }
 }
+.leader-anchor, .section-title[id] { scroll-margin-top: 10px; }
+/* Player pages: wider canvas so Standard Batting / Standard Fielding fit without side-scrolling */
+.container:has(.bref-player) { max-width: 1440px; }
+.bref-player { grid-template-columns: 170px minmax(0, 1fr); }
+.bref-player table.stats th, .bref-player table.stats td { padding-left: 4px; padding-right: 4px; }

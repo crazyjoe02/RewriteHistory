@@ -28,7 +28,7 @@
 {% endif %}
 
 {% for cat in categories %}
-<h2 class="section-title">{{ cat.display }}</h2>
+<h2 class="section-title" id="{{ cat.display|lower|replace(' ', '-')|replace('\'', '') }}">{{ cat.display }}</h2>
 <div class="league-columns">
     <div>
         <h3>American Association</h3>

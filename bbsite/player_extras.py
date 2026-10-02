@@ -253,6 +253,9 @@ class LeagueContext:
         fpos = defaultdict(lambda: defaultdict(float))  # (season, team) -> pos -> GP
         finn = defaultdict(lambda: defaultdict(float))
         fgs = defaultdict(float)
+        pgs = defaultdict(float)  # pitching starts, for seasons whose batting data has no GS column
+        for r in pitching_rows:
+            pgs[(int(r["SN"]), r["Team"])] += num(r.get("GS"))
         for r in fielding_rows:
             k = (int(r["Season"]), r["Team"])
             fpos[k][r["Pos"]] += num(r.get("GP"))
@@ -285,8 +288,9 @@ class LeagueContext:
                 d["_nodetail"] = r.get("PA") in (None, "")   # 1885 exports lack PA/GIDP/SH/SF/IBB
                 if not r.get("PA"):
                     d["PA"] = 0
-                if not r.get("GS"):
-                    d["GS"] = fgs.get((s, r["Team"]), 0)
+                # Games started: the largest of the batting, fielding and pitching start counts
+                # (the batting export counts 0 lineup starts for pitchers).
+                d["GS"] = max(d["GS"], fgs.get((s, r["Team"]), 0), pgs.get((s, r["Team"]), 0))
                 d.update({"SN": s, "Team": r["Team"], "Lg": r["Lg"], "Age": self.age(bio, s),
                           "Pos": pos_str([(s, r["Team"])]) or ("P" if is_pitcher else "PH"),
                           "Awards": awards_str(s), "PH": self.ph.get((s, r["Team"], name), 0),
@@ -373,9 +377,25 @@ class LeagueContext:
                  "On-Base Plus Slugging", "Runs Scored", "Hits", "Total Bases", "Doubles", "Triples", "Home Runs",
                  "Runs Batted In", "Bases on Balls", "Stolen Bases", "Earned Run Average", "Wins", "WHIP",
                  "Innings Pitched", "Strikeouts", "Complete Games", "Shutouts", "Saves"]
-        leaderboards = [{"label": k, "entries": lb[k]} for k in order if k in lb]
-        honors = {"allstar": sorted(self.allstars.get(name, []), key=lambda x: int(x["Season"])),
-                  "awards": sorted(self.awards.get(name, []), key=lambda x: (int(x["Season"]), int(num(x.get("Rank")))))}
+        anchor = {"WAR for Position Players": "bat-WAR", "Batting Average": "bat-AVG", "On-Base %": "bat-OBP",
+                  "Slugging %": "bat-SLG", "On-Base Plus Slugging": "bat-OPS", "Runs Scored": "bat-R", "Hits": "bat-H",
+                  "Total Bases": "bat-TB", "Doubles": "bat-2B", "Triples": "bat-3B", "Home Runs": "bat-HR",
+                  "Runs Batted In": "bat-RBI", "Bases on Balls": "bat-BB", "Stolen Bases": "bat-SB",
+                  "WAR for Pitchers": "pit-WAR", "Earned Run Average": "pit-ERA", "Wins": "pit-W", "WHIP": "pit-WHIP",
+                  "Innings Pitched": "pit-IP", "Strikeouts": "pit-SO", "Complete Games": "pit-CG",
+                  "Shutouts": "pit-SHO", "Saves": "pit-SV"}
+        leaderboards = [{"label": k, "anchor": anchor[k], "entries": lb[k]} for k in order if k in lb]
+        AW = {"MVP": ("Most Valuable Player", "most-valuable-player"),
+              "Champion Hurler": ("Champion Hurler Award", "champion-hurler-award"),
+              "Fireman": ("Fireman Award", "fireman-award"),
+              "Silver Slugger": ("Silver Slugger Award", "silver-slugger-award"),
+              "Gold Glove": ("Gold Glove Award", "gold-glove-award")}
+        awards = []
+        for a in sorted(self.awards.get(name, []), key=lambda x: (int(x["Season"]), int(num(x.get("Rank"))))):
+            full, anc = AW.get(a["Award"], (a["Award"], a["Award"].lower().replace(" ", "-")))
+            awards.append(dict(a, Full=full, Anchor=anc, Won=int(num(a.get("Rank"))) == 1,
+                               Voting=a["Award"] in ("MVP", "Champion Hurler", "Fireman")))
+        honors = {"allstar": sorted(self.allstars.get(name, []), key=lambda x: int(x["Season"])), "awards": awards}
 
         return {"bio": bio, "std_batting": std, "std_career": car, "splits": splits,
                 "leaderboards": leaderboards, "honors": honors,

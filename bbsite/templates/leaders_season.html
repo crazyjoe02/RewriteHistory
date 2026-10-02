@@ -14,7 +14,7 @@
 <h2 class="section-title">Batting</h2>
 <div class="league-columns">
 {% for cat in batting_categories %}
-<div>
+<div id="{{ cat.anchor }}" class="leader-anchor">
     <h3>{{ cat.label }}</h3>
     <div class="table-wrap">
     <table class="stats">
@@ -38,7 +38,7 @@
 <h2 class="section-title">Pitching</h2>
 <div class="league-columns">
 {% for cat in pitching_categories %}
-<div>
+<div id="{{ cat.anchor }}" class="leader-anchor">
     <h3>{{ cat.label }}</h3>
     <div class="table-wrap">
     <table class="stats">

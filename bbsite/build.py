@@ -1189,6 +1189,11 @@ def main():
         min_ab = int(round(3.1 * team_games))
         min_ip = team_games  # 1.0 * team games, B-Ref convention
 
+        _tb_rows = []
+        for _r in batting_rows:
+            _r2 = dict(_r)
+            _r2["TB"] = sum(float(_r.get(k) or 0) * m for k, m in (("H", 1), ("2B", 1), ("3B", 2), ("HR", 3)))
+            _tb_rows.append(_r2)
         batting_categories = [
             {"label": "AVG", "rows": fmt_rows(top_n(batting_rows, "AVG", min_field="AB", min_value=min_ab), "AVG", "{:.3f}")},
             {"label": "HR", "rows": fmt_rows(top_n(batting_rows, "HR"), "HR", "{:.0f}")},
@@ -1198,7 +1203,15 @@ def main():
             {"label": "SB", "rows": fmt_rows(top_n(batting_rows, "SB"), "SB", "{:.0f}")},
             {"label": "OPS", "rows": fmt_rows(top_n(batting_rows, "OPS", min_field="AB", min_value=min_ab), "OPS", "{:.3f}")},
             {"label": "WAR", "rows": fmt_rows(top_n(batting_rows, "WAR"), "WAR", "{:.1f}")},
+            {"label": "OBP", "rows": fmt_rows(top_n(batting_rows, "OBP", min_field="AB", min_value=min_ab), "OBP", "{:.3f}")},
+            {"label": "SLG", "rows": fmt_rows(top_n(batting_rows, "SLG", min_field="AB", min_value=min_ab), "SLG", "{:.3f}")},
+            {"label": "Total Bases", "rows": fmt_rows(top_n(_tb_rows, "TB"), "TB", "{:.0f}")},
+            {"label": "Doubles", "rows": fmt_rows(top_n(batting_rows, "2B"), "2B", "{:.0f}")},
+            {"label": "Triples", "rows": fmt_rows(top_n(batting_rows, "3B"), "3B", "{:.0f}")},
+            {"label": "Walks", "rows": fmt_rows(top_n(batting_rows, "BB"), "BB", "{:.0f}")},
         ]
+        for _c, _k in zip(batting_categories, ["AVG", "HR", "RBI", "R", "H", "SB", "OPS", "WAR", "OBP", "SLG", "TB", "2B", "3B", "BB"]):
+            _c["anchor"] = "bat-" + _k
         pitching_categories = [
             {"label": "Wins", "rows": fmt_rows(top_n(pitching_rows, "W"), "W", "{:.0f}")},
             {"label": "WAR", "rows": fmt_rows(top_n(pitching_rows, "WAR"), "WAR", "{:.1f}")},
@@ -1206,7 +1219,12 @@ def main():
             {"label": "Strikeouts", "rows": fmt_rows(top_n(pitching_rows, "SO"), "SO", "{:.0f}")},
             {"label": "Saves", "rows": fmt_rows(top_n(pitching_rows, "SV"), "SV", "{:.0f}")},
             {"label": "WHIP", "rows": fmt_rows(top_n(pitching_rows, "WHIP", reverse=False, min_field="IP", min_value=min_ip), "WHIP", "{:.2f}")},
+            {"label": "Innings", "rows": fmt_rows(top_n(pitching_rows, "IP"), "IP", "{:.1f}")},
+            {"label": "Complete Games", "rows": fmt_rows(top_n(pitching_rows, "CG"), "CG", "{:.0f}")},
+            {"label": "Shutouts", "rows": fmt_rows(top_n(pitching_rows, "SHO"), "SHO", "{:.0f}")},
         ]
+        for _c, _k in zip(pitching_categories, ["W", "WAR", "ERA", "SO", "SV", "WHIP", "IP", "CG", "SHO"]):
+            _c["anchor"] = "pit-" + _k
 
         write(f"leaders/{season}.html", "leaders_season.html",
               season=season, batting_categories=batting_categories,
