@@ -1,7 +1,7 @@
 {% extends "base.html" %}
-{% block title %}{{ player_name }}{% endblock %}
+{% block title %}{{ player_name }} Stats{% endblock %}
 {% block breadcrumb %}
-<div class="breadcrumb"><a href="{{ root }}index.html">Home</a> &rsaquo; {{ player_name }}</div>
+<div class="breadcrumb"><a href="{{ root }}index.html">Home</a> &rsaquo; Players &rsaquo; {{ player_name }}</div>
 {% endblock %}
 {% block content %}
 {% macro statcell(season, league, field, value, fmt, qualifier=none) -%}
@@ -11,109 +11,207 @@
 {%- else -%}{{ fmt|format(value) }}
 {%- endif -%}
 {%- endmacro %}
-<div style="display:flex; align-items:flex-start; gap:16px; flex-wrap:wrap;">
-{% if photo_url %}
-<img src="{{ photo_url }}" data-thumb="{{ photo_url }}" data-full="{{ photo_url.replace('f_150px.jpg', 'fv.jpg') }}" alt="{{ player_name }}" class="player-photo" onmouseenter="this.src=this.dataset.full" onmouseleave="this.src=this.dataset.thumb">
-{% endif %}
-<div style="flex:1; min-width:200px;">
-<h1 class="page-title">{{ player_name }}</h1>
-{% if allstar_count or awards_won %}
-<div class="badge-row">
-{% if allstar_count %}<span class="allstar-line">&#9733; {{ allstar_count }}&times; All-Star ({{ allstar_years|join(', ') }})</span>{% endif %}
-{% for a in awards_won %}<span class="award-line">&#127942; {{ a.Label }}</span>{% endfor %}
-</div>
-{% endif %}
-<div class="subtitle">
-{% set parts = [] %}
-{% if current_team %}{% set _ = parts.append('Team: <a href="' ~ root ~ 'teams/' ~ current_team.abbr ~ '/index.html">' ~ current_team.name ~ '</a>') %}{% endif %}
-{% if position_summary %}{% set _ = parts.append('Position: ' ~ position_summary) %}{% endif %}
-{% if bats %}{% set _ = parts.append('Bats: ' ~ bats) %}{% endif %}
-{% if throws %}{% set _ = parts.append('Throws: ' ~ throws) %}{% endif %}
-{{ parts|join(' &middot; ') }}
-</div>
-{% if photo_url and photo_credit %}
-<div class="subtitle" style="font-size:0.8em; color:#888;">Photo: <a href="{{ photo_credit_url }}">{{ photo_credit }}</a></div>
-{% endif %}
-</div>
+{% macro r3(v) -%}{%- if v is none -%}{%- else -%}{%- set s = '%.3f'|format(v) -%}{{ s[1:] if s.startswith('0.') else s }}{%- endif -%}{%- endmacro %}
+{% macro f1(v) -%}{%- if v is none or v == '' -%}{%- else -%}{{ '%.1f'|format(v|float) }}{%- endif -%}{%- endmacro %}
+{% macro i(v) -%}{{ '%d'|format((v or 0)|float) }}{%- endmacro %}
+{% macro ord(n) -%}{{ n }}{%- if n % 100 in [11, 12, 13] -%}th{%- elif n % 10 == 1 -%}st{%- elif n % 10 == 2 -%}nd{%- elif n % 10 == 3 -%}rd{%- else -%}th{%- endif -%}{%- endmacro %}
+{% macro yearcell(r) -%}<td><a href="{{ root }}years/{{ r.SN }}.html">{{ r.SN }}</a></td><td>{{ r.Age }}</td>
+{%- if r._combined -%}<td class="left">{{ r.Team }}</td>{%- else -%}<td class="left"><a href="{{ root }}teams/{{ r.Team }}/{{ r.SN }}.html">{{ r.Team }}</a></td>{%- endif -%}<td>{{ r.Lg }}</td>{%- endmacro %}
+{% macro rowstyle(r) -%}{%- if r._combined %} class="combined-row"{% endif -%}{%- endmacro %}
+
+{% set B = x.std_batting %}{% set BC = x.std_career %}{% set bio = x.bio %}
+
+<div class="bref-player">
+<nav class="player-nav" aria-label="Sections">
+  <div class="player-nav-title">{{ player_name }}</div>
+  <ul>
+    <li><a href="#info">Overview</a></li>
+    {% if is_pitcher and pitching_rows %}<li><a href="#pitching_standard">Standard Pitching</a></li>{% endif %}
+    {% if B %}
+    <li><a href="#batting_standard">Standard Batting</a></li>
+    <li><a href="#batting_value">Value Batting</a></li>
+    <li><a href="#batting_advanced">Advanced Batting</a></li>
+    {% if x.splits %}<li><a href="#batting_splits">Batting Splits</a></li>{% endif %}
+    {% endif %}
+    {% if not is_pitcher and pitching_rows %}<li><a href="#pitching_standard">Standard Pitching</a></li>{% endif %}
+    {% if ps_batting_rows %}<li><a href="#postseason_batting">Postseason Batting</a></li>{% endif %}
+    {% if ps_pitching_rows %}<li><a href="#postseason_pitching">Postseason Pitching</a></li>{% endif %}
+    {% if B %}<li><a href="#appearances">Appearances</a></li>{% endif %}
+    {% if fielding_rows %}<li><a href="#fielding_standard">Standard Fielding</a></li>{% endif %}
+    <li><a href="#leaderboard">Leaderboards, Awards, &amp; Honors</a></li>
+    {% if transactions %}<li><a href="#transactions">Transactions</a></li>{% endif %}
+  </ul>
+  <div class="player-nav-top"><a href="#top">&uarr; Back to top</a></div>
+</nav>
+
+<div class="player-main">
+<a id="top"></a>
+<div id="info" class="player-info">
+  {% if photo_url %}
+  <div class="player-media">
+  <img src="{{ photo_url }}" data-thumb="{{ photo_url }}" data-full="{{ photo_url.replace('f_150px.jpg', 'fv.jpg') }}" alt="{{ player_name }}" class="player-photo" onmouseenter="this.src=this.dataset.full" onmouseleave="this.src=this.dataset.thumb">
+  {% if photo_credit %}<div class="photo-credit">Photo: <a href="{{ photo_credit_url }}">{{ photo_credit }}</a></div>{% endif %}
+  </div>
+  {% endif %}
+  <div class="player-meta">
+    <h1 class="page-title">{{ player_name }}</h1>
+    {% if bio and bio.FullName and bio.FullName != player_name %}<p><strong>Full Name:</strong> {{ bio.FullName }}</p>{% endif %}
+    {% if x.position_words %}<p><strong>Position{{ 's' if ' and ' in x.position_words else '' }}:</strong> {{ x.position_words }}</p>{% endif %}
+    <p>
+      {% set b = bio.Bats if bio and bio.Bats else ({'R':'Right','L':'Left','S':'Both','B':'Both'}.get(bats, bats) if bats else '') %}
+      {% set t = bio.Throws if bio and bio.Throws else ({'R':'Right','L':'Left'}.get(throws, throws) if throws else '') %}
+      {% if b %}<strong>Bats:</strong> {{ b }}{% endif %}{% if b and t %} &bull; {% endif %}{% if t %}<strong>Throws:</strong> {{ t }}{% endif %}
+    </p>
+    {% if bio and (bio.Height or bio.Weight) %}<p>{{ bio.Height }}{% if bio.Height and bio.Weight %}, {% endif %}{% if bio.Weight %}{{ bio.Weight }}lb{% endif %}</p>{% endif %}
+    {% if current_team %}<p><strong>Team:</strong> <a href="{{ root }}teams/{{ current_team.abbr }}/index.html">{{ current_team.name }}</a></p>{% endif %}
+    {% if bio and bio.Born %}<p><strong>Born:</strong> {{ bio.Born }}{% if bio.BirthPlace %} in {{ bio.BirthPlace }}{% endif %}</p>{% endif %}
+    {% if bio and bio.Died %}<p><strong>Died:</strong> {{ bio.Died }}{% if bio.DeathPlace %} in {{ bio.DeathPlace }}{% endif %}</p>{% endif %}
+    {% if x.debut %}<p><strong>League Debut:</strong> {{ x.debut.date_text }} (<a href="{{ root }}{{ x.debut.url }}">{{ x.debut.label }}, box score</a>){% if B and B|length %}{% set a0 = B[0].Age %}{% if a0 %} &bull; Age {{ a0 }}{% endif %}{% endif %}</p>{% endif %}
+    {% if bio and bio.MLBDebut %}<p><strong>Real-life MLB career:</strong> {{ bio.MLBDebut[:4] }}&ndash;{{ bio.MLBFinal[:4] }} &bull; <a href="https://www.baseball-reference.com/players/{{ bio.bbrefID[0] }}/{{ bio.bbrefID }}.shtml" target="_blank" rel="noopener">Baseball-Reference page &#8599;</a></p>
+    {% elif not bio %}<p class="muted">Rewrite League prospect &mdash; a WhatIfSports-generated player with no real-world record.</p>{% endif %}
+    {% if allstar_count or awards_won %}
+    <div class="badge-row">
+    {% if allstar_count %}<span class="allstar-line">&#9733; {{ allstar_count }}&times; All-Star ({{ allstar_years|join(', ') }})</span>{% endif %}
+    {% for a in awards_won %}<span class="award-line">&#127942; {{ a.Label }}</span>{% endfor %}
+    </div>
+    {% endif %}
+  </div>
 </div>
 
 {% if is_placeholder %}
 <div class="standings-note">No Rewrite League stats yet &mdash; check back once this player takes the field.</div>
 {% endif %}
 
+{# ---------------- stats pullout (latest season + career) ---------------- #}
+{% if is_pitcher and pitching_rows and pitching_career %}
+{% set lastp = pitching_rows|selectattr('SN', 'equalto', pitching_rows[-1].SN)|list %}{% set ls = lastp[0] %}
+<div class="stats-pullout">
+  <div class="pullout-head"><div>&nbsp;</div><div>{{ ls.SN }}</div><div>Career</div></div>
+  {% for lab, key, fmt in [('WAR','WAR','%.1f'),('W','W','%d'),('L','L','%d'),('ERA','ERA','%.2f'),('G','G','%d'),('GS','GS','%d'),('SV','SV','%d'),('IP','IP',None),('SO','SO','%d'),('WHIP','WHIP','%.3f')] %}
+  <div class="pullout-col"><div class="pl">{{ lab }}</div>
+    <div>{% if fmt %}{{ fmt|format((ls[key] or 0)|float) }}{% else %}{{ ls[key] }}{% endif %}</div>
+    <div>{% if fmt %}{{ fmt|format((pitching_career[key] or 0)|float) }}{% else %}{{ pitching_career[key] }}{% endif %}</div></div>
+  {% endfor %}
+</div>
+{% elif B %}
+{% set ls = (B|selectattr('SN', 'equalto', B[-1].SN)|list)[0] %}
+<div class="stats-pullout">
+  <div class="pullout-head"><div>&nbsp;</div><div>{{ ls.SN }}</div><div>Career</div></div>
+  {% for lab, key, kind in [('WAR','WAR','f1'),('AB','AB','i'),('H','H','i'),('HR','HR','i'),('BA','AVG','r3'),('R','R','i'),('RBI','RBI','i'),('SB','SB','i'),('OBP','OBP','r3'),('SLG','SLG','r3'),('OPS','OPS','r3'),('OPS+','OPSp','raw')] %}
+  <div class="pullout-col"><div class="pl">{{ lab }}</div>
+    {% for src in [ls, BC] %}<div>{% if kind == 'f1' %}{{ f1(src[key]) }}{% elif kind == 'i' %}{{ i(src[key]) }}{% elif kind == 'r3' %}{{ r3(src[key]) }}{% else %}{{ src[key] if src[key] is not none else '' }}{% endif %}</div>{% endfor %}
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
+
+{# ---------------- batting tables ---------------- #}
 {% set batting_section %}
-{% if batting_rows %}
-<h2 class="section-title">Batting</h2>
+{% if B %}
+<h2 class="section-title" id="batting_standard">Standard Batting</h2>
 <div class="table-wrap">
 <table class="stats">
-    <thead>
-    <tr>
-        <th>Year</th><th class="left">Team</th><th>Lg</th><th>G</th><th>AB</th><th>R</th><th>H</th>
-        <th>2B</th><th>3B</th><th>HR</th><th>RBI</th><th>BB</th><th>SO</th><th>SB</th><th>CS</th>
-        <th>AVG</th><th>OBP</th><th>SLG</th><th>OPS</th><th>WAR</th>
-    </tr>
-    </thead>
-    <tbody>
-    {% for r in batting_rows %}
-    <tr{% if r._combined %} style="font-weight:bold; background:#f7f4e8;"{% endif %}>
-        <td><a href="{{ root }}years/{{ r.SN }}.html">{{ r.SN }}</a></td>
-        {% if r._combined %}
-        <td class="left">{{ r.Team }}</td><td>&mdash;</td>
-        {% else %}
-        <td class="left"><a href="{{ root }}teams/{{ r.Team }}/{{ r.SN }}.html">{{ r.Team }}</a></td>
-        <td>{{ r.Lg }}</td>
-        {% endif %}
-        <td>{{ r.G }}</td><td>{{ r.AB }}</td>
-        <td>{{ statcell(r.SN, r.Lg if r.Lg is defined else '', 'R', r.R|float, '%.0f') }}</td>
-        <td>{{ statcell(r.SN, r.Lg if r.Lg is defined else '', 'H', r.H|float, '%.0f') }}</td>
-        <td>{{ r['2B'] }}</td><td>{{ r['3B'] }}</td>
-        <td>{{ statcell(r.SN, r.Lg if r.Lg is defined else '', 'HR', r.HR|float, '%.0f') }}</td>
-        <td>{{ statcell(r.SN, r.Lg if r.Lg is defined else '', 'RBI', r.RBI|float, '%.0f') }}</td>
-        <td>{{ r.BB }}</td><td>{{ r.SO }}</td>
-        <td>{{ statcell(r.SN, r.Lg if r.Lg is defined else '', 'SB', r.SB|float, '%.0f') }}</td><td>{{ r.CS }}</td>
-        <td>{{ statcell(r.SN, r.Lg if r.Lg is defined else '', 'AVG', r.AVG|float, '%.3f', r.AB|float) }}</td>
-        <td>{{ '%.3f'|format(r.OBP|float) }}</td>
-        <td>{{ '%.3f'|format(r.SLG|float) }}</td>
-        <td>{{ statcell(r.SN, r.Lg if r.Lg is defined else '', 'OPS', r.OPS|float, '%.3f', r.AB|float) }}</td>
-        <td>{{ '%.1f'|format(r.WAR|float) if r.WAR is defined and r.WAR != '' else '' }}</td>
-    </tr>
-    {% endfor %}
-    {% if batting_career %}
-    <tr style="font-weight:bold; background:#eef2f7;">
-        <td colspan="2" class="left">Career</td><td>&mdash;</td>
-        <td>{{ batting_career.G }}</td><td>{{ batting_career.AB }}</td><td>{{ batting_career.R }}</td><td>{{ batting_career.H }}</td>
-        <td>{{ batting_career['2B'] }}</td><td>{{ batting_career['3B'] }}</td><td>{{ batting_career.HR }}</td>
-        <td>{{ batting_career.RBI }}</td><td>{{ batting_career.BB }}</td><td>{{ batting_career.SO }}</td>
-        <td>{{ batting_career.SB }}</td><td>{{ batting_career.CS }}</td>
-        <td>{{ '%.3f'|format(batting_career.AVG) }}</td><td>{{ '%.3f'|format(batting_career.OBP) }}</td>
-        <td>{{ '%.3f'|format(batting_career.SLG) }}</td><td>{{ '%.3f'|format(batting_career.OPS) }}</td>
-        <td>{{ '%.1f'|format(batting_career.WAR) if batting_career.WAR is defined else '' }}</td>
-    </tr>
-    {% endif %}
-    {% for tot in batting_by_franchise %}
-    <tr style="background:#f9fafb; color:#444;">
-        <td class="left">{{ tot.Years }} {{ 'Yr' if tot.Years == 1 else 'Yrs' }}</td>
-        <td class="left">{{ tot.Franchise }}</td><td>&mdash;</td>
-        <td>{{ tot.G }}</td><td>{{ tot.AB }}</td><td>{{ tot.R }}</td><td>{{ tot.H }}</td>
-        <td>{{ tot['2B'] }}</td><td>{{ tot['3B'] }}</td><td>{{ tot.HR }}</td>
-        <td>{{ tot.RBI }}</td><td>{{ tot.BB }}</td><td>{{ tot.SO }}</td>
-        <td>{{ tot.SB }}</td><td>{{ tot.CS }}</td>
-        <td>{{ '%.3f'|format(tot.AVG) }}</td><td>{{ '%.3f'|format(tot.OBP) }}</td>
-        <td>{{ '%.3f'|format(tot.SLG) }}</td><td>{{ '%.3f'|format(tot.OPS) }}</td>
-        <td>{{ '%.1f'|format(tot.WAR) if tot.WAR is defined else '' }}</td>
-    </tr>
-    {% endfor %}
-    </tbody>
+<thead><tr>
+  <th>Year</th><th>Age</th><th class="left">Tm</th><th>Lg</th><th>G</th><th>PA</th><th>AB</th><th>R</th><th>H</th><th>2B</th><th>3B</th><th>HR</th><th>RBI</th>
+  <th>SB</th><th>CS</th><th>BB</th><th>SO</th><th>BA</th><th>OBP</th><th>SLG</th><th>OPS</th><th>OPS+</th><th>TB</th><th>GIDP</th><th>HBP</th><th>SH</th><th>SF</th><th>IBB</th><th class="left">Pos</th><th class="left">Awards</th>
+</tr></thead>
+<tbody>
+{% for r in B %}
+<tr{{ rowstyle(r) }}>
+  {{ yearcell(r) }}
+  <td>{{ i(r.G) }}</td><td>{{ i(r.PA) }}</td><td>{{ i(r.AB) }}</td>
+  <td>{{ statcell(r.SN, r.Lg, 'R', r.R, '%.0f') }}</td><td>{{ statcell(r.SN, r.Lg, 'H', r.H, '%.0f') }}</td>
+  <td>{{ i(r['2B']) }}</td><td>{{ i(r['3B']) }}</td><td>{{ statcell(r.SN, r.Lg, 'HR', r.HR, '%.0f') }}</td>
+  <td>{{ statcell(r.SN, r.Lg, 'RBI', r.RBI, '%.0f') }}</td><td>{{ statcell(r.SN, r.Lg, 'SB', r.SB, '%.0f') }}</td><td>{{ i(r.CS) }}</td>
+  <td>{{ i(r.BB) }}</td><td>{{ i(r.SO) }}</td>
+  <td>{{ r3(r.AVG) }}</td><td>{{ r3(r.OBP) }}</td><td>{{ r3(r.SLG) }}</td><td>{{ r3(r.OPS) }}</td>
+  <td>{{ r.OPSp if r.OPSp is not none else '' }}</td><td>{{ i(r.TB) }}</td>
+  {% if r._nodetail %}<td></td><td>{{ i(r.HBP) }}</td><td></td><td></td><td></td>{% else %}<td>{{ i(r.GIDP) }}</td><td>{{ i(r.HBP) }}</td><td>{{ i(r.SH) }}</td><td>{{ i(r.SF) }}</td><td>{{ i(r.IBB) }}</td>{% endif %}
+  <td class="left">{{ r.Pos }}</td><td class="left">{{ r.Awards }}</td>
+</tr>
+{% endfor %}
+<tr class="career-row">
+  <td colspan="4" class="left">{{ BC.Years }} Yr{{ 's' if BC.Years != 1 }}</td>
+  <td>{{ i(BC.G) }}</td><td>{{ i(BC.PA) }}</td><td>{{ i(BC.AB) }}</td><td>{{ i(BC.R) }}</td><td>{{ i(BC.H) }}</td>
+  <td>{{ i(BC['2B']) }}</td><td>{{ i(BC['3B']) }}</td><td>{{ i(BC.HR) }}</td><td>{{ i(BC.RBI) }}</td><td>{{ i(BC.SB) }}</td><td>{{ i(BC.CS) }}</td>
+  <td>{{ i(BC.BB) }}</td><td>{{ i(BC.SO) }}</td><td>{{ r3(BC.AVG) }}</td><td>{{ r3(BC.OBP) }}</td><td>{{ r3(BC.SLG) }}</td><td>{{ r3(BC.OPS) }}</td>
+  <td>{{ BC.OPSp if BC.OPSp is not none else '' }}</td><td>{{ i(BC.TB) }}</td><td>{{ i(BC.GIDP) }}</td><td>{{ i(BC.HBP) }}</td>
+  <td>{{ i(BC.SH) }}</td><td>{{ i(BC.SF) }}</td><td>{{ i(BC.IBB) }}</td><td></td><td></td>
+</tr>
+</tbody>
 </table>
 </div>
-<div class="standings-note"><strong>Bold</strong> season stats indicate the player led their league (AA or NL) that season.
-<strong><em>Bold italic</em></strong> season stats indicate the player led both major leagues that season.
-See <a href="{{ root }}war-explained.html">how WAR is calculated</a> on this site.</div>
+<div class="standings-note">Bold = led the league. OPS+ compares OBP and SLG with the league average (100 = average; no park adjustment). Blank GIDP/SH/SF/IBB cells: that season's source data didn't track them (PA there = AB+BB+HBP).</div>
+
+<h2 class="section-title" id="batting_value">Value Batting</h2>
+<div class="table-wrap">
+<table class="stats">
+<thead><tr>
+  <th>Year</th><th>Age</th><th class="left">Tm</th><th>Lg</th><th>PA</th><th>Rbat</th><th>Rbaser</th><th>Rfield</th><th>Rpos</th><th>RAA</th><th>WAA</th><th>Rrep</th><th>RAR</th><th>WAR</th><th>oWAR</th><th>dWAR</th><th class="left">Pos</th><th class="left">Awards</th>
+</tr></thead>
+<tbody>
+{% for r in B %}
+<tr{{ rowstyle(r) }}>
+  {{ yearcell(r) }}<td>{{ i(r.PA) }}</td>
+  {% for k in ['Rbat','Rbaser','Rfield','Rpos','RAA','WAA','Rrep','RAR','WAR','oWAR','dWAR'] %}<td>{{ f1(r[k]) }}</td>{% endfor %}
+  <td class="left">{{ r.Pos }}</td><td class="left">{{ r.Awards }}</td>
+</tr>
+{% endfor %}
+<tr class="career-row"><td colspan="4" class="left">{{ BC.Years }} Yr{{ 's' if BC.Years != 1 }}</td><td>{{ i(BC.PA) }}</td>
+  {% for k in ['Rbat','Rbaser','Rfield','Rpos','RAA','WAA','Rrep','RAR','WAR','oWAR','dWAR'] %}<td>{{ f1(BC[k]) }}</td>{% endfor %}<td></td><td></td></tr>
+</tbody>
+</table>
+</div>
+<div class="standings-note">Runs above average from batting (Rbat), baserunning (Rbaser), fielding (Rfield) and position (Rpos); RAA/WAA = runs/wins above average, Rrep = replacement runs, RAR = runs above replacement. Rfield is 0 for everyone in this league (see <a href="{{ root }}war-explained.html">how WAR is calculated</a>).</div>
+
+<h2 class="section-title" id="batting_advanced">Advanced Batting</h2>
+<div class="table-wrap">
+<table class="stats">
+<thead><tr>
+  <th>Year</th><th>Age</th><th class="left">Tm</th><th>Lg</th><th>PA</th><th>BAbip</th><th>ISO</th><th>HR%</th><th>SO%</th><th>BB%</th><th>XBH%</th><th>X/H%</th><th>GB/FB</th><th>GB%</th><th>SB%</th><th>P/PA</th><th>RC</th><th>eBA</th><th>Clutch</th><th>WIS WAR</th>
+</tr></thead>
+<tbody>
+{% for r in B %}
+<tr{{ rowstyle(r) }}>
+  {{ yearcell(r) }}<td>{{ i(r.PA) }}</td>
+  <td>{{ r3(r.BAbip) }}</td><td>{{ r3(r.ISO) }}</td><td>{{ f1(r.HRp) }}</td><td>{{ f1(r.SOp) }}</td><td>{{ f1(r.BBp) }}</td>
+  <td>{{ f1(r.XBHp) }}</td><td>{{ f1(r.XHp) }}</td>
+  <td>{{ '%.2f'|format(r.GBFB) if r.GBFB is not none else '' }}</td><td>{{ f1(r.GBp) }}</td><td>{{ f1(r.SBp) }}</td>
+  <td>{{ '%.2f'|format(r.PPA) if r.PPA is not none else '' }}</td><td>{{ f1(r.RC) if r.RC else '' }}</td>
+  <td>{{ r3(r.eBA|float) if r.eBA not in ['', none] else '' }}</td><td>{{ r.Clutch }}</td><td>{{ f1(r.WISWAR) }}</td>
+</tr>
+{% endfor %}
+<tr class="career-row"><td colspan="4" class="left">{{ BC.Years }} Yr{{ 's' if BC.Years != 1 }}</td><td>{{ i(BC.PA) }}</td>
+  <td>{{ r3(BC.BAbip) }}</td><td>{{ r3(BC.ISO) }}</td><td>{{ f1(BC.HRp) }}</td><td>{{ f1(BC.SOp) }}</td><td>{{ f1(BC.BBp) }}</td>
+  <td>{{ f1(BC.XBHp) }}</td><td>{{ f1(BC.XHp) }}</td><td>{{ '%.2f'|format(BC.GBFB) if BC.GBFB is not none else '' }}</td><td>{{ f1(BC.GBp) }}</td>
+  <td>{{ f1(BC.SBp) }}</td><td>{{ '%.2f'|format(BC.PPA) if BC.PPA is not none else '' }}</td><td>{{ f1(BC.RC) if BC.RC else '' }}</td><td></td><td></td><td>{{ f1(BC.WISWAR) }}</td></tr>
+</tbody>
+</table>
+</div>
+<div class="standings-note">BAbip = batting average on balls in play; ISO = SLG &minus; BA; HR%, SO%, BB%, XBH% are per plate appearance; X/H% = extra-base hits per hit; GB/FB and P/PA come from the sim's batted-ball and pitch counts; RC = runs created. eBA, Clutch and WIS WAR are WhatIfSports' own metrics (1886 onward).</div>
+
+{% if x.splits %}
+<h2 class="section-title" id="batting_splits">Batting Splits</h2>
+<div class="table-wrap">
+<table class="stats">
+<thead><tr><th>Year</th><th class="left">Split</th><th>G</th><th>PA</th><th>AB</th><th>R</th><th>H</th><th>2B</th><th>3B</th><th>HR</th><th>RBI</th><th>SB</th><th>CS</th><th>BB</th><th>SO</th><th>BA</th><th>OBP</th><th>SLG</th><th>OPS</th><th>BAbip</th></tr></thead>
+<tbody>
+{% for r in x.splits %}
+<tr><td>{{ r.SN }}</td><td class="left">{{ r.Split }}</td><td>{{ i(r.G) }}</td><td>{{ i(r.PA) }}</td><td>{{ i(r.AB) }}</td><td>{{ i(r.R) }}</td><td>{{ i(r.H) }}</td>
+  <td>{{ i(r['2B']) }}</td><td>{{ i(r['3B']) }}</td><td>{{ i(r.HR) }}</td><td>{{ i(r.RBI) }}</td><td>{{ i(r.SB) }}</td><td>{{ i(r.CS) }}</td>
+  <td>{{ i(r.BB) }}</td><td>{{ i(r.SO) }}</td><td>{{ r3(r.AVG) }}</td><td>{{ r3(r.OBP) }}</td><td>{{ r3(r.SLG) }}</td><td>{{ r3(r.OPS) }}</td><td>{{ r3(r.BAbip) }}</td></tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+<div class="standings-note">Splits come from the WhatIfSports season export (available from 1886). Traded players' splits combine all of their teams that season.</div>
+{% endif %}
 {% endif %}
 {% endset %}
+
 {% set pitching_section %}
 {% if pitching_rows %}
-<h2 class="section-title">Pitching</h2>
+<h2 class="section-title" id="pitching_standard">Standard Pitching</h2>
 <div class="table-wrap">
 <table class="stats">
     <thead>
@@ -182,7 +280,7 @@ See <a href="{{ root }}war-explained.html">how WAR is calculated</a> on this sit
 {% endset %}
 {% set ps_batting_section %}
 {% if ps_batting_rows %}
-<h2 class="section-title">Postseason Stats &mdash; Batting</h2>
+<h2 class="section-title" id="postseason_batting">Postseason Batting</h2>
 <div class="table-wrap">
 <table class="stats">
     <thead>
@@ -223,7 +321,7 @@ See <a href="{{ root }}war-explained.html">how WAR is calculated</a> on this sit
 {% endset %}
 {% set ps_pitching_section %}
 {% if ps_pitching_rows %}
-<h2 class="section-title">Postseason Stats &mdash; Pitching</h2>
+<h2 class="section-title" id="postseason_pitching">Postseason Pitching</h2>
 <div class="table-wrap">
 <table class="stats">
     <thead>
@@ -261,60 +359,103 @@ See <a href="{{ root }}war-explained.html">how WAR is calculated</a> on this sit
 {% endif %}
 
 {% endset %}
+
 {% if is_pitcher %}
 {{ pitching_section }}
 {{ batting_section }}
-{{ ps_pitching_section }}
-{{ ps_batting_section }}
 {% else %}
 {{ batting_section }}
 {{ pitching_section }}
+{% endif %}
 {{ ps_batting_section }}
 {{ ps_pitching_section }}
-{% endif %}
 
-{% if fielding_rows %}
-<h2 class="section-title">Fielding</h2>
+{# ---------------- appearances ---------------- #}
+{% if B %}
+<h2 class="section-title" id="appearances">Appearances</h2>
 <div class="table-wrap">
 <table class="stats">
-    <thead>
-    <tr>
-        <th>Year</th><th class="left">Team</th><th>Pos</th><th>GP</th><th>GS</th><th>Inn</th>
-        <th>E</th><th>PO</th><th>A</th><th>DP</th><th>F.Pct</th><th>RF</th>
-        <th>SB</th><th>CS</th><th>C.ERA</th><th>PB</th><th>PK</th>
-    </tr>
-    </thead>
-    <tbody>
-    {% for r in fielding_rows %}
-    <tr{% if r._combined %} style="font-weight:bold; background:#f7f4e8;"{% endif %}>
-        <td><a href="{{ root }}years/{{ r.Season }}.html">{{ r.Season }}</a></td>
-        <td class="left">{% if r._combined %}{{ r.Team }}{% else %}<a href="{{ root }}teams/{{ r.Team }}/{{ r.Season }}.html">{{ r.Team }}</a>{% endif %}</td>
-        <td>{{ r.Pos }}</td>
-        <td>{{ r.GP }}</td><td>{{ r.GS }}</td><td>{{ '%.1f'|format(r.Inn|float) }}</td>
-        <td>{{ r.E }}</td><td>{{ r.PO }}</td><td>{{ r.A }}</td><td>{{ r.DP }}</td>
-        <td>{{ '%.3f'|format(r.FPct|float) }}</td><td>{{ '%.2f'|format(r.RF|float) }}</td>
-        <td>{{ r.SB }}</td><td>{{ r.CS }}</td><td>{{ '%.2f'|format(r.CERA|float) }}</td>
-        <td>{{ r.PB }}</td><td>{{ r.PK }}</td>
-    </tr>
-    {% endfor %}
-    {% for pos, tot in fielding_career_by_pos.items() %}
-    <tr style="font-weight:bold; background:#eef2f7;">
-        <td colspan="2" class="left">Career</td>
-        <td>{{ pos }}</td>
-        <td>{{ tot.GP }}</td><td>{{ tot.GS }}</td><td>{{ '%.1f'|format(tot.Inn) }}</td>
-        <td>{{ tot.E }}</td><td>{{ tot.PO }}</td><td>{{ tot.A }}</td><td>{{ tot.DP }}</td>
-        <td>{{ '%.3f'|format(tot.FPct) }}</td><td>{{ '%.2f'|format(tot.RF) }}</td>
-        <td>{{ tot.SB }}</td><td>{{ tot.CS }}</td><td>{{ '%.2f'|format(tot.CERA) }}</td>
-        <td>{{ tot.PB }}</td><td>{{ tot.PK }}</td>
-    </tr>
-    {% endfor %}
-    </tbody>
+<thead><tr><th>Year</th><th>Age</th><th class="left">Tm</th><th>Lg</th><th>G</th><th>GS</th><th>Batting</th><th>Defense</th>
+{% for p in ['P','C','1B','2B','3B','SS','LF','CF','RF'] %}<th>{{ p }}</th>{% endfor %}<th>OF</th><th>PH</th><th>PR</th></tr></thead>
+<tbody>
+{% for r in B %}
+<tr{{ rowstyle(r) }}>{{ yearcell(r) }}<td>{{ i(r.G) }}</td><td>{{ i(r.GS) }}</td><td>{{ i(r.G) }}</td><td>{{ i(r.Def) }}</td>
+{% for p in ['P','C','1B','2B','3B','SS','LF','CF','RF'] %}<td>{{ i(r.posG[p]) if r.posG[p] else '' }}</td>{% endfor %}
+<td>{{ i(r.OF) if r.OF else '' }}</td><td>{{ i(r.PH) if r.PH else '' }}</td><td>{{ i(r.PR) if r.PR else '' }}</td></tr>
+{% endfor %}
+<tr class="career-row"><td colspan="4" class="left">{{ BC.Years }} Yr{{ 's' if BC.Years != 1 }}</td><td>{{ i(BC.G) }}</td><td>{{ i(BC.GS) }}</td><td>{{ i(BC.G) }}</td><td>{{ i(BC.Def) }}</td>
+{% for p in ['P','C','1B','2B','3B','SS','LF','CF','RF'] %}<td>{{ i(BC.posG[p]) if BC.posG[p] else '' }}</td>{% endfor %}
+<td>{{ i(BC.OF) if BC.OF else '' }}</td><td>{{ i(BC.PH) if BC.PH else '' }}</td><td>{{ i(BC.PR) if BC.PR else '' }}</td></tr>
+</tbody>
 </table>
 </div>
+<div class="standings-note">Games by position come from the fielding data; GS = games started; PH/PR = games entered as a pinch hitter or pinch runner (counted from the box scores).</div>
 {% endif %}
 
+{# ---------------- standard fielding ---------------- #}
+{% if fielding_rows %}
+<h2 class="section-title" id="fielding_standard">Standard Fielding</h2>
+<div class="table-wrap">
+<table class="stats">
+<thead><tr><th>Year</th><th>Age</th><th class="left">Tm</th><th>Lg</th><th>Pos</th><th>G</th><th>GS</th><th>Inn</th><th>Ch</th><th>PO</th><th>A</th><th>E</th><th>DP</th>
+<th>Fld%</th><th>lgFld%</th><th>RF/9</th><th>lgRF9</th><th>RF/G</th><th>+Plays</th><th>&minus;Plays</th><th>PB</th><th>SB</th><th>CS</th><th>CS%</th><th>C.ERA</th><th>PK</th></tr></thead>
+<tbody>
+{% for r in fielding_rows %}
+<tr{{ rowstyle(r) }}>
+  <td><a href="{{ root }}years/{{ r.Season }}.html">{{ r.Season }}</a></td><td>{{ r.Age }}</td>
+  <td class="left">{% if r._combined %}{{ r.Team }}{% else %}<a href="{{ root }}teams/{{ r.Team }}/{{ r.Season }}.html">{{ r.Team }}</a>{% endif %}</td>
+  <td>{{ r.LgShow }}</td><td>{{ r.Pos }}</td><td>{{ i(r.GP) }}</td><td>{{ i(r.GS) }}</td><td>{{ '%.1f'|format((r.Inn or 0)|float) }}</td>
+  <td>{{ r.Ch }}</td><td>{{ i(r.PO) }}</td><td>{{ i(r.A) }}</td><td>{{ i(r.E) }}</td><td>{{ i(r.DP) }}</td>
+  <td>{{ r3((r.FPct or 0)|float) }}</td><td>{{ r3(r.lgFld) }}</td><td>{{ '%.2f'|format(r.RF9) }}</td><td>{{ '%.2f'|format(r.lgRF9) if r.lgRF9 is not none else '' }}</td>
+  <td>{{ '%.2f'|format(r.RFG) }}</td><td>{{ i(r.GoodPlays) }}</td><td>{{ i(r.PoorPlays) }}</td>
+  {% if r.Pos == 'C' %}<td>{{ i(r.PB) }}</td><td>{{ i(r.SB) }}</td><td>{{ i(r.CS) }}</td><td>{{ '%.0f%%'|format(r.CSp) if r.CSp is not none else '' }}</td><td>{{ '%.2f'|format((r.CERA or 0)|float) }}</td>
+  {% else %}<td></td><td>{{ i(r.SB) if r.Pos == 'P' else '' }}</td><td>{{ i(r.CS) if r.Pos == 'P' else '' }}</td><td></td><td></td>{% endif %}
+  <td>{{ i(r.PK) if r.Pos in ['P','C'] else '' }}</td>
+</tr>
+{% endfor %}
+{% for pos, tot in fielding_career_by_pos.items() %}
+<tr class="career-row"><td colspan="4" class="left">Career</td><td>{{ pos }}</td><td>{{ i(tot.GP) }}</td><td>{{ i(tot.GS) }}</td><td>{{ '%.1f'|format(tot.Inn|float) }}</td>
+  <td>{{ i((tot.PO|float) + (tot.A|float) + (tot.E|float)) }}</td><td>{{ i(tot.PO) }}</td><td>{{ i(tot.A) }}</td><td>{{ i(tot.E) }}</td><td>{{ i(tot.DP) }}</td>
+  <td>{{ r3(tot.FPct|float) }}</td><td></td><td>{{ '%.2f'|format(tot.RF|float) }}</td><td></td>
+  <td>{{ '%.2f'|format(((tot.PO|float) + (tot.A|float)) / (tot.GP|float)) if tot.GP else '' }}</td><td>{{ i(tot.GoodPlays) if tot.GoodPlays is defined else '' }}</td><td>{{ i(tot.PoorPlays) if tot.PoorPlays is defined else '' }}</td>
+  {% if pos == 'C' %}<td>{{ i(tot.PB) }}</td><td>{{ i(tot.SB) }}</td><td>{{ i(tot.CS) }}</td><td>{{ '%.0f%%'|format(100 * (tot.CS|float) / ((tot.SB|float) + (tot.CS|float))) if ((tot.SB|float) + (tot.CS|float)) else '' }}</td><td>{{ '%.2f'|format(tot.CERA|float) }}</td>
+  {% else %}<td></td><td>{{ i(tot.SB) if pos == 'P' else '' }}</td><td>{{ i(tot.CS) if pos == 'P' else '' }}</td><td></td><td></td>{% endif %}
+  <td>{{ i(tot.PK) if pos in ['P','C'] else '' }}</td></tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+<div class="standings-note">Positions listed in scorebook order (P, C, 1B, 2B, 3B, SS, LF, CF, RF). Ch = chances (PO+A+E); RF/9 = 9&times;(PO+A)/Inn; RF/G = (PO+A)/G; lgFld% and lgRF9 = league average at that position. +Plays/&minus;Plays are the sim's good and poor defensive plays. For pitchers, SB/CS are runners stealing while he pitched.</div>
+{% endif %}
+
+{# ---------------- leaderboards, awards & honors ---------------- #}
+<h2 class="section-title" id="leaderboard">Leaderboards, Awards, &amp; Honors</h2>
+{% if x.honors.allstar or x.honors.awards or x.leaderboards %}
+<div class="lb-grid">
+  {% if x.honors.allstar or x.honors.awards %}
+  <div class="lb-box lb-honors">
+    <h3>Awards &amp; Honors</h3>
+    <ul>
+    {% for a in x.honors.allstar %}<li><a href="{{ root }}allstar-game/{{ a.Season }}.html">{{ a.Season }} {{ a.League }} All-Star</a> ({{ a.Pos }})</li>{% endfor %}
+    {% for a in x.honors.awards %}<li>{{ a.Season }} {{ a.League }} {{ a.Award }}{% if a.Award in ['MVP','Champion Hurler','Fireman'] %} &mdash; {{ ord(a.Rank|int) }} place{% endif %}</li>{% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+  {% for cat in x.leaderboards %}
+  <div class="lb-box">
+    <h3>{{ cat.label }}</h3>
+    <ul>{% for e in cat.entries %}<li><a href="{{ root }}leaders/{{ e.season }}.html">{{ e.season }}</a> {{ e.lg }} &nbsp;<span class="lb-val">{{ e.value }}</span> ({{ ord(e.rank) }}){% if e.rank == 1 %} &#9733;{% endif %}</li>{% endfor %}</ul>
+  </div>
+  {% endfor %}
+</div>
+<div class="standings-note">Top-10 finishes in each league. Rate stats require 3.1 plate appearances (batters) or 1 inning pitched (pitchers) per team game.</div>
+{% else %}
+<p class="muted">No top-10 league finishes or awards yet.</p>
+{% endif %}
+
+{# ---------------- transactions ---------------- #}
 {% if transactions %}
-<h2 class="section-title">Transactions</h2>
+<h2 class="section-title" id="transactions">Transactions</h2>
 <ul class="transactions-list">
 {% for tx in transactions %}
 {% if tx.kind == 'draft' %}
@@ -327,4 +468,7 @@ in the {{ tx.data.Season }} Draft.</li>
 {% endfor %}
 </ul>
 {% endif %}
+
+</div>{# player-main #}
+</div>{# bref-player #}
 {% endblock %}

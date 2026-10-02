@@ -87,9 +87,13 @@ for _, r in src.iterrows():
                 'RBI': I('RBI'), 'BB': I('BB'), 'SO': I('SO'), 'HBP': I('HBP'), 'SB': I('SB'), 'CS': I('CS'),
                 'AVG': f3(r['BA']), 'OBP': f3(r['OBP']), 'SLG': f3(r['SLG']), 'OPS': f3(r['OPS']),
                 'STRK': '', 'L STRK': '', 'WAR': '', 'Prospect': 'Y' if pro else '',
-                'PA': I('PA'), 'IBB': I('IBB'), 'SF': I('SF'), 'SH': I('SH'), 'GIDP': I('GIDP')})
+                'PA': I('PA'), 'IBB': I('IBB'), 'SF': I('SF'), 'SH': I('SH'), 'GIDP': I('GIDP'),
+                'GS': I('GS'), 'PHAB': I('PH AB'), 'PHH': I('PH'), 'GB': I('GB'), 'FB': I('FB'), 'NP': I('NP'),
+                'IFH': I('Infield Hits'), 'BH': I('Bunt Hits'), 'LOB': I('LOB'), 'RBI2O': I('RBI 2 Outs'),
+                'GIDPO': I('GIDPO'), 'RC': f"{float(r['RC']):.1f}" if str(r['RC']) != 'nan' else '0.0'})
 fn = ['Player', 'Team', 'Lg', 'SN', 'B', 'G', 'AB', 'R', 'H', '2B', '3B', 'HR', 'RBI', 'BB', 'SO', 'HBP', 'SB', 'CS',
-      'AVG', 'OBP', 'SLG', 'OPS', 'STRK', 'L STRK', 'WAR', 'Prospect', 'PA', 'IBB', 'SF', 'SH', 'GIDP']
+      'AVG', 'OBP', 'SLG', 'OPS', 'STRK', 'L STRK', 'WAR', 'Prospect', 'PA', 'IBB', 'SF', 'SH', 'GIDP',
+      'GS', 'PHAB', 'PHH', 'GB', 'FB', 'NP', 'IFH', 'BH', 'LOB', 'RBI2O', 'GIDPO', 'RC']
 report['batting'] = (len(old_bat), len(out), sorted({(r['Player'], r['Team']) for r in old_bat} - {(r['Player'], r['Team']) for r in out}))
 write('batting.csv', out, fn)
 
@@ -128,6 +132,30 @@ fn = ['Player', 'Team', 'Lg', 'SN', 'Pos', 'GP', 'GS', 'Inn', 'E', 'PO', 'A', 'D
       'SB', 'CS', 'CERA', 'PB', 'PK', 'Prospect', 'EThrow']
 report['fielding'] = (len(old_fld), len(out), sorted({(r['Player'], r['Team'], r['Pos']) for r in old_fld} - {(r['Player'], r['Team'], r['Pos']) for r in out}))
 write('fielding.csv', out, fn)
+
+# ---------------- splits & WIS metrics (kept for the player pages) ----------------
+def passthrough(fname, outname, drop=('Owner', 'Season', 'Bats', 'Throws')):
+    path = os.path.join(UP, fname)
+    if not os.path.exists(path):
+        return
+    src = pd.read_csv(path)
+    rows = []
+    for _, r in src.iterrows():
+        keep, pro, name = clean(r['Player'], r['Season'])
+        if not keep: continue
+        d = {'Player': name, 'Team': TEAM[r['Team']], 'SN': SEASON, 'Prospect': 'Y' if pro else ''}
+        for c in src.columns:
+            if c in ('Player', 'Team') or c in drop: continue
+            v = r[c]
+            d[c] = '' if (isinstance(v, float) and math.isnan(v)) else (int(v) if isinstance(v, float) and v.is_integer() else v)
+        rows.append(d)
+    write(outname, rows, list(rows[0].keys()))
+    report[outname.replace('.csv', '')] = (0, len(rows), [])
+
+passthrough('MLB145742_BattingRegSeasonSplits.csv', 'batting_splits.csv')
+passthrough('MLB145742_BattingRegSeasonWismetrics.csv', 'batting_metrics.csv')
+passthrough('MLB145742_PitchingRegSeasonSplits.csv', 'pitching_splits.csv')
+passthrough('MLB145742_PitchingRegSeasonWismetrics.csv', 'pitching_metrics.csv')
 
 for k, (was, now, dropped) in report.items():
     print(f"{k:9} rows {was} -> {now}   dropped: {dropped if dropped else 'none'}")

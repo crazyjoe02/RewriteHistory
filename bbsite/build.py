@@ -968,6 +968,8 @@ def main():
             display.extend(group)
         return display
 
+    from player_extras import LeagueContext, POS_NAME
+    _ctx = LeagueContext(DATA_DIR, seasons, name_fn=display_name)
     for pid, pdata in players.items():
         # Within a season, list a traded player's stints chronologically: the team he was
         # traded away from comes before the team he was traded to.
@@ -1126,7 +1128,13 @@ def main():
                 current_team = {"abbr": hub_abbr.get(cur_abbr, cur_abbr),
                                 "name": tinfo["FranchiseName"] if tinfo else cur_abbr}
 
-        write(f"players/{pid}.html", "player.html",
+        extras = _ctx.player(pdata["name"], pdata["name"], batting_rows, pitching_rows, fielding_rows_for_player,
+                             pdata.get("trades", []), is_pitcher)
+        _ctx.enrich_fielding(fielding_display_rows, extras["bio"])
+        _pos_main = [p for p in position_summary.split("-") if p][:3]
+        _pw = [POS_NAME.get(p, p) for p in _pos_main]
+        extras["position_words"] = (", ".join(_pw[:-1]) + " and " + _pw[-1]) if len(_pw) > 1 else "".join(_pw)
+        write(f"players/{pid}.html", "player.html", x=extras,
               player_name=pdata["name"], bats=pdata["bats"], throws=pdata["throws"],
               position_summary=position_summary,
               photo_url=pdata.get("photo_url"), photo_credit=pdata.get("photo_credit"),

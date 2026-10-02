@@ -99,7 +99,8 @@ def compute_season(season):
         print(f"{season}: no batting data found, skipping")
         return
 
-    orig_bat_fields = [k for k in batting[0].keys() if k != "WAR"]
+    VALUE_COLS = ["Rbat", "Rbaser", "Rfield", "Rpos", "RAA", "WAA", "Rrep", "RAR", "oWAR", "dWAR", "RPW"]
+    orig_bat_fields = [k for k in batting[0].keys() if k != "WAR" and k not in VALUE_COLS]
     orig_pit_fields = [k for k in pitching[0].keys() if k != "WAR"] if pitching else []
 
     pitcher_keys = set((r["Player"], r["Team"]) for r in pitching)
@@ -191,9 +192,17 @@ def compute_season(season):
     for row in batting:
         rar = row["Rbat"] + row["Rbr"] + row["Rfield"] + row["Rpos"] + row["Rrep"]
         row["WAR"] = round(rar / rpw, 2)
+        # Keep the Baseball-Reference "Value Batting" components for the player pages.
+        raa = row["Rbat"] + row["Rbr"] + row["Rfield"] + row["Rpos"]
+        vals = {"Rbat": row["Rbat"], "Rbaser": row["Rbr"], "Rfield": row["Rfield"], "Rpos": row["Rpos"],
+                "RAA": raa, "WAA": raa / rpw, "Rrep": row["Rrep"], "RAR": rar,
+                "oWAR": (row["Rbat"] + row["Rbr"] + row["Rpos"] + row["Rrep"]) / rpw,
+                "dWAR": (row["Rfield"] + row["Rpos"]) / rpw, "RPW": rpw}
         for k in list(row.keys()):
             if k.startswith("_") or k in ("Rbat", "Rbr", "Rfield", "Rpos", "Rrep"):
                 del row[k]
+        for k, v in vals.items():
+            row[k] = round(v, 1) if k not in ("WAA", "oWAR", "dWAR", "RPW") else round(v, 2)
 
     for league in sorted(set(r["League"] for r in pitching)):
         p_rows = [r for r in pitching if r["League"] == league]
@@ -211,7 +220,7 @@ def compute_season(season):
             runs_above_rep = runs_above_avg + repl_increment_per_out * outs
             r["WAR"] = round(runs_above_rep / rpw, 2)
 
-    write_csv(bat_path, batting, orig_bat_fields + ["WAR"])
+    write_csv(bat_path, batting, orig_bat_fields + ["WAR"] + VALUE_COLS)
     if pitching:
         write_csv(pit_path, pitching, orig_pit_fields + ["WAR"])
     print(f"{season}: RPG={rpg_total:.2f} RPW={rpw:.2f}  "
