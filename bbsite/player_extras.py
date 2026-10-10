@@ -100,6 +100,14 @@ class LeagueContext:
             for r in _load(os.path.join(d, "pitching_splits.csv")):
                 self.psplits[(s, self.name_fn(r["Player"]))].append(r)
 
+        # Play-by-play derived splits (starter/reliever, vs batter hand, home/away at-bats)
+        from pbp_splits import PBPSplits
+        self.pbp = {}
+        for s in self.seasons:
+            d = os.path.join(data_dir, str(s))
+            if os.path.exists(os.path.join(d, "pitching_splits.csv")) and os.path.exists(os.path.join(d, "games.json")):
+                self.pbp[s] = PBPSplits(data_dir, s, self.name_fn)
+
         # Awards / All-Star selections by display name
         self.allstars, self.awards = defaultdict(list), defaultdict(list)
         for s in self.seasons:
@@ -399,51 +407,94 @@ class LeagueContext:
                 d.update({"SN": s, "Split": SPLIT_LABEL[lab]})
                 splits.append(d)
 
-        # ---------- pitching splits (Home/Away carry full lines; vs LHB/RHB only batters-faced stats)
+        # ---------- pitching splits
+        # Home/Away: WIS split export.  vs LHB/RHB: WIS hits/walks/strikeouts + innings and earned runs
+        # rebuilt from the play-by-play.  as Starter/Reliever: box-score lines + play-by-play batters faced.
         pitching_splits = []
+
+        def _alloc(total, parts):
+            """Integer split of `total` in proportion to parts (largest remainder)."""
+            tot = sum(parts.values())
+            if not tot:
+                return {k: 0 for k in parts}
+            raw = {k: total * v / tot for k, v in parts.items()}
+            out = {k: int(v) for k, v in raw.items()}
+            for k in sorted(raw, key=lambda k: raw[k] - out[k], reverse=True)[:int(round(total - sum(out.values())))]:
+                out[k] += 1
+            return out
+
+        def _rates(o, ab, sf):
+            bf, h, bb, hbp = o["BF"], o["H"], o["BB"], o["HBP"]
+            tb = h + o["2B"] + 2 * o["3B"] + 3 * o["HR"]
+            o["BA"] = h / ab if ab else None
+            o["OBP"] = (h + bb + hbp) / (ab + bb + hbp + sf) if (ab + bb + hbp + sf) else None
+            o["SLG"] = tb / ab if ab else None
+            o["OPS"] = o["OBP"] + o["SLG"] if o["BA"] is not None else None
+            o["SOp"] = 100 * o["SO"] / bf if bf else None
+            o["BBp"] = 100 * bb / bf if bf else None
+            o["SOW"] = o["SO"] / bb if bb else None
+            outs = o.get("_outs")
+            o["IP"] = f"{outs // 3}.{outs % 3}" if outs is not None else ""
+            o["ERA"] = 27 * o["ER"] / outs if outs else None
+            o["WHIP"] = 3 * (h + bb) / outs if outs else None
+
         for s in self.seasons:
             rows = self.psplits.get((s, player_key), [])
             if not rows:
                 continue
+            P = self.pbp.get(s)
+            pa = P.acc.get(name, {}) if P else {}
+            wis = {}
             for lab in PSPLITS:
                 part = [r for r in rows if r["Split"] == lab]
-                if not part:
+                if part:
+                    d = defaultdict(float)
+                    for r in part:
+                        for k in ("G", "GS", "W", "L", "SV", "ER", "H", "2B", "3B", "HR", "BB", "SO", "HBP", "BFP"):
+                            d[k] += num(r.get(k))
+                        d["outs"] += round(num(r.get("IP")) * 3)
+                    wis[lab] = d
+            # season totals from the box scores for reconciling the hand splits
+            role_box = self.role.get((s, name), {})
+            tot_outs = int(sum(v["outs"] for v in role_box.values()))
+            tot_er = int(sum(v["er"] for v in role_box.values()))
+            hand_outs = _alloc(tot_outs, {h: pa.get(h, {}).get("outs", 0) for h in ("L", "R")})
+            hand_er = _alloc(tot_er, {h: pa.get(h, {}).get("ER", 0) for h in ("L", "R")})
+            for lab in PSPLITS:
+                d = wis.get(lab)
+                if d is None:
                     continue
-                d = defaultdict(float)
-                for r in part:
-                    for k in ("G", "GS", "W", "L", "SV", "BSV", "ER", "H", "2B", "3B", "HR", "BB", "SO", "HBP", "BFP", "NP"):
-                        d[k] += num(r.get(k))
-                    d["outs"] += round(num(r.get("IP")) * 3)
-                full = lab in ("Home", "Away")
-                outs, bf = int(d["outs"]), d["BFP"]
-                ab = bf - d["BB"] - d["HBP"]
-                tb = d["H"] + d["2B"] + 2 * d["3B"] + 3 * d["HR"]
-                o = {k: int(d[k]) for k in ("G", "GS", "W", "L", "SV", "ER", "H", "2B", "3B", "HR", "BB", "SO", "HBP")}
-                o.update({"SN": s, "Split": PSPLIT_LABEL[lab], "full": full, "BF": int(bf), "group": "ha" if full else "hand",
-                          "IP": f"{outs // 3}.{outs % 3}" if full else "",
-                          "ERA": 27 * d["ER"] / outs if full and outs else None,
-                          "WHIP": 3 * (d["H"] + d["BB"]) / outs if full and outs else None,
-                          "BA": d["H"] / ab if ab > 0 else None,
-                          "OBP": (d["H"] + d["BB"] + d["HBP"]) / bf if bf else None,
-                          "SLG": tb / ab if ab > 0 else None,
-                          "SOW": d["SO"] / d["BB"] if d["BB"] else None,
-                          "SOp": 100 * d["SO"] / bf if bf else None, "BBp": 100 * d["BB"] / bf if bf else None})
-                o["OPS"] = (o["OBP"] or 0) + (o["SLG"] or 0) if o["BA"] is not None else None
+                o = {k: int(d[k]) for k in ("H", "2B", "3B", "HR", "BB", "SO", "HBP")}
+                o.update({"SN": s, "Split": PSPLIT_LABEL[lab]})
+                if lab in ("Home", "Away"):
+                    o.update({k: int(d[k]) for k in ("G", "GS", "W", "L", "SV", "ER")})
+                    o.update({"full": True, "group": "ha", "BF": int(d["BFP"]), "_outs": int(d["outs"])})
+                    v = pa.get(lab, {})
+                    ab, sf = v.get("ab", 0), v.get("sf", 0)
+                    if not ab:   # no play-by-play: estimate
+                        ab, sf = d["BFP"] - d["BB"] - d["HBP"], 0
+                else:
+                    h = "L" if lab == "VS LHB" else "R"
+                    v = pa.get(h, {})
+                    o.update({"full": False, "group": "hand", "BF": int(v.get("BF", d["BFP"])),
+                              "ER": hand_er.get(h, 0), "_outs": hand_outs.get(h) if P else None})
+                    ab, sf = v.get("ab", 0), v.get("sf", 0)
+                    if not ab:
+                        ab, sf = d["BFP"] - d["BB"] - d["HBP"], 0
+                _rates(o, ab, sf)
                 pitching_splits.append(o)
-            # Starter / Reliever, built from the box scores (first pitcher listed for a team = starter)
+            # as Starter / as Reliever
             for role in ("Starter", "Reliever"):
-                a = self.role.get((s, name), {}).get(role)
+                a = role_box.get(role)
                 if not a or not a["G"]:
                     continue
-                outs = int(a["outs"])
-                o = {"SN": s, "Split": "as " + role, "full": True, "group": "role", "box": True,
+                v = pa.get(role, {})
+                o = {"SN": s, "Split": "as " + role, "full": True, "group": "role",
                      "G": int(a["G"]), "GS": int(a["GS"]), "W": int(a["W"]), "L": int(a["L"]), "SV": int(a["SV"]),
-                     "CG": int(a["CG"]), "SHO": int(a["SHO"]),
-                     "IP": f"{outs // 3}.{outs % 3}", "H": int(a["h"]), "R": int(a["r"]), "ER": int(a["er"]),
-                     "HR": int(a["hr"]), "BB": int(a["bb"]), "SO": int(a["so"]),
-                     "ERA": 27 * a["er"] / outs if outs else None, "WHIP": 3 * (a["h"] + a["bb"]) / outs if outs else None,
-                     "SOW": a["so"] / a["bb"] if a["bb"] else None,
-                     "BF": "", "2B": "", "3B": "", "HBP": "", "SOp": None, "BBp": None, "BA": None, "OBP": None, "SLG": None, "OPS": None}
+                     "H": int(a["h"]), "ER": int(a["er"]), "HR": int(a["hr"]), "BB": int(a["bb"]), "SO": int(a["so"]),
+                     "BF": int(v.get("BF", 0)), "2B": int(v.get("d", 0)), "3B": int(v.get("t", 0)),
+                     "HBP": int(v.get("hbp", 0)), "_outs": int(a["outs"])}
+                _rates(o, v.get("ab", 0), v.get("sf", 0))
                 pitching_splits.append(o)
 
         # ---------- fielding enrichment (rows come from build.py's display list)

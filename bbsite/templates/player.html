@@ -284,9 +284,11 @@ See <a href="{{ root }}war-explained.html">how WAR is calculated</a> on this sit
 {% for r in x.pitching_splits %}
 <tr{% if loop.index0 > 0 and (x.pitching_splits[loop.index0 - 1].SN != r.SN or x.pitching_splits[loop.index0 - 1].group != r.group) %} style="border-top:2px solid #ccc;"{% endif %}>
   <td>{{ r.SN }}</td><td class="left">{{ r.Split }}</td>
-  {% if r.full %}<td>{{ r.W }}</td><td>{{ r.L }}</td><td>{{ '%.2f'|format(r.ERA) if r.ERA is not none else '' }}</td><td>{{ r.G }}</td><td>{{ r.GS }}</td><td>{{ r.SV }}</td><td>{{ r.IP }}</td>
-  {% else %}<td></td><td></td><td></td><td></td><td></td><td></td><td></td>{% endif %}
-  <td>{{ r.BF }}</td><td>{{ r.H }}</td><td>{{ r.ER if r.full else '' }}</td><td>{{ r['2B'] }}</td><td>{{ r['3B'] }}</td><td>{{ r.HR }}</td><td>{{ r.BB }}</td><td>{{ r.SO }}</td><td>{{ r.HBP }}</td>
+  {% if r.group != 'hand' %}<td>{{ r.W }}</td><td>{{ r.L }}</td>{% else %}<td></td><td></td>{% endif %}
+  <td>{{ '%.2f'|format(r.ERA) if r.ERA is not none else '' }}</td>
+  {% if r.group != 'hand' %}<td>{{ r.G }}</td><td>{{ r.GS }}</td><td>{{ r.SV }}</td>{% else %}<td></td><td></td><td></td>{% endif %}
+  <td>{{ r.IP }}</td>
+  <td>{{ r.BF }}</td><td>{{ r.H }}</td><td>{{ r.ER }}</td><td>{{ r['2B'] }}</td><td>{{ r['3B'] }}</td><td>{{ r.HR }}</td><td>{{ r.BB }}</td><td>{{ r.SO }}</td><td>{{ r.HBP }}</td>
   <td>{{ '%.2f'|format(r.WHIP) if r.WHIP is not none else '' }}</td>
   <td>{{ '%.1f'|format(r.SOp) if r.SOp is not none else '' }}</td><td>{{ '%.1f'|format(r.BBp) if r.BBp is not none else '' }}</td>
   <td>{{ '%.2f'|format(r.SOW) if r.SOW is not none else '' }}</td>
@@ -295,7 +297,7 @@ See <a href="{{ root }}war-explained.html">how WAR is calculated</a> on this sit
 </tbody>
 </table>
 </div>
-<div class="standings-note">Splits come from the WhatIfSports season export (available from 1886). Home/Away rows carry full pitching lines; the WIS export records only batters-faced totals against left- and right-handed hitters, so those rows show opponent hitting only. BA, OBP, SLG and OPS are opponents' figures; opponent at-bats are estimated as BF &minus; BB &minus; HBP because sacrifices aren't in the split data. SO% and BB% are per batter faced. Traded pitchers' splits combine all of their teams that season. The "as Starter" and "as Reliever" rows are built from this site's box scores (the first pitcher listed for a team is the starter); box scores don't record batters faced, extra-base hits or hit batters, so those columns are blank for these rows.</div>
+<div class="standings-note">Home/Away rows come from the WhatIfSports season split export. The vs LH/RH Batters rows use WIS's hit, walk and strikeout totals, with innings pitched and earned runs rebuilt from this site's play-by-play: outs are charged to the batter at the plate (runner outs to the next batter), and each game's earned runs are shared out by the batter whose run it was. As Starter / as Reliever rows come from the box scores (the first pitcher listed for a team is the starter), with batters faced and extra-base hits from the play-by-play. BA, OBP, SLG and OPS are opponents' figures. W, L, G, GS and SV don't apply to a batter-handedness split. Traded pitchers' splits combine all of their teams that season.</div>
 {% endif %}
 
 {% endset %}
