@@ -167,6 +167,17 @@ class LeagueContext:
                 self.lg_fld[(s, lg, pos)] = {"Fld": (a["PO"] + a["A"]) / ch if ch else 0,
                                              "RF9": 9 * (a["PO"] + a["A"]) / a["Inn"] if a["Inn"] else 0}
 
+        # Simulation date: the most recent game date in the league. Real-life death dates are only
+        # revealed once the simulation reaches them (the league began in 1885, so everyone starts alive).
+        dates = []
+        for s in self.seasons:
+            gp = os.path.join(data_dir, str(s), "games.json")
+            if os.path.exists(gp):
+                dates += [g.get("date", "") for g in json.load(open(gp)) if g.get("date")]
+            dates += [r["Date"] for r in _load(os.path.join(data_dir, str(s), "schedule.csv"))
+                      if str(r.get("HomeScore", "")).strip() != "" and r.get("Date")]
+        self.sim_date = max(dates) if dates else ""
+
         self._build_leaderboards()
 
     # ------------------------------------------------------------------ leaderboards
@@ -272,7 +283,7 @@ class LeagueContext:
 
         def awards_str(s):
             a = [f"AS" for x in self.allstars.get(name, []) if int(x["Season"]) == s]
-            code = {"MVP": "MVP-{r}", "Champion Hurler": "CH-{r}", "Fireman": "FM-{r}",
+            code = {"MVP": "MVP-{r}", "Champion Hurler": "CH-{r}", "Fireman": "FM-{r}", "Rookie of the Year": "ROY-{r}",
                     "Gold Glove": "GG", "Silver Slugger": "SS"}
             a += [code.get(x["Award"], x["Award"] + "-{r}").format(r=x["Rank"])
                   for x in self.awards.get(name, []) if int(x["Season"]) == s]
@@ -388,16 +399,25 @@ class LeagueContext:
         AW = {"MVP": ("Most Valuable Player", "most-valuable-player"),
               "Champion Hurler": ("Champion Hurler Award", "champion-hurler-award"),
               "Fireman": ("Fireman Award", "fireman-award"),
+              "Rookie of the Year": ("Rookie of the Year", "rookie-of-the-year"),
               "Silver Slugger": ("Silver Slugger Award", "silver-slugger-award"),
               "Gold Glove": ("Gold Glove Award", "gold-glove-award")}
         awards = []
         for a in sorted(self.awards.get(name, []), key=lambda x: (int(x["Season"]), int(num(x.get("Rank"))))):
             full, anc = AW.get(a["Award"], (a["Award"], a["Award"].lower().replace(" ", "-")))
             awards.append(dict(a, Full=full, Anchor=anc, Won=int(num(a.get("Rank"))) == 1,
-                               Voting=a["Award"] in ("MVP", "Champion Hurler", "Fireman")))
+                               Voting=a["Award"] in ("MVP", "Champion Hurler", "Fireman", "Rookie of the Year")))
         honors = {"allstar": sorted(self.allstars.get(name, []), key=lambda x: int(x["Season"])), "awards": awards}
 
-        return {"bio": bio, "std_batting": std, "std_career": car, "splits": splits,
+        died_visible = False
+        if bio and bio.get("Died") and self.sim_date:
+            import datetime
+            try:
+                dd = datetime.datetime.strptime(bio["Died"], "%B %d, %Y").date().isoformat()
+            except ValueError:
+                dd = f"{bio['Died'][-4:]}-12-31"   # year-only death record
+            died_visible = dd <= self.sim_date
+        return {"died_visible": died_visible, "sim_date": self.sim_date, "bio": bio, "std_batting": std, "std_career": car, "splits": splits,
                 "leaderboards": leaderboards, "honors": honors,
                 "debut": self.debut.get(name), "last_game": self.last.get(name)}
 

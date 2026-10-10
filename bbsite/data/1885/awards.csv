@@ -19,11 +19,16 @@ Season,League,Award,Rank,Pos,Player,Team
 1885,AA,Champion Hurler,3,P,Charley Radbourn,CIN
 1885,AA,Champion Hurler,4,P,Henry Porter,BLN
 1885,AA,Champion Hurler,5,P,Mickey Welch,LOU
-1885,NL,Fireman,1,P,Billy Taylor,BSN
-1885,NL,Fireman,2,P,John Kirby,BSN
-1885,AA,Fireman,1,P,Larry McKeon,BLN
-1885,AA,Fireman,2,P,Frank Foreman,CIN
-1885,AA,Fireman,3,P,Stump Wiedman,CIN
+1885,NL,Fireman,1,P,John Kirby,BSN
+1885,NL,Fireman,2,P,Charlie Buffinton,PHI
+1885,NL,Fireman,3,P,Billy Taylor,BSN
+1885,NL,Fireman,4,P,John Henry,BSN
+1885,NL,Fireman,5,P,Ed Knouff,PIT
+1885,AA,Fireman,1,P,Toad Ramsey,STL
+1885,AA,Fireman,2,P,Larry McKeon,BLN
+1885,AA,Fireman,3,P,Jumbo McGinnis,BRO
+1885,AA,Fireman,4,P,John Healy,LOU
+1885,AA,Fireman,5,P,Stump Wiedman,CIN
 1885,NL,Silver Slugger,1,P,Charlie Ferguson,PHI
 1885,NL,Silver Slugger,1,C,Jim O'Rourke,BSN
 1885,NL,Silver Slugger,1,1B,Dan Brouthers,BSN
@@ -60,3 +65,13 @@ Season,League,Award,Rank,Pos,Player,Team
 1885,AA,Gold Glove,1,LF,Ned Hanlon,BLN
 1885,AA,Gold Glove,1,CF,Curt Welch,BLN
 1885,AA,Gold Glove,1,RF,Hugh Nicol,BLN
+1885,NL,Rookie of the Year,1,P,Ed Daily,NYG
+1885,NL,Rookie of the Year,2,OF,Sam Thompson,PHI
+1885,NL,Rookie of the Year,3,P,Ed Knouff,PIT
+1885,NL,Rookie of the Year,4,P,Billy Palmer,PHI
+1885,NL,Rookie of the Year,5,P,Ted Kennedy,DTN
+1885,AA,Rookie of the Year,1,P,Toad Ramsey,STL
+1885,AA,Rookie of the Year,2,P,Al Mays,BRO
+1885,AA,Rookie of the Year,3,P,John Healy,LOU
+1885,AA,Rookie of the Year,4,P,Tom Lovett,BRO
+1885,AA,Rookie of the Year,5,C,Con Daily,LOU

@@ -65,10 +65,9 @@
     {% if bio and (bio.Height or bio.Weight) %}<p>{{ bio.Height }}{% if bio.Height and bio.Weight %}, {% endif %}{% if bio.Weight %}{{ bio.Weight }}lb{% endif %}</p>{% endif %}
     {% if current_team %}<p><strong>Team:</strong> <a href="{{ root }}teams/{{ current_team.abbr }}/index.html">{{ current_team.name }}</a></p>{% endif %}
     {% if bio and bio.Born %}<p><strong>Born:</strong> {{ bio.Born }}{% if bio.BirthPlace %} in {{ bio.BirthPlace }}{% endif %}</p>{% endif %}
-    {% if bio and bio.Died %}<p><strong>Died:</strong> {{ bio.Died }}{% if bio.DeathPlace %} in {{ bio.DeathPlace }}{% endif %}</p>{% endif %}
+    {% if bio and bio.Died and x.died_visible %}<p><strong>Died:</strong> {{ bio.Died }}{% if bio.DeathPlace %} in {{ bio.DeathPlace }}{% endif %}</p>{% endif %}
     {% if x.debut %}<p><strong>League Debut:</strong> {{ x.debut.date_text }} (<a href="{{ root }}{{ x.debut.url }}">{{ x.debut.label }}, box score</a>){% if B and B|length %}{% set a0 = B[0].Age %}{% if a0 %} &bull; Age {{ a0 }}{% endif %}{% endif %}</p>{% endif %}
-    {% if bio and bio.MLBDebut %}<p><strong>Real-life MLB career:</strong> {{ bio.MLBDebut[:4] }}&ndash;{{ bio.MLBFinal[:4] }} &bull; <a href="https://www.baseball-reference.com/players/{{ bio.bbrefID[0] }}/{{ bio.bbrefID }}.shtml" target="_blank" rel="noopener">Baseball-Reference page &#8599;</a></p>
-    {% elif not bio %}<p class="muted">Rewrite League prospect &mdash; a WhatIfSports-generated player with no real-world record.</p>{% endif %}
+    {% if not bio %}<p class="muted">Rewrite League prospect &mdash; a WhatIfSports-generated player with no real-world record.</p>{% endif %}
     {% if allstar_count or awards_won %}
     <div class="badge-row">
     {% if allstar_count %}<span class="allstar-line">&#9733; {{ allstar_count }}&times; All-Star ({{ allstar_years|join(', ') }})</span>{% endif %}
@@ -168,7 +167,7 @@
 <div class="table-wrap">
 <table class="stats">
 <thead><tr>
-  <th>Year</th><th>Age</th><th class="left">Tm</th><th>Lg</th><th>PA</th><th>BAbip</th><th>ISO</th><th>HR%</th><th>SO%</th><th>BB%</th><th>XBH%</th><th>X/H%</th><th>GB/FB</th><th>GB%</th><th>SB%</th><th>P/PA</th><th>RC</th><th>eBA</th><th>Clutch</th><th>WIS WAR</th>
+  <th>Year</th><th>Age</th><th class="left">Tm</th><th>Lg</th><th>PA</th><th>BAbip</th><th>ISO</th><th>HR%</th><th>SO%</th><th>BB%</th><th>XBH%</th><th>X/H%</th><th>GB/FB</th><th>GB%</th><th>SB%</th><th>P/PA</th><th>RC</th><th>eBA</th>
 </tr></thead>
 <tbody>
 {% for r in B %}
@@ -178,17 +177,17 @@
   <td>{{ f1(r.XBHp) }}</td><td>{{ f1(r.XHp) }}</td>
   <td>{{ '%.2f'|format(r.GBFB) if r.GBFB is not none else '' }}</td><td>{{ f1(r.GBp) }}</td><td>{{ f1(r.SBp) }}</td>
   <td>{{ '%.2f'|format(r.PPA) if r.PPA is not none else '' }}</td><td>{{ f1(r.RC) if r.RC else '' }}</td>
-  <td>{{ r3(r.eBA|float) if r.eBA not in ['', none] else '' }}</td><td>{{ r.Clutch }}</td><td>{{ f1(r.WISWAR) }}</td>
+  <td>{{ r3(r.eBA|float) if r.eBA not in ['', none] else '' }}</td>
 </tr>
 {% endfor %}
 <tr class="career-row"><td colspan="4" class="left">{{ BC.Years }} Yr{{ 's' if BC.Years != 1 }}</td><td>{{ i(BC.PA) }}</td>
   <td>{{ r3(BC.BAbip) }}</td><td>{{ r3(BC.ISO) }}</td><td>{{ f1(BC.HRp) }}</td><td>{{ f1(BC.SOp) }}</td><td>{{ f1(BC.BBp) }}</td>
   <td>{{ f1(BC.XBHp) }}</td><td>{{ f1(BC.XHp) }}</td><td>{{ '%.2f'|format(BC.GBFB) if BC.GBFB is not none else '' }}</td><td>{{ f1(BC.GBp) }}</td>
-  <td>{{ f1(BC.SBp) }}</td><td>{{ '%.2f'|format(BC.PPA) if BC.PPA is not none else '' }}</td><td>{{ f1(BC.RC) if BC.RC else '' }}</td><td></td><td></td><td>{{ f1(BC.WISWAR) }}</td></tr>
+  <td>{{ f1(BC.SBp) }}</td><td>{{ '%.2f'|format(BC.PPA) if BC.PPA is not none else '' }}</td><td>{{ f1(BC.RC) if BC.RC else '' }}</td><td></td></tr>
 </tbody>
 </table>
 </div>
-<div class="standings-note">BAbip = batting average on balls in play; ISO = SLG &minus; BA; HR%, SO%, BB%, XBH% are per plate appearance; X/H% = extra-base hits per hit; GB/FB and P/PA come from the sim's batted-ball and pitch counts; RC = runs created. eBA, Clutch and WIS WAR are WhatIfSports' own metrics (1886 onward).</div>
+<div class="standings-note">BAbip = batting average on balls in play; ISO = SLG &minus; BA; HR%, SO%, BB%, XBH% are per plate appearance; X/H% = extra-base hits per hit; GB/FB and P/PA come from the sim's batted-ball and pitch counts; RC = runs created. eBA (expected batting average) is a WhatIfSports metric (1886 onward).</div>
 
 {% if x.splits %}
 <h2 class="section-title" id="batting_splits">Batting Splits</h2>

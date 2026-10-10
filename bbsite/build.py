@@ -801,7 +801,7 @@ def main():
             for award_key in AWARD_ORDER:
                 rows = by_award.get(award_key, [])
                 if not rows:
-                    continue  # e.g. Rookie of the Year has no valid 1885 nominees
+                    continue  # skip awards with no entries this season
                 nl_rows = [r for r in rows if r["League"] == "NL"]
                 aa_rows = [r for r in rows if r["League"] == "AA"]
                 if AWARD_TYPE[award_key] == "voting":

@@ -379,9 +379,9 @@ footer {
 .stats-pullout { display: flex; flex-wrap: nowrap; border: 1px solid #ccc; border-radius: 4px; background: #fff;
     margin: 6px 0 16px; overflow-x: auto; }
 .stats-pullout > div { text-align: center; padding: 6px 10px; border-right: 1px solid #eee; min-width: 52px; }
-.stats-pullout > div > div { line-height: 1.6; }
+.stats-pullout > div > div { box-sizing: border-box; height: 24px; line-height: 23px; white-space: nowrap; }
 .stats-pullout .pullout-head { text-align: right; color: #777; font-size: 11px; background: #fafafa; }
-.stats-pullout .pullout-head > div:first-child { font-weight: bold; }
+.stats-pullout .pullout-head > div:first-child { font-weight: bold; border-bottom: 1px solid transparent; }
 .stats-pullout .pl { font-weight: bold; color: #900; border-bottom: 1px solid #ddd; }
 .section-title[id] { scroll-margin-top: 10px; }
 table.stats tr.combined-row td { font-weight: bold; background: #f7f4e8; }
