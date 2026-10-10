@@ -4,7 +4,7 @@ Everything here is computed from the league's own CSVs (data/<season>/*.csv), th
 scores (games.json) and the real-world register in data/bio.csv.  build.py calls
 LeagueContext(...) once, then .player(...) for each player page.
 """
-import csv, json, os
+import csv, json, os, re
 from collections import defaultdict
 
 POS_ORDER = ["P", "C", "1B", "2B", "3B", "SS", "LF", "CF", "RF"]
@@ -15,6 +15,8 @@ COUNT = ["G", "GS", "PA", "AB", "R", "H", "2B", "3B", "HR", "RBI", "SB", "CS", "
          "SH", "SF", "IBB", "GIDP", "GB", "FB", "NP", "PHAB", "PHH", "IFH", "BH", "RC"]
 VALUE = ["Rbat", "Rbaser", "Rfield", "Rpos", "RAA", "WAA", "Rrep", "RAR", "WAR", "oWAR", "dWAR"]
 SPLITS = ["Home", "Away", "VS. LHP", "VS. RHP"]
+PSPLITS = ["Home", "Away", "VS LHB", "VS RHB"]
+PSPLIT_LABEL = {"Home": "Home", "Away": "Away", "VS LHB": "vs LH Batters", "VS RHB": "vs RH Batters"}
 SPLIT_LABEL = {"Home": "Home", "Away": "Away", "VS. LHP": "vs LH Starter", "VS. RHP": "vs RH Starter"}
 
 
@@ -88,13 +90,15 @@ class LeagueContext:
         self.bio = {r["Player"]: r for r in _load(os.path.join(data_dir, "bio.csv"))}
 
         # WIS metrics + splits (only exist for seasons imported from the CSV exports)
-        self.metrics, self.splits = {}, defaultdict(list)
+        self.metrics, self.splits, self.psplits = {}, defaultdict(list), defaultdict(list)
         for s in self.seasons:
             d = os.path.join(data_dir, str(s))
             for r in _load(os.path.join(d, "batting_metrics.csv")):
                 self.metrics[(s, self.name_fn(r["Player"]), r["Team"])] = r
             for r in _load(os.path.join(d, "batting_splits.csv")):
                 self.splits[(s, self.name_fn(r["Player"]))].append(r)
+            for r in _load(os.path.join(d, "pitching_splits.csv")):
+                self.psplits[(s, self.name_fn(r["Player"]))].append(r)
 
         # Awards / All-Star selections by display name
         self.allstars, self.awards = defaultdict(list), defaultdict(list)
@@ -108,6 +112,7 @@ class LeagueContext:
         # Box scores: league debut, last game, pinch-hit / pinch-run games
         self.debut, self.last, self.ph, self.pr = {}, {}, defaultdict(int), defaultdict(int)
         self.team_games = defaultdict(int)
+        self.role = defaultdict(lambda: defaultdict(lambda: defaultdict(float)))   # (season, name) -> Starter/Reliever -> stats
         for s in self.seasons:
             gp = os.path.join(data_dir, str(s), "games.json")
             games = json.load(open(gp)) if os.path.exists(gp) else []
@@ -133,6 +138,24 @@ class LeagueContext:
                             self.ph[(s, team, nm)] += 1
                         elif pos.startswith("PR"):
                             self.pr[(s, team, nm)] += 1
+                for team, side in g.get("pitching", {}).items():
+                    for i, row in enumerate(side.get("rows", [])):
+                        nm = row.get("player")
+                        if not nm:
+                            continue
+                        a = self.role[(s, nm)]["Starter" if i == 0 else "Reliever"]
+                        a["G"] += 1
+                        a["GS"] += i == 0
+                        a["CG"] += i == 0 and len(side["rows"]) == 1
+                        a["SHO"] += i == 0 and len(side["rows"]) == 1 and int(num(side.get("totals", {}).get("r", row.get("r")))) == 0
+                        ip = str(row.get("ip", "0")).split(".")
+                        a["outs"] += int(ip[0] or 0) * 3 + (int(ip[1]) if len(ip) > 1 and ip[1] else 0)
+                        for k in ("h", "r", "er", "bb", "so", "hr"):
+                            a[k] += num(row.get(k))
+                        dec = str(row.get("decision", ""))
+                        a["W"] += bool(re.search(r"(^|, )W \(", dec))
+                        a["L"] += bool(re.search(r"(^|, )L \(", dec))
+                        a["SV"] += bool(re.search(r"(^|, )SV", dec))
             sched = _load(os.path.join(data_dir, str(s), "schedule.csv"))
             played = [r for r in sched if str(r.get("HomeScore", "")).strip() != ""]
             if played:
@@ -376,6 +399,53 @@ class LeagueContext:
                 d.update({"SN": s, "Split": SPLIT_LABEL[lab]})
                 splits.append(d)
 
+        # ---------- pitching splits (Home/Away carry full lines; vs LHB/RHB only batters-faced stats)
+        pitching_splits = []
+        for s in self.seasons:
+            rows = self.psplits.get((s, player_key), [])
+            if not rows:
+                continue
+            for lab in PSPLITS:
+                part = [r for r in rows if r["Split"] == lab]
+                if not part:
+                    continue
+                d = defaultdict(float)
+                for r in part:
+                    for k in ("G", "GS", "W", "L", "SV", "BSV", "ER", "H", "2B", "3B", "HR", "BB", "SO", "HBP", "BFP", "NP"):
+                        d[k] += num(r.get(k))
+                    d["outs"] += round(num(r.get("IP")) * 3)
+                full = lab in ("Home", "Away")
+                outs, bf = int(d["outs"]), d["BFP"]
+                ab = bf - d["BB"] - d["HBP"]
+                tb = d["H"] + d["2B"] + 2 * d["3B"] + 3 * d["HR"]
+                o = {k: int(d[k]) for k in ("G", "GS", "W", "L", "SV", "ER", "H", "2B", "3B", "HR", "BB", "SO", "HBP")}
+                o.update({"SN": s, "Split": PSPLIT_LABEL[lab], "full": full, "BF": int(bf), "group": "ha" if full else "hand",
+                          "IP": f"{outs // 3}.{outs % 3}" if full else "",
+                          "ERA": 27 * d["ER"] / outs if full and outs else None,
+                          "WHIP": 3 * (d["H"] + d["BB"]) / outs if full and outs else None,
+                          "BA": d["H"] / ab if ab > 0 else None,
+                          "OBP": (d["H"] + d["BB"] + d["HBP"]) / bf if bf else None,
+                          "SLG": tb / ab if ab > 0 else None,
+                          "SOW": d["SO"] / d["BB"] if d["BB"] else None,
+                          "SOp": 100 * d["SO"] / bf if bf else None, "BBp": 100 * d["BB"] / bf if bf else None})
+                o["OPS"] = (o["OBP"] or 0) + (o["SLG"] or 0) if o["BA"] is not None else None
+                pitching_splits.append(o)
+            # Starter / Reliever, built from the box scores (first pitcher listed for a team = starter)
+            for role in ("Starter", "Reliever"):
+                a = self.role.get((s, name), {}).get(role)
+                if not a or not a["G"]:
+                    continue
+                outs = int(a["outs"])
+                o = {"SN": s, "Split": "as " + role, "full": True, "group": "role", "box": True,
+                     "G": int(a["G"]), "GS": int(a["GS"]), "W": int(a["W"]), "L": int(a["L"]), "SV": int(a["SV"]),
+                     "CG": int(a["CG"]), "SHO": int(a["SHO"]),
+                     "IP": f"{outs // 3}.{outs % 3}", "H": int(a["h"]), "R": int(a["r"]), "ER": int(a["er"]),
+                     "HR": int(a["hr"]), "BB": int(a["bb"]), "SO": int(a["so"]),
+                     "ERA": 27 * a["er"] / outs if outs else None, "WHIP": 3 * (a["h"] + a["bb"]) / outs if outs else None,
+                     "SOW": a["so"] / a["bb"] if a["bb"] else None,
+                     "BF": "", "2B": "", "3B": "", "HBP": "", "SOp": None, "BBp": None, "BA": None, "OBP": None, "SLG": None, "OPS": None}
+                pitching_splits.append(o)
+
         # ---------- fielding enrichment (rows come from build.py's display list)
         for r in fielding_rows:
             pass  # raw rows untouched; enrichment happens in enrich_fielding()
@@ -417,7 +487,7 @@ class LeagueContext:
             except ValueError:
                 dd = f"{bio['Died'][-4:]}-12-31"   # year-only death record
             died_visible = dd <= self.sim_date
-        return {"died_visible": died_visible, "sim_date": self.sim_date, "bio": bio, "std_batting": std, "std_career": car, "splits": splits,
+        return {"died_visible": died_visible, "sim_date": self.sim_date, "bio": bio, "std_batting": std, "std_career": car, "splits": splits, "pitching_splits": pitching_splits,
                 "leaderboards": leaderboards, "honors": honors,
                 "debut": self.debut.get(name), "last_game": self.last.get(name)}
 

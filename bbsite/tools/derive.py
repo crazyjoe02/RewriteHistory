@@ -61,10 +61,12 @@ def derive(md, A, H):
             if 'double steal is pulled off by' in p:
                 for n_ in names[:2]: g(b, n_)['sb'] += 1
                 continue
-            if re.match(NM + r" (?:is (?:caught|nailed|out on the front end|picked off)|is caught stealing)", p):
+            if re.match(NM + r" (?:is (?:caught|nailed|out on the front end|called out on the front end|picked off)|is caught stealing)", p):
                 g(b, first)['cs'] += 1; continue
-            if re.search(r'\b(steals|swipes)\b', p) and p.startswith(first):
+            if re.match(NM + r" (?:steals|swipes)\b", p):
                 g(b, first)['sb'] += 1; continue
+            for n_ in re.findall('(' + NM + r') (?:steals|swipes)\b', p):
+                if n_ != first: g(b, n_)['sb'] += 1
             if any(k in p for k in NONPA): continue
             pc = pit[f].setdefault(cur[f], dict(h=0, bb=0, so=0, hr=0)) if cur[f] else dict(h=0, bb=0, so=0, hr=0)
             m = re.search('(' + NM + r') reaches', p)
