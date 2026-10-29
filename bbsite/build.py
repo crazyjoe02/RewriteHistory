@@ -905,38 +905,56 @@ def main():
                             "q": None if career else season_q.get(int(yrs[0]))})
             return out
 
-        # Qualifiers follow the site's existing conventions (3.1 PA and 1 IP per team game),
-        # scaled to the franchise's own games: total games for career lists, and the most
-        # games in any one season for single-season lists. Fielding rate stats require
-        # innings equal to two-thirds of the team's games x 9.
+        # Qualifiers follow the site's existing conventions (3.1 PA and 1 IP per team game).
+        # Single season: scaled to that season's team games. Career: one full season's
+        # worth (the franchise's longest season), so the career lists aren't limited to
+        # only the players who were full-time in every season on record.
+        # Fielding rate stats are judged on innings at the position: 6 innings per team
+        # game (two-thirds of the team's innings), 4.5 at C (one half), 1 at P (the
+        # pitching qualifier); "All Positions" uses the 6-inning standard.
         season_games = [int(fs["W"]) + int(fs["L"]) for fs in franchise_seasons if fs.get("W") is not None]
         def _q(g):
-            return {"PA": round(3.1 * g), "IP": g, "DEC": max(1, round(g / 10)),
+            return {"G": g, "PA": round(3.1 * g), "IP": g, "DEC": max(1, round(g / 10)),
                     "INN": round(6 * g), "CATCH": max(1, round(g / 4))}
         season_q = {int(fs["Season"]): _q(int(fs["W"]) + int(fs["L"]))
                     for fs in franchise_seasons if fs.get("W") is not None}
         max_season_games = max(season_games, default=0)
-        career_q = {"PA": round(3.1 * franchise_games), "IP": franchise_games,
-                    "DEC": max(1, round(franchise_games / 10)), "INN": round(6 * franchise_games),
-                    "CATCH": max(1, round(franchise_games / 4))}
-        single_q = {"PA": round(3.1 * max_season_games), "IP": max_season_games,
-                    "DEC": max(1, round(max_season_games / 10)), "INN": round(6 * max_season_games),
-                    "CATCH": max(1, round(max_season_games / 4))}
+        career_q = _q(max_season_games)
+        single_q = _q(max_season_games)
+
+        FIELD_POSITIONS = [("ALL", "All Positions", 6.0), ("P", "Pitcher", 1.0), ("C", "Catcher", 4.5),
+                           ("1B", "First Base", 6.0), ("2B", "Second Base", 6.0), ("3B", "Third Base", 6.0),
+                           ("SS", "Shortstop", 6.0), ("LF", "Left Field", 6.0), ("CF", "Center Field", 6.0),
+                           ("RF", "Right Field", 6.0)]
+
+        def _fld_sets(career):
+            out = []
+            for pos, plabel, mult in FIELD_POSITIONS:
+                rows_p = fld_rows if pos == "ALL" else [r for r in fld_rows if r.get("Pos") == pos]
+                ents = _entries(rows_p, _fld_line, career)
+                for e in ents:
+                    base = e["q"] or career_q
+                    e["q"] = dict(base, INN=round(mult * base["G"]))
+                cats = FLD_CATS if pos in ("ALL", "C") else [c for c in FLD_CATS if c[0] not in ("CCS", "CSP")]
+                out.append({"pos": pos, "label": plabel, "cats": _rank_table(ents, cats, career_q),
+                            "inn_min": round(mult * (career_q["G"]))})
+            return out
 
         leaders = [
             {"id": "bat", "title": "Batting", "sets": [
-                {"id": "career", "label": "Career", "cats": _rank_table(_entries(bat_rows, _bat_line, True), BAT_CATS, career_q)},
-                {"id": "season", "label": "Single Season", "cats": _rank_table(_entries(bat_rows, _bat_line, False), BAT_CATS, single_q)},
+                {"id": "career", "label": "Career", "positions": [{"pos": "ALL", "cats": _rank_table(_entries(bat_rows, _bat_line, True), BAT_CATS, career_q)}]},
+                {"id": "season", "label": "Single Season", "positions": [{"pos": "ALL", "cats": _rank_table(_entries(bat_rows, _bat_line, False), BAT_CATS, single_q)}]},
             ]},
             {"id": "pit", "title": "Pitching", "sets": [
-                {"id": "career", "label": "Career", "cats": _rank_table(_entries(pit_rows, _pit_line, True), PIT_CATS, career_q)},
-                {"id": "season", "label": "Single Season", "cats": _rank_table(_entries(pit_rows, _pit_line, False), PIT_CATS, single_q)},
+                {"id": "career", "label": "Career", "positions": [{"pos": "ALL", "cats": _rank_table(_entries(pit_rows, _pit_line, True), PIT_CATS, career_q)}]},
+                {"id": "season", "label": "Single Season", "positions": [{"pos": "ALL", "cats": _rank_table(_entries(pit_rows, _pit_line, False), PIT_CATS, single_q)}]},
             ]},
-            {"id": "fld", "title": "Fielding", "sets": [
-                {"id": "career", "label": "Career", "cats": _rank_table(_entries(fld_rows, _fld_line, True), FLD_CATS, career_q)},
-                {"id": "season", "label": "Single Season", "cats": _rank_table(_entries(fld_rows, _fld_line, False), FLD_CATS, single_q)},
+            {"id": "fld", "title": "Fielding", "positions": [(p, l) for p, l, _ in FIELD_POSITIONS], "sets": [
+                {"id": "career", "label": "Career", "positions": _fld_sets(True)},
+                {"id": "season", "label": "Single Season", "positions": _fld_sets(False)},
             ]},
         ]
+        fld_cat_list = [(c[0], c[1]) for c in FLD_CATS]
 
         cities = []
         for e in eras:

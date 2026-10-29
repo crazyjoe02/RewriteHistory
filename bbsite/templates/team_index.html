@@ -75,10 +75,9 @@ All statistics and leaderboards on this page include every era of the franchise.
 
 <h2 class="section-title">Franchise Leaders</h2>
 <div class="standings-note">
-Top 50 in franchise history, counting only time spent with this franchise. Prospects are left out of these leaderboards (they still appear on each season's team page).
-Rate-stat minimums: career &mdash; {{ career_q.PA }} PA (batting), {{ career_q.IP }} IP (pitching), {{ career_q.INN }} innings in the field (fielding);
-single season &mdash; 3.1 PA, 1 IP and 6 innings in the field per team game that season ({{ single_q.PA }} PA / {{ single_q.IP }} IP / {{ single_q.INN }} innings for a {{ single_q.IP }}-game season).
-Win-Loss % requires {{ career_q.DEC }} career decisions (1 per 10 team games in a single season); catcher CS% requires {{ career_q.CATCH }} career stolen-base attempts (1 per 4 team games in a single season).
+Top 50 in franchise history, counting only time spent with this franchise (every qualifying player is listed until the field passes 50). Prospects are left out of these leaderboards; they still appear on each season's team page.
+Rate-stat minimums are one full season's worth: 3.1 PA and 1 IP per team game ({{ career_q.PA }} PA / {{ career_q.IP }} IP for a {{ career_q.G }}-game season) for career lists, and the same per-game rate applied to that season's games for single-season lists.
+Fielding rate stats require 6 innings in the field per team game (4.5 at catcher, 1 at pitcher). Win-Loss % requires 1 decision per 10 team games; catcher CS% requires 1 stolen-base attempt per 4 team games.
 </div>
 
 {% for grp in leaders %}
@@ -88,18 +87,29 @@ Win-Loss % requires {{ career_q.DEC }} career decisions (1 per 10 team games in 
         {% for set in grp.sets %}
         <button type="button" class="fl-tab{% if loop.first %} active{% endif %}" data-group="{{ grp.id }}" data-set="{{ set.id }}">{{ set.label }}</button>
         {% endfor %}
+        {% if grp.positions %}
+        <label class="fl-select-label">Position:
+        <select class="fl-pos" data-group="{{ grp.id }}">
+            {% for p, plabel in grp.positions %}
+            <option value="{{ p }}">{{ plabel }}</option>
+            {% endfor %}
+        </select>
+        </label>
+        {% endif %}
         <label class="fl-select-label">Category:
         <select class="fl-select" data-group="{{ grp.id }}">
-            {% for cat in grp.sets[0].cats %}
+            {% for cat in grp.sets[0].positions[0].cats %}
             <option value="{{ cat.key }}">{{ cat.label }}</option>
             {% endfor %}
         </select>
         </label>
     </div>
     {% for set in grp.sets %}
-    {% set outer = loop %}
-    {% for cat in set.cats %}
-    <div class="fl-panel" data-group="{{ grp.id }}" data-set="{{ set.id }}" data-cat="{{ cat.key }}"{% if not (outer.first and loop.first) %} hidden{% endif %}>
+    {% set s_first = loop.first %}
+    {% for pos in set.positions %}
+    {% set p_first = loop.first %}
+    {% for cat in pos.cats %}
+    <div class="fl-panel" data-group="{{ grp.id }}" data-set="{{ set.id }}" data-pos="{{ pos.pos }}" data-cat="{{ cat.key }}"{% if not (s_first and p_first and loop.first) %} hidden{% endif %}>
         <div class="table-wrap">
         <table class="stats fl-table">
             <thead><tr><th>Rank</th><th class="left">Player</th>{% if grp.id == 'fld' %}<th class="left">Pos</th>{% endif %}<th>{{ 'Years' if set.id == 'career' else 'Year' }}</th><th>{{ cat.label }}</th></tr></thead>
@@ -121,18 +131,31 @@ Win-Loss % requires {{ career_q.DEC }} career decisions (1 per 10 team games in 
     </div>
     {% endfor %}
     {% endfor %}
+    {% endfor %}
 </div>
 {% endfor %}
 
 <script>
 (function () {
+  var CATCHER_ONLY = ['CCS', 'CSP'];
   function show(group) {
     var box = document.getElementById('leaders-' + group);
     var tab = box.querySelector('.fl-tab.active');
     var set = tab ? tab.getAttribute('data-set') : 'career';
-    var cat = box.querySelector('.fl-select').value;
+    var posSel = box.querySelector('.fl-pos');
+    var pos = posSel ? posSel.value : 'ALL';
+    var catSel = box.querySelector('.fl-select');
+    if (posSel) {
+      var allowCatcher = (pos === 'ALL' || pos === 'C');
+      Array.prototype.forEach.call(catSel.options, function (o) {
+        var off = !allowCatcher && CATCHER_ONLY.indexOf(o.value) >= 0;
+        o.disabled = off; o.hidden = off;
+      });
+      if (catSel.selectedOptions[0] && catSel.selectedOptions[0].disabled) { catSel.value = catSel.options[0].value; }
+    }
+    var cat = catSel.value;
     box.querySelectorAll('.fl-panel').forEach(function (p) {
-      p.hidden = !(p.getAttribute('data-set') === set && p.getAttribute('data-cat') === cat);
+      p.hidden = !(p.getAttribute('data-set') === set && p.getAttribute('data-pos') === pos && p.getAttribute('data-cat') === cat);
     });
   }
   document.querySelectorAll('.fl-tab').forEach(function (b) {
@@ -143,7 +166,7 @@ Win-Loss % requires {{ career_q.DEC }} career decisions (1 per 10 team games in 
       show(g);
     });
   });
-  document.querySelectorAll('.fl-select').forEach(function (s) {
+  document.querySelectorAll('.fl-select, .fl-pos').forEach(function (s) {
     s.addEventListener('change', function () { show(s.getAttribute('data-group')); });
   });
 })();
