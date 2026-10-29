@@ -1,49 +1,151 @@
 {% extends "base.html" %}
-{% block title %}{{ team.FranchiseName }}{% endblock %}
+{% block title %}{{ team.FranchiseName }} Team History &amp; Encyclopedia{% endblock %}
 {% block breadcrumb %}
-<div class="breadcrumb"><a href="{{ root }}index.html">Home</a> &rsaquo; {{ team.FranchiseName }}</div>
+<div class="breadcrumb"><a href="{{ root }}index.html">Home</a> &rsaquo; Teams &rsaquo; {{ team.FranchiseName }}</div>
 {% endblock %}
 {% block content %}
 <div class="team-bar" style="background: linear-gradient(90deg, {{ team.ColorPrimary }}, {{ team.ColorSecondary }});"></div>
-<h1 class="page-title">{{ team.FranchiseName }}</h1>
-<div class="subtitle">{{ team.League }} &middot; {{ team.City }} &middot; {{ seasons|length }} season(s) on record</div>
+<h1 class="page-title">{{ team.FranchiseName }} Team History &amp; Encyclopedia</h1>
 
-{% if eras|length > 1 %}
-<div class="standings-note">
-<strong>Also known as:</strong>
-{% for e in eras %}{{ e.FranchiseName }} ({{ e.StartSeason }}&ndash;{{ e.EndSeason if e.EndSeason else 'present' }}){% if not loop.last %} &middot; {% endif %}{% endfor %}
+<div class="franchise-info">
+    <p><strong>Location{% if summary.cities|length > 1 %}s{% endif %}:</strong> {{ summary.cities|join(', ') }}</p>
+    <p><strong>Seasons:</strong> {{ summary.nseasons }} ({{ summary.first }} to {{ summary.last }}){% if summary.in_progress %} &middot; <em>{{ summary.last }} in progress</em>{% endif %}</p>
+    <p><strong>Record:</strong> {{ summary.W }}-{{ summary.L }}, {{ '%.3f'|format(summary.PCT)|replace('0.', '.', 1) }} W-L%</p>
+    <p><strong>Playoff Appearances:</strong> {{ summary.playoffs }}
+       &middot; <strong>Pennants:</strong> {{ summary.pennants }}
+       &middot; <strong>World's Championships:</strong> {{ summary.titles }}</p>
+    {% if summary.owner %}<p><strong>Manager/Owner:</strong> <a href="{{ root }}managers/{{ summary.owner_slug }}.html">{{ summary.owner }}</a></p>{% endif %}
 </div>
-{% endif %}
 
-<h2 class="section-title">Season-by-Season</h2>
+<h2 class="section-title">Franchise Names</h2>
 <div class="table-wrap">
-<table class="stats">
-    <thead>
-    <tr><th>Season</th><th class="left">Team</th><th>Lg</th><th>W</th><th>L</th><th>PCT</th><th>GB</th><th>Finish</th></tr>
-    </thead>
+<table class="stats franchise-names">
+    <thead><tr><th class="left">Team Name</th><th class="left">City</th><th>Lg</th><th>From</th><th>To</th></tr></thead>
     <tbody>
-    {% for s in seasons %}
+    {% for e in eras|reverse %}
     <tr>
-        <td><a href="{{ root }}teams/{{ s.TeamAbbr }}/{{ s.Season }}.html">{{ s.Season }}</a></td>
-        <td class="left">{{ s.TeamName }}</td>
-        <td>{{ s.League }}</td>
-        {% if s.W is not none %}
-        <td>{{ s.W }}</td>
-        <td>{{ s.L }}</td>
-        <td>{{ '%.3f'|format(s.PCT|float) }}</td>
-        {% if s.InProgress %}
-        <td>{{ s.GB }}</td>
-        <td>In Progress</td>
-        {% else %}
-        <td>{{ s.GB }}</td>
-        <td>{{ s.Finish }}</td>
-        {% endif %}
-        {% else %}
-        <td colspan="5">Season not yet underway &mdash; schedule available</td>
-        {% endif %}
+        <td class="left">{{ e.FranchiseName }}</td>
+        <td class="left">{{ e.City }}</td>
+        <td>{{ e.League }}</td>
+        <td>{{ e.StartSeason }}</td>
+        <td>{{ e.EndSeason if e.EndSeason else 'Present' }}</td>
     </tr>
     {% endfor %}
     </tbody>
 </table>
 </div>
+{% if eras|length > 1 %}
+<div class="standings-note">Past franchise names:
+{% for e in eras if e.EndSeason %}{{ e.FranchiseName }} ({{ e.StartSeason }}{% if e.EndSeason != e.StartSeason %}&ndash;{{ e.EndSeason }}{% endif %}){% if not loop.last %}, {% endif %}{% endfor %}.
+All statistics and leaderboards on this page include every era of the franchise.</div>
+{% endif %}
+
+<h2 class="section-title">Franchise History</h2>
+<div class="table-wrap">
+<table class="stats">
+    <thead>
+    <tr><th>Year</th><th class="left">Tm</th><th>Lg</th><th>G</th><th>W</th><th>L</th><th>W-L%</th><th>GB</th><th>Finish</th><th>R</th><th>RA</th><th class="left">Playoffs</th><th class="left">Top Player (WAR)</th><th class="left">Managers</th></tr>
+    </thead>
+    <tbody>
+    {% for s in seasons %}
+    <tr>
+        <td><a href="{{ root }}teams/{{ s.TeamAbbr }}/{{ s.Season }}.html">{{ s.Season }}</a></td>
+        <td class="left"><a href="{{ root }}teams/{{ s.TeamAbbr }}/{{ s.Season }}.html">{{ s.TeamName }}</a></td>
+        <td>{{ s.League }}</td>
+        {% if s.W is not none %}
+        <td>{{ s.W|int + s.L|int }}</td>
+        <td>{{ s.W }}</td>
+        <td>{{ s.L }}</td>
+        <td>{{ '%.3f'|format(s.PCT|float)|replace('0.', '.', 1) }}</td>
+        <td>{{ s.GB }}</td>
+        <td>{{ s.Finish if s.Finish else '' }}{% if s.InProgress %} <span class="muted">(in progress)</span>{% endif %}</td>
+        <td>{{ s.RS if s.RS is not none else '' }}</td>
+        <td>{{ s.RA if s.RA is not none else '' }}</td>
+        <td class="left">{{ s.Playoffs }}</td>
+        <td class="left">{% if s.TopPlayer %}<a href="{{ root }}players/{{ s.TopPlayer.PlayerID }}.html">{{ s.TopPlayer.Player }}</a> ({{ '%.1f'|format(s.TopPlayer.WAR) }}){% endif %}</td>
+        {% else %}
+        <td colspan="10">Season not yet underway &mdash; schedule available</td>
+        {% endif %}
+        <td class="left">{% if s.OwnerSlug %}<a href="{{ root }}managers/{{ s.OwnerSlug }}.html">{{ s.Owner }}</a>{% endif %}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+
+<h2 class="section-title">Franchise Leaders</h2>
+<div class="standings-note">
+Top 50 in franchise history, counting only time spent with this franchise. Prospects are left out of these leaderboards (they still appear on each season's team page).
+Rate-stat minimums: career &mdash; {{ career_q.PA }} PA (batting), {{ career_q.IP }} IP (pitching), {{ career_q.INN }} innings in the field (fielding);
+single season &mdash; 3.1 PA, 1 IP and 6 innings in the field per team game that season ({{ single_q.PA }} PA / {{ single_q.IP }} IP / {{ single_q.INN }} innings for a {{ single_q.IP }}-game season).
+Win-Loss % requires {{ career_q.DEC }} career decisions (1 per 10 team games in a single season); catcher CS% requires {{ career_q.CATCH }} career stolen-base attempts (1 per 4 team games in a single season).
+</div>
+
+{% for grp in leaders %}
+<div class="fl-group" id="leaders-{{ grp.id }}">
+    <h3 class="fl-title">{{ grp.title }} Leaders</h3>
+    <div class="fl-controls">
+        {% for set in grp.sets %}
+        <button type="button" class="fl-tab{% if loop.first %} active{% endif %}" data-group="{{ grp.id }}" data-set="{{ set.id }}">{{ set.label }}</button>
+        {% endfor %}
+        <label class="fl-select-label">Category:
+        <select class="fl-select" data-group="{{ grp.id }}">
+            {% for cat in grp.sets[0].cats %}
+            <option value="{{ cat.key }}">{{ cat.label }}</option>
+            {% endfor %}
+        </select>
+        </label>
+    </div>
+    {% for set in grp.sets %}
+    {% set outer = loop %}
+    {% for cat in set.cats %}
+    <div class="fl-panel" data-group="{{ grp.id }}" data-set="{{ set.id }}" data-cat="{{ cat.key }}"{% if not (outer.first and loop.first) %} hidden{% endif %}>
+        <div class="table-wrap">
+        <table class="stats fl-table">
+            <thead><tr><th>Rank</th><th class="left">Player</th>{% if grp.id == 'fld' %}<th class="left">Pos</th>{% endif %}<th>{{ 'Years' if set.id == 'career' else 'Year' }}</th><th>{{ cat.label }}</th></tr></thead>
+            <tbody>
+            {% for row in cat.rows %}
+            <tr>
+                <td>{{ row.rank }}.</td>
+                <td class="left" data-sort="{{ row.LastName }}"><a href="{{ root }}players/{{ row.PlayerID }}.html">{{ row.Player }}</a></td>
+                {% if grp.id == 'fld' %}<td class="left">{{ row.pos }}</td>{% endif %}
+                <td>{{ row.years|safe }}</td>
+                <td><strong>{{ row.display }}</strong></td>
+            </tr>
+            {% else %}
+            <tr><td colspan="5" class="muted">No qualifying players yet.</td></tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        </div>
+    </div>
+    {% endfor %}
+    {% endfor %}
+</div>
+{% endfor %}
+
+<script>
+(function () {
+  function show(group) {
+    var box = document.getElementById('leaders-' + group);
+    var tab = box.querySelector('.fl-tab.active');
+    var set = tab ? tab.getAttribute('data-set') : 'career';
+    var cat = box.querySelector('.fl-select').value;
+    box.querySelectorAll('.fl-panel').forEach(function (p) {
+      p.hidden = !(p.getAttribute('data-set') === set && p.getAttribute('data-cat') === cat);
+    });
+  }
+  document.querySelectorAll('.fl-tab').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var g = b.getAttribute('data-group');
+      document.querySelectorAll('.fl-tab[data-group="' + g + '"]').forEach(function (x) { x.classList.remove('active'); });
+      b.classList.add('active');
+      show(g);
+    });
+  });
+  document.querySelectorAll('.fl-select').forEach(function (s) {
+    s.addEventListener('change', function () { show(s.getAttribute('data-group')); });
+  });
+})();
+</script>
 {% endblock %}

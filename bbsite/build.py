@@ -315,6 +315,8 @@ def main():
             for r in rows:
                 gb = ((leader["W"] - r["W"]) + (r["L"] - leader["L"])) / 2
                 r["GB"] = "-" if gb == 0 else (f"{gb:g}")
+            for i, r in enumerate(rows, start=1):
+                r["Finish"] = f"{i} of {len(rows)}"
         return rows
 
     live_standings_by_season_team = {}  # (abbr, season) -> record dict with GB, for team-page lookups
@@ -633,22 +635,215 @@ def main():
                   fielding_totals=fielding_totals,
                   playoff_batters=playoff_batters, playoff_pitchers=playoff_pitchers)
 
-    # --- Franchise hub pages (season-by-season across every era, e.g. Detroit -> Cleveland) ---
+    # --- Franchise hub pages (Baseball-Reference style: franchise names, summary,
+    # season-by-season history, and top-50 franchise leaders). Prospects are
+    # excluded from every leaderboard here but stay on the per-season team pages. ---
+    ws_by_season = {}
+    for season in seasons:
+        ps_path = os.path.join(DATA_DIR, str(season), "postseason.json")
+        if os.path.exists(ps_path):
+            with open(ps_path, encoding="utf-8") as fh:
+                ws_by_season[season] = json.load(fh)
+
+    def _f(v):
+        try:
+            return float(str(v).replace(",", "")) if v not in (None, "") else 0.0
+        except ValueError:
+            return 0.0
+
+    def _ip_outs(v):
+        """Innings in thirds -> outs. Handles 'x.1/x.2' (box score), 'x.3/x.7' (sim
+        export) and floats that were parsed from either form."""
+        s_ = str(v or "0")
+        whole, _, frac = s_.partition(".")
+        d = frac[:1]
+        return int(whole or 0) * 3 + {"": 0, "0": 0, "1": 1, "3": 1, "2": 2, "6": 2, "7": 2}.get(d, 0)
+
+    def _ip_str(outs):
+        return f"{outs // 3}.{outs % 3}"
+
+    def _not_prospect(r):
+        return str(r.get("Prospect") or "").strip().upper() != "Y"
+
+    def _pa(r):
+        if str(r.get("PA") or "").strip():
+            return int(_f(r["PA"]))
+        return int(_f(r.get("AB")) + _f(r.get("BB")) + _f(r.get("HBP")) + _f(r.get("SF")) + _f(r.get("SH")))
+
+    def _years_label(ys):
+        ys = sorted(set(int(y) for y in ys))
+        if not ys:
+            return ""
+        return str(ys[0]) if ys[0] == ys[-1] else f"{ys[0]}&ndash;{ys[-1]}"
+
+    def _bat_line(rows):
+        t = defaultdict(float)
+        for r in rows:
+            for k in ["G", "AB", "R", "H", "2B", "3B", "HR", "RBI", "BB", "SO", "HBP", "SB", "CS"]:
+                t[k] += _f(r.get(k))
+            t["PA"] += _pa(r)
+            t["WAR"] += _f(r.get("WAR"))
+        ab = t["AB"]
+        tb = t["H"] + t["2B"] + 2 * t["3B"] + 3 * t["HR"]
+        t["TB"] = tb
+        if len(rows) == 1:
+            r = rows[0]
+            t["AVG"], t["OBP"], t["SLG"], t["OPS"] = _f(r.get("AVG")), _f(r.get("OBP")), _f(r.get("SLG")), _f(r.get("OPS"))
+        else:
+            t["AVG"] = t["H"] / ab if ab else 0.0
+            den = ab + t["BB"] + t["HBP"]
+            t["OBP"] = (t["H"] + t["BB"] + t["HBP"]) / den if den else 0.0
+            t["SLG"] = tb / ab if ab else 0.0
+            t["OPS"] = t["OBP"] + t["SLG"]
+        return t
+
+    def _pit_line(rows):
+        t = defaultdict(float)
+        outs = 0
+        for r in rows:
+            for k in ["G", "GS", "CG", "SHO", "W", "L", "SV", "H", "R", "ER", "HR", "BB", "SO"]:
+                t[k] += _f(r.get(k))
+            outs += _ip_outs(r.get("IP"))
+            t["WAR"] += _f(r.get("WAR"))
+        t["OUTS"] = outs
+        ip = outs / 3
+        t["IPf"] = ip
+        t["ERA"] = 9 * t["ER"] / ip if ip else 0.0
+        t["WHIP"] = (t["BB"] + t["H"]) / ip if ip else 0.0
+        t["SO9"] = 9 * t["SO"] / ip if ip else 0.0
+        dec = t["W"] + t["L"]
+        t["WLP"] = t["W"] / dec if dec else 0.0
+        t["DEC"] = dec
+        return t
+
+    def _fld_line(rows):
+        t = defaultdict(float)
+        outs = 0
+        pos_inn = defaultdict(int)
+        for r in rows:
+            for k in ["GP", "E", "PO", "A", "DP", "GoodPlays"]:
+                t[k] += _f(r.get(k))
+            o = _ip_outs(r.get("Inn"))
+            outs += o
+            pos_inn[r.get("Pos")] += o
+            if r.get("Pos") == "C":
+                t["CCS"] += _f(r.get("CS"))
+                t["CSB"] += _f(r.get("SB"))
+        t["OUTS"] = outs
+        inn = outs / 3
+        t["INNf"] = inn
+        ch = t["PO"] + t["A"] + t["E"]
+        t["FPCT"] = (t["PO"] + t["A"]) / ch if ch else 0.0
+        t["RF9"] = 9 * (t["PO"] + t["A"]) / inn if inn else 0.0
+        t["CSP"] = t["CCS"] / (t["CCS"] + t["CSB"]) if (t["CCS"] + t["CSB"]) else 0.0
+        t["POS"] = "-".join([p for p, _ in sorted(pos_inn.items(), key=lambda kv: -kv[1]) if p][:3])
+        return t
+
+    # (key, label, fmt, higher_is_better, qualifier-kind)
+    BAT_CATS = [
+        ("WAR", "Batting WAR", "{:.1f}", True, None),
+        ("AVG", "Batting Average", "{:.3f}", True, "PA"), ("OBP", "On-Base %", "{:.3f}", True, "PA"),
+        ("SLG", "Slugging %", "{:.3f}", True, "PA"), ("OPS", "OPS", "{:.3f}", True, "PA"),
+        ("G", "Games Played", "{:.0f}", True, None), ("PA", "Plate Appearances", "{:.0f}", True, None),
+        ("AB", "At Bats", "{:.0f}", True, None), ("R", "Runs Scored", "{:.0f}", True, None),
+        ("H", "Hits", "{:.0f}", True, None), ("TB", "Total Bases", "{:.0f}", True, None),
+        ("2B", "Doubles", "{:.0f}", True, None), ("3B", "Triples", "{:.0f}", True, None),
+        ("HR", "Home Runs", "{:.0f}", True, None), ("RBI", "Runs Batted In", "{:.0f}", True, None),
+        ("BB", "Bases on Balls", "{:.0f}", True, None), ("SO", "Strikeouts", "{:.0f}", True, None),
+        ("SB", "Stolen Bases", "{:.0f}", True, None), ("HBP", "Hit By Pitch", "{:.0f}", True, None),
+    ]
+    PIT_CATS = [
+        ("WAR", "Pitching WAR", "{:.1f}", True, None),
+        ("ERA", "Earned Run Average", "{:.2f}", False, "IP"), ("WHIP", "WHIP", "{:.3f}", False, "IP"),
+        ("WLP", "Win-Loss %", "{:.3f}", True, "DEC"), ("SO9", "Strikeouts per 9 IP", "{:.2f}", True, "IP"),
+        ("W", "Wins", "{:.0f}", True, None), ("L", "Losses", "{:.0f}", True, None),
+        ("G", "Games Pitched", "{:.0f}", True, None), ("GS", "Games Started", "{:.0f}", True, None),
+        ("CG", "Complete Games", "{:.0f}", True, None), ("SHO", "Shutouts", "{:.0f}", True, None),
+        ("SV", "Saves", "{:.0f}", True, None), ("IP", "Innings Pitched", None, True, None),
+        ("SO", "Strikeouts", "{:.0f}", True, None), ("BB", "Bases on Balls", "{:.0f}", True, None),
+        ("H", "Hits Allowed", "{:.0f}", True, None), ("HR", "Home Runs Allowed", "{:.0f}", True, None),
+    ]
+    FLD_CATS = [
+        ("GP", "Games in the Field", "{:.0f}", True, None), ("INN", "Innings in the Field", None, True, None),
+        ("PO", "Putouts", "{:.0f}", True, None), ("A", "Assists", "{:.0f}", True, None),
+        ("DP", "Double Plays Turned", "{:.0f}", True, None), ("FPCT", "Fielding %", "{:.3f}", True, "INN"),
+        ("RF9", "Range Factor / 9 Inn", "{:.2f}", True, "INN"), ("GoodPlays", "Good Plays", "{:.0f}", True, None),
+        ("E", "Errors", "{:.0f}", True, None), ("CCS", "Runners Caught Stealing (C)", "{:.0f}", True, None),
+        ("CSP", "Caught Stealing % (C)", "{:.1%}", True, "CATCH"),
+    ]
+
+    def _value(line, key):
+        if key == "IP":
+            return line["OUTS"]
+        if key == "INN":
+            return line["OUTS"]
+        return line[key]
+
+    def _display(line, key, fmt):
+        if key in ("IP", "INN"):
+            return _ip_str(int(line["OUTS"]))
+        v = line[key]
+        s_ = fmt.format(v)
+        if fmt == "{:.3f}" and s_.startswith("0."):
+            s_ = s_[1:]
+        return s_
+
+    def _rank_table(entries, cats, quals, n=50):
+        out = []
+        for key, label, fmt, hib, qk in cats:
+            pool = []
+            for e in entries:
+                line = e["line"]
+                quals_e = e.get("q") or quals
+                if qk == "PA" and line["PA"] < quals_e["PA"]:
+                    continue
+                if qk == "IP" and line["OUTS"] < quals_e["IP"] * 3:
+                    continue
+                if qk == "DEC" and line["DEC"] < quals_e["DEC"]:
+                    continue
+                if qk == "INN" and line["OUTS"] < quals_e["INN"] * 3:
+                    continue
+                if qk == "CATCH" and (line["CCS"] + line["CSB"]) < quals_e["CATCH"]:
+                    continue
+                v = _value(line, key)
+                if qk is None and not v:
+                    continue
+                pool.append((v, e))
+            pool.sort(key=lambda t: (-t[0] if hib else t[0], t[1]["last"]))
+            rows, prev, rank = [], None, 0
+            for i, (v, e) in enumerate(pool[:n], start=1):
+                disp = _display(e["line"], key, fmt)
+                if disp != prev:
+                    rank = i
+                prev = disp
+                rows.append({"rank": rank, "PlayerID": e["pid"], "Player": e["name"], "LastName": e["last"],
+                             "years": e["years"], "pos": e["line"].get("POS", "") if isinstance(e["line"].get("POS", ""), str) else "",
+                             "display": disp})
+            out.append({"key": key, "label": label, "rows": rows,
+                        "qual": qk})
+        return out
+
     for fid, eras in franchises_by_id.items():
         current = current_era_by_franchise[fid]
+        era_abbrs = {e["Abbr"] for e in eras}
         franchise_seasons = []
         for season in seasons:
             for era in eras:
                 match = next((r for r in all_standings[season] if r["TeamAbbr"] == era["Abbr"]), None)
                 if match:
-                    franchise_seasons.append(match)
+                    entry = dict(match)
+                    entry["RS"] = match.get("RF")
+                    entry["InProgress"] = False
+                    franchise_seasons.append(entry)
                 elif schedule_by_team_season.get((era["Abbr"], season)):
                     live = live_standings_by_season_team.get((era["Abbr"], season))
                     if live:
                         franchise_seasons.append({
                             "Season": season, "TeamAbbr": era["Abbr"], "TeamName": era["FranchiseName"],
                             "League": era["League"], "W": live["W"], "L": live["L"], "PCT": live["PCT"],
-                            "GB": live["GB"], "Finish": None, "InProgress": True,
+                            "GB": live["GB"], "Finish": live.get("Finish"), "InProgress": True,
+                            "RS": live["RS"], "RA": live["RA"],
+                            "Owner": live.get("Owner"), "OwnerSlug": live.get("OwnerSlug"),
                         })
                     else:
                         franchise_seasons.append({
@@ -656,8 +851,114 @@ def main():
                             "League": era["League"], "W": None, "L": None, "PCT": None, "GB": None,
                             "Finish": None, "InProgress": False,
                         })
+
+        # Per-season extras: postseason result and the top WAR player (non-prospect).
+        total_w = total_l = 0
+        playoffs = pennants = titles = 0
+        franchise_games = 0
+        for fs in franchise_seasons:
+            season, abbr = fs["Season"], fs["TeamAbbr"]
+            if fs.get("W") is not None:
+                total_w += int(fs["W"])
+                total_l += int(fs["L"])
+                franchise_games += int(fs["W"]) + int(fs["L"])
+            if not fs.get("Owner"):
+                fs["Owner"] = owners_by_fid.get(fid, "")
+                fs["OwnerSlug"] = slugify_manager(fs["Owner"]) if fs["Owner"] else ""
+            ws = ws_by_season.get(season)
+            fs["Playoffs"] = ""
+            if ws and abbr in (ws["winner"]["team"], ws["loser"]["team"]):
+                playoffs += 1
+                if ws["winner"]["team"] == abbr:
+                    titles += 1
+                    fs["Playoffs"] = "Won World's Championship"
+                else:
+                    fs["Playoffs"] = "Lost World's Championship"
+            if not fs.get("InProgress") and str(fs.get("Finish") or "").startswith("1 of"):
+                pennants += 1
+            best = None
+            for r in all_batting.get(season, []) + all_pitching.get(season, []):
+                if r["Team"] != abbr or not _not_prospect(r):
+                    continue
+                w = _f(r.get("WAR"))
+                if best is None or w > best[0]:
+                    best = (w, r)
+            fs["TopPlayer"] = ({"PlayerID": best[1]["PlayerID"], "Player": best[1]["Player"], "WAR": best[0]}
+                               if best and str(best[1].get("WAR") or "").strip() else None)
+
+        # Gather non-prospect rows for this franchise across every era.
+        bat_rows = [r for s_ in seasons for r in all_batting[s_] if r["Team"] in era_abbrs and _not_prospect(r)]
+        pit_rows = [r for s_ in seasons for r in all_pitching[s_] if r["Team"] in era_abbrs and _not_prospect(r)]
+        fld_rows = [r for s_ in seasons for r in all_fielding[s_] if r["Team"] in era_abbrs and _not_prospect(r)]
+
+        def _entries(rows, line_fn, career):
+            groups = defaultdict(list)
+            for r in rows:
+                key = r["PlayerID"] if career else (r["PlayerID"], r.get("SN") or r.get("Season"))
+                groups[key].append(r)
+            out = []
+            for key, grp in groups.items():
+                yrs = [g.get("SN") or g.get("Season") for g in grp]
+                out.append({"pid": grp[0]["PlayerID"], "name": grp[0]["Player"],
+                            "last": grp[0].get("LastName") or grp[0]["Player"],
+                            "years": _years_label(yrs), "line": line_fn(grp),
+                            "q": None if career else season_q.get(int(yrs[0]))})
+            return out
+
+        # Qualifiers follow the site's existing conventions (3.1 PA and 1 IP per team game),
+        # scaled to the franchise's own games: total games for career lists, and the most
+        # games in any one season for single-season lists. Fielding rate stats require
+        # innings equal to two-thirds of the team's games x 9.
+        season_games = [int(fs["W"]) + int(fs["L"]) for fs in franchise_seasons if fs.get("W") is not None]
+        def _q(g):
+            return {"PA": round(3.1 * g), "IP": g, "DEC": max(1, round(g / 10)),
+                    "INN": round(6 * g), "CATCH": max(1, round(g / 4))}
+        season_q = {int(fs["Season"]): _q(int(fs["W"]) + int(fs["L"]))
+                    for fs in franchise_seasons if fs.get("W") is not None}
+        max_season_games = max(season_games, default=0)
+        career_q = {"PA": round(3.1 * franchise_games), "IP": franchise_games,
+                    "DEC": max(1, round(franchise_games / 10)), "INN": round(6 * franchise_games),
+                    "CATCH": max(1, round(franchise_games / 4))}
+        single_q = {"PA": round(3.1 * max_season_games), "IP": max_season_games,
+                    "DEC": max(1, round(max_season_games / 10)), "INN": round(6 * max_season_games),
+                    "CATCH": max(1, round(max_season_games / 4))}
+
+        leaders = [
+            {"id": "bat", "title": "Batting", "sets": [
+                {"id": "career", "label": "Career", "cats": _rank_table(_entries(bat_rows, _bat_line, True), BAT_CATS, career_q)},
+                {"id": "season", "label": "Single Season", "cats": _rank_table(_entries(bat_rows, _bat_line, False), BAT_CATS, single_q)},
+            ]},
+            {"id": "pit", "title": "Pitching", "sets": [
+                {"id": "career", "label": "Career", "cats": _rank_table(_entries(pit_rows, _pit_line, True), PIT_CATS, career_q)},
+                {"id": "season", "label": "Single Season", "cats": _rank_table(_entries(pit_rows, _pit_line, False), PIT_CATS, single_q)},
+            ]},
+            {"id": "fld", "title": "Fielding", "sets": [
+                {"id": "career", "label": "Career", "cats": _rank_table(_entries(fld_rows, _fld_line, True), FLD_CATS, career_q)},
+                {"id": "season", "label": "Single Season", "cats": _rank_table(_entries(fld_rows, _fld_line, False), FLD_CATS, single_q)},
+            ]},
+        ]
+
+        cities = []
+        for e in eras:
+            if e["City"] not in cities:
+                cities.append(e["City"])
+        played = [fs for fs in franchise_seasons if fs.get("W") is not None]
+        summary = {
+            "cities": cities,
+            "first": min((fs["Season"] for fs in franchise_seasons), default=None),
+            "last": max((fs["Season"] for fs in franchise_seasons), default=None),
+            "nseasons": len(franchise_seasons),
+            "W": total_w, "L": total_l,
+            "PCT": (total_w / (total_w + total_l)) if (total_w + total_l) else 0.0,
+            "playoffs": playoffs, "pennants": pennants, "titles": titles,
+            "in_progress": any(fs.get("InProgress") for fs in franchise_seasons),
+            "owner": owners_by_fid.get(fid, ""),
+            "owner_slug": slugify_manager(owners_by_fid.get(fid, "")) if owners_by_fid.get(fid) else "",
+            "played": len(played),
+        }
         write(f"teams/{current['Abbr']}/index.html", "team_index.html",
-              team=current, seasons=list(reversed(franchise_seasons)), eras=eras)
+              team=current, seasons=list(reversed(franchise_seasons)), eras=eras,
+              summary=summary, leaders=leaders, career_q=career_q, single_q=single_q)
 
     # --- Player pages ---
     players = defaultdict(lambda: {"batting": [], "pitching": [], "postseason_batting": [], "postseason_pitching": [], "fielding": [], "name": None, "last_name": None, "bats": None, "throws": None})
@@ -1299,10 +1600,40 @@ def main():
             managers[slug]["name"] = row.get("Owner", "Unknown")
             managers[slug]["seasons"].append(row)
 
+    for season in seasons:
+        if all_standings[season]:
+            continue
+        # In-progress season with no final standings.csv: use the live record
+        # computed from schedule.csv so manager pages update with every game upload.
+        for (abbr, s_), rec in live_standings_by_season_team.items():
+            if s_ != season or not rec.get("OwnerSlug"):
+                continue
+            era = teams_by_abbr.get(abbr, {})
+            row = {"Season": season, "TeamAbbr": abbr, "TeamName": rec["TeamName"],
+                   "League": era.get("League", ""), "W": rec["W"], "L": rec["L"],
+                   "PCT": rec["PCT"], "GB": rec["GB"], "Finish": rec.get("Finish", ""),
+                   "Owner": rec["Owner"], "OwnerSlug": rec["OwnerSlug"],
+                   "RF": rec["RS"], "RA": rec["RA"], "InProgress": True,
+                   "GamesPlayed": rec["GamesPlayed"]}
+            managers[rec["OwnerSlug"]]["name"] = rec["Owner"]
+            managers[rec["OwnerSlug"]]["seasons"].append(row)
+
     for slug, mdata in managers.items():
         seasons_sorted = sorted(mdata["seasons"], key=lambda r: int(r["Season"]))
+        tw = sum(int(r["W"]) for r in seasons_sorted)
+        tl = sum(int(r["L"]) for r in seasons_sorted)
+        mtotals = {"W": tw, "L": tl, "PCT": (tw / (tw + tl)) if (tw + tl) else 0.0,
+                   "RF": sum(int(r.get("RF") or 0) for r in seasons_sorted),
+                   "RA": sum(int(r.get("RA") or 0) for r in seasons_sorted)}
+        titles = []
+        for r in seasons_sorted:
+            if not r.get("InProgress") and str(r.get("Finish", "")).startswith("1 of"):
+                titles.append(f"{r['Season']} {LEAGUE_NAMES.get(r['League'], r['League'])} Pennant")
+            ws = ws_by_season.get(int(r["Season"]))
+            if ws and ws["winner"]["team"] == r["TeamAbbr"]:
+                titles.append(f"{r['Season']} World's Championship")
         write(f"managers/{slug}.html", "manager.html",
-              manager_name=mdata["name"], seasons=seasons_sorted)
+              manager_name=mdata["name"], seasons=seasons_sorted, totals=mtotals, titles=titles)
 
     # --- Awards pages ---
     write("awards/index.html", "awards_index.html", seasons=seasons)

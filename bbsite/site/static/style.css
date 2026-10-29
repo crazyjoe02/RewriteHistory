@@ -404,3 +404,15 @@ table.stats tr.career-row td { font-weight: bold; background: #eef2f7; }
 .container:has(.bref-player) { max-width: 1440px; }
 .bref-player { grid-template-columns: 170px minmax(0, 1fr); }
 .bref-player table.stats th, .bref-player table.stats td { padding-left: 4px; padding-right: 4px; }
+
+/* ---- Franchise history page (B-Ref team encyclopedia style) ---- */
+.franchise-info { border: 1px solid #ccc; background: #fafafa; padding: 8px 14px; margin: 10px 0 16px; border-radius: 3px; }
+.franchise-info p { margin: 4px 0; }
+.fl-group { margin: 18px 0 26px; }
+.fl-title { margin: 0 0 6px; font-size: 1.1em; }
+.fl-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-bottom: 8px; }
+.fl-tab { border: 1px solid #999; background: #eee; padding: 4px 12px; cursor: pointer; font: inherit; border-radius: 3px; }
+.fl-tab.active { background: #2c4f7c; color: #fff; border-color: #2c4f7c; }
+.fl-select-label { margin-left: 8px; }
+.fl-select { font: inherit; padding: 3px 4px; max-width: 100%; }
+.fl-table { max-width: 640px; }
