@@ -1,0 +1,25 @@
+{
+ "season": 1886,
+ "series_name": "1886 World's Championship Series",
+ "in_progress": true,
+ "teams": [
+  {
+   "team": "PHI",
+   "team_name": "Philadelphia Quakers",
+   "owner": "danidon",
+   "league": "NL",
+   "record": "117-45"
+  },
+  {
+   "team": "STL",
+   "team_name": "St. Louis Browns",
+   "owner": "RedMustard",
+   "league": "AA",
+   "record": "112-50"
+  }
+ ],
+ "winner": null,
+ "loser": null,
+ "result": "Philadelphia Quakers (NL) vs. St. Louis Browns (AA) — series begins soon",
+ "games": []
+}

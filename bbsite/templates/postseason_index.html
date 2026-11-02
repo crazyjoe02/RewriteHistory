@@ -10,6 +10,30 @@
 <h1 class="page-title">{{ series.series_name }}</h1>
 <div class="subtitle">{{ series.result }}</div>
 
+{% if series.in_progress %}
+<h2 class="section-title">Matchup</h2>
+<div class="table-wrap">
+<table class="stats">
+    <thead><tr><th class="left">Team</th><th>Lg</th><th class="left">Owner</th><th>Reg. Season</th><th>Series Wins</th></tr></thead>
+    <tbody>
+    {% for t in series.teams_list %}
+    <tr>
+        <td class="left"><a href="{{ root }}teams/{{ t.team }}/{{ season }}.html">{{ t.team_name }}</a></td>
+        <td>{{ t.league }}</td>
+        <td class="left">{{ t.owner }}</td>
+        <td>{{ t.record }}</td>
+        <td><strong>{{ series.wins[t.team] }}</strong></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+<div class="standings-note">Series in progress &mdash; first to four wins. Box scores are added as each game is played.</div>
+{% endif %}
+
+{% if series.games %}
+<h2 class="section-title">Games</h2>
+
 <div class="table-wrap">
 <table class="stats">
     <thead>
@@ -30,4 +54,7 @@
     </tbody>
 </table>
 </div>
+{% else %}
+<div class="standings-note">No games played yet.</div>
+{% endif %}
 {% endblock %}

@@ -26,6 +26,9 @@
     </div>
 </div>
 {% endif %}
+{% if live_series %}
+<div class="standings-note"><strong>Now playing:</strong> the <a href="{{ root }}postseason/{{ live_series.season }}.html">{{ live_series.series_name }}</a> &mdash; {% for t in live_series.teams_list %}{{ t.team_name }} {{ live_series.wins[t.team] }}{% if not loop.last %}, {% endif %}{% endfor %}</div>
+{% endif %}
 <img class="masthead-image" src="{{ root }}static/masthead.jpg" alt="Rewrite History Reference">
 <div class="subtitle">Reimagined major league baseball history, {{ first_season }}&ndash;present. Currently through the {{ latest_season }} season.</div>
 

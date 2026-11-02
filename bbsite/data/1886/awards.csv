@@ -1,0 +1,76 @@
+Season,League,Award,Rank,Pos,Player,Team
+1886,NL,MVP,1,1B,Cap Anson,CHC
+1886,NL,MVP,2,1B,Dan Brouthers,BSN
+1886,NL,MVP,3,1B,Dave Orr,PHI
+1886,NL,MVP,4,OF,Hardy Richardson,CLV
+1886,NL,MVP,5,OF,King Kelly,CHC
+1886,AA,MVP,1,1B,Roger Connor,STL
+1886,AA,MVP,2,OF,Henry Larkin,PAT
+1886,AA,MVP,3,OF,George Gore,STL
+1886,AA,MVP,4,2B,Bid McPhee,CIN
+1886,AA,MVP,5,OF,Curt Welch,BLN
+1886,NL,Champion Hurler,1,P,Charlie Ferguson,PHI
+1886,NL,Champion Hurler,2,P,Dave Foutz,PHI
+1886,NL,Champion Hurler,3,P,John Clarkson,CHC
+1886,NL,Champion Hurler,4,P,Tim Keefe,NYG
+1886,NL,Champion Hurler,5,P,Guy Hecker,BSN
+1886,AA,Champion Hurler,1,P,Jim McCormick,PAT
+1886,AA,Champion Hurler,2,P,Bob Caruthers,STL
+1886,AA,Champion Hurler,3,P,Toad Ramsey,STL
+1886,AA,Champion Hurler,4,P,Charley Radbourn,CIN
+1886,AA,Champion Hurler,5,P,Matt Kilroy,LOU
+1886,NL,Rookie of the Year,1,P,Jocko Flynn,CHC
+1886,NL,Rookie of the Year,2,P,Bill Stemmeyer,BSN
+1886,NL,Rookie of the Year,3,P,Jim Handiboe,PHI
+1886,NL,Rookie of the Year,4,P,Bill Smith,CHC
+1886,AA,Rookie of the Year,1,P,Matt Kilroy,LOU
+1886,AA,Rookie of the Year,2,P,Nat Hudson,STL
+1886,AA,Rookie of the Year,3,P,Tony Mullane,BLN
+1886,AA,Rookie of the Year,4,P,Cyclone Miller,PAT
+1886,AA,Rookie of the Year,5,P,Bill Hart,PAT
+1886,NL,Silver Slugger,1,P,Guy Hecker,BSN
+1886,NL,Silver Slugger,1,C,King Kelly,CHC
+1886,NL,Silver Slugger,1,1B,Dan Brouthers,BSN
+1886,NL,Silver Slugger,1,2B,Hardy Richardson,CLV
+1886,NL,Silver Slugger,1,3B,Tom Burns,CHC
+1886,NL,Silver Slugger,1,SS,John Morrill,PHI
+1886,NL,Silver Slugger,1,LF,George Wood,CLV
+1886,NL,Silver Slugger,1,CF,Tip O'Neill,NYG
+1886,NL,Silver Slugger,1,RF,Paul Hines,BSN
+1886,AA,Silver Slugger,1,P,Bob Caruthers,STL
+1886,AA,Silver Slugger,1,C,Ed Swartwood,BRO
+1886,AA,Silver Slugger,1,1B,Roger Connor,STL
+1886,AA,Silver Slugger,1,2B,Bid McPhee,CIN
+1886,AA,Silver Slugger,1,3B,Arlie Latham,CIN
+1886,AA,Silver Slugger,1,SS,Jack Glasscock,LOU
+1886,AA,Silver Slugger,1,LF,Harry Stovey,PAT
+1886,AA,Silver Slugger,1,CF,George Gore,STL
+1886,AA,Silver Slugger,1,RF,John Coleman,PAT
+1886,NL,Gold Glove,1,P,Pete Conway,PIT
+1886,NL,Gold Glove,1,C,Jim O'Rourke,BSN
+1886,NL,Gold Glove,1,1B,Dan Brouthers,BSN
+1886,NL,Gold Glove,1,2B,Hardy Richardson,CLV
+1886,NL,Gold Glove,1,3B,Tom Burns,CHC
+1886,NL,Gold Glove,1,SS,Pop Smith,BSN
+1886,NL,Gold Glove,1,LF,George Wood,CLV
+1886,NL,Gold Glove,1,CF,Tip O'Neill,NYG
+1886,NL,Gold Glove,1,RF,Paul Hines,BSN
+1886,AA,Gold Glove,1,P,Jumbo McGinnis,BRO
+1886,AA,Gold Glove,1,C,John Kerins,STL
+1886,AA,Gold Glove,1,1B,Bill Phillips,CIN
+1886,AA,Gold Glove,1,2B,Bid McPhee,CIN
+1886,AA,Gold Glove,1,3B,Jerry Denny,LOU
+1886,AA,Gold Glove,1,SS,Jack Glasscock,LOU
+1886,AA,Gold Glove,1,LF,Harry Stovey,PAT
+1886,AA,Gold Glove,1,CF,Curt Welch,BLN
+1886,AA,Gold Glove,1,RF,Dick Johnston,BLN
+1886,NL,Fireman,1,P,Jim Handiboe,PHI
+1886,NL,Fireman,2,P,Aaron Crowley,CHC
+1886,NL,Fireman,3,P,John Kirby,BSN
+1886,NL,Fireman,4,P,Dupee Shaw,CLV
+1886,NL,Fireman,5,P,Bill Smith,CHC
+1886,AA,Fireman,1,P,Adonis Terry,BLN
+1886,AA,Fireman,2,P,Bill Hart,PAT
+1886,AA,Fireman,3,P,Cyclone Miller,PAT
+1886,AA,Fireman,4,P,Garry Houck,LOU
+1886,AA,Fireman,5,P,Bobby Mathews,PAT

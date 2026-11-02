@@ -867,9 +867,12 @@ def main():
                 fs["OwnerSlug"] = slugify_manager(fs["Owner"]) if fs["Owner"] else ""
             ws = ws_by_season.get(season)
             fs["Playoffs"] = ""
-            if ws and abbr in (ws["winner"]["team"], ws["loser"]["team"]):
+            ws_teams = [t["team"] for t in (ws.get("teams") or [ws.get("winner"), ws.get("loser")]) if t] if ws else []
+            if ws and abbr in ws_teams:
                 playoffs += 1
-                if ws["winner"]["team"] == abbr:
+                if not ws.get("winner"):
+                    fs["Playoffs"] = "World's Championship (in progress)"
+                elif ws["winner"]["team"] == abbr:
                     titles += 1
                     fs["Playoffs"] = "Won World's Championship"
                 else:
@@ -1648,7 +1651,7 @@ def main():
             if not r.get("InProgress") and str(r.get("Finish", "")).startswith("1 of"):
                 titles.append(f"{r['Season']} {LEAGUE_NAMES.get(r['League'], r['League'])} Pennant")
             ws = ws_by_season.get(int(r["Season"]))
-            if ws and ws["winner"]["team"] == r["TeamAbbr"]:
+            if ws and ws.get("winner") and ws["winner"]["team"] == r["TeamAbbr"]:
                 titles.append(f"{r['Season']} World's Championship")
         write(f"managers/{slug}.html", "manager.html",
               manager_name=mdata["name"], seasons=seasons_sorted, totals=mtotals, titles=titles)
@@ -1695,10 +1698,14 @@ def main():
         for g in series["games"]:
             resolve_pids(g)
             score_rows = {r["team"]: r["R"] for r in g["linescore"]["rows"]}
-            g["winner_team"] = series["winner"]["team"] if score_rows[series["winner"]["team"]] > score_rows[series["loser"]["team"]] else series["loser"]["team"]
-            g["score_summary"] = f'{series["winner"]["team_name"] if g["winner_team"]==series["winner"]["team"] else series["loser"]["team_name"]} win {max(score_rows.values())}-{min(score_rows.values())}'
+            ps_names = {t["team"]: t["team_name"] for t in (series.get("teams") or [series["winner"], series["loser"]]) if t}
+            g["winner_team"] = max(score_rows, key=score_rows.get)
+            g["score_summary"] = f'{ps_names.get(g["winner_team"], g["winner_team"])} win {max(score_rows.values())}-{min(score_rows.values())}'
             write(f"postseason-game/{season}-{g['game_number']}.html", "allstar_game.html",
                   season=season, game=g, is_postseason_game=True, series=series)
+        ps_teams = series.get("teams") or [series["winner"], series["loser"]]
+        series["wins"] = {t["team"]: sum(1 for g in series["games"] if g.get("winner_team") == t["team"]) for t in ps_teams}
+        series["teams_list"] = ps_teams
         write(f"postseason/{season}.html", "postseason_index.html", season=season, series=series)
 
     # --- Season hub pages (standings + condensed awards + All-Star Game link + postseason) ---
@@ -1738,13 +1745,15 @@ def main():
     write("seasons/index.html", "seasons_index.html", seasons_summary=seasons_summary)
 
     most_recent_postseason = None
-    if postseason_by_season:
-        most_recent_postseason = postseason_by_season[max(postseason_by_season.keys())]
+    completed_ps = {s: v for s, v in postseason_by_season.items() if v.get("winner")}
+    if completed_ps:
+        most_recent_postseason = completed_ps[max(completed_ps.keys())]
 
     write("index.html", "index.html",
           leagues=year_leagues_ctx[latest_season], season=latest_season,
           all_teams=sorted(current_era_by_franchise.values(), key=lambda t: t["FranchiseName"]),
           postseason=most_recent_postseason,
+          live_series=next((v for v in postseason_by_season.values() if v.get("in_progress")), None),
           is_preseason=year_is_preseason[latest_season], is_live=year_is_live[latest_season])
 
     # --- Search index (client-side JSON, used by the header search box) ---
