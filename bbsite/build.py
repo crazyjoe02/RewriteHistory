@@ -1339,6 +1339,16 @@ def main():
         allstar_seasons = sorted(pdata.get("allstar_seasons", []), key=lambda a: int(a["Season"]))
         allstar_years = [a["Season"] for a in allstar_seasons]
         awards_won = sorted(pdata.get("awards_won", []), key=lambda a: int(a["Season"]))
+        # Collapse repeat wins into one line per award (league + position kept distinct):
+        # "2x AA Most Valuable Player (1885, 1886)", like the All-Star line.
+        _grouped = {}
+        for a in awards_won:
+            name = a["Label"][len(str(a["Season"])) + 1:] if a["Label"].startswith(f'{a["Season"]} ') else a["Label"]
+            name = re.sub(r" \(([^()]+)\)$", r", \1", name)  # "Gold Glove Award (2B)" -> "Gold Glove Award, 2B"
+            _grouped.setdefault(name, []).append(a["Season"])
+        awards_won = [{"Name": n, "Count": len(ys), "Years": ys,
+                       "Label": (f"{len(ys)}\u00d7 " if len(ys) > 1 else "") + f"{n} ({', '.join(str(y) for y in ys)})"}
+                      for n, ys in _grouped.items()]
         old_trades = sorted(pdata.get("trades", []), key=lambda t: t["Season"])
         draft_picks = sorted(pdata.get("draft_picks", []), key=lambda d: d["Season"])
         trade_mentions = sorted(pdata.get("trade_mentions", []), key=lambda t: t["season"])
