@@ -1446,7 +1446,8 @@ def main():
         stat_seasons = [int(r["SN"]) for r in batting_rows + pitching_rows] + [int(r["Season"]) for r in fielding_rows_for_player]
         if stat_seasons and max(stat_seasons) == max(seasons):
             latest = max(stat_seasons)
-            later_trades = [t for t in pdata.get("trades", []) if int(t["Season"]) >= latest]
+            # Trades flagged Pending (e.g. agreed during the postseason) don't move the player yet.
+            later_trades = [t for t in pdata.get("trades", []) if int(t["Season"]) >= latest and not t.get("Pending")]
             cur_abbr = None
             if later_trades:
                 cur_abbr = later_trades[-1]["ToTeamAbbr"]
