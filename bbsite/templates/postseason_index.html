@@ -28,12 +28,31 @@
     </tbody>
 </table>
 </div>
-<div class="standings-note">Series in progress &mdash; first to four wins. Box scores are added as each game is played.</div>
+<div class="standings-note">Best of seven &mdash; first to four wins. Box scores are added as each game is played.</div>
 {% endif %}
 
-{% if series.games %}
+{% if series.schedule %}
+<h2 class="section-title">Schedule &amp; Results</h2>
+<div class="table-wrap">
+<table class="stats">
+    <thead><tr><th>Game</th><th class="left">Date</th><th class="left">Matchup</th><th class="left">Location</th><th class="left">Result</th><th class="left">Box Score</th></tr></thead>
+    <tbody>
+    {% for sg in series.schedule %}
+    {% set g = sg.played %}
+    <tr>
+        <td>{{ sg.game_number }}</td>
+        <td class="left">{{ sg.date }} ({{ sg.time }})</td>
+        <td class="left">{{ sg.away }} @ {{ sg.home }}</td>
+        <td class="left">{% if g %}{{ g.location }}{% elif sg.home == 'PHI' %}Philadelphia Base Ball Grounds, Philadelphia{% else %}Sportsman's Park (II), St. Louis{% endif %}</td>
+        <td class="left">{% if g %}{% for r in g.linescore.rows %}{{ r.label }} {{ r.R }}{% if not loop.last %} &ndash; {% endif %}{% endfor %}{% elif sg.if_necessary %}<em>if necessary</em>{% else %}&mdash;{% endif %}</td>
+        <td class="left">{% if g %}<a href="{{ root }}postseason-game/{{ season }}-{{ g.game_number }}.html">Box Score</a>{% endif %}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+{% elif series.games %}
 <h2 class="section-title">Games</h2>
-
 <div class="table-wrap">
 <table class="stats">
     <thead>
@@ -41,7 +60,6 @@
     </thead>
     <tbody>
     {% for g in series.games %}
-    {% set score_rows = {} %}
     <tr>
         <td>{{ g.game_number }}</td>
         <td class="left">{{ g.location }}</td>

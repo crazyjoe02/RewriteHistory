@@ -1716,6 +1716,18 @@ def main():
         ps_teams = series.get("teams") or [series["winner"], series["loser"]]
         series["wins"] = {t["team"]: sum(1 for g in series["games"] if g.get("winner_team") == t["team"]) for t in ps_teams}
         series["teams_list"] = ps_teams
+        if series.get("in_progress"):
+            (t1, w1), (t2, w2) = sorted(series["wins"].items(), key=lambda kv: -kv[1])
+            nm = {t["team"]: t["team_name"] for t in ps_teams}
+            if not series["games"]:
+                series["result"] = f'{ps_teams[0]["team_name"]} ({ps_teams[0]["league"]}) vs. {ps_teams[1]["team_name"]} ({ps_teams[1]["league"]}) \u2014 series begins soon'
+            elif w1 == w2:
+                series["result"] = f"Series tied {w1}-{w2}"
+            else:
+                series["result"] = f"{nm[t1]} lead series {w1}-{w2}"
+        played = {g["game_number"]: g for g in series["games"]}
+        for sg in series.get("schedule", []):
+            sg["played"] = played.get(sg["game_number"])
         write(f"postseason/{season}.html", "postseason_index.html", season=season, series=series)
 
     # --- Season hub pages (standings + condensed awards + All-Star Game link + postseason) ---
