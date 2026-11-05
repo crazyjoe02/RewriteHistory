@@ -36,6 +36,7 @@
     {% if not is_pitcher and pitching_rows %}<li><a href="#pitching_standard">Standard Pitching</a></li>{% if x.pitching_splits %}<li><a href="#pitching_splits">Pitching Splits</a></li>{% endif %}{% endif %}
     {% if ps_batting_rows %}<li><a href="#postseason_batting">Postseason Batting</a></li>{% endif %}
     {% if ps_pitching_rows %}<li><a href="#postseason_pitching">Postseason Pitching</a></li>{% endif %}
+    {% if ps_fielding_rows %}<li><a href="#postseason_fielding">Postseason Fielding</a></li>{% endif %}
     {% if B %}<li><a href="#appearances">Appearances</a></li>{% endif %}
     {% if fielding_rows %}<li><a href="#fielding_standard">Standard Fielding</a></li>{% endif %}
     <li><a href="#leaderboard">Leaderboards, Awards, &amp; Honors</a></li>
@@ -392,6 +393,28 @@ See <a href="{{ root }}war-explained.html">how WAR is calculated</a> on this sit
 {% endif %}
 {{ ps_batting_section }}
 {{ ps_pitching_section }}
+{% if ps_fielding_rows %}
+<h2 class="section-title" id="postseason_fielding">Postseason Fielding</h2>
+<div class="table-wrap">
+<table class="stats">
+<thead><tr><th>Year</th><th class="left">Team</th><th>Pos</th><th>G</th><th>GS</th><th>Inn</th><th>Ch</th><th>PO</th><th>A</th><th>E</th><th>DP</th><th>Fld%</th><th>RF/9</th><th>PB</th><th>SB</th><th>CS</th><th>C.ERA</th></tr></thead>
+<tbody>
+{% for r in ps_fielding_rows %}
+<tr>
+  <td><a href="{{ root }}postseason/{{ r.SN }}.html">{{ r.SN }}</a></td>
+  <td class="left"><a href="{{ root }}teams/{{ r.Team }}/{{ r.SN }}.html">{{ r.Team }}</a></td>
+  <td>{{ r.Pos }}</td><td>{{ r.GP }}</td><td>{{ r.GS }}</td><td>{{ '%.1f'|format(r.Inn|float) }}</td>
+  <td>{{ (r.PO|int) + (r.A|int) + (r.E|int) }}</td><td>{{ r.PO }}</td><td>{{ r.A }}</td><td>{{ r.E }}</td><td>{{ r.DP }}</td>
+  <td>{{ r.FPct }}</td><td>{{ '%.2f'|format(r.RF|float) }}</td>
+  {% if r.Pos == 'C' %}<td>{{ r.PB }}</td><td>{{ r.SB }}</td><td>{{ r.CS }}</td><td>{{ '%.2f'|format(r.CERA|float) }}</td>
+  {% elif r.Pos == 'P' %}<td></td><td>{{ r.SB }}</td><td>{{ r.CS }}</td><td></td>
+  {% else %}<td></td><td></td><td></td><td></td>{% endif %}
+</tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+{% endif %}
 
 {# ---------------- appearances ---------------- #}
 {% if B %}

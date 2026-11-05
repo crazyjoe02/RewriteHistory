@@ -37,14 +37,14 @@
 <table class="stats">
     <thead><tr><th>Game</th><th class="left">Date</th><th class="left">Matchup</th><th class="left">Location</th><th class="left">Result</th><th class="left">Box Score</th></tr></thead>
     <tbody>
-    {% for sg in series.schedule %}
+    {% for sg in series.schedule if not sg.not_needed %}
     {% set g = sg.played %}
     <tr>
         <td>{{ sg.game_number }}</td>
         <td class="left">{{ sg.date }} ({{ sg.time }})</td>
         <td class="left">{{ sg.away }} @ {{ sg.home }}</td>
         <td class="left">{% if g %}{{ g.location }}{% elif sg.home == 'PHI' %}Philadelphia Base Ball Grounds, Philadelphia{% else %}Sportsman's Park (II), St. Louis{% endif %}</td>
-        <td class="left">{% if g %}{% for r in g.linescore.rows %}{{ r.label }} {{ r.R }}{% if not loop.last %} &ndash; {% endif %}{% endfor %}{% elif sg.if_necessary %}<em>if necessary</em>{% else %}&mdash;{% endif %}</td>
+        <td class="left">{% if g %}{% for r in g.linescore.rows %}{{ r.label }} {{ r.R }}{% if not loop.last %} &ndash; {% endif %}{% endfor %}{% elif sg.not_needed %}<em>not needed</em>{% elif sg.if_necessary %}<em>if necessary</em>{% else %}&mdash;{% endif %}</td>
         <td class="left">{% if g %}<a href="{{ root }}postseason-game/{{ season }}-{{ g.game_number }}.html">Box Score</a>{% endif %}</td>
     </tr>
     {% endfor %}

@@ -115,6 +115,7 @@ def main():
     all_ps_batting = {}  # season -> list of postseason batting rows
     all_ps_pitching = {} # season -> list of postseason pitching rows
     all_fielding = {}    # season -> list of fielding rows (one row per player+position)
+    all_ps_fielding = {} # season -> list of postseason fielding rows (from 1886 on)
 
     for season in seasons:
         sdir = os.path.join(DATA_DIR, str(season))
@@ -124,6 +125,7 @@ def main():
         ps_batting_path = os.path.join(sdir, "postseason_batting.csv")
         ps_pitching_path = os.path.join(sdir, "postseason_pitching.csv")
         fielding_path = os.path.join(sdir, "fielding.csv")
+        ps_fielding_path = os.path.join(sdir, "postseason_fielding.csv")
 
         standings_rows = load_csv(standings_path) if os.path.exists(standings_path) else []
         batting_rows = load_csv(batting_path) if os.path.exists(batting_path) else []
@@ -131,6 +133,7 @@ def main():
         ps_batting_rows = load_csv(ps_batting_path) if os.path.exists(ps_batting_path) else []
         ps_pitching_rows = load_csv(ps_pitching_path) if os.path.exists(ps_pitching_path) else []
         fielding_rows = load_csv(fielding_path) if os.path.exists(fielding_path) else []
+        ps_fielding_rows = load_csv(ps_fielding_path) if os.path.exists(ps_fielding_path) else []
 
         # normalize display name to master registry (fixes source typos/casing)
         for row in standings_rows:
@@ -179,6 +182,13 @@ def main():
         all_ps_batting[season] = ps_batting_rows
         all_ps_pitching[season] = ps_pitching_rows
         all_fielding[season] = fielding_rows
+        for row in ps_fielding_rows:
+            row["PlayerID"] = slugify_player_id(row["Player"])
+            row["LastName"] = last_name_of(row["Player"])
+            row["Player"] = display_name(row["Player"])
+            row["Season"] = season
+            row["Inn"] = float(str(row["Inn"]).replace(",", "") or 0)
+        all_ps_fielding[season] = ps_fielding_rows
 
     # --- Set up Jinja ---
     env = Environment(loader=FileSystemLoader(TEMPLATES_DIR), trim_blocks=True, lstrip_blocks=True)
@@ -570,6 +580,9 @@ def main():
             playoff_batters.sort(key=lambda r: -float(r["AVG"]) if r["AB"] and int(r["AB"]) > 0 else 0)
             playoff_pitchers = [r for r in all_ps_pitching.get(season, []) if r["Team"] == abbr]
             playoff_pitchers.sort(key=lambda r: -int(r["W"]))
+            _PO = ["P", "C", "1B", "2B", "3B", "SS", "LF", "CF", "RF"]
+            playoff_fielders = sorted([r for r in all_ps_fielding.get(season, []) if r["Team"] == abbr],
+                                      key=lambda r: (_PO.index(r["Pos"]) if r["Pos"] in _PO else 99, -r["Inn"]))
             # Primary position per player for this team-season: the position with the
             # most innings in the fielding data; pitchers with no fielding row -> P, else PH.
             _inn_by_pos = defaultdict(lambda: defaultdict(float))
@@ -633,7 +646,8 @@ def main():
                   fielders=fielders, schedule=schedule,
                   batting_totals=batting_totals, pitching_totals=pitching_totals,
                   fielding_totals=fielding_totals,
-                  playoff_batters=playoff_batters, playoff_pitchers=playoff_pitchers)
+                  playoff_batters=playoff_batters, playoff_pitchers=playoff_pitchers,
+                  playoff_fielders=playoff_fielders)
 
     # --- Franchise hub pages (Baseball-Reference style: franchise names, summary,
     # season-by-season history, and top-50 franchise leaders). Prospects are
@@ -982,7 +996,7 @@ def main():
               summary=summary, leaders=leaders, career_q=career_q, single_q=single_q)
 
     # --- Player pages ---
-    players = defaultdict(lambda: {"batting": [], "pitching": [], "postseason_batting": [], "postseason_pitching": [], "fielding": [], "name": None, "last_name": None, "bats": None, "throws": None})
+    players = defaultdict(lambda: {"batting": [], "pitching": [], "postseason_batting": [], "postseason_pitching": [], "postseason_fielding": [], "fielding": [], "name": None, "last_name": None, "bats": None, "throws": None})
     for season in seasons:
         for row in all_batting[season]:
             pid = row["PlayerID"]
@@ -1001,6 +1015,9 @@ def main():
             players[pid]["postseason_batting"].append(row)
             players[pid]["name"] = row["Player"]
             players[pid]["last_name"] = row.get("LastName")
+        for row in all_ps_fielding.get(season, []):
+            if row["PlayerID"] in players:
+                players[row["PlayerID"]]["postseason_fielding"].append(row)
         for row in all_ps_pitching[season]:
             pid = row["PlayerID"]
             players[pid]["postseason_pitching"].append(row)
@@ -1301,6 +1318,9 @@ def main():
         pitching_rows = sorted(pdata["pitching"], key=_stint_key)
         ps_batting_rows = sorted(pdata["postseason_batting"], key=lambda r: int(r["SN"]))
         ps_pitching_rows = sorted(pdata["postseason_pitching"], key=lambda r: int(r["SN"]))
+        _PO2 = ["P", "C", "1B", "2B", "3B", "SS", "LF", "CF", "RF"]
+        ps_fielding_rows = sorted(pdata.get("postseason_fielding", []),
+                                  key=lambda r: (int(r["SN"]), _PO2.index(r["Pos"]) if r["Pos"] in _PO2 else 99))
 
         batting_career = compute_batting_totals(batting_rows)
         pitching_career = compute_pitching_totals(pitching_rows)
@@ -1477,7 +1497,7 @@ def main():
               batting_by_franchise=batting_by_franchise, pitching_by_franchise=pitching_by_franchise,
               allstar_count=len(allstar_years), allstar_years=allstar_years,
               awards_won=awards_won,
-              ps_batting_rows=ps_batting_rows, ps_pitching_rows=ps_pitching_rows,
+              ps_batting_rows=ps_batting_rows, ps_pitching_rows=ps_pitching_rows, ps_fielding_rows=ps_fielding_rows,
               ps_batting_career=ps_batting_career, ps_pitching_career=ps_pitching_career,
               fielding_rows=fielding_display_rows, fielding_career_by_pos=fielding_career_by_pos,
               transactions=transactions, current_team=current_team, is_pitcher=is_pitcher,
@@ -1727,8 +1747,12 @@ def main():
             else:
                 series["result"] = f"{nm[t1]} lead series {w1}-{w2}"
         played = {g["game_number"]: g for g in series["games"]}
+        _guaranteed = len(series["games"]) + (4 - max(series["wins"].values(), default=0))
         for sg in series.get("schedule", []):
             sg["played"] = played.get(sg["game_number"])
+            # a game is "if necessary" only while it could still be skipped; once a team has 4 wins, unplayed games are "not needed"
+            sg["if_necessary"] = sg["game_number"] > _guaranteed and max(series["wins"].values(), default=0) < 4
+            sg["not_needed"] = not sg["played"] and max(series["wins"].values(), default=0) >= 4
         write(f"postseason/{season}.html", "postseason_index.html", season=season, series=series)
 
     # --- Season hub pages (standings + condensed awards + All-Star Game link + postseason) ---
