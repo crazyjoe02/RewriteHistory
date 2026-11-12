@@ -1057,7 +1057,10 @@ def main():
             name = NAME_ALIASES.get(raw_name, raw_name)
             if name in name_to_pid:
                 continue
-            base_pid = slugify_player_id(name)
+            # Draft names are "First Last"; build the ID the same way real stat rows ("Last, First") do,
+            # so the page keeps its URL once the player's first stats are imported.
+            _first, _, _last = name.partition(" ")
+            base_pid = slugify_player_id(f"{_last}, {_first}" if _last else name)
             pid = base_pid
             n = 2
             while pid in players:
@@ -1801,6 +1804,8 @@ def main():
           all_teams=sorted(current_era_by_franchise.values(), key=lambda t: t["FranchiseName"]),
           postseason=most_recent_postseason,
           live_series=next((v for v in postseason_by_season.values() if v.get("in_progress")), None),
+          upcoming_draft=latest_season if (year_is_preseason[latest_season] and latest_season in draft_by_season) else None,
+          upcoming_draft_picks=len(draft_by_season.get(latest_season, [])),
           is_preseason=year_is_preseason[latest_season], is_live=year_is_live[latest_season])
 
     # --- Search index (client-side JSON, used by the header search box) ---

@@ -26,13 +26,16 @@
     </div>
 </div>
 {% endif %}
+{% if upcoming_draft %}
+<div class="standings-note"><strong>Offseason:</strong> the <a href="{{ root }}draft/{{ upcoming_draft }}.html">{{ upcoming_draft }} Rookie Draft</a> is underway &mdash; {{ upcoming_draft_picks }} picks so far.</div>
+{% endif %}
 {% if live_series %}
 <div class="standings-note"><strong>Now playing:</strong> the <a href="{{ root }}postseason/{{ live_series.season }}.html">{{ live_series.series_name }}</a> &mdash; {% for t in live_series.teams_list %}{{ t.team_name }} {{ live_series.wins[t.team] }}{% if not loop.last %}, {% endif %}{% endfor %}</div>
 {% endif %}
 <img class="masthead-image" src="{{ root }}static/masthead.jpg" alt="Rewrite History Reference">
 <div class="subtitle">Reimagined major league baseball history, {{ first_season }}&ndash;present. Currently through the {{ latest_season }} season.</div>
 
-<h2 class="section-title">{{ latest_season }} {% if is_preseason %}Franchises{% elif is_live %}Standings{% else %}Final Standings{% endif %}</h2>
+<h2 class="section-title">{{ latest_season }} {% if is_preseason %}Standings{% elif is_live %}Standings{% else %}Final Standings{% endif %}</h2>
 <div class="league-columns">
 {% for lg_name, lg_code, teams in leagues %}
 <div>
@@ -65,10 +68,11 @@
     {% if is_preseason %}
     <div class="table-wrap">
     <table class="stats">
-        <thead><tr><th class="left">Team</th></tr></thead>
+        <thead><tr><th class="left">Team</th><th>W</th><th>L</th><th>PCT</th><th>GB</th></tr></thead>
         <tbody>
         {% for t in teams %}
-        <tr><td class="left"><a href="{{ root }}teams/{{ hub_abbr.get(t.Abbr, t.Abbr) }}/index.html">{{ t.FranchiseName }}</a></td></tr>
+        <tr><td class="left"><a href="{{ root }}teams/{{ hub_abbr.get(t.Abbr, t.Abbr) }}/index.html">{{ t.FranchiseName }}</a></td>
+            <td>0</td><td>0</td><td>.000</td><td>-</td></tr>
         {% endfor %}
         </tbody>
     </table>

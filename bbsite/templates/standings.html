@@ -6,7 +6,7 @@
 {% block content %}
 <h1 class="page-title">{{ season }} Season</h1>
 <div class="subtitle">
-{% if is_preseason %}Franchises for the {{ season }} season &mdash; season not yet underway{% else %}Final standings for the {{ season }} season{% endif %}
+{% if is_preseason %}Standings for the {{ season }} season &mdash; season not yet underway (teams listed alphabetically){% else %}Final standings for the {{ season }} season{% endif %}
 {% if has_allstar_game %} &middot; <a href="{{ root }}allstar-game/{{ season }}.html">All-Star Game Box Score</a>{% endif %}
 </div>
 
@@ -17,10 +17,11 @@
     {% if is_preseason %}
     <div class="table-wrap">
     <table class="stats">
-        <thead><tr><th class="left">Team</th></tr></thead>
+        <thead><tr><th class="left">Team</th><th>W</th><th>L</th><th>PCT</th><th>GB</th><th>RS</th><th>RA</th><th>Home</th><th>Away</th><th>1-Run</th></tr></thead>
         <tbody>
         {% for t in teams %}
-        <tr><td class="left"><a href="{{ root }}teams/{{ hub_abbr.get(t.Abbr, t.Abbr) }}/index.html">{{ t.FranchiseName }}</a></td></tr>
+        <tr><td class="left"><a href="{{ root }}teams/{{ hub_abbr.get(t.Abbr, t.Abbr) }}/index.html">{{ t.FranchiseName }}</a></td>
+            <td>0</td><td>0</td><td>.000</td><td>-</td><td>0</td><td>0</td><td>0-0</td><td>0-0</td><td>0-0</td></tr>
         {% endfor %}
         </tbody>
     </table>
