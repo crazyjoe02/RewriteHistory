@@ -102,6 +102,9 @@ def main():
             hub_abbr[e["Abbr"]] = current["Abbr"]
 
     seasons = discover_seasons()
+    # Latest season that actually has player stats (a preseason folder may hold only a draft).
+    last_stat_season = max((s_ for s_ in seasons
+                            if os.path.exists(os.path.join(DATA_DIR, str(s_), "batting.csv"))), default=max(seasons))
     if not seasons:
         print("No season data found under data/<season>/. Nothing to build.")
         return
@@ -1397,7 +1400,7 @@ def main():
                     transactions.append({"kind": "draft", "data": d})
             for e in trade_entries:
                 if e["season"] == s:
-                    transactions.append({"kind": "trade", "html": e["html"]})
+                    transactions.append({"kind": "trade", "html": e["html"], "season": s})
 
         batting_display_rows = build_display_rows(batting_rows, compute_batting_totals)
         pitching_display_rows = build_display_rows(pitching_rows, compute_pitching_totals)
@@ -1467,7 +1470,7 @@ def main():
         # Only shown for players active in the most recent season.
         current_team = None
         stat_seasons = [int(r["SN"]) for r in batting_rows + pitching_rows] + [int(r["Season"]) for r in fielding_rows_for_player]
-        if stat_seasons and max(stat_seasons) == max(seasons):
+        if stat_seasons and max(stat_seasons) == last_stat_season:
             latest = max(stat_seasons)
             # Trades flagged Pending (e.g. agreed during the postseason) don't move the player yet.
             later_trades = [t for t in pdata.get("trades", []) if int(t["Season"]) >= latest and not t.get("Pending")]
@@ -1483,6 +1486,29 @@ def main():
                 tinfo = teams_by_abbr.get(cur_abbr)
                 current_team = {"abbr": hub_abbr.get(cur_abbr, cur_abbr),
                                 "name": tinfo["FranchiseName"] if tinfo else cur_abbr}
+
+        # Re-drafted after his last stat season (e.g. a new rookie card for a player already in the league):
+        # the drafting team takes over, then any trade since that draft.
+        _later_drafts = [d for d in pdata.get("draft_picks", []) if stat_seasons and d["Season"] > max(stat_seasons)]
+        if _later_drafts:
+            dp = sorted(_later_drafts, key=lambda d: d["Season"])[-1]
+            cur_abbr = dp["TeamAbbr"]
+            moves = [t for t in pdata.get("trades", []) if int(t["Season"]) >= dp["Season"] and not t.get("Pending")]
+            if moves:
+                cur_abbr = moves[-1]["ToTeamAbbr"]
+            tinfo = teams_by_abbr.get(cur_abbr)
+            current_team = {"abbr": hub_abbr.get(cur_abbr, cur_abbr),
+                            "name": tinfo["FranchiseName"] if tinfo else cur_abbr}
+        if current_team is None and not stat_seasons and pdata.get("draft_picks"):
+            # Drafted player with no stats yet: drafting team, unless a later trade moved him.
+            dp = sorted(pdata["draft_picks"], key=lambda d: d["Season"])[-1]
+            cur_abbr = dp["TeamAbbr"]
+            moves = [t for t in pdata.get("trades", []) if int(t["Season"]) >= dp["Season"] and not t.get("Pending")]
+            if moves:
+                cur_abbr = moves[-1]["ToTeamAbbr"]
+            tinfo = teams_by_abbr.get(cur_abbr)
+            current_team = {"abbr": hub_abbr.get(cur_abbr, cur_abbr),
+                            "name": tinfo["FranchiseName"] if tinfo else cur_abbr}
 
         extras = _ctx.player(pdata["name"], pdata["name"], batting_rows, pitching_rows, fielding_rows_for_player,
                              pdata.get("trades", []), is_pitcher)

@@ -509,7 +509,7 @@ See <a href="{{ root }}war-explained.html">how WAR is calculated</a> on this sit
 <a href="{{ root }}teams/{{ hub_abbr.get(tx.data.TeamAbbr, tx.data.TeamAbbr) }}/index.html">{{ tx.data.TeamName }}</a>
 in the {{ tx.data.Season }} Draft.</li>
 {% else %}
-<li>{{ tx.html }}</li>
+<li>{% if tx.season %}{{ tx.season }}: {% endif %}{{ tx.html }}</li>
 {% endif %}
 {% endfor %}
 </ul>
