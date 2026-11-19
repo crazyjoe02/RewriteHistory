@@ -62,7 +62,12 @@ def raw_from_md(md, A, H):
 
 def build(sp, write=True):
     season = sp['season']; A, H = sp['alabel'], sp['hlabel']
-    md = open(f"/tmp/g{season}box{sp['gnum']}/{sp['gid']}.md").read()
+    import os, shutil
+    src = f"/tmp/g{season}box{sp['gnum']}/{sp['gid']}.md"
+    keep = f"/home/claude/bbsite/data/{season}/pbp/{sp['gid']}.md"
+    os.makedirs(os.path.dirname(keep), exist_ok=True)
+    if os.path.exists(src): shutil.copy(src, keep)
+    md = open(keep).read()
     bat, pit, score, _ = D.derive(md, A, H)
     abat, hbat = _bat(sp['abat'], bat['a']), _bat(sp['hbat'], bat['h'])
     apit, hpit = _pit(sp['apit']), _pit(sp['hpit'])
@@ -99,7 +104,7 @@ def build(sp, write=True):
     dt = datetime.date.fromisoformat(sp['date'])
     sub = sp.get('subtitle') or f"Regular Season — {dt.strftime('%B')} {dt.day}, {dt.year}"
     inn = max(len(sp['line']['a']), len(sp['line']['h']))
-    g = {"season": season, "game_num": sp['gnum'], "date": sp['date'], "home": sp['home'], "away": sp['away'],
+    g = {"season": season, "game_num": sp['gnum'], "gid": sp['gid'], "date": sp['date'], "home": sp['home'], "away": sp['away'],
          "location": sp['loc'], "subtitle": sub, "player_of_game": sp['pog'],
          "linescore": {"innings": list(range(1, inn + 1)), "rows": [
              {"team": sp['away'], "label": A, "by_inning": sp['line']['a'], "R": ra[0], "H": ra[1], "E": ra[2]},

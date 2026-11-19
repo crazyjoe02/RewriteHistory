@@ -25,12 +25,34 @@ TEAM = {'1886 Cleveland Blues': 'CLV', 'Baltimore Orioles': 'BLN', 'Boston Beane
         'Louisvill Colonels': 'LOU', 'Louisville Colonels': 'LOU', 'New York Giants': 'NYG',
         'Philadelphia Athletics': 'PAT', 'Philadelphia Quakers': 'PHI', 'Pittsburgh Alleghenys': 'PIT',
         'Saint Louis Browns': 'STL', 'St. Louis Browns': 'STL'}
+
+def _team(n):
+    n = re.sub(r'^\d{4}\s+', '', str(n).strip())
+    for k, v in TEAM.items():
+        if re.sub(r'^\d{4}\s+', '', k).lower() == n.lower():
+            return v
+    raise KeyError(n)
+
+
+class _T(dict):
+    def __getitem__(self, k):
+        return _team(k)
+
+
+TEAMS = _T()
 NL = {'BSN', 'CHC', 'CLV', 'NYG', 'PHI', 'PIT'}
 
 
 def disp(n):
     l, f = [p.strip() for p in n.split(',', 1)]
     return f"{f} {l}"
+
+
+def _find(suffix):
+    import glob as _g
+    hits = sorted(_g.glob(os.path.join(UP, '*_' + suffix)), key=os.path.getmtime)
+    if not hits: raise FileNotFoundError(suffix)
+    return hits[-1]
 
 
 def read(name):
@@ -76,12 +98,12 @@ def clean(raw, season):
 report = {}
 
 # ---------------- batting ----------------
-src = pd.read_csv(os.path.join(UP, 'MLB145742_BattingRegSeason.csv'))
+src = pd.read_csv(_find('BattingRegSeason.csv'))
 out = []
 for _, r in src.iterrows():
     keep, pro, name = clean(r['Player'], r['Season'])
     if not keep: continue
-    t = TEAM[r['Team']]; I = lambda k: int(r[k])
+    t = TEAMS[r['Team']]; I = lambda k: int(r[k])
     out.append({'Player': name, 'Team': t, 'Lg': 'NL' if t in NL else 'AA', 'SN': SEASON, 'B': r['Bats'],
                 'G': I('G'), 'AB': I('AB'), 'R': I('R'), 'H': I('H'), '2B': I('Doubles'), '3B': I('Triples'), 'HR': I('HR'),
                 'RBI': I('RBI'), 'BB': I('BB'), 'SO': I('SO'), 'HBP': I('HBP'), 'SB': I('SB'), 'CS': I('CS'),
@@ -98,12 +120,12 @@ report['batting'] = (len(old_bat), len(out), sorted({(r['Player'], r['Team']) fo
 write('batting.csv', out, fn)
 
 # ---------------- pitching ----------------
-src = pd.read_csv(os.path.join(UP, 'MLB145742_PitchingRegSeason.csv'))
+src = pd.read_csv(_find('PitchingRegSeason.csv'))
 out = []
 for _, r in src.iterrows():
     keep, pro, name = clean(r['Player'], r['Season'])
     if not keep: continue
-    t = TEAM[r['Team']]; I = lambda k: int(r[k])
+    t = TEAMS[r['Team']]; I = lambda k: int(r[k])
     out.append({'Player': name, 'Team': t, 'League': 'NL' if t in NL else 'AA', 'SN': SEASON, 'T': r['Throws'],
                 'G': I('G'), 'GS': I('GS'), 'CG': I('CG'), 'SHO': I('SHO'), 'W': I('W'), 'L': I('L'), 'SV': I('SV'),
                 'SVO': I('SVO'), 'IP': f"{float(r['IP']):.1f}", 'H': I('H'), 'R': I('R'), 'ER': I('ER'), 'HR': I('HR'),
@@ -116,13 +138,13 @@ report['pitching'] = (len(old_pit), len(out), sorted({(r['Player'], r['Team']) f
 write('pitching.csv', out, fn)
 
 # ---------------- fielding ----------------
-src = pd.read_csv(os.path.join(UP, 'MLB145742_FieldingRegSeason.csv'))
+src = pd.read_csv(_find('FieldingRegSeason.csv'))
 pk = {(r['Player'], r['Team'], r['Pos']): r.get('PK', '0') for r in old_fld}
 out = []
 for _, r in src.iterrows():
     keep, pro, name = clean(r['Player'], r['Season'])
     if not keep: continue
-    t = TEAM[r['Team']]; pos = r['Position']; I = lambda k: int(r[k])
+    t = TEAMS[r['Team']]; pos = r['Position']; I = lambda k: int(r[k])
     out.append({'Player': name, 'Team': t, 'Lg': 'NL' if t in NL else 'AA', 'SN': SEASON, 'Pos': pos,
                 'GP': I('GP'), 'GS': I('GS'), 'Inn': f"{float(r['Innings']):.1f}", 'E': I('E'), 'PO': I('PO'), 'A': I('A'),
                 'DP': I('DP'), 'GoodPlays': I('Plus Play'), 'PoorPlays': I('Minus Play'), 'FPct': f3(float(str(r['FPct']).rstrip('%') or 'nan') / 100 if str(r['FPct']) not in ('nan', '') else 'nan'),
@@ -135,7 +157,7 @@ write('fielding.csv', out, fn)
 
 # ---------------- splits & WIS metrics (kept for the player pages) ----------------
 def passthrough(fname, outname, drop=('Owner', 'Season', 'Bats', 'Throws')):
-    path = os.path.join(UP, fname)
+    path = _find(fname) if not os.path.isabs(fname) else fname
     if not os.path.exists(path):
         return
     src = pd.read_csv(path)
@@ -143,7 +165,7 @@ def passthrough(fname, outname, drop=('Owner', 'Season', 'Bats', 'Throws')):
     for _, r in src.iterrows():
         keep, pro, name = clean(r['Player'], r['Season'])
         if not keep: continue
-        d = {'Player': name, 'Team': TEAM[r['Team']], 'SN': SEASON, 'Prospect': 'Y' if pro else ''}
+        d = {'Player': name, 'Team': TEAMS[r['Team']], 'SN': SEASON, 'Prospect': 'Y' if pro else ''}
         for c in src.columns:
             if c in ('Player', 'Team') or c in drop: continue
             v = r[c]
@@ -152,10 +174,10 @@ def passthrough(fname, outname, drop=('Owner', 'Season', 'Bats', 'Throws')):
     write(outname, rows, list(rows[0].keys()))
     report[outname.replace('.csv', '')] = (0, len(rows), [])
 
-passthrough('MLB145742_BattingRegSeasonSplits.csv', 'batting_splits.csv')
-passthrough('MLB145742_BattingRegSeasonWismetrics.csv', 'batting_metrics.csv')
-passthrough('MLB145742_PitchingRegSeasonSplits.csv', 'pitching_splits.csv')
-passthrough('MLB145742_PitchingRegSeasonWismetrics.csv', 'pitching_metrics.csv')
+passthrough('BattingRegSeasonSplits.csv', 'batting_splits.csv')
+passthrough('BattingRegSeasonWismetrics.csv', 'batting_metrics.csv')
+passthrough('PitchingRegSeasonSplits.csv', 'pitching_splits.csv')
+passthrough('PitchingRegSeasonWismetrics.csv', 'pitching_metrics.csv')
 
 for k, (was, now, dropped) in report.items():
     print(f"{k:9} rows {was} -> {now}   dropped: {dropped if dropped else 'none'}")

@@ -20,3 +20,11 @@ Runs scored ahead of an N-run homer are not named in the text, so R for those ru
 "### Inning N - Team" headers, write a spec (see specs1887_g1.py: table rows as "Name|Pos|AB R H RBI BB SO", pitchers as
 "Name|Dec|IP H R ER BB SO HR ERA", footnotes as WIS text), then gb87.build(spec, write=False) to cross-check, build(spec) to write
 data/{SEASON}/games.json. Then add/fill the schedule.csv row (slug GAME-away-home) and run build.py.
+PBP .md files are kept in data/{SEASON}/pbp/{GID}.md (gb87 copies them there).
+In-season player stats: after adding games run
+  python3 tools/stats_from_boxes.py 1887 && python3 compute_war.py && python3 build.py
+This rebuilds data/1887/{batting,pitching,fielding}.csv from every box score (fielding PO/A/Inn reconstructed from the PBP and
+checked against outs recorded). When the WIS season export arrives, import_wis_csv.py overwrites these files.
+Official WIS stat exports (any MLBxxxxxx_ prefix): python3 import_wis_csv.py <dir with the 7 CSVs> 1887 && python3 compute_war.py && python3 build.py
+(import now finds files by suffix and maps "1887 Cleveland Blues"/"LOUISVILLE COLONELS" etc.). Once a season has the official export,
+stats_from_boxes.py refuses to overwrite it (use --force only if the export is missing games).

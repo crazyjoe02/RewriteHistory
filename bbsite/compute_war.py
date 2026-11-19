@@ -50,7 +50,7 @@ import math
 import os
 
 DATA_DIR = "data"
-SEASONS = [1885, 1886]
+SEASONS = sorted(int(d) for d in os.listdir(DATA_DIR) if d.isdigit() and os.path.exists(os.path.join(DATA_DIR, d, "batting.csv")))
 
 POS_CONST = {
     "C": 10.0, "1B": 0.0, "2B": 3.0, "3B": 5.0, "SS": 10.0,

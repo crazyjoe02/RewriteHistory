@@ -1,0 +1,346 @@
+Player,Team,SN,Prospect,Split,G,AB,H,Doubles,Triples,HR,RBI,R,SO,BB,SF,SH,HBP,SB,CS
+"Bennett, Charlie",CLV,1887,,Home,1,4,1,0,0,0,0,0,2,0,0,0,0,0,0
+"Bennett, Charlie",CLV,1887,,VS. LHP,1,3,1,0,0,0,0,0,1,0,0,0,0,0,0
+"Bennett, Charlie",CLV,1887,,VS. RHP,1,1,0,0,0,0,0,0,1,0,0,0,0,0,0
+"Briody, Fatty",CLV,1887,,Home,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Briody, Fatty",CLV,1887,,VS. LHP,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Carroll, Cliff",CLV,1887,,Home,1,3,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Carroll, Cliff",CLV,1887,,VS. LHP,1,3,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Gilmore, Frank",CLV,1887,,Home,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+"McGarr, Chippy",CLV,1887,,Home,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+"McKean, Ed",CLV,1887,,Home,1,4,0,0,0,0,0,0,0,0,0,0,0,0,0
+"McKean, Ed",CLV,1887,,VS. LHP,1,4,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Reccius, Phil",CLV,1887,,Home,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Richardson, Hardy",CLV,1887,,Home,1,3,0,0,0,0,0,0,0,1,0,0,0,0,0
+"Richardson, Hardy",CLV,1887,,VS. LHP,1,3,0,0,0,0,0,0,0,1,0,0,0,0,0
+"Seward, Ed",CLV,1887,,Home,1,2,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Seward, Ed",CLV,1887,,VS. LHP,1,2,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Sullivan, Marty",CLV,1887,,Home,1,4,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Sullivan, Marty",CLV,1887,,VS. LHP,1,3,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Sullivan, Marty",CLV,1887,,VS. RHP,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Toy, Jim",CLV,1887,,Home,1,3,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Toy, Jim",CLV,1887,,VS. LHP,1,3,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Whitney, Art",CLV,1887,,Home,1,4,2,0,0,0,0,0,0,0,0,0,0,0,0
+"Whitney, Art",CLV,1887,,VS. LHP,1,4,2,0,0,0,0,0,0,0,0,0,0,0,0
+"Wood, George",CLV,1887,,Home,1,4,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Wood, George",CLV,1887,,VS. LHP,1,3,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Wood, George",CLV,1887,,VS. RHP,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Carpenter, Hick",BLN,1887,,Away,1,4,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Carpenter, Hick",BLN,1887,,VS. RHP,1,4,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Griffin, Mike",BLN,1887,,Away,1,4,1,0,0,0,0,0,1,0,0,0,0,0,1
+"Griffin, Mike",BLN,1887,,VS. RHP,1,4,1,0,0,0,0,0,1,0,0,0,0,0,0
+"Johnston, Dick",BLN,1887,,Away,1,4,0,0,0,0,0,1,0,0,0,0,0,2,0
+"Johnston, Dick",BLN,1887,,VS. RHP,1,4,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Mack, Reddy",BLN,1887,,Away,1,4,3,0,0,0,1,2,0,0,0,0,0,1,0
+"Mack, Reddy",BLN,1887,,VS. RHP,1,4,3,0,0,0,0,0,0,0,0,0,0,0,0
+"Mullane, Tony",BLN,1887,,Away,1,3,1,0,0,0,1,1,0,0,0,0,0,0,0
+"Mullane, Tony",BLN,1887,,VS. RHP,1,3,1,0,0,0,0,0,0,0,0,0,0,0,0
+"Myers, George",BLN,1887,,Away,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Myers, George",BLN,1887,,VS. RHP,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Nicol, Hugh",BLN,1887,,Away,1,4,1,0,0,0,0,0,0,0,0,0,0,0,0
+"Nicol, Hugh",BLN,1887,,VS. RHP,1,4,1,0,0,0,0,0,0,0,0,0,0,0,0
+"Pyles, Adam",BLN,1887,Y,Away,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Pyles, Adam",BLN,1887,Y,VS. RHP,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Robinson, Wilbert",BLN,1887,,Away,1,3,1,0,1,0,1,1,0,0,0,0,0,0,0
+"Robinson, Wilbert",BLN,1887,,VS. RHP,1,3,1,0,1,0,0,0,0,0,0,0,0,0,0
+"Welch, Curt",BLN,1887,,Away,1,4,0,0,0,0,0,0,0,0,0,0,0,1,0
+"Welch, Curt",BLN,1887,,VS. RHP,1,4,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Wise, Sam",BLN,1887,,Away,1,4,2,0,1,1,3,1,0,0,0,0,0,1,0
+"Wise, Sam",BLN,1887,,VS. RHP,1,4,2,0,1,1,0,0,0,0,0,0,0,0,0
+"Andrews, Ed",BSN,1887,,Home,1,5,2,0,0,0,3,0,0,0,0,0,0,0,1
+"Andrews, Ed",BSN,1887,,VS. RHP,1,5,2,0,0,0,0,0,0,0,0,0,0,0,0
+"Andwan, Kenneth",BSN,1887,Y,Home,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Beecher, Ed",BSN,1887,,Home,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Beecher, Ed",BSN,1887,,VS. RHP,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Brouthers, Dan",BSN,1887,,Home,1,5,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Brouthers, Dan",BSN,1887,,VS. RHP,1,5,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Carroll, Scrappy",BSN,1887,,Home,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Fagan, Bill",BSN,1887,,Home,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Hecker, Guy",BSN,1887,,Home,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Hines, Paul",BSN,1887,,Home,1,3,0,0,0,0,0,1,0,0,0,0,1,1,1
+"Hines, Paul",BSN,1887,,VS. RHP,1,3,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Mathews, Bobby",BSN,1887,,Home,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Meister, John",BSN,1887,,Home,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Munyan, John",BSN,1887,,Home,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Munyan, John",BSN,1887,,VS. RHP,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Nash, Billy",BSN,1887,,Home,1,3,1,0,0,0,0,1,1,1,0,0,0,0,0
+"Nash, Billy",BSN,1887,,VS. RHP,1,3,1,0,0,0,0,0,1,1,0,0,0,0,0
+"O'Rourke, Jim",BSN,1887,,Home,1,2,1,0,0,0,1,1,0,2,0,0,0,1,0
+"O'Rourke, Jim",BSN,1887,,VS. RHP,1,2,1,0,0,0,0,0,0,2,0,0,0,0,0
+"Poorman, Tom",BSN,1887,,Home,1,4,1,0,1,0,2,2,0,0,0,0,0,0,0
+"Poorman, Tom",BSN,1887,,VS. RHP,1,4,1,0,1,0,0,0,0,0,0,0,0,0,0
+"Smith, Pop",BSN,1887,,Home,1,4,2,0,0,0,2,0,1,0,0,0,0,0,0
+"Smith, Pop",BSN,1887,,VS. RHP,1,4,2,0,0,0,0,0,1,0,0,0,0,0,0
+"Stemmeyer, Bill",BSN,1887,,Home,1,2,0,0,0,0,0,1,1,1,0,0,0,0,0
+"Stemmeyer, Bill",BSN,1887,,VS. RHP,1,2,0,0,0,0,0,0,1,1,0,0,0,0,0
+"Wheelock, Bobby",BSN,1887,,Home,1,3,2,0,0,0,0,2,0,1,0,0,0,1,0
+"Wheelock, Bobby",BSN,1887,,VS. RHP,1,3,2,0,0,0,0,0,0,1,0,0,0,0,0
+"Bassett, Charley",BRO,1887,,Away,1,2,0,0,0,0,0,1,0,0,0,0,1,0,0
+"Bassett, Charley",BRO,1887,,VS. RHP,1,2,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Collins, Hub",BRO,1887,,Away,1,4,0,0,0,0,0,1,0,0,0,0,0,0,0
+"Collins, Hub",BRO,1887,,VS. RHP,1,4,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Cone, Chris",BRO,1887,Y,Away,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Cone, Chris",BRO,1887,Y,VS. RHP,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Daly, Tom",BRO,1887,,Away,1,3,1,0,0,0,0,0,0,0,0,0,0,0,1
+"Daly, Tom",BRO,1887,,VS. RHP,1,3,1,0,0,0,0,0,0,0,0,0,0,0,0
+"Gleason, Bill",BRO,1887,,Away,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+"Gleason, Bill",BRO,1887,,VS. RHP,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+"Knowles, Jimmy",BRO,1887,,Away,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+"McTamany, Jim",BRO,1887,,Away,1,4,1,0,1,0,3,0,1,1,0,0,0,0,0
+"McTamany, Jim",BRO,1887,,VS. RHP,1,4,1,0,1,0,0,0,1,1,0,0,0,0,0
+"O'Brien, Darby",BRO,1887,,Away,1,4,0,0,0,0,0,0,0,0,0,0,0,0,0
+"O'Brien, Darby",BRO,1887,,VS. RHP,1,4,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Pinkney, George",BRO,1887,,Away,1,3,0,0,0,0,0,1,0,0,0,0,0,0,0
+"Pinkney, George",BRO,1887,,VS. RHP,1,3,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Radford, Paul",BRO,1887,,Away,1,3,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Radford, Paul",BRO,1887,,VS. RHP,1,3,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Say, Jimmy",BRO,1887,,Away,1,1,1,1,0,0,0,1,0,0,0,0,0,0,0
+"Say, Jimmy",BRO,1887,,VS. RHP,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0
+"Smith, Phenomenal",BRO,1887,,Away,1,4,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Smith, Phenomenal",BRO,1887,,VS. RHP,1,4,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Stoltenberg, Jonathan",BRO,1887,Y,Away,1,0,0,0,0,0,0,1,0,0,0,0,1,0,0
+"Swartwood, Ed",BRO,1887,,Away,1,1,1,1,0,0,1,0,0,0,0,0,0,0,0
+"Swartwood, Ed",BRO,1887,,VS. RHP,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0
+"Tucker, Tommy",BRO,1887,,Away,1,4,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Tucker, Tommy",BRO,1887,,VS. RHP,1,4,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Anson, Cap",CHC,1887,,Away,1,4,0,0,0,0,0,1,0,0,0,0,0,0,0
+"Anson, Cap",CHC,1887,,VS. RHP,1,4,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Burns, Tom",CHC,1887,,Away,1,3,0,0,0,0,0,0,1,0,0,0,0,0,0
+"Burns, Tom",CHC,1887,,VS. RHP,1,3,0,0,0,0,0,0,1,0,0,0,0,0,0
+"Clarkson, John",CHC,1887,,Away,1,3,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Clarkson, John",CHC,1887,,VS. RHP,1,3,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Darling, Dell",CHC,1887,,Away,1,5,1,0,0,0,0,0,1,0,0,0,0,0,0
+"Darling, Dell",CHC,1887,,VS. RHP,1,5,1,0,0,0,0,0,1,0,0,0,0,0,0
+"Hardtack, Blue Lew",CHC,1887,Y,Away,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Hornung, Joe",CHC,1887,,Away,1,3,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Hornung, Joe",CHC,1887,,VS. RHP,1,3,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Kelly, King",CHC,1887,,Away,1,4,0,0,0,0,0,0,1,1,0,0,0,0,0
+"Kelly, King",CHC,1887,,VS. RHP,1,4,0,0,0,0,0,0,1,1,0,0,0,0,0
+"McClellan, Bill",CHC,1887,,Away,1,1,1,0,0,0,1,0,0,0,0,0,0,0,0
+"McClellan, Bill",CHC,1887,,VS. RHP,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0
+"Pettit, Bob",CHC,1887,,Away,1,1,0,0,0,0,0,1,0,0,0,0,0,0,0
+"Pettit, Bob",CHC,1887,,VS. RHP,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Ryan, Jimmy",CHC,1887,,Away,1,3,2,0,1,0,1,1,0,1,0,0,0,1,0
+"Ryan, Jimmy",CHC,1887,,VS. RHP,1,3,2,0,1,0,0,0,0,1,0,0,0,0,0
+"Sunday, Billy",CHC,1887,,Away,1,5,3,1,0,0,1,0,0,0,0,0,0,0,0
+"Sunday, Billy",CHC,1887,,VS. RHP,1,5,3,1,0,0,0,0,0,0,0,0,0,0,0
+"Trott, Sam",CHC,1887,,Away,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0
+"Trott, Sam",CHC,1887,,VS. RHP,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0
+"Williamson, Ned",CHC,1887,,Away,1,3,1,1,0,0,1,1,1,1,0,0,0,0,0
+"Williamson, Ned",CHC,1887,,VS. RHP,1,3,1,1,0,0,0,0,1,1,0,0,0,0,0
+"Bastian, Charlie",CIN,1887,,Home,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Browning, Pete",CIN,1887,,Home,1,4,4,0,0,0,3,2,0,0,0,0,0,2,1
+"Browning, Pete",CIN,1887,,VS. LHP,1,4,4,0,0,0,0,0,0,0,0,0,0,0,0
+"Burch, Ernie",CIN,1887,,Home,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Burch, Ernie",CIN,1887,,VS. LHP,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Chamberlain, Elton",CIN,1887,,Home,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+"Chamberlain, Elton",CIN,1887,,VS. LHP,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+"Donnelly, Jim",CIN,1887,,Home,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Ewing, Buck",CIN,1887,,Home,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Ewing, Buck",CIN,1887,,VS. LHP,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Ganzel, Charlie",CIN,1887,,Home,1,3,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Ganzel, Charlie",CIN,1887,,VS. LHP,1,3,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Harkins, John",CIN,1887,,Home,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Kuehne, Bill",CIN,1887,,Home,1,3,1,0,0,0,1,0,0,0,0,0,0,0,0
+"Kuehne, Bill",CIN,1887,,VS. LHP,1,3,1,0,0,0,0,0,0,0,0,0,0,0,0
+"Latham, Arlie",CIN,1887,,Home,1,3,1,0,0,0,0,2,0,1,0,0,0,0,0
+"Latham, Arlie",CIN,1887,,VS. LHP,1,3,1,0,0,0,0,0,0,1,0,0,0,0,0
+"Mann, Fred",CIN,1887,,Home,1,2,0,0,0,0,0,1,0,1,0,0,0,0,0
+"Mann, Fred",CIN,1887,,VS. LHP,1,2,0,0,0,0,0,0,0,1,0,0,0,0,0
+"McCarthy, Tommy",CIN,1887,,Home,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1
+"McCarthy, Tommy",CIN,1887,,VS. LHP,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"McGeachy, Jack",CIN,1887,,Home,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+"McPhee, Bid",CIN,1887,,Home,1,4,1,0,0,0,0,1,0,0,0,0,0,2,0
+"McPhee, Bid",CIN,1887,,VS. LHP,1,4,1,0,0,0,0,0,0,0,0,0,0,0,0
+"Phillips, Bill",CIN,1887,,Home,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Poppa, Chris",CIN,1887,Y,Home,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Poppa, Chris",CIN,1887,Y,VS. LHP,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Radbourn, Charley",CIN,1887,,Home,1,3,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Radbourn, Charley",CIN,1887,,VS. LHP,1,3,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Reilly, John",CIN,1887,,Home,1,4,1,0,0,0,1,0,0,0,0,0,0,0,1
+"Reilly, John",CIN,1887,,VS. LHP,1,4,1,0,0,0,0,0,0,0,0,0,0,0,0
+"Seger, Bryan",CIN,1887,Y,Home,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Sommer, Joe",CIN,1887,,Home,1,4,2,1,0,0,0,1,0,0,0,1,0,0,0
+"Sommer, Joe",CIN,1887,,VS. LHP,1,4,2,1,0,0,0,0,0,0,0,0,0,0,0
+"Allen, Myron",LOU,1887,,Home,1,4,1,0,0,0,0,0,0,0,0,0,0,0,0
+"Allen, Myron",LOU,1887,,VS. LHP,1,4,1,0,0,0,0,0,0,0,0,0,0,0,0
+"Clem, Randy",LOU,1887,Y,Home,1,2,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Clem, Randy",LOU,1887,Y,VS. LHP,1,2,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Cushman, Ed",LOU,1887,,Home,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Daily, Ed",LOU,1887,,Home,1,4,1,0,0,0,0,0,1,0,0,0,0,0,0
+"Daily, Ed",LOU,1887,,VS. LHP,1,4,1,0,0,0,0,0,1,0,0,0,0,0,0
+"Dealy, Pat",LOU,1887,,Home,1,2,0,0,0,0,0,0,0,0,0,0,0,1,0
+"Dealy, Pat",LOU,1887,,VS. LHP,1,2,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Denny, Jerry",LOU,1887,,Home,1,3,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Denny, Jerry",LOU,1887,,VS. LHP,1,3,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Glasscock, Jack",LOU,1887,,Home,1,3,1,0,0,0,0,1,0,0,0,0,0,0,0
+"Glasscock, Jack",LOU,1887,,VS. LHP,1,3,1,0,0,0,0,0,0,0,0,0,0,0,0
+"Hankinson, Frank",LOU,1887,,Home,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Hankinson, Frank",LOU,1887,,VS. LHP,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Hellyer, Alan",LOU,1887,Y,Home,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0
+"Hellyer, Alan",LOU,1887,Y,VS. LHP,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0
+"Hoffmiester, Jeffrey",LOU,1887,Y,Home,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Killingsworth, Timothy",LOU,1887,Y,Home,1,2,0,0,0,0,0,0,0,0,0,1,0,0,0
+"Killingsworth, Timothy",LOU,1887,Y,VS. LHP,1,2,0,0,0,0,0,0,0,0,0,0,0,0,0
+"O'Brien, Billy",LOU,1887,,Home,1,3,0,0,0,0,0,0,0,0,0,0,0,0,0
+"O'Brien, Billy",LOU,1887,,VS. LHP,1,3,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Pfeffer, Fred",LOU,1887,,Home,1,3,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Pfeffer, Fred",LOU,1887,,VS. LHP,1,3,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Poole, Andy",LOU,1887,Y,Home,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Poole, Andy",LOU,1887,Y,VS. LHP,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Roseman, Chief",LOU,1887,,Home,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Sherman, Michael",LOU,1887,Y,Home,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Sherman, Michael",LOU,1887,Y,VS. LHP,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Werrick, Joe",LOU,1887,,Home,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0
+"Werrick, Joe",LOU,1887,,VS. LHP,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0
+"White, Bill",LOU,1887,,Home,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"White, Bill",LOU,1887,,VS. LHP,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Zeppelin, Steve",LOU,1887,Y,Home,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0
+"Zeppelin, Steve",LOU,1887,Y,VS. LHP,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0
+"Burns, Oyster",NYG,1887,,Away,1,5,1,0,0,0,0,1,0,0,0,0,0,0,0
+"Burns, Oyster",NYG,1887,,VS. LHP,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0
+"Burns, Oyster",NYG,1887,,VS. RHP,1,4,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Gillespie, Pete",NYG,1887,,Away,1,4,0,0,0,0,1,0,0,1,0,0,0,0,0
+"Gillespie, Pete",NYG,1887,,VS. RHP,1,4,0,0,0,0,0,0,0,1,0,0,0,0,0
+"Greenwood, Bill",NYG,1887,,Away,1,4,2,0,0,0,0,0,0,1,0,0,0,1,0
+"Greenwood, Bill",NYG,1887,,VS. RHP,1,4,2,0,0,0,0,0,0,1,0,0,0,0,0
+"Keefe, Tim",NYG,1887,,Away,1,4,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Keefe, Tim",NYG,1887,,VS. LHP,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Keefe, Tim",NYG,1887,,VS. RHP,1,3,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Milligan, Jocko",NYG,1887,,Away,1,5,2,0,0,0,1,1,1,0,0,0,0,0,0
+"Milligan, Jocko",NYG,1887,,VS. LHP,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0
+"Milligan, Jocko",NYG,1887,,VS. RHP,1,4,1,0,0,0,0,0,1,0,0,0,0,0,0
+"O'Neill, Tip",NYG,1887,,Away,1,5,1,0,0,0,0,0,0,0,0,0,0,0,0
+"O'Neill, Tip",NYG,1887,,VS. LHP,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"O'Neill, Tip",NYG,1887,,VS. RHP,1,4,1,0,0,0,0,0,0,0,0,0,0,0,0
+"Tate, Pop",NYG,1887,,Away,1,3,0,0,0,0,0,0,0,1,0,0,0,0,0
+"Tate, Pop",NYG,1887,,VS. LHP,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Tate, Pop",NYG,1887,,VS. RHP,1,2,0,0,0,0,0,0,0,1,0,0,0,0,0
+"Tiernan, Mike",NYG,1887,,Away,1,5,2,1,0,0,1,2,1,0,0,0,0,0,0
+"Tiernan, Mike",NYG,1887,,VS. LHP,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0
+"Tiernan, Mike",NYG,1887,,VS. RHP,1,4,1,1,0,0,0,0,1,0,0,0,0,0,0
+"Ward, John",NYG,1887,,Away,1,5,0,0,0,0,0,1,0,0,0,0,0,0,0
+"Ward, John",NYG,1887,,VS. LHP,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Ward, John",NYG,1887,,VS. RHP,1,4,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Clark, Bob",PAT,1887,,Home,1,4,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Clark, Bob",PAT,1887,,VS. RHP,1,4,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Esterbrook, Dude",PAT,1887,,Home,1,3,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Esterbrook, Dude",PAT,1887,,VS. RHP,1,3,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Fennelly, Frank",PAT,1887,,Home,1,3,1,1,0,0,1,0,0,1,0,0,0,1,0
+"Fennelly, Frank",PAT,1887,,VS. RHP,1,3,1,1,0,0,0,0,0,1,0,0,0,0,0
+"Larkin, Henry",PAT,1887,,Home,1,4,0,0,0,0,0,0,0,1,0,0,0,0,0
+"Larkin, Henry",PAT,1887,,VS. RHP,1,4,0,0,0,0,0,0,0,1,0,0,0,0,0
+"Leitner, Doc",PAT,1887,,Home,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Lyons, Denny",PAT,1887,,Home,1,4,2,1,0,0,0,1,0,0,0,0,0,0,0
+"Lyons, Denny",PAT,1887,,VS. RHP,1,4,2,1,0,0,0,0,0,0,0,0,0,0,0
+"Myers, Al",PAT,1887,,Home,1,4,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Myers, Al",PAT,1887,,VS. RHP,1,4,0,0,0,0,0,0,0,0,0,0,0,0,0
+"O'Brien, Jack",PAT,1887,,Home,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+"O'Brien, Jack",PAT,1887,,VS. RHP,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+"Purcell, Blondie",PAT,1887,,Home,1,3,0,0,0,0,0,0,0,0,0,0,1,1,0
+"Purcell, Blondie",PAT,1887,,VS. RHP,1,3,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Stovey, Harry",PAT,1887,,Home,1,4,1,0,0,0,0,0,0,0,0,0,0,1,0
+"Stovey, Harry",PAT,1887,,VS. RHP,1,4,1,0,0,0,0,0,0,0,0,0,0,0,0
+"Sylvester, Lou",PAT,1887,,Home,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Sylvester, Lou",PAT,1887,,VS. RHP,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Whitney, Jim",PAT,1887,,Home,1,3,2,0,0,0,0,0,0,0,0,0,0,0,0
+"Whitney, Jim",PAT,1887,,VS. RHP,1,3,2,0,0,0,0,0,0,0,0,0,0,0,0
+"Buffinton, Charlie",PHI,1887,,Home,1,5,3,1,0,1,3,1,0,0,0,0,0,0,0
+"Buffinton, Charlie",PHI,1887,,VS. LHP,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Buffinton, Charlie",PHI,1887,,VS. RHP,1,4,3,1,0,1,0,0,0,0,0,0,0,0,0
+"Cross, Lave",PHI,1887,,Home,1,1,1,0,0,0,1,1,0,0,0,0,0,0,0
+"Cross, Lave",PHI,1887,,VS. RHP,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0
+"Dunlap, Fred",PHI,1887,,Home,1,4,1,1,0,0,1,1,0,0,0,0,0,0,0
+"Dunlap, Fred",PHI,1887,,VS. RHP,1,4,1,1,0,0,0,0,0,0,0,0,0,0,0
+"Farrar, Sid",PHI,1887,,Home,1,1,1,1,0,0,2,0,0,0,0,0,0,0,0
+"Farrar, Sid",PHI,1887,,VS. LHP,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0
+"Fields, Jocko",PHI,1887,,Home,1,1,1,0,0,0,0,1,0,0,0,0,0,0,0
+"Fields, Jocko",PHI,1887,,VS. RHP,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0
+"Franks, Richard",PHI,1887,Y,Home,1,1,0,0,0,0,0,0,1,0,0,0,0,0,0
+"Franks, Richard",PHI,1887,Y,VS. LHP,1,1,0,0,0,0,0,0,1,0,0,0,0,0,0
+"Fulmer, Chris",PHI,1887,,Home,1,4,1,1,0,0,3,1,0,0,0,0,0,0,0
+"Fulmer, Chris",PHI,1887,,VS. RHP,1,4,1,1,0,0,0,0,0,0,0,0,0,0,0
+"Greer, Ed",PHI,1887,,Home,1,4,1,0,0,0,0,2,1,1,0,0,0,0,0
+"Greer, Ed",PHI,1887,,VS. LHP,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Greer, Ed",PHI,1887,,VS. RHP,1,3,1,0,0,0,0,0,1,1,0,0,0,0,0
+"Irwin, Arthur",PHI,1887,,Home,1,3,1,1,0,0,1,1,0,1,0,0,0,0,0
+"Irwin, Arthur",PHI,1887,,VS. RHP,1,3,1,1,0,0,0,0,0,1,0,0,0,0,0
+"Mack, Connie",PHI,1887,,Home,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0
+"Mack, Connie",PHI,1887,,VS. LHP,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0
+"McLaughlin, Barney",PHI,1887,,Home,1,1,0,0,0,0,0,0,1,0,0,0,0,0,0
+"McLaughlin, Barney",PHI,1887,,VS. LHP,1,1,0,0,0,0,0,0,1,0,0,0,0,0,0
+"Morrill, John",PHI,1887,,Home,1,3,1,0,0,0,1,3,0,1,0,0,0,0,0
+"Morrill, John",PHI,1887,,VS. RHP,1,3,1,0,0,0,0,0,0,1,0,0,0,0,0
+"Mulvey, Joe",PHI,1887,,Home,1,4,0,0,0,0,0,1,2,0,0,0,0,1,0
+"Mulvey, Joe",PHI,1887,,VS. RHP,1,4,0,0,0,0,0,0,2,0,0,0,0,0,0
+"Nelson, Candy",PHI,1887,,Home,1,3,0,0,0,0,0,0,0,0,0,1,0,0,0
+"Nelson, Candy",PHI,1887,,VS. RHP,1,3,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Peaker, Roosevelt",PHI,1887,Y,Home,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Peaker, Roosevelt",PHI,1887,Y,VS. RHP,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Thompson, Sam",PHI,1887,,Home,1,4,0,0,0,0,0,1,0,0,0,0,0,0,0
+"Thompson, Sam",PHI,1887,,VS. RHP,1,4,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Bierbauer, Lou",PIT,1887,,Away,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Bierbauer, Lou",PIT,1887,,VS. RHP,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Carroll, Fred",PIT,1887,,Away,1,3,1,0,0,0,1,0,0,1,0,0,0,0,0
+"Carroll, Fred",PIT,1887,,VS. RHP,1,3,1,0,0,0,0,0,0,1,0,0,0,0,0
+"Clements, Jack",PIT,1887,,Away,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Corkhill, Pop",PIT,1887,,Away,1,4,2,0,0,1,3,2,0,0,0,0,0,0,0
+"Corkhill, Pop",PIT,1887,,VS. RHP,1,4,2,0,0,1,0,0,0,0,0,0,0,0,0
+"Davis, Jumbo",PIT,1887,,Away,1,4,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Davis, Jumbo",PIT,1887,,VS. RHP,1,4,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Fogarty, Jim",PIT,1887,,Away,1,4,1,0,0,0,0,1,1,0,0,0,0,0,0
+"Fogarty, Jim",PIT,1887,,VS. RHP,1,4,1,0,0,0,0,0,1,0,0,0,0,0,0
+"Foutz, Dave",PIT,1887,,Away,1,4,1,1,0,0,1,1,0,0,0,0,0,0,0
+"Foutz, Dave",PIT,1887,,VS. RHP,1,4,1,1,0,0,0,0,0,0,0,0,0,0,0
+"Harvey, Kyle",PIT,1887,Y,Away,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+"Harvey, Kyle",PIT,1887,Y,VS. RHP,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+"Knouff, Ed",PIT,1887,,Away,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+"McGuire, Deacon",PIT,1887,,Away,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"McGuire, Deacon",PIT,1887,,VS. RHP,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Miller, Doggie",PIT,1887,,Away,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Miller, Doggie",PIT,1887,,VS. RHP,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Orr, Dave",PIT,1887,,Away,1,5,1,0,0,0,1,0,0,0,0,0,0,0,0
+"Orr, Dave",PIT,1887,,VS. RHP,1,5,1,0,0,0,0,0,0,0,0,0,0,0,0
+"Richardson, Danny",PIT,1887,,Away,1,4,1,0,0,0,0,2,0,0,0,0,0,1,0
+"Richardson, Danny",PIT,1887,,VS. RHP,1,4,1,0,0,0,0,0,0,0,0,0,0,0,0
+"Schomberg, Otto",PIT,1887,,Away,1,4,2,0,0,0,1,1,0,0,1,0,0,0,0
+"Schomberg, Otto",PIT,1887,,VS. RHP,1,4,2,0,0,0,0,0,0,0,0,0,0,0,0
+"Seery, Emmett",PIT,1887,,Away,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Seery, Emmett",PIT,1887,,VS. RHP,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Sitz, Chase",PIT,1887,Y,Away,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Sitz, Chase",PIT,1887,Y,VS. RHP,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Smith, Elmer",PIT,1887,,Away,1,3,1,0,0,0,1,1,0,1,0,0,0,0,0
+"Smith, Germany",PIT,1887,,Away,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Smith, Germany",PIT,1887,,VS. RHP,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Smith, Elmer",PIT,1887,,VS. RHP,1,3,1,0,0,0,0,0,0,1,0,0,0,0,0
+"Barkley, Sam",STL,1887,,Away,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Barkley, Sam",STL,1887,,VS. LHP,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Bushong, Doc",STL,1887,,Away,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Caruthers, Bob",STL,1887,,Away,1,3,0,0,0,0,0,1,0,1,0,0,0,0,1
+"Caruthers, Bob",STL,1887,,VS. LHP,1,3,0,0,0,0,0,0,0,1,0,0,0,0,0
+"Comiskey, Charlie",STL,1887,,Away,1,4,2,0,1,0,2,1,0,0,0,0,0,0,0
+"Comiskey, Charlie",STL,1887,,VS. LHP,1,4,2,0,1,0,0,0,0,0,0,0,0,0,0
+"Connor, Roger",STL,1887,,Away,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+"Connor, Roger",STL,1887,,VS. LHP,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+"Daniels, Law",STL,1887,,Away,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Daniels, Law",STL,1887,,VS. LHP,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Gore, George",STL,1887,,Away,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Gore, George",STL,1887,,VS. LHP,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Hotaling, Pete",STL,1887,,Away,1,4,1,0,1,0,0,2,0,0,0,0,0,0,0
+"Hotaling, Pete",STL,1887,,VS. LHP,1,4,1,0,1,0,0,0,0,0,0,0,0,0,0
+"Kerins, John",STL,1887,,Away,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Kerins, John",STL,1887,,VS. LHP,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0
+"Peoples, Jimmy",STL,1887,,Away,1,4,3,1,0,0,3,0,1,0,0,0,0,0,1
+"Peoples, Jimmy",STL,1887,,VS. LHP,1,4,3,1,0,0,0,0,1,0,0,0,0,0,0
+"Ramsey, Toad",STL,1887,,Away,1,5,2,0,0,0,1,1,0,0,0,0,0,0,0
+"Ramsey, Toad",STL,1887,,VS. LHP,1,5,2,0,0,0,0,0,0,0,0,0,0,0,0
+"Robinson, Yank",STL,1887,,Away,1,5,0,0,0,0,0,0,1,0,0,0,0,0,0
+"Robinson, Yank",STL,1887,,VS. LHP,1,5,0,0,0,0,0,0,1,0,0,0,0,0,0
+"Sutton, Ezra",STL,1887,,Away,1,4,4,2,0,0,2,2,0,0,0,0,0,0,1
+"Sutton, Ezra",STL,1887,,VS. LHP,1,4,4,2,0,0,0,0,0,0,0,0,0,0,0
+"Tebeau, George",STL,1887,,Away,1,1,0,0,0,0,0,0,1,0,0,0,0,0,0
+"Tebeau, George",STL,1887,,VS. LHP,1,1,0,0,0,0,0,0,1,0,0,0,0,0,0
+"White, Deacon",STL,1887,,Away,1,5,2,0,1,0,1,1,0,0,0,0,0,0,0
+"White, Deacon",STL,1887,,VS. LHP,1,5,2,0,1,0,0,0,0,0,0,0,0,0,0
+"Wolf, Chicken",STL,1887,,Away,1,5,2,1,1,0,0,2,0,0,0,0,0,0,0
+"Wolf, Chicken",STL,1887,,VS. LHP,1,5,2,1,1,0,0,0,0,0,0,0,0,0,0
