@@ -6,7 +6,7 @@
 {% block content %}
 <h1 class="page-title">{{ season }} Season</h1>
 <div class="subtitle">
-{% if is_preseason %}Standings for the {{ season }} season &mdash; season not yet underway (teams listed alphabetically){% else %}Final standings for the {{ season }} season{% endif %}
+{% if is_preseason %}Standings for the {{ season }} season &mdash; season not yet underway (teams listed alphabetically){% elif is_live %}Standings for the {{ season }} season &mdash; season in progress{% else %}Final standings for the {{ season }} season{% endif %}
 {% if has_allstar_game %} &middot; <a href="{{ root }}allstar-game/{{ season }}.html">All-Star Game Box Score</a>{% endif %}
 </div>
 

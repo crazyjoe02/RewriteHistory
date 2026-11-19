@@ -15,3 +15,8 @@ derive.py (added at Game 86): derives every batter/pitcher line from the play-by
   from derive import pbpcheck; pbpcheck(GAME,GID,A,H,abat,hbat,apit,hpit)  -> lists any entered field that disagrees
 Known WIS quirks it will flag (accept WIS): an RBI credited on an error play; a groundout occasionally scored as SF.
 Runs scored ahead of an N-run homer are not named in the text, so R for those runners is taken as entered.
+
+1887 on: gb87.py (season-generic). Save PBP as /tmp/g{SEASON}box{GAME}/{GID}.md using the site's display names in the
+"### Inning N - Team" headers, write a spec (see specs1887_g1.py: table rows as "Name|Pos|AB R H RBI BB SO", pitchers as
+"Name|Dec|IP H R ER BB SO HR ERA", footnotes as WIS text), then gb87.build(spec, write=False) to cross-check, build(spec) to write
+data/{SEASON}/games.json. Then add/fill the schedule.csv row (slug GAME-away-home) and run build.py.
