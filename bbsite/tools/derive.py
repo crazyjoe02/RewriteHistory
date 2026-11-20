@@ -58,6 +58,9 @@ def derive(md, A, H):
             if 'returns to the plate' in p: continue
             for n_ in re.findall('(' + NM + r') is (?:caught|nailed) (?:trying to )?steal', p):
                 if n_ != first: g(b, n_)['cs'] += 1
+            if 'execute the double steal' in p:
+                for n_ in names[:2]: g(b, n_)['sb'] += 1
+                continue
             if 'double steal is pulled off by' in p:
                 for n_ in names[:2]: g(b, n_)['sb'] += 1
                 continue
@@ -80,10 +83,10 @@ def derive(md, A, H):
                 extra = max(0, n - 1 - rb); unk[b] += extra
                 st['ab'] += 1; st['h'] += 1; st['hr'] += 1; st['r'] += 1; st['rbi'] += rb + 1 + extra
                 score[b][0] += 1 + extra; score[b][1] += 1; pc['h'] += 1; pc['hr'] += 1
-            elif re.search(r'\btriple\b', p) or re.search(r'\bdoubles?\b', p) or 'single' in p or 'Texas Leaguer' in p:
+            elif re.search(r'\btriple\b', p) or re.search(r'\bdoubles?\b', p) or '2-base hit' in p or 'single' in p or 'Texas Leaguer' in p:
                 st['ab'] += 1; st['h'] += 1; st['rbi'] += rb; score[b][1] += 1; pc['h'] += 1
                 if re.search(r'\btriple\b', p): st['t'] += 1
-                elif re.search(r'\bdoubles?\b', p) and 'single' not in p: st['d'] += 1
+                elif (re.search(r'\bdoubles?\b', p) or '2-base hit' in p) and 'single' not in p: st['d'] += 1
             elif re.search(r'walk|ball four|free pass', p):
                 st['bb'] += 1; st['rbi'] += rb; pc['bb'] += 1
             elif re.search(r'by a pitch|pitch off|drilled|plunked|hit in the', p):
@@ -100,7 +103,7 @@ def derive(md, A, H):
     bat['unk'] = unk
     return bat, pit, score, lines
 
-ALIAS = {'Blue Lew Hardtack': 'B.Hardtack'}
+ALIAS = {'Blue Lew Hardtack': 'B.Hardtack', 'George Van Haltren': 'G.Van'}
 def abbr(full):
     if full in ALIAS: return ALIAS[full]
     parts = full.split(' ', 1)
