@@ -28,3 +28,7 @@ checked against outs recorded). When the WIS season export arrives, import_wis_c
 Official WIS stat exports (any MLBxxxxxx_ prefix): python3 import_wis_csv.py <dir with the 7 CSVs> 1887 && python3 compute_war.py && python3 build.py
 (import now finds files by suffix and maps "1887 Cleveland Blues"/"LOUISVILLE COLONELS" etc.). Once a season has the official export,
 stats_from_boxes.py refuses to overwrite it (use --force only if the export is missing games).
+
+1887 note (Game 6): the bare link Boxscore.aspx?gid=N can return "This game does not exist".
+Use Boxscore.aspx?gid=N&pid=1&pbp=0&tf=1 instead. If a fetched box omits footnotes (SB/CS/E/PB/IBB),
+fill them from the play-by-play; prior season counts come from earlier footnotes in games.json.

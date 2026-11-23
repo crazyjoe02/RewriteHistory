@@ -11,6 +11,7 @@ import re, sys
 NM = r"[A-Z]\.[A-Z][A-Za-z']+"
 
 def clean(play):
+    play = play.replace('Van Haltren', 'Van')
     play = re.sub(r'^\[[A-Z+, /]*\]\s*', '', play)
     play = re.sub(r'\s*\[[A-Z+, /]*\]\s*$', '', play)
     play = re.sub(r'\s*\((?:[A-Z+]{1,8})\)\s*$', '', play)
@@ -59,6 +60,16 @@ def derive(md, A, H):
             for n_ in re.findall('(' + NM + r') is (?:caught|nailed) (?:trying to )?steal', p):
                 if n_ != first: g(b, n_)['cs'] += 1
             if 'execute the double steal' in p:
+                m_ = re.search('(' + NM + ') and (' + NM + ') execute the double steal', p)
+                if m_:
+                    g(b, m_.group(1))['sb'] += 1; g(b, m_.group(2))['sb'] += 1
+                    p = p[:m_.start()].strip()
+                    if not p: continue
+                    names = re.findall(NM, p); first = names[0]
+                else:
+                    for n_ in names[:2]: g(b, n_)['sb'] += 1
+                    continue
+            if 'pull off the double steal' in p:
                 for n_ in names[:2]: g(b, n_)['sb'] += 1
                 continue
             if 'double steal is pulled off by' in p:
@@ -71,6 +82,7 @@ def derive(md, A, H):
             for n_ in re.findall('(' + NM + r') (?:steals|swipes)\b', p):
                 if n_ != first: g(b, n_)['sb'] += 1
             if any(k in p for k in NONPA): continue
+            p = p.replace('double steal', 'dbl-steal')
             pc = pit[f].setdefault(cur[f], dict(h=0, bb=0, so=0, hr=0)) if cur[f] else dict(h=0, bb=0, so=0, hr=0)
             m = re.search('(' + NM + r') reaches', p)
             if m and 'error' in p:
