@@ -72,6 +72,11 @@ def derive(md, A, H):
             if 'pull off the double steal' in p:
                 for n_ in names[:2]: g(b, n_)['sb'] += 1
                 continue
+            if 'each steal a base' in p:
+                for n_ in names[:2]: g(b, n_)['sb'] += 1
+                continue
+            if re.match(NM + r"'s throw", p):  # fielder's throwing error on a runner, no batter
+                continue
             if 'double steal is pulled off by' in p:
                 for n_ in names[:2]: g(b, n_)['sb'] += 1
                 continue
